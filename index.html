@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Norte Interiorismo | Estudio de Arquitectura Interior en Valencia</title>
+  <title>Norte Interiorismo | Arquitectura Interior en Valencia</title>
   <meta name="description" content="Estudio de arquitectura interior y diseño residencial de alta gama en Valencia. Proyectamos espacios donde conviven la nobleza matérica, la luz mediterránea y la calma atemporal.">
-  <meta name="theme-color" content="#151412">
+  <meta name="theme-color" content="#0B0B0F">
 
   <!-- Open Graph / Meta -->
   <meta property="og:title" content="Norte Interiorismo | Arquitectura Interior en Valencia">
@@ -16,60 +16,62 @@
   <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <script>
-    // Progressive enhancement class check
+    // Progressive enhancement
     document.documentElement.classList.remove('no-js');
     document.documentElement.classList.add('js-enabled');
   </script>
 
   <style>
     /* ==========================================================================
-       NORTE INTERIORISMO — DESIGN SYSTEM & TOKENS
-       Crafted with Emil Kowalski Design Engineering principles
+       NORTE INTERIORISMO — DRIBBLE "INSPIRED" EDITION (BY SHAKURO STYLE)
+       Dark Obsidian, Glassmorphism Bento Grids, Ambient Glows, Tactile Micro-UI
        ========================================================================== */
     :root {
-      /* Palette */
-      --bg-base: #F7F5F0;        /* Cálido tono caliza / alabastro */
-      --bg-surface: #FFFFFF;     /* Blanco puro para tarjetas elevadas */
-      --bg-subtle: #EFECE4;      /* Arena suave para secciones alternas */
-      --bg-dark: #141311;        /* Espresso carbón profundo */
-      --bg-dark-surface: #1E1C19;
-      --bg-dark-card: #252320;
+      /* Dark Obsidian Canvas */
+      --bg-base: #0B0B0F;
+      --bg-surface: #12121A;
+      --bg-surface-elevated: #171722;
+      --bg-glass: rgba(22, 22, 32, 0.72);
+      --bg-glass-active: rgba(30, 30, 44, 0.85);
 
-      --text-main: #181715;      /* Grafito profundo */
-      --text-muted: #6E685F;     /* Muted cálido */
-      --text-dim: #9C9589;       /* Muted claro */
-      --text-inverse: #F7F5F0;
-      --text-inverse-muted: #A8A196;
+      /* Text Hierarchy */
+      --text-main: #FFFFFF;
+      --text-secondary: #B4B0A8;
+      --text-muted: #7E7970;
+      --text-dim: #545048;
 
-      --accent: #A36443;         /* Terracota mediterráneo refinado */
-      --accent-hover: #8B5032;
-      --accent-light: #F4ECE7;
-      --accent-glow: rgba(163, 100, 67, 0.25);
+      /* Vibrant Mediterranean Warm Accents (Amber, Terracotta & Gold Aura) */
+      --accent: #E07A5F;
+      --accent-glow: rgba(224, 122, 95, 0.35);
+      --accent-gradient: linear-gradient(135deg, #F28E72 0%, #E07A5F 50%, #C85D42 100%);
+      --accent-amber: #DDA15E;
+      --accent-amber-glow: rgba(221, 161, 94, 0.25);
 
-      --border-light: rgba(24, 23, 21, 0.08);
-      --border-medium: rgba(24, 23, 21, 0.16);
-      --border-dark: rgba(247, 245, 240, 0.12);
+      /* High-End Glassmorphism Borders */
+      --border-glass: rgba(255, 255, 255, 0.08);
+      --border-glass-hover: rgba(255, 255, 255, 0.18);
+      --border-accent: rgba(224, 122, 95, 0.3);
+
+      /* Radii (Modern Dribbble Curvature) */
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --radius-full: 9999px;
+
+      /* Shadows & Inner Glows */
+      --shadow-glass: 0 20px 48px -12px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      --shadow-elevated: 0 30px 60px -15px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      --shadow-accent: 0 10px 30px -5px var(--accent-glow);
 
       /* Typography */
       --font-serif: 'Cormorant Garamond', Georgia, serif;
       --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-      /* Radii */
-      --radius-sm: 4px;
-      --radius-md: 8px;
-      --radius-lg: 16px;
-      --radius-full: 9999px;
-
-      /* Shadows (refined, physical light) */
-      --shadow-sm: 0 2px 8px rgba(20, 19, 17, 0.04);
-      --shadow-md: 0 8px 24px -4px rgba(20, 19, 17, 0.07);
-      --shadow-lg: 0 20px 48px -8px rgba(20, 19, 17, 0.12);
-      --shadow-dark: 0 20px 48px -8px rgba(0, 0, 0, 0.5);
-
-      /* Animation physics curves */
+      /* Animation Physics */
       --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
       --ease-smooth: cubic-bezier(0.25, 0.8, 0.25, 1);
       --duration-fast: 200ms;
@@ -77,7 +79,7 @@
       --duration-slow: 750ms;
 
       /* Layout */
-      --container-max: 1320px;
+      --container-max: 1360px;
       --container-pad: clamp(1.25rem, 4vw, 3.5rem);
     }
 
@@ -106,8 +108,45 @@
       position: relative;
     }
 
-    /* Subtle paper noise overlay for tactile physical craft */
-    body::before {
+    /* Ambient Lighting Background Orbs (Dribbble Signature Aura) */
+    .ambient-glow {
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.16;
+      will-change: transform;
+    }
+
+    .ambient-glow-1 {
+      top: -10vw;
+      left: 15vw;
+      width: 55vw;
+      height: 55vw;
+      background: radial-gradient(circle, #E07A5F 0%, transparent 70%);
+    }
+
+    .ambient-glow-2 {
+      top: 40vh;
+      right: -10vw;
+      width: 45vw;
+      height: 45vw;
+      background: radial-gradient(circle, #DDA15E 0%, transparent 70%);
+      opacity: 0.12;
+    }
+
+    .ambient-glow-3 {
+      bottom: 10vh;
+      left: 5vw;
+      width: 40vw;
+      height: 40vw;
+      background: radial-gradient(circle, #8F5B34 0%, transparent 70%);
+      opacity: 0.14;
+    }
+
+    /* Subtle Paper/Tactile Noise */
+    body::after {
       content: "";
       position: fixed;
       inset: 0;
@@ -115,7 +154,7 @@
       height: 100%;
       pointer-events: none;
       z-index: 9999;
-      opacity: 0.028;
+      opacity: 0.022;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 
@@ -128,7 +167,7 @@
     a {
       color: inherit;
       text-decoration: none;
-      transition: color var(--duration-fast) var(--ease-smooth);
+      transition: all var(--duration-fast) var(--ease-smooth);
     }
 
     button, input, select, textarea {
@@ -136,7 +175,6 @@
       color: inherit;
     }
 
-    /* Selection */
     ::selection {
       background-color: var(--accent);
       color: #FFFFFF;
@@ -150,129 +188,143 @@
       margin-right: auto;
       padding-left: var(--container-pad);
       padding-right: var(--container-pad);
+      position: relative;
+      z-index: 1;
     }
 
-    /* Section Spacing */
     .section {
-      padding-top: clamp(4.5rem, 9vw, 9rem);
-      padding-bottom: clamp(4.5rem, 9vw, 9rem);
+      padding-top: clamp(5rem, 10vw, 10rem);
+      padding-bottom: clamp(5rem, 10vw, 10rem);
       position: relative;
     }
 
-    /* Typography Utilities */
+    /* Dribbble Pill Badges */
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.45rem 1.1rem;
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-glass-hover);
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: #FFFFFF;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      width: fit-content;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
+      animation: radarPulse 2.4s infinite ease-in-out;
+    }
+
+    @keyframes radarPulse {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.35); opacity: 1; }
+    }
+
+    /* Section Headers (Dribbble Editorial) */
     .section-eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
-      font-family: var(--font-sans);
+      gap: 0.65rem;
       font-size: 0.75rem;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 1rem;
+      margin-bottom: 1.1rem;
     }
 
     .section-eyebrow::before {
       content: "";
       display: inline-block;
-      width: 1.5rem;
-      height: 1px;
-      background-color: var(--accent);
+      width: 1.6rem;
+      height: 2px;
+      background: var(--accent-gradient);
+      border-radius: var(--radius-full);
     }
 
     .section-title {
       font-family: var(--font-serif);
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
       font-weight: 300;
-      line-height: 1.15;
-      letter-spacing: -0.01em;
+      line-height: 1.12;
+      letter-spacing: -0.015em;
       color: var(--text-main);
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.35rem;
+    }
+
+    .section-title span.gradient-text {
+      background: linear-gradient(135deg, #FFFFFF 30%, #E07A5F 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-style: italic;
     }
 
     .section-subtitle {
-      font-size: clamp(1rem, 1.3vw, 1.2rem);
+      font-size: clamp(1rem, 1.3vw, 1.25rem);
       font-weight: 300;
-      color: var(--text-muted);
-      max-width: 640px;
+      color: var(--text-secondary);
+      max-width: 660px;
       line-height: 1.7;
     }
 
-    /* Buttons */
+    /* Dribbble Style Buttons */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 0.75rem;
-      padding: 0.95rem 1.9rem;
+      padding: 0.95rem 2rem;
       font-family: var(--font-sans);
-      font-size: 0.875rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
       border-radius: var(--radius-full);
       cursor: pointer;
       border: 1px solid transparent;
       transition: all var(--duration-normal) var(--ease-spring);
       position: relative;
-      overflow: hidden;
       white-space: nowrap;
     }
 
     .btn-primary {
-      background-color: var(--text-main);
-      color: var(--bg-base);
+      background: var(--accent-gradient);
+      color: #FFFFFF;
+      box-shadow: 0 10px 25px -4px var(--accent-glow);
     }
 
     .btn-primary:hover {
-      background-color: var(--accent);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 16px 36px -4px rgba(224, 122, 95, 0.55);
+    }
+
+    .btn-glass {
+      background: var(--bg-glass);
       color: #FFFFFF;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px -5px var(--accent-glow);
+      border: 1px solid var(--border-glass-hover);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
     }
 
-    .btn-light {
-      background-color: var(--bg-surface);
-      color: var(--text-main);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .btn-light:hover {
-      background-color: var(--accent);
-      color: #FFFFFF;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(163, 100, 67, 0.4);
-    }
-
-    .btn-secondary {
-      background-color: transparent;
-      color: var(--text-main);
-      border-color: var(--border-medium);
-    }
-
-    .btn-secondary:hover {
-      background-color: rgba(24, 23, 21, 0.04);
-      border-color: var(--text-main);
-      transform: translateY(-2px);
-    }
-
-    .btn-outline-white {
-      background-color: rgba(255, 255, 255, 0.1);
-      color: #FFFFFF;
-      border-color: rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(8px);
-    }
-
-    .btn-outline-white:hover {
-      background-color: #FFFFFF;
-      color: var(--text-main);
-      border-color: #FFFFFF;
-      transform: translateY(-2px);
+    .btn-glass:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.35);
+      transform: translateY(-3px);
     }
 
     .btn-icon {
-      width: 1.1em;
-      height: 1.1em;
+      width: 1.15em;
+      height: 1.15em;
       transition: transform var(--duration-fast) var(--ease-spring);
     }
 
@@ -281,140 +333,142 @@
     }
 
     /* ==========================================================================
-       HEADER & NAVIGATION
+       FLOATING DOCK HEADER (DRIBBLE SIGNATURE)
        ========================================================================== */
-    .site-header {
+    .floating-header-wrapper {
       position: fixed;
-      top: 0;
+      top: 1.5rem;
       left: 0;
-      width: 100%;
+      right: 0;
       z-index: 1000;
-      padding: 1.25rem 0;
-      transition: background-color var(--duration-normal) var(--ease-smooth),
-                  padding var(--duration-normal) var(--ease-smooth),
-                  box-shadow var(--duration-normal) var(--ease-smooth),
-                  backdrop-filter var(--duration-normal) var(--ease-smooth);
+      display: flex;
+      justify-content: center;
+      padding: 0 1.25rem;
+      pointer-events: none;
     }
 
-    .site-header.is-scrolled {
-      background-color: rgba(247, 245, 240, 0.88);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      padding: 0.85rem 0;
-      border-bottom: 1px solid var(--border-light);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .header-inner {
+    .floating-dock {
+      pointer-events: auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 2rem;
+      padding: 0.6rem 0.8rem 0.6rem 1.6rem;
+      background: rgba(14, 14, 20, 0.82);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid var(--border-glass-hover);
+      border-radius: var(--radius-full);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      width: 100%;
+      max-width: 960px;
+      transition: all var(--duration-normal) var(--ease-spring);
     }
 
-    .brand {
+    .brand-dock {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      background: var(--accent-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px var(--accent-glow);
+    }
+
+    .brand-dock-text {
       display: flex;
       flex-direction: column;
-      text-decoration: none;
-      z-index: 1010;
     }
 
     .brand-name {
       font-family: var(--font-serif);
-      font-size: 1.6rem;
-      font-weight: 500;
+      font-size: 1.35rem;
+      font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       line-height: 1;
       color: #FFFFFF;
-      transition: color var(--duration-normal) var(--ease-smooth);
     }
 
     .brand-sub {
-      font-family: var(--font-sans);
-      font-size: 0.6rem;
-      letter-spacing: 0.28em;
+      font-size: 0.58rem;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.75);
-      margin-top: 0.2rem;
-      transition: color var(--duration-normal) var(--ease-smooth);
+      color: var(--accent);
+      margin-top: 0.15rem;
+      font-weight: 700;
     }
 
-    .site-header.is-scrolled .brand-name {
-      color: var(--text-main);
-    }
-
-    .site-header.is-scrolled .brand-sub {
-      color: var(--text-muted);
-    }
-
-    .nav-menu {
+    .dock-menu {
       display: flex;
       align-items: center;
       list-style: none;
-      gap: 2rem;
+      gap: 1.5rem;
     }
 
-    .nav-link {
-      font-size: 0.85rem;
-      font-weight: 400;
-      letter-spacing: 0.05em;
-      color: rgba(255, 255, 255, 0.9);
+    .dock-link {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      padding: 0.4rem 0.2rem;
       position: relative;
-      padding: 0.3rem 0;
     }
 
-    .site-header.is-scrolled .nav-link {
-      color: var(--text-main);
+    .dock-link:hover {
+      color: #FFFFFF;
     }
 
-    .nav-link::after {
+    .dock-link::after {
       content: "";
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0%;
-      height: 1px;
-      background-color: var(--accent);
-      transition: width var(--duration-fast) var(--ease-smooth);
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      border-radius: var(--radius-full);
+      transition: width var(--duration-fast) var(--ease-spring);
     }
 
-    .nav-link:hover::after,
-    .nav-link.is-active::after {
+    .dock-link:hover::after {
       width: 100%;
     }
 
-    .header-actions {
+    .dock-actions {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.75rem;
     }
 
-    /* Mobile Menu Button */
     .mobile-menu-toggle {
       display: none;
-      background: none;
-      border: none;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-glass-hover);
       cursor: pointer;
-      width: 42px;
-      height: 42px;
-      border-radius: var(--radius-full);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
       padding: 8px;
       color: #FFFFFF;
-      z-index: 1010;
-      transition: background-color var(--duration-fast) var(--ease-smooth),
-                  color var(--duration-fast) var(--ease-smooth);
-    }
-
-    .site-header.is-scrolled .mobile-menu-toggle {
-      color: var(--text-main);
     }
 
     .hamburger-icon {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      width: 22px;
-      height: 16px;
+      width: 20px;
+      height: 14px;
       margin: auto;
     }
 
@@ -423,32 +477,31 @@
       width: 100%;
       height: 1.5px;
       background-color: currentColor;
-      transition: transform var(--duration-normal) var(--ease-spring),
-                  opacity var(--duration-fast) ease;
+      transition: transform var(--duration-normal) var(--ease-spring), opacity var(--duration-fast) ease;
     }
 
     .mobile-menu-toggle.is-active span:nth-child(1) {
-      transform: translateY(6px) rotate(45deg);
+      transform: translateY(5px) rotate(45deg);
     }
     .mobile-menu-toggle.is-active span:nth-child(2) {
       opacity: 0;
     }
     .mobile-menu-toggle.is-active span:nth-child(3) {
-      transform: translateY(-6px) rotate(-45deg);
+      transform: translateY(-5px) rotate(-45deg);
     }
 
     /* ==========================================================================
-       HERO SECTION — Fullscreen, editorial title word-by-word
+       HERO SECTION — Dribbble "Inspired" Showcase with Floating Micro-UI
        ========================================================================== */
     .hero {
       position: relative;
       min-height: 100vh;
       min-height: 100svh;
       display: flex;
-      align-items: flex-end;
-      padding-bottom: clamp(3.5rem, 8vw, 6.5rem);
-      padding-top: 8rem;
-      background-color: var(--bg-dark);
+      align-items: center;
+      padding-top: 8.5rem;
+      padding-bottom: 5rem;
+      background-color: var(--bg-base);
       overflow: hidden;
     }
 
@@ -465,71 +518,52 @@
       height: 100%;
       object-fit: cover;
       object-position: center 38%;
-      transform: scale(1.04);
-      animation: heroZoom 16s cubic-bezier(0.2, 0.9, 0.4, 1) infinite alternate;
+      filter: brightness(0.68) contrast(1.08);
+      transform: scale(1.03);
+      animation: heroSubtleZoom 18s cubic-bezier(0.2, 0.9, 0.4, 1) infinite alternate;
       will-change: transform;
     }
 
-    @keyframes heroZoom {
+    @keyframes heroSubtleZoom {
       0% { transform: scale(1.02); }
-      100% { transform: scale(1.09); }
+      100% { transform: scale(1.08); }
     }
 
     .hero-scrim {
       position: absolute;
       inset: 0;
       z-index: 2;
-      background: linear-gradient(
-        180deg,
-        rgba(15, 14, 12, 0.45) 0%,
-        rgba(15, 14, 12, 0.25) 40%,
-        rgba(15, 14, 12, 0.88) 100%
-      );
+      background: radial-gradient(circle at 50% 30%, rgba(11, 11, 15, 0.4) 0%, rgba(11, 11, 15, 0.88) 85%);
+    }
+
+    .hero-grid-layout {
+      position: relative;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-grid-layout {
+        grid-template-columns: 1.25fr 0.75fr;
+        gap: 4rem;
+      }
     }
 
     .hero-content {
-      position: relative;
-      z-index: 3;
-      max-width: 1080px;
-      color: #FFFFFF;
+      max-width: 780px;
     }
 
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.35rem 0.9rem;
-      background-color: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      border-radius: var(--radius-full);
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-
-    .hero-badge-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background-color: #F7F5F0;
-      animation: pulseDot 2.2s infinite ease-in-out;
-    }
-
-    @keyframes pulseDot {
-      0%, 100% { opacity: 0.4; transform: scale(0.9); }
-      50% { opacity: 1; transform: scale(1.2); }
-    }
-
-    /* Word-by-word animation via CSS Keyframes (works perfectly even if JS fails) */
+    /* Word-by-word animation via CSS Keyframes */
     .hero-title {
       font-family: var(--font-serif);
-      font-size: clamp(2.8rem, 7.8vw, 6.2rem);
+      font-size: clamp(3rem, 7.2vw, 5.8rem);
       font-weight: 300;
       line-height: 1.05;
       letter-spacing: -0.02em;
+      margin-top: 1.5rem;
       margin-bottom: 1.75rem;
       text-wrap: balance;
     }
@@ -539,14 +573,14 @@
       opacity: 0;
       transform: translateY(28px);
       animation: wordReveal 0.9s var(--ease-spring) forwards;
-      animation-delay: calc(var(--i, 0) * 0.07s + 0.15s);
+      animation-delay: calc(var(--i, 0) * 0.08s + 0.15s);
       will-change: transform, opacity;
     }
 
     .hero-title .word.italic {
       font-style: italic;
-      font-weight: 300;
-      color: #E7DACD;
+      color: #F28E72;
+      text-shadow: 0 0 30px rgba(242, 142, 114, 0.3);
     }
 
     @keyframes wordReveal {
@@ -561,11 +595,11 @@
     }
 
     .hero-description {
-      font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+      font-size: clamp(1.05rem, 1.6vw, 1.28rem);
       font-weight: 300;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.88);
-      max-width: 720px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      max-width: 620px;
       margin-bottom: 2.25rem;
       opacity: 0;
       transform: translateY(18px);
@@ -591,112 +625,107 @@
       animation-delay: 1.1s;
     }
 
-    .hero-scroll-indicator {
-      position: absolute;
-      right: var(--container-pad);
-      bottom: clamp(2rem, 5vw, 4rem);
-      z-index: 4;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      transform: rotate(90deg);
-      transform-origin: right bottom;
-    }
-
-    .hero-scroll-line {
-      width: 40px;
-      height: 1px;
-      background-color: rgba(255, 255, 255, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-scroll-line::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #FFFFFF;
-      animation: scrollLine 2s infinite ease;
-    }
-
-    @keyframes scrollLine {
-      0% { transform: translateX(-100%); }
-      50%, 100% { transform: translateX(100%); }
-    }
-
-    /* ==========================================================================
-       PHILOSOPHY STRIP (STUDIO BRIEF)
-       ========================================================================== */
-    .philosophy-strip {
-      background-color: var(--bg-surface);
-      border-bottom: 1px solid var(--border-light);
-      padding: clamp(3rem, 6vw, 5.5rem) 0;
-    }
-
-    .philosophy-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-      align-items: center;
-    }
-
-    @media (min-width: 900px) {
-      .philosophy-grid {
-        grid-template-columns: 1.2fr 0.8fr;
-        gap: 5rem;
-      }
-    }
-
-    .philosophy-quote {
-      font-family: var(--font-serif);
-      font-size: clamp(1.8rem, 3.2vw, 2.7rem);
-      font-weight: 300;
-      line-height: 1.3;
-      color: var(--text-main);
-    }
-
-    .philosophy-quote em {
-      font-style: italic;
-      color: var(--accent);
-    }
-
-    .philosophy-details {
+    /* Dribbble Floating Feature Card in Hero */
+    .hero-floating-card {
+      background: var(--bg-glass);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid var(--border-glass-hover);
+      border-radius: var(--radius-xl);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-elevated);
       display: flex;
       flex-direction: column;
       gap: 1.25rem;
-      color: var(--text-muted);
-      font-size: 1rem;
-      line-height: 1.7;
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--duration-normal) var(--ease-spring), border-color var(--duration-fast);
     }
 
-    .materials-pills {
+    .hero-floating-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-accent);
+    }
+
+    .hero-floating-card::before {
+      content: "";
+      position: absolute;
+      top: -30%;
+      right: -30%;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-card-header {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    .material-pill {
-      font-size: 0.75rem;
-      letter-spacing: 0.05em;
-      padding: 0.3rem 0.8rem;
-      background-color: var(--bg-subtle);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-full);
-      color: var(--text-main);
+    .hero-card-img-box {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+    }
+
+    .hero-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--duration-slow) var(--ease-spring);
+    }
+
+    .hero-floating-card:hover .hero-card-img {
+      transform: scale(1.06);
+    }
+
+    .avatar-stack-group {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding-top: 0.5rem;
+    }
+
+    .avatar-stack {
+      display: flex;
+      align-items: center;
+    }
+
+    .avatar-stack img {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 2px solid var(--bg-surface);
+      margin-left: -10px;
+      object-fit: cover;
+    }
+
+    .avatar-stack img:first-child {
+      margin-left: 0;
+    }
+
+    .avatar-stack-text {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .avatar-stack-text strong {
+      color: #FFFFFF;
     }
 
     /* ==========================================================================
-       PROJECTS GALLERY — Hover Effects & Filter
+       BENTO GRID GALLERY — Shakuro "Inspired" Signature Layout
        ========================================================================== */
-    .projects-header {
+    .bento-section {
+      background-color: var(--bg-base);
+    }
+
+    .bento-header-wrapper {
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
@@ -704,225 +733,218 @@
     }
 
     @media (min-width: 768px) {
-      .projects-header {
+      .bento-header-wrapper {
         flex-direction: row;
         align-items: flex-end;
         justify-content: space-between;
       }
     }
 
-    .filter-bar {
+    .filter-pills-bar {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
+      background: var(--bg-surface);
+      padding: 0.4rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-glass);
+      width: fit-content;
     }
 
-    .filter-btn {
-      background: none;
-      border: 1px solid var(--border-medium);
-      padding: 0.5rem 1.2rem;
+    .filter-pill {
+      background: transparent;
+      border: none;
+      padding: 0.55rem 1.25rem;
       font-size: 0.8rem;
-      font-weight: 500;
+      font-weight: 600;
       border-radius: var(--radius-full);
       cursor: pointer;
       color: var(--text-muted);
       transition: all var(--duration-fast) var(--ease-smooth);
     }
 
-    .filter-btn:hover {
-      border-color: var(--text-main);
-      color: var(--text-main);
+    .filter-pill:hover {
+      color: #FFFFFF;
     }
 
-    .filter-btn.is-active {
-      background-color: var(--text-main);
-      border-color: var(--text-main);
-      color: var(--bg-base);
+    .filter-pill.is-active {
+      background: var(--accent-gradient);
+      color: #FFFFFF;
+      box-shadow: 0 4px 15px var(--accent-glow);
     }
 
-    .projects-grid {
+    /* Asymmetric Dribbble Bento Grid */
+    .bento-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 2.5rem;
+      gap: 2rem;
     }
 
-    @media (min-width: 768px) {
-      .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 3rem;
+    @media (min-width: 900px) {
+      .bento-grid {
+        grid-template-columns: repeat(12, 1fr);
       }
+      .bento-span-7 { grid-column: span 7; }
+      .bento-span-5 { grid-column: span 5; }
+      .bento-span-4 { grid-column: span 4; }
+      .bento-span-8 { grid-column: span 8; }
     }
 
-    @media (min-width: 1100px) {
-      .projects-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2.5rem;
-      }
-    }
-
-    /* Project Card with Emil Kowalski-inspired hover physics */
-    .project-card {
-      position: relative;
+    /* Bento Card (Dribbble Glass / Card Anatomy) */
+    .bento-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-glass);
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       cursor: pointer;
-      group: "";
-      background-color: var(--bg-surface);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      border: 1px solid var(--border-light);
-      box-shadow: var(--shadow-sm);
+      position: relative;
+      box-shadow: var(--shadow-glass);
       transition: transform var(--duration-normal) var(--ease-spring),
-                  box-shadow var(--duration-normal) var(--ease-spring),
-                  border-color var(--duration-normal) var(--ease-spring);
+                  border-color var(--duration-normal) var(--ease-spring),
+                  box-shadow var(--duration-normal) var(--ease-spring);
     }
 
-    .project-card:hover {
+    .bento-card:hover {
       transform: translateY(-8px);
-      box-shadow: var(--shadow-lg);
-      border-color: rgba(24, 23, 21, 0.16);
+      border-color: var(--border-accent);
+      box-shadow: var(--shadow-elevated);
     }
 
-    .project-thumbnail-wrapper {
+    .bento-media-container {
       position: relative;
       width: 100%;
-      aspect-ratio: 4 / 3;
+      aspect-ratio: 16 / 10;
       overflow: hidden;
-      background-color: var(--bg-subtle);
+      background-color: var(--bg-surface-elevated);
     }
 
-    .project-thumbnail {
+    .bento-card.bento-tall .bento-media-container {
+      aspect-ratio: 4 / 3;
+    }
+
+    .bento-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform var(--duration-slow) var(--ease-spring),
-                  filter var(--duration-slow) var(--ease-spring);
+      transition: transform var(--duration-slow) var(--ease-spring), filter var(--duration-normal);
       will-change: transform;
     }
 
-    .project-card:hover .project-thumbnail {
+    .bento-card:hover .bento-img {
       transform: scale(1.06);
     }
 
-    .project-badge-tag {
+    .bento-pill-overlay {
       position: absolute;
-      top: 1rem;
-      left: 1rem;
+      top: 1.25rem;
+      left: 1.25rem;
       z-index: 2;
-      background-color: rgba(20, 19, 17, 0.7);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      color: #FFFFFF;
-      font-size: 0.7rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.3rem 0.75rem;
-      border-radius: var(--radius-full);
-      border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
-    .project-info {
-      padding: 1.6rem 1.6rem 1.8rem;
+    .bento-body {
+      padding: 1.85rem;
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.6rem;
+      flex: 1;
+      justify-content: space-between;
     }
 
-    .project-meta {
+    .bento-meta-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       color: var(--accent);
-      font-weight: 500;
-      letter-spacing: 0.04em;
     }
 
-    .project-title {
+    .bento-title {
       font-family: var(--font-serif);
-      font-size: 1.55rem;
+      font-size: 1.65rem;
       font-weight: 400;
+      color: #FFFFFF;
+      transition: color var(--duration-fast);
       line-height: 1.25;
-      color: var(--text-main);
-      transition: color var(--duration-fast) var(--ease-smooth);
     }
 
-    .project-card:hover .project-title {
+    .bento-card:hover .bento-title {
       color: var(--accent);
     }
 
-    .project-description {
-      font-size: 0.88rem;
-      color: var(--text-muted);
+    .bento-desc {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
       line-height: 1.6;
-      margin-top: 0.25rem;
     }
 
-    .project-footer-specs {
+    .bento-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-top: 1rem;
-      margin-top: 0.75rem;
-      border-top: 1px solid var(--border-light);
-      font-size: 0.8rem;
-      color: var(--text-dim);
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border-glass);
+      margin-top: 0.8rem;
     }
 
-    .project-cta-link {
-      display: inline-flex;
+    .bento-spec-chip {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .bento-action-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-glass-hover);
+      display: flex;
       align-items: center;
-      gap: 0.4rem;
-      color: var(--text-main);
-      font-weight: 600;
-      font-size: 0.8rem;
+      justify-content: center;
+      color: #FFFFFF;
+      transition: all var(--duration-fast) var(--ease-spring);
     }
 
-    .project-cta-link svg {
-      width: 14px;
-      height: 14px;
-      transition: transform var(--duration-fast) var(--ease-spring);
-    }
-
-    .project-card:hover .project-cta-link svg {
-      transform: translateX(4px);
+    .bento-card:hover .bento-action-circle {
+      background: var(--accent-gradient);
+      border-color: transparent;
+      transform: rotate(-45deg);
     }
 
     /* ==========================================================================
-       BEFORE / AFTER COMPARISON SLIDER (Draggable & Accessible)
+       BEFORE / AFTER COMPARISON SLIDER — Dribbble Tech Hardware Edition
        ========================================================================== */
     .comparison-section {
-      background-color: var(--bg-dark);
-      color: #FFFFFF;
-      overflow: hidden;
-    }
-
-    .comparison-section .section-title {
-      color: #FFFFFF;
-    }
-
-    .comparison-section .section-subtitle {
-      color: var(--text-inverse-muted);
-    }
-
-    .comparison-box {
-      margin-top: 3.5rem;
+      background-color: #08080B;
       position: relative;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-dark);
-      border: 1px solid var(--border-dark);
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: pan-y;
+    }
+
+    .comparison-frame {
+      margin-top: 3.5rem;
+      background: var(--bg-surface);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-glass);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-elevated);
+      position: relative;
     }
 
     .comparison-wrapper {
       position: relative;
       width: 100%;
       aspect-ratio: 16 / 9;
-      min-height: 380px;
-      background-color: #0F0E0C;
+      min-height: 420px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: pan-y;
+      background-color: #040406;
     }
 
     @media (max-width: 640px) {
@@ -943,6 +965,7 @@
 
     .comparison-img-before {
       z-index: 1;
+      filter: saturate(0.85);
     }
 
     .comparison-img-after-container {
@@ -956,48 +979,18 @@
       will-change: clip-path;
     }
 
-    .comparison-label {
-      position: absolute;
-      top: 1.5rem;
-      z-index: 5;
-      padding: 0.45rem 1rem;
-      border-radius: var(--radius-full);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      pointer-events: none;
-    }
-
-    .label-before {
-      right: 1.5rem;
-      background-color: rgba(20, 19, 17, 0.75);
-      color: #E2DFD8;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-    }
-
-    .label-after {
-      left: 1.5rem;
-      background-color: rgba(163, 100, 67, 0.88);
-      color: #FFFFFF;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Draggable Divider Handle */
+    /* Laser Divider & Frosted Glass Dial */
     .comparison-divider {
       position: absolute;
       top: 0;
       bottom: 0;
       left: var(--pos, 50%);
-      width: 2px;
-      background-color: #FFFFFF;
+      width: 3px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, #FFFFFF 50%, rgba(255, 255, 255, 0.4) 100%);
       z-index: 10;
       transform: translateX(-50%);
       pointer-events: none;
-      box-shadow: 0 0 16px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 20px var(--accent-glow), 0 0 10px #FFFFFF;
     }
 
     .comparison-handle {
@@ -1005,33 +998,36 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 48px;
-      height: 48px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
-      background-color: #FFFFFF;
-      color: var(--text-main);
+      background: rgba(22, 22, 32, 0.9);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 2px solid #FFFFFF;
+      color: #FFFFFF;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 10px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 0 4px rgba(255, 255, 255, 0.3);
+      padding: 0 12px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), 0 0 15px var(--accent-glow);
       pointer-events: auto;
       cursor: ew-resize;
       transition: transform var(--duration-fast) var(--ease-spring);
     }
 
     .comparison-handle:hover,
-    .comparison-box.is-dragging .comparison-handle {
-      transform: translate(-50%, -50%) scale(1.1);
+    .comparison-frame.is-dragging .comparison-handle {
+      transform: translate(-50%, -50%) scale(1.15);
+      border-color: var(--accent);
     }
 
     .comparison-handle svg {
       width: 12px;
       height: 12px;
-      stroke-width: 2.5;
+      stroke-width: 3;
     }
 
-    /* Native range input overlay for 100% JS-independent operation */
     .comparison-range-slider {
       position: absolute;
       inset: 0;
@@ -1043,59 +1039,54 @@
       z-index: 20;
     }
 
-    .comparison-stats-bar {
+    /* Dribbble Hardware Stats Grid */
+    .comparison-stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1.5rem;
-      margin-top: 2rem;
-      padding: 1.75rem 2rem;
-      background-color: var(--bg-dark-surface);
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-dark);
+      margin-top: 1.5rem;
     }
 
-    .comp-stat-item {
+    .comp-stat-card {
+      background: var(--bg-glass);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      padding: 1.35rem 1.6rem;
       display: flex;
       flex-direction: column;
-      gap: 0.3rem;
+      gap: 0.35rem;
     }
 
-    .comp-stat-val {
+    .comp-stat-num {
       font-family: var(--font-serif);
-      font-size: 1.75rem;
+      font-size: 1.9rem;
       font-weight: 400;
       color: #FFFFFF;
+      letter-spacing: -0.02em;
     }
 
     .comp-stat-desc {
-      font-size: 0.85rem;
-      color: var(--text-inverse-muted);
+      font-size: 0.82rem;
+      color: var(--text-secondary);
     }
 
     /* ==========================================================================
-       PROCESS IN 4 STEPS — Connecting Line Drawn on Scroll
+       PROCESS IN 4 STEPS — Connecting Illuminated Timeline
        ========================================================================== */
-    .process-container {
-      position: relative;
-      margin-top: 4.5rem;
-    }
-
-    /* Vertical Spine Line */
     .process-timeline {
       position: relative;
-      max-width: 900px;
-      margin: 0 auto;
+      max-width: 960px;
+      margin: 4.5rem auto 0;
       padding: 1rem 0;
     }
 
-    /* Base architectural guide line */
     .process-line-track {
       position: absolute;
       top: 0;
       bottom: 0;
       left: 28px;
       width: 2px;
-      background-color: var(--border-medium);
+      background: var(--border-glass-hover);
       transform: translateX(-50%);
     }
 
@@ -1105,18 +1096,17 @@
       }
     }
 
-    /* Dynamic drawn progress line on scroll */
     .process-line-progress {
       position: absolute;
       top: 0;
       left: 28px;
-      width: 2px;
+      width: 3px;
       height: var(--line-height, 0%);
-      background: linear-gradient(180deg, var(--accent) 0%, #D48B64 100%);
+      background: var(--accent-gradient);
       transform: translateX(-50%);
       transition: height 0.15s ease-out;
+      box-shadow: 0 0 20px var(--accent);
       will-change: height;
-      box-shadow: 0 0 12px var(--accent-glow);
     }
 
     @media (min-width: 768px) {
@@ -1125,14 +1115,13 @@
       }
     }
 
-    /* Fallback if JS is off: full line visible */
     .no-js .process-line-progress {
       height: 100% !important;
     }
 
     .process-step {
       position: relative;
-      margin-bottom: 4rem;
+      margin-bottom: 4.5rem;
       display: grid;
       grid-template-columns: 56px 1fr;
       gap: 1.5rem;
@@ -1146,9 +1135,9 @@
     @media (min-width: 768px) {
       .process-step {
         grid-template-columns: 1fr 64px 1fr;
-        gap: 2.5rem;
+        gap: 3rem;
         align-items: center;
-        margin-bottom: 5.5rem;
+        margin-bottom: 6rem;
       }
 
       .process-step:nth-child(even) .process-card {
@@ -1184,19 +1173,17 @@
       display: none;
     }
 
-    /* Node Marker */
     .process-node {
       width: 56px;
       height: 56px;
       border-radius: 50%;
-      background-color: var(--bg-base);
-      border: 2px solid var(--border-medium);
+      background: var(--bg-surface);
+      border: 2px solid var(--border-glass-hover);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: var(--font-sans);
-      font-size: 0.85rem;
-      font-weight: 700;
+      font-size: 0.88rem;
+      font-weight: 800;
       color: var(--text-muted);
       z-index: 5;
       transition: all var(--duration-normal) var(--ease-spring);
@@ -1205,58 +1192,58 @@
     }
 
     .process-step.is-active .process-node {
-      background-color: var(--accent);
-      border-color: var(--accent);
+      background: var(--accent-gradient);
+      border-color: #FFFFFF;
       color: #FFFFFF;
-      transform: scale(1.12);
-      box-shadow: 0 0 0 6px var(--bg-base), 0 8px 24px var(--accent-glow);
+      transform: scale(1.15);
+      box-shadow: 0 0 0 6px var(--bg-base), 0 0 25px var(--accent);
     }
 
     .process-card {
-      background-color: var(--bg-surface);
-      border-radius: var(--radius-md);
-      padding: clamp(1.5rem, 3vw, 2.2rem);
-      border: 1px solid var(--border-light);
-      box-shadow: var(--shadow-sm);
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.6rem, 3.5vw, 2.4rem);
+      border: 1px solid var(--border-glass);
+      box-shadow: var(--shadow-glass);
       transition: transform var(--duration-normal) var(--ease-spring),
-                  box-shadow var(--duration-normal) var(--ease-spring);
+                  border-color var(--duration-normal) var(--ease-spring);
     }
 
     .process-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
+      transform: translateY(-5px);
+      border-color: var(--border-accent);
     }
 
     .process-step-num {
       display: inline-block;
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--accent);
       margin-bottom: 0.5rem;
     }
 
     .process-step-title {
       font-family: var(--font-serif);
-      font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+      font-size: clamp(1.45rem, 2.2vw, 1.95rem);
       font-weight: 400;
-      color: var(--text-main);
+      color: #FFFFFF;
       margin-bottom: 0.75rem;
       line-height: 1.25;
     }
 
     .process-step-text {
-      font-size: 0.92rem;
-      color: var(--text-muted);
-      line-height: 1.65;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
     }
 
     .process-deliverables {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 1rem;
+      gap: 0.45rem;
+      margin-top: 1.25rem;
     }
 
     @media (min-width: 768px) {
@@ -1266,27 +1253,28 @@
     }
 
     .deliv-tag {
-      font-size: 0.7rem;
-      padding: 0.2rem 0.6rem;
-      background-color: var(--bg-subtle);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.3rem 0.75rem;
+      background: var(--bg-glass);
       border-radius: var(--radius-full);
-      color: var(--text-main);
-      border: 1px solid var(--border-light);
+      color: #FFFFFF;
+      border: 1px solid var(--border-glass-hover);
     }
 
     /* ==========================================================================
-       METRICS / COUNTERS SECTION
+       METRICS / COUNTERS (DRIBBLE DASHBOARD STATS)
        ========================================================================== */
     .metrics-section {
       background-color: var(--bg-surface);
-      border-top: 1px solid var(--border-light);
-      border-bottom: 1px solid var(--border-light);
+      border-top: 1px solid var(--border-glass);
+      border-bottom: 1px solid var(--border-glass);
     }
 
     .metrics-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 2.5rem 1.5rem;
+      gap: 2rem 1.5rem;
     }
 
     @media (min-width: 900px) {
@@ -1297,52 +1285,58 @@
     }
 
     .metric-card {
+      background: var(--bg-glass);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      border: 1px solid var(--border-glass);
       display: flex;
       flex-direction: column;
       position: relative;
+      overflow: hidden;
+      transition: transform var(--duration-fast), border-color var(--duration-fast);
+    }
+
+    .metric-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-glass-hover);
     }
 
     .metric-number-wrapper {
       display: flex;
       align-items: baseline;
       font-family: var(--font-serif);
-      font-size: clamp(3rem, 6vw, 4.8rem);
+      font-size: clamp(3.2rem, 6vw, 4.8rem);
       font-weight: 300;
       line-height: 1;
-      color: var(--text-main);
+      color: #FFFFFF;
       letter-spacing: -0.03em;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.85rem;
     }
 
     .metric-suffix {
-      font-size: 0.6em;
+      font-size: 0.55em;
       color: var(--accent);
       font-family: var(--font-sans);
-      font-weight: 500;
+      font-weight: 700;
       margin-left: 0.15em;
     }
 
     .metric-label {
-      font-family: var(--font-sans);
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--text-main);
-      margin-bottom: 0.25rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 0.35rem;
     }
 
     .metric-detail {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.5;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
     }
 
     /* ==========================================================================
-       TESTIMONIALS / OPINIONES
+       TESTIMONIALS (DRIBBLE SOCIAL FEED CARDS)
        ========================================================================== */
-    .testimonials-section {
-      background-color: var(--bg-base);
-    }
-
     .testimonials-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -1357,42 +1351,42 @@
     }
 
     .testimonial-card {
-      background-color: var(--bg-surface);
-      border-radius: var(--radius-md);
-      padding: clamp(1.8rem, 3vw, 2.5rem);
-      border: 1px solid var(--border-light);
-      box-shadow: var(--shadow-sm);
+      background: var(--bg-surface);
+      border-radius: var(--radius-xl);
+      padding: clamp(1.8rem, 3.5vw, 2.5rem);
+      border: 1px solid var(--border-glass);
+      box-shadow: var(--shadow-glass);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       transition: transform var(--duration-normal) var(--ease-spring),
-                  box-shadow var(--duration-normal) var(--ease-spring);
+                  border-color var(--duration-normal);
     }
 
     .testimonial-card:hover {
       transform: translateY(-6px);
-      box-shadow: var(--shadow-md);
+      border-color: var(--border-accent);
     }
 
     .testimonial-stars {
       display: flex;
-      gap: 0.25rem;
-      color: #C98A4B;
-      margin-bottom: 1.25rem;
+      gap: 0.3rem;
+      color: #F59E0B;
+      margin-bottom: 1.35rem;
     }
 
     .testimonial-stars svg {
-      width: 15px;
-      height: 15px;
+      width: 16px;
+      height: 16px;
       fill: currentColor;
     }
 
     .testimonial-quote {
       font-family: var(--font-serif);
-      font-size: clamp(1.1rem, 1.4vw, 1.25rem);
-      font-weight: 400;
+      font-size: clamp(1.15rem, 1.5vw, 1.3rem);
+      font-weight: 300;
       line-height: 1.6;
-      color: var(--text-main);
+      color: #FFFFFF;
       margin-bottom: 2rem;
       font-style: italic;
     }
@@ -1402,50 +1396,41 @@
       align-items: center;
       gap: 1rem;
       padding-top: 1.25rem;
-      border-top: 1px solid var(--border-light);
+      border-top: 1px solid var(--border-glass);
     }
 
     .author-avatar {
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
-      background-color: var(--bg-subtle);
-      border: 1px solid var(--border-medium);
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-glass-hover);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 600;
-      font-size: 0.85rem;
+      font-weight: 700;
+      font-size: 0.9rem;
       color: var(--accent);
     }
 
-    .author-info {
-      display: flex;
-      flex-direction: column;
-    }
-
     .author-name {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text-main);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #FFFFFF;
     }
 
     .author-location {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
     }
 
     /* ==========================================================================
-       FAQ ACCORDION (<details> native & accessible)
+       FAQ ACCORDION (<details> native & modern glassmorphic)
        ========================================================================== */
-    .faq-section {
-      background-color: var(--bg-subtle);
-    }
-
     .faq-layout {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 3rem;
+      gap: 3.5rem;
       margin-top: 3.5rem;
     }
 
@@ -1456,36 +1441,24 @@
       }
     }
 
-    .faq-sticky-col {
-      position: relative;
-    }
-
-    @media (min-width: 900px) {
-      .faq-sticky-col {
-        position: sticky;
-        top: 6rem;
-      }
-    }
-
     .faq-list {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.25rem;
     }
 
     .faq-item {
-      background-color: var(--bg-surface);
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-light);
-      box-shadow: var(--shadow-sm);
-      transition: border-color var(--duration-fast) var(--ease-smooth),
-                  box-shadow var(--duration-fast) var(--ease-smooth);
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-glass);
+      box-shadow: var(--shadow-glass);
+      transition: border-color var(--duration-fast), box-shadow var(--duration-fast);
       overflow: hidden;
     }
 
     .faq-item[open] {
-      border-color: rgba(163, 100, 67, 0.4);
-      box-shadow: var(--shadow-md);
+      border-color: var(--border-accent);
+      box-shadow: var(--shadow-elevated);
     }
 
     .faq-summary {
@@ -1493,15 +1466,15 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1.25rem;
-      padding: 1.4rem 1.6rem;
+      gap: 1.5rem;
+      padding: 1.6rem 1.8rem;
       font-family: var(--font-serif);
-      font-size: clamp(1.15rem, 1.6vw, 1.35rem);
-      font-weight: 500;
-      color: var(--text-main);
+      font-size: clamp(1.2rem, 1.6vw, 1.45rem);
+      font-weight: 400;
+      color: #FFFFFF;
       cursor: pointer;
       user-select: none;
-      transition: color var(--duration-fast) var(--ease-smooth);
+      transition: color var(--duration-fast);
     }
 
     .faq-summary::-webkit-details-marker {
@@ -1516,50 +1489,33 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
-      background-color: var(--bg-subtle);
-      color: var(--text-main);
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-glass-hover);
+      color: #FFFFFF;
       flex-shrink: 0;
       transition: transform var(--duration-normal) var(--ease-spring),
-                  background-color var(--duration-fast) ease,
-                  color var(--duration-fast) ease;
+                  background var(--duration-fast);
     }
 
     .faq-item[open] .faq-indicator {
       transform: rotate(45deg);
-      background-color: var(--accent);
-      color: #FFFFFF;
+      background: var(--accent-gradient);
+      border-color: transparent;
     }
 
     .faq-content {
-      padding: 0 1.6rem 1.6rem;
+      padding: 0 1.8rem 1.8rem;
       font-size: 0.95rem;
-      color: var(--text-muted);
+      color: var(--text-secondary);
       line-height: 1.7;
-      border-top: 1px solid transparent;
-      animation: faqSlideDown 0.3s var(--ease-smooth);
-    }
-
-    @keyframes faqSlideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-6px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
 
     /* ==========================================================================
        CONTACT FORM & STUDIO DETAILS
        ========================================================================== */
-    .contact-section {
-      background-color: var(--bg-surface);
-    }
-
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -1584,7 +1540,7 @@
       display: flex;
       flex-direction: column;
       gap: 2rem;
-      margin: 2rem 0;
+      margin: 2.5rem 0;
     }
 
     .contact-item {
@@ -1593,30 +1549,31 @@
     }
 
     .contact-icon-box {
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       border-radius: var(--radius-md);
-      background-color: var(--bg-subtle);
-      border: 1px solid var(--border-light);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-glass-hover);
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--accent);
       flex-shrink: 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     }
 
     .contact-item-title {
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--text-muted);
       margin-bottom: 0.25rem;
     }
 
     .contact-item-value {
-      font-size: 1.05rem;
-      color: var(--text-main);
+      font-size: 1.1rem;
+      color: #FFFFFF;
       font-weight: 500;
     }
 
@@ -1624,27 +1581,12 @@
       color: var(--accent);
     }
 
-    .contact-badge-box {
-      padding: 1.5rem;
-      background-color: var(--bg-base);
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-light);
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    .contact-badge-box strong {
-      color: var(--text-main);
-    }
-
-    /* Form Design */
     .contact-form {
-      background-color: var(--bg-base);
-      padding: clamp(2rem, 4vw, 3rem);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-light);
-      box-shadow: var(--shadow-sm);
+      background: var(--bg-surface);
+      padding: clamp(2rem, 4vw, 3.2rem);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-glass);
+      box-shadow: var(--shadow-elevated);
     }
 
     .form-group-row {
@@ -1663,15 +1605,15 @@
     .form-field {
       display: flex;
       flex-direction: column;
-      gap: 0.45rem;
+      gap: 0.5rem;
       margin-bottom: 1.25rem;
     }
 
     .form-label {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 600;
+      color: #FFFFFF;
       letter-spacing: 0.04em;
-      color: var(--text-main);
     }
 
     .form-label span {
@@ -1682,14 +1624,13 @@
     .form-select,
     .form-textarea {
       width: 100%;
-      padding: 0.85rem 1.1rem;
-      background-color: var(--bg-surface);
-      border: 1px solid var(--border-medium);
+      padding: 0.95rem 1.25rem;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-glass);
       border-radius: var(--radius-md);
       font-size: 0.92rem;
-      color: var(--text-main);
-      transition: border-color var(--duration-fast) var(--ease-smooth),
-                  box-shadow var(--duration-fast) var(--ease-smooth);
+      color: #FFFFFF;
+      transition: border-color var(--duration-fast), box-shadow var(--duration-fast);
     }
 
     .form-input:focus,
@@ -1702,16 +1643,16 @@
 
     .form-textarea {
       resize: vertical;
-      min-height: 110px;
+      min-height: 120px;
     }
 
     .checkbox-field {
       display: flex;
       align-items: flex-start;
-      gap: 0.75rem;
-      margin-bottom: 1.5rem;
+      gap: 0.85rem;
+      margin-bottom: 1.75rem;
       font-size: 0.82rem;
-      color: var(--text-muted);
+      color: var(--text-secondary);
       line-height: 1.5;
     }
 
@@ -1725,28 +1666,28 @@
 
     .form-status {
       display: none;
-      padding: 1rem 1.25rem;
+      padding: 1.1rem 1.35rem;
       border-radius: var(--radius-md);
-      font-size: 0.88rem;
-      margin-bottom: 1.25rem;
+      font-size: 0.9rem;
+      margin-bottom: 1.35rem;
     }
 
     .form-status.is-success {
       display: block;
-      background-color: #EBF7EE;
-      color: #1E6B35;
-      border: 1px solid #A8E0B7;
+      background: rgba(46, 125, 50, 0.2);
+      color: #81C784;
+      border: 1px solid rgba(129, 199, 132, 0.4);
     }
 
     /* ==========================================================================
-       MODAL / LIGHTBOX FOR PROJECTS
+       MODAL LIGHTBOX
        ========================================================================== */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background-color: rgba(15, 14, 12, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(8, 8, 12, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       z-index: 2000;
       display: flex;
       align-items: center;
@@ -1763,16 +1704,17 @@
     }
 
     .modal-card {
-      background-color: var(--bg-surface);
+      background: var(--bg-surface);
       width: 100%;
       max-width: 960px;
       max-height: 90vh;
       overflow-y: auto;
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-glass-hover);
       position: relative;
       transform: translateY(24px) scale(0.98);
       transition: transform var(--duration-normal) var(--ease-spring);
-      box-shadow: var(--shadow-dark);
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.9);
     }
 
     .modal-overlay.is-open .modal-card {
@@ -1784,27 +1726,27 @@
       top: 1.25rem;
       right: 1.25rem;
       z-index: 10;
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.9);
-      border: 1px solid var(--border-medium);
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-glass-hover);
+      color: #FFFFFF;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: transform var(--duration-fast) var(--ease-spring),
-                  background-color var(--duration-fast) ease;
+      transition: transform var(--duration-fast) var(--ease-spring);
     }
 
     .modal-close-btn:hover {
-      transform: rotate(90deg);
-      background-color: #FFFFFF;
+      transform: rotate(90deg) scale(1.1);
+      background: var(--accent);
     }
 
     .modal-image {
       width: 100%;
-      height: 420px;
+      height: 440px;
       object-fit: cover;
     }
 
@@ -1813,7 +1755,7 @@
     }
 
     /* ==========================================================================
-       TOAST NOTIFICATION (Sonner style)
+       TOAST NOTIFICATIONS (SONNER STYLE)
        ========================================================================== */
     .toast-container {
       position: fixed;
@@ -1828,19 +1770,22 @@
 
     .toast {
       pointer-events: auto;
-      background-color: var(--text-main);
+      background: rgba(22, 22, 32, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       color: #FFFFFF;
-      padding: 0.95rem 1.4rem;
+      border: 1px solid var(--border-glass-hover);
+      padding: 1rem 1.6rem;
       border-radius: var(--radius-full);
-      box-shadow: var(--shadow-lg);
+      box-shadow: var(--shadow-elevated);
       display: flex;
       align-items: center;
-      gap: 0.8rem;
-      font-size: 0.88rem;
+      gap: 0.85rem;
+      font-size: 0.9rem;
+      font-weight: 500;
       transform: translateY(20px) scale(0.95);
       opacity: 0;
-      transition: transform var(--duration-normal) var(--ease-spring),
-                  opacity var(--duration-normal) var(--ease-smooth);
+      transition: transform var(--duration-normal) var(--ease-spring), opacity var(--duration-normal);
     }
 
     .toast.is-visible {
@@ -1849,20 +1794,19 @@
     }
 
     .toast-icon {
-      width: 18px;
-      height: 18px;
-      color: #55C478;
+      width: 20px;
+      height: 20px;
+      color: #81C784;
     }
 
     /* ==========================================================================
        FOOTER
        ========================================================================== */
     .site-footer {
-      background-color: var(--bg-dark);
-      color: #FFFFFF;
+      background-color: #060608;
+      border-top: 1px solid var(--border-glass);
       padding-top: clamp(4.5rem, 8vw, 7rem);
       padding-bottom: 2.5rem;
-      border-top: 1px solid var(--border-dark);
     }
 
     .footer-top-grid {
@@ -1870,7 +1814,7 @@
       grid-template-columns: 1fr;
       gap: 3.5rem;
       padding-bottom: 4rem;
-      border-bottom: 1px solid var(--border-dark);
+      border-bottom: 1px solid var(--border-glass);
     }
 
     @media (min-width: 900px) {
@@ -1880,30 +1824,23 @@
       }
     }
 
-    .footer-brand-bio {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-
-    .footer-brand-title {
-      font-family: var(--font-serif);
-      font-size: 2rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .footer-bio-text {
-      font-size: 0.9rem;
-      color: var(--text-inverse-muted);
-      line-height: 1.7;
-      max-width: 360px;
+    .valencia-time-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0.9rem;
+      background: var(--bg-surface);
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-glass);
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      width: fit-content;
+      margin-top: 1.25rem;
     }
 
     .footer-heading {
-      font-size: 0.78rem;
-      font-weight: 600;
+      font-size: 0.8rem;
+      font-weight: 700;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: #FFFFFF;
@@ -1914,13 +1851,13 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.85rem;
+      gap: 0.9rem;
     }
 
     .footer-nav-link {
-      font-size: 0.88rem;
-      color: var(--text-inverse-muted);
-      transition: color var(--duration-fast) var(--ease-smooth);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      transition: color var(--duration-fast);
     }
 
     .footer-nav-link:hover {
@@ -1934,8 +1871,8 @@
       align-items: center;
       justify-content: space-between;
       padding-top: 2.5rem;
-      font-size: 0.78rem;
-      color: var(--text-inverse-muted);
+      font-size: 0.82rem;
+      color: var(--text-dim);
     }
 
     @media (min-width: 768px) {
@@ -1949,30 +1886,11 @@
       gap: 1.5rem;
     }
 
-    .valencia-time-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.25rem 0.75rem;
-      background-color: var(--bg-dark-surface);
-      border-radius: var(--radius-full);
-      border: 1px solid var(--border-dark);
-    }
-
-    .time-pulse {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background-color: #55C478;
-    }
-
-    /* ==========================================================================
-       MOBILE NAVIGATION OVERLAY
-       ========================================================================== */
+    /* Mobile Drawer */
     .mobile-nav-drawer {
       position: fixed;
       inset: 0;
-      background-color: var(--bg-dark);
+      background-color: var(--bg-base);
       z-index: 1005;
       display: flex;
       flex-direction: column;
@@ -1980,7 +1898,7 @@
       padding: 2.5rem;
       opacity: 0;
       pointer-events: none;
-      transition: opacity var(--duration-normal) var(--ease-smooth);
+      transition: opacity var(--duration-normal);
     }
 
     .mobile-nav-drawer.is-open {
@@ -2000,42 +1918,16 @@
       font-family: var(--font-serif);
       font-size: 2.2rem;
       color: #FFFFFF;
-      transition: color var(--duration-fast) ease;
-    }
-
-    .mobile-nav-item:hover {
-      color: var(--accent);
-    }
-
-    /* Accessibility / Reduced Motion */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-      .hero-media {
-        animation: none !important;
-      }
-      .hero-title .word {
-        opacity: 1 !important;
-        transform: none !important;
-      }
-      .hero-description, .hero-cta-group {
-        opacity: 1 !important;
-        transform: none !important;
-      }
     }
 
     @media (max-width: 860px) {
-      .nav-menu {
+      .dock-menu {
         display: none;
       }
       .mobile-menu-toggle {
         display: block;
       }
-      .header-actions .btn {
+      .dock-actions .btn {
         display: none;
       }
     }
@@ -2043,33 +1935,38 @@
 </head>
 <body>
 
+  <!-- Ambient Light Orbs (Dribbble Signature Lighting) -->
+  <div class="ambient-glow ambient-glow-1"></div>
+  <div class="ambient-glow ambient-glow-2"></div>
+  <div class="ambient-glow ambient-glow-3"></div>
+
   <!-- ==========================================================================
-       HEADER & NAVIGATION
+       FLOATING DOCK HEADER (DRIBBLE SIGNATURE)
        ========================================================================== -->
-  <header class="site-header" id="siteHeader">
-    <div class="container header-inner">
-      <a href="#inicio" class="brand" aria-label="Norte Interiorismo - Inicio">
-        <span class="brand-name">NORTE</span>
-        <span class="brand-sub">Estudio Valencia</span>
+  <div class="floating-header-wrapper">
+    <header class="floating-dock" id="floatingDock">
+      <a href="#inicio" class="brand-dock" aria-label="Norte Interiorismo - Inicio">
+        <div class="brand-logo-mark">N</div>
+        <div class="brand-dock-text">
+          <span class="brand-name">NORTE</span>
+          <span class="brand-sub">VALENCIA</span>
+        </div>
       </a>
 
       <nav aria-label="Navegación principal">
-        <ul class="nav-menu">
-          <li><a href="#proyectos" class="nav-link">Obras</a></li>
-          <li><a href="#antes-despues" class="nav-link">Antes / Después</a></li>
-          <li><a href="#proceso" class="nav-link">Método</a></li>
-          <li><a href="#cifras" class="nav-link">Estudio</a></li>
-          <li><a href="#opiniones" class="nav-link">Clientes</a></li>
-          <li><a href="#faq" class="nav-link">Dudas</a></li>
+        <ul class="dock-menu">
+          <li><a href="#proyectos" class="dock-link">Obras</a></li>
+          <li><a href="#antes-despues" class="dock-link">Antes / Después</a></li>
+          <li><a href="#proceso" class="dock-link">Método</a></li>
+          <li><a href="#cifras" class="dock-link">Estudio</a></li>
+          <li><a href="#opiniones" class="dock-link">Clientes</a></li>
+          <li><a href="#faq" class="dock-link">Dudas</a></li>
         </ul>
       </nav>
 
-      <div class="header-actions">
-        <a href="#contacto" class="btn btn-light" id="headerCtaBtn">
+      <div class="dock-actions">
+        <a href="#contacto" class="btn btn-primary" style="padding: 0.65rem 1.4rem; font-size: 0.8rem;">
           Reserva tu visita
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
         </a>
 
         <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Abrir menú" aria-expanded="false">
@@ -2080,31 +1977,28 @@
           </div>
         </button>
       </div>
-    </div>
-  </header>
+    </header>
+  </div>
 
   <!-- Mobile Drawer Menu -->
   <div class="mobile-nav-drawer" id="mobileDrawer" aria-hidden="true">
     <ul class="mobile-nav-links">
       <li><a href="#proyectos" class="mobile-nav-item mobile-link">Obras Selectas</a></li>
       <li><a href="#antes-despues" class="mobile-nav-item mobile-link">Antes & Después</a></li>
-      <li><a href="#proceso" class="mobile-nav-item mobile-link">El Proceso</a></li>
+      <li><a href="#proceso" class="mobile-nav-item mobile-link">El Método</a></li>
       <li><a href="#cifras" class="mobile-nav-item mobile-link">En Cifras</a></li>
       <li><a href="#opiniones" class="mobile-nav-item mobile-link">Testimonios</a></li>
       <li><a href="#faq" class="mobile-nav-item mobile-link">Preguntas Frecuentes</a></li>
       <li><a href="#contacto" class="mobile-nav-item mobile-link">Contacto</a></li>
     </ul>
-    <div style="margin-top: 1rem;">
-      <a href="#contacto" class="btn btn-primary mobile-link" style="width: 100%;">
-        Reserva tu visita personalizada
-      </a>
-    </div>
+    <a href="#contacto" class="btn btn-primary mobile-link" style="width: 100%;">
+      Reserva tu visita personalizada
+    </a>
   </div>
 
   <main>
     <!-- ==========================================================================
-         HERO SECTION
-         Fullscreen image, big editorial title word-by-word, primary button
+         HERO SECTION — Fullscreen Dribbble Showcase with Floating Micro-UI
          ========================================================================== -->
     <section class="hero" id="inicio" aria-label="Introducción a Norte Interiorismo">
       <div class="hero-media-wrapper">
@@ -2118,284 +2012,319 @@
         <div class="hero-scrim"></div>
       </div>
 
-      <div class="container hero-content">
-        <div class="hero-badge">
-          <span class="hero-badge-dot"></span>
-          <span>Estudio de Arquitectura Interior · Valencia</span>
-        </div>
+      <div class="container">
+        <div class="hero-grid-layout">
+          <!-- Text column -->
+          <div class="hero-content">
+            <div class="badge-pill">
+              <span class="badge-dot"></span>
+              <span>Estudio de Arquitectura Interior · Valencia</span>
+            </div>
 
-        <!-- Editorial headline word by word (CSS Staggered Animation) -->
-        <h1 class="hero-title" aria-label="Espacios que respiran luz, materia y calma.">
-          <span class="word" style="--i: 0;">Espacios</span>
-          <span class="word" style="--i: 1;">que</span>
-          <span class="word" style="--i: 2;">respiran</span>
-          <span class="word italic" style="--i: 3;">luz,</span>
-          <span class="word" style="--i: 4;">materia</span>
-          <span class="word" style="--i: 5;">y</span>
-          <span class="word italic" style="--i: 6;">calma.</span>
-        </h1>
+            <!-- Huge editorial headline animated word-by-word with shimmer -->
+            <h1 class="hero-title" aria-label="Espacios que respiran luz, materia y calma.">
+              <span class="word" style="--i: 0;">Espacios</span>
+              <span class="word" style="--i: 1;">que</span>
+              <span class="word" style="--i: 2;">respiran</span>
+              <span class="word italic" style="--i: 3;">luz,</span>
+              <span class="word" style="--i: 4;">materia</span>
+              <span class="word" style="--i: 5;">y</span>
+              <span class="word italic" style="--i: 6;">calma.</span>
+            </h1>
 
-        <p class="hero-description">
-          Concebimos hogares singulares en Valencia donde la arquitectura interior abraza la luz mediterránea, los materiales nobles sin artificio y el bienestar cotidiano.
-        </p>
+            <p class="hero-description">
+              Diseño residencial de vanguardia en Valencia. Fusionamos nobleza matérica, pureza de líneas y la serenidad de la luz mediterránea en hogares irrepetibles.
+            </p>
 
-        <div class="hero-cta-group">
-          <a href="#contacto" class="btn btn-primary" id="heroReserveBtn">
-            Reserva tu visita
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
+            <div class="hero-cta-group">
+              <a href="#contacto" class="btn btn-primary" id="heroReserveBtn">
+                Reserva tu visita
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
 
-          <a href="#proyectos" class="btn btn-outline-white">
-            Explorar proyectos
-          </a>
-        </div>
-      </div>
+              <a href="#proyectos" class="btn btn-glass">
+                Explorar proyectos
+              </a>
+            </div>
+          </div>
 
-      <div class="hero-scroll-indicator" aria-hidden="true">
-        <span>Deslizar</span>
-        <div class="hero-scroll-line"></div>
-      </div>
-    </section>
+          <!-- Dribbble Floating Micro-UI Showcase Widget -->
+          <div class="hero-floating-card">
+            <div class="hero-card-header">
+              <span class="badge-pill" style="font-size: 0.72rem; padding: 0.35rem 0.85rem;">
+                ✦ Obra del Mes
+              </span>
+              <span style="font-size: 0.78rem; font-weight: 700; color: var(--accent);">
+                CIRILO AMORÓS · 280 m²
+              </span>
+            </div>
 
-    <!-- ==========================================================================
-         PHILOSOPHY STRIP (STUDIO BRIEF)
-         ========================================================================== -->
-    <section class="philosophy-strip" id="estudio" aria-label="Filosofía del estudio">
-      <div class="container philosophy-grid">
-        <div>
-          <span class="section-eyebrow">Manifiesto Norte</span>
-          <h2 class="philosophy-quote">
-            "No diseñamos para impresionar en una foto. Proyectamos para quien <em>habita el silencio</em>, descalzo, sobre piedra templada por el sol de Valencia."
-          </h2>
-        </div>
-        <div class="philosophy-details">
-          <p>
-            Desde nuestro taller en el Ensanche valenciano, concebimos cada vivienda como un traje a medida. Rechazamos las modas efímeras para buscar una belleza serena, táctil y profundamente mediterránea.
-          </p>
-          <div class="materials-pills">
-            <span class="material-pill">Piedra Campaspero</span>
-            <span class="material-pill">Roble Europeo Al Aceite</span>
-            <span class="material-pill">Mortero de Cal Artesanal</span>
-            <span class="material-pill">Linos Lavados</span>
-            <span class="material-pill">Latón Envejecido</span>
+            <div class="hero-card-img-box">
+              <img
+                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80"
+                alt="Ático Cirilo Amorós en Valencia"
+                class="hero-card-img"
+              >
+            </div>
+
+            <div>
+              <div style="font-size: 1.15rem; font-weight: 600; color: #FFFFFF; margin-bottom: 0.25rem;">
+                Ático Dúplex Ensanche
+              </div>
+              <div style="font-size: 0.82rem; color: var(--text-secondary);">
+                Travertino navona, roble ahumado y luz cenital continua.
+              </div>
+            </div>
+
+            <div class="avatar-stack-group">
+              <div class="avatar-stack">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Cliente">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="Cliente">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80" alt="Cliente">
+              </div>
+              <div class="avatar-stack-text">
+                <strong>+180 clientes</strong> confían en Norte
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ==========================================================================
-         PROJECTS GALLERY — Hover Effects & Filter
+         BENTO GRID GALLERY — Shakuro "Inspired" Style
          ========================================================================== -->
-    <section class="section projects-section" id="proyectos" aria-labelledby="proyectos-heading">
+    <section class="section bento-section" id="proyectos" aria-labelledby="proyectos-heading">
       <div class="container">
-        <div class="projects-header">
+        <div class="bento-header-wrapper">
           <div>
             <span class="section-eyebrow">Colección de Obras</span>
-            <h2 class="section-title" id="proyectos-heading">Proyectos con alma mediterránea</h2>
+            <h2 class="section-title" id="proyectos-heading">
+              Arquitectura con <span class="gradient-text">identidad propia</span>
+            </h2>
             <p class="section-subtitle">
-              Una selección de viviendas donde la pureza de líneas y el diálogo con la luz crean atmósferas envolventes.
+              Intervenciones residenciales donde cada milímetro responde a un concepto de vida reflexivo y honesto.
             </p>
           </div>
 
-          <div class="filter-bar" role="tablist" aria-label="Filtro de obras">
-            <button class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true">Todos (6)</button>
-            <button class="filter-btn" data-filter="ensanche" role="tab" aria-selected="false">Ensanche & Ruzafa</button>
-            <button class="filter-btn" data-filter="atico" role="tab" aria-selected="false">Áticos & Villas</button>
-            <button class="filter-btn" data-filter="patrimonio" role="tab" aria-selected="false">Patrimonio</button>
+          <div class="filter-pills-bar" role="tablist" aria-label="Filtro de obras">
+            <button class="filter-pill is-active" data-filter="all" role="tab" aria-selected="true">Todos (6)</button>
+            <button class="filter-pill" data-filter="ensanche" role="tab" aria-selected="false">Ensanche & Ruzafa</button>
+            <button class="filter-pill" data-filter="atico" role="tab" aria-selected="false">Áticos & Villas</button>
+            <button class="filter-pill" data-filter="patrimonio" role="tab" aria-selected="false">Patrimonio</button>
           </div>
         </div>
 
-        <div class="projects-grid" id="projectsGrid">
-          <!-- Proyecto 1 -->
-          <article class="project-card" data-category="ensanche atico" data-project-id="1">
-            <div class="project-thumbnail-wrapper">
-              <span class="project-badge-tag">Ático · 280 m²</span>
+        <!-- Asymmetric Bento Grid -->
+        <div class="bento-grid" id="projectsGrid">
+          <!-- Bento 1: Large Featured Card (Span 7) -->
+          <article class="bento-card bento-span-7" data-category="ensanche atico" data-project-id="1">
+            <div class="bento-media-container">
+              <div class="bento-pill-overlay">
+                <span class="badge-pill">Ático · 280 m²</span>
+              </div>
               <img
-                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
-                alt="Ático Cirilo Amorós en el Ensanche de Valencia con terraza ajardinada y madera noble"
-                class="project-thumbnail"
+                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80"
+                alt="Ático Cirilo Amorós en el Ensanche de Valencia"
+                class="bento-img"
                 loading="lazy"
               >
             </div>
-            <div class="project-info">
-              <div class="project-meta">
-                <span>VALENCIA · ENSANCHE</span>
-                <span>2024</span>
+            <div class="bento-body">
+              <div>
+                <div class="bento-meta-row">
+                  <span>VALENCIA · ENSANCHE</span>
+                  <span>2024</span>
+                </div>
+                <h3 class="bento-title">Ático Cirilo Amorós</h3>
+                <p class="bento-desc">
+                  Fluidez visual de este a oeste. Travertino navona, cocina monolítica en cuarcita y pérgola vegetal integrada.
+                </p>
               </div>
-              <h3 class="project-title">Ático Cirilo Amorós</h3>
-              <p class="project-description">
-                Fluidez visual de este a oeste. Travertino navona, cocina monolítica en cuarcita y pérgola vegetal.
-              </p>
-              <div class="project-footer-specs">
-                <span>Reforma Integral + Mobiliario</span>
-                <span class="project-cta-link">
-                  Ver detalle
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <div class="bento-footer">
+                <span class="bento-spec-chip">Reforma Integral + Mobiliario a Medida</span>
+                <div class="bento-action-circle">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                   </svg>
-                </span>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Proyecto 2 -->
-          <article class="project-card" data-category="atico" data-project-id="2">
-            <div class="project-thumbnail-wrapper">
-              <span class="project-badge-tag">Villa · 410 m²</span>
+          <!-- Bento 2: Vertical Card (Span 5) -->
+          <article class="bento-card bento-span-5 bento-tall" data-category="atico" data-project-id="2">
+            <div class="bento-media-container">
+              <div class="bento-pill-overlay">
+                <span class="badge-pill">Villa · 410 m²</span>
+              </div>
               <img
                 src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80"
-                alt="Villa El Saler rodeada de pinos con comedor en roble y microcemento"
-                class="project-thumbnail"
+                alt="Villa El Saler rodeada de pinos mediterráneos"
+                class="bento-img"
                 loading="lazy"
               >
             </div>
-            <div class="project-info">
-              <div class="project-meta">
-                <span>DEHESA DE EL SALER</span>
-                <span>2024</span>
+            <div class="bento-body">
+              <div>
+                <div class="bento-meta-row">
+                  <span>DEHESA DE EL SALER</span>
+                  <span>2024</span>
+                </div>
+                <h3 class="bento-title">Villa El Saler</h3>
+                <p class="bento-desc">
+                  Diálogo silencioso con el parque natural. Pavimento continuo de microcemento tono duna y ventanales enrasados.
+                </p>
               </div>
-              <h3 class="project-title">Villa El Saler</h3>
-              <p class="project-description">
-                Diálogo silencioso con el parque natural. Pavimento continuo de microcemento color arena y ventanales enrasados.
-              </p>
-              <div class="project-footer-specs">
-                <span>Obra Nueva + Paisajismo</span>
-                <span class="project-cta-link">
-                  Ver detalle
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <div class="bento-footer">
+                <span class="bento-spec-chip">Obra Nueva + Paisajismo</span>
+                <div class="bento-action-circle">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                   </svg>
-                </span>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Proyecto 3 -->
-          <article class="project-card" data-category="patrimonio ensanche" data-project-id="3">
-            <div class="project-thumbnail-wrapper">
-              <span class="project-badge-tag">Señorial · 195 m²</span>
+          <!-- Bento 3: Heritage Card (Span 4) -->
+          <article class="bento-card bento-span-4" data-category="patrimonio ensanche" data-project-id="3">
+            <div class="bento-media-container">
+              <div class="bento-pill-overlay">
+                <span class="badge-pill">Señorial · 195 m²</span>
+              </div>
               <img
                 src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=1200&q=80"
-                alt="Palacete Ruzafa con molduras clásicas restauradas e iluminación cenital contemporánea"
-                class="project-thumbnail"
+                alt="Palacete Ruzafa con mosaico Nolla restaurado"
+                class="bento-img"
                 loading="lazy"
               >
             </div>
-            <div class="project-info">
-              <div class="project-meta">
-                <span>VALENCIA · RUZAFA</span>
-                <span>2023</span>
+            <div class="bento-body">
+              <div>
+                <div class="bento-meta-row">
+                  <span>VALENCIA · RUZAFA</span>
+                  <span>2023</span>
+                </div>
+                <h3 class="bento-title">Palacete Ruzafa 1906</h3>
+                <p class="bento-desc">
+                  Conservación de 14.000 teselas de mosaico Nolla original y cajas funcionales en nogal ahumado.
+                </p>
               </div>
-              <h3 class="project-title">Palacete Ruzafa 1906</h3>
-              <p class="project-description">
-                Conservación milimétrica de mosaico Nolla original contrastado con cajas funcionales de nogal ahumado.
-              </p>
-              <div class="project-footer-specs">
-                <span>Restauración Patrimonial</span>
-                <span class="project-cta-link">
-                  Ver detalle
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <div class="bento-footer">
+                <span class="bento-spec-chip">Restauración COACV</span>
+                <div class="bento-action-circle">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                   </svg>
-                </span>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Proyecto 4 -->
-          <article class="project-card" data-category="ensanche" data-project-id="4">
-            <div class="project-thumbnail-wrapper">
-              <span class="project-badge-tag">Residencial · 240 m²</span>
+          <!-- Bento 4: Wide Card (Span 8) -->
+          <article class="bento-card bento-span-8" data-category="ensanche" data-project-id="4">
+            <div class="bento-media-container">
+              <div class="bento-pill-overlay">
+                <span class="badge-pill">Residencial · 240 m²</span>
+              </div>
               <img
-                src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80"
-                alt="Casa Gran Vía con suite principal luminosa y textiles orgánicos"
-                class="project-thumbnail"
+                src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=80"
+                alt="Casa Gran Vía con carpintería enrasada"
+                class="bento-img"
                 loading="lazy"
               >
             </div>
-            <div class="project-info">
-              <div class="project-meta">
-                <span>GRAN VÍA MARQUÉS DEL TURIA</span>
-                <span>2023</span>
+            <div class="bento-body">
+              <div>
+                <div class="bento-meta-row">
+                  <span>GRAN VÍA MARQUÉS DEL TURIA</span>
+                  <span>2023</span>
+                </div>
+                <h3 class="bento-title">Casa Gran Vía</h3>
+                <p class="bento-desc">
+                  Un oasis acústico en una de las avenidas más icónicas de Valencia. Carpintería oculta en rasomuro y chimenea de bioetanol.
+                </p>
               </div>
-              <h3 class="project-title">Casa Gran Vía</h3>
-              <p class="project-description">
-                Un oasis acústico en una de las avenidas más icónicas. Carpintería oculta en rasomuro y luz rasante.
-              </p>
-              <div class="project-footer-specs">
-                <span>Reforma Integral</span>
-                <span class="project-cta-link">
-                  Ver detalle
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <div class="bento-footer">
+                <span class="bento-spec-chip">Reforma Integral + Domótica KNX</span>
+                <div class="bento-action-circle">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                   </svg>
-                </span>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Proyecto 5 -->
-          <article class="project-card" data-category="atico" data-project-id="5">
-            <div class="project-thumbnail-wrapper">
-              <span class="project-badge-tag">Refugio Costero · 320 m²</span>
+          <!-- Bento 5: Coastal (Span 6) -->
+          <article class="bento-card bento-span-6" data-category="atico" data-project-id="5">
+            <div class="bento-media-container">
+              <div class="bento-pill-overlay">
+                <span class="badge-pill">Costa Blanca · 320 m²</span>
+              </div>
               <img
                 src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80"
-                alt="Refugio Costa Blanca con piedra tosca y piscina integrada en el salón"
-                class="project-thumbnail"
+                alt="Refugio Los Acantilados en Costa Blanca"
+                class="bento-img"
                 loading="lazy"
               >
             </div>
-            <div class="project-info">
-              <div class="project-meta">
-                <span>COSTA BLANCA</span>
-                <span>2023</span>
+            <div class="bento-body">
+              <div>
+                <div class="bento-meta-row">
+                  <span>COSTA MEDITERRÁNEA</span>
+                  <span>2023</span>
+                </div>
+                <h3 class="bento-title">Refugio Los Acantilados</h3>
+                <p class="bento-desc">
+                  Paredes encaladas, piedra tosca de cantera y una pérgola de cañizo que tamiza la luz solar.
+                </p>
               </div>
-              <h3 class="project-title">Refugio Los Acantilados</h3>
-              <p class="project-description">
-                Paredes encaladas, piedra tosca de cantera local y una pérgola de cañizo que tamiza el sol del mediodía.
-              </p>
-              <div class="project-footer-specs">
-                <span>Arquitectura + Interiorismo</span>
-                <span class="project-cta-link">
-                  Ver detalle
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <div class="bento-footer">
+                <span class="bento-spec-chip">Arquitectura + Interiorismo</span>
+                <div class="bento-action-circle">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                   </svg>
-                </span>
+                </div>
               </div>
             </div>
           </article>
 
-          <!-- Proyecto 6 -->
-          <article class="project-card" data-category="patrimonio ensanche" data-project-id="6">
-            <div class="project-thumbnail-wrapper">
-              <span class="project-badge-tag">Pla del Remei · 165 m²</span>
+          <!-- Bento 6: Collector Suite (Span 6) -->
+          <article class="bento-card bento-span-6" data-category="patrimonio ensanche" data-project-id="6">
+            <div class="bento-media-container">
+              <div class="bento-pill-overlay">
+                <span class="badge-pill">Pla del Remei · 165 m²</span>
+              </div>
               <img
                 src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80"
-                alt="Residencia Hernán Cortés con librería a medida de nogal y chimenea de bioetanol"
-                class="project-thumbnail"
+                alt="Residencia Hernán Cortés en Valencia"
+                class="bento-img"
                 loading="lazy"
               >
             </div>
-            <div class="project-info">
-              <div class="project-meta">
-                <span>VALENCIA · HERNÁN CORTÉS</span>
-                <span>2022</span>
+            <div class="bento-body">
+              <div>
+                <div class="bento-meta-row">
+                  <span>VALENCIA · HERNÁN CORTÉS</span>
+                  <span>2022</span>
+                </div>
+                <h3 class="bento-title">Residencia Hernán Cortés</h3>
+                <p class="bento-desc">
+                  Elegancia discreta para una coleccionista de arte. Iluminación museográfica con índice CRI 98.
+                </p>
               </div>
-              <h3 class="project-title">Residencia Hernán Cortés</h3>
-              <p class="project-description">
-                Elegancia discreta para una coleccionista de arte. Iluminación museográfica con índice de reproducción cromática CRI 98.
-              </p>
-              <div class="project-footer-specs">
-                <span>Reforma + Comisariado de Arte</span>
-                <span class="project-cta-link">
-                  Ver detalle
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <div class="bento-footer">
+                <span class="bento-spec-chip">Reforma + Comisariado de Arte</span>
+                <div class="bento-action-circle">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                   </svg>
-                </span>
+                </div>
               </div>
             </div>
           </article>
@@ -2404,41 +2333,49 @@
     </section>
 
     <!-- ==========================================================================
-         BEFORE / AFTER COMPARISON SLIDER (Draggable & Accessible)
+         BEFORE / AFTER COMPARISON SLIDER — Dribbble Tech Hardware Edition
          ========================================================================== -->
     <section class="section comparison-section" id="antes-despues" aria-labelledby="comparison-heading">
       <div class="container">
         <div>
-          <span class="section-eyebrow" style="color: #D48B64;">Metamorfosis Espacial</span>
-          <h2 class="section-title" id="comparison-heading">La transformación: Antes & Después</h2>
+          <span class="section-eyebrow">Metamorfosis Espacial</span>
+          <h2 class="section-title" id="comparison-heading">
+            La transformación: <span class="gradient-text">Antes & Después</span>
+          </h2>
           <p class="section-subtitle">
-            Arrastra el selector interactivo para comprobar cómo convertimos una vivienda oscura y compartimentada de los años 70 en un templo de luz fluida en Conde de Salvatierra.
+            Arrastra el dial interactivo para comprobar cómo convertimos una vivienda oscura de los años 70 en un templo de luz fluida en Conde de Salvatierra.
           </p>
         </div>
 
-        <div class="comparison-box" id="comparisonBox">
+        <div class="comparison-frame" id="comparisonBox">
           <div class="comparison-wrapper" id="comparisonWrapper" style="--pos: 50%;">
-            <!-- Imagen ANTES (Estado Original) -->
+            <!-- Imagen ANTES -->
             <img
               src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1600&q=80"
-              alt="Estado original de la vivienda: habitación oscura y desactualizada previa a la reforma"
+              alt="Estado original previo a la reforma"
               class="comparison-img comparison-img-before"
               loading="lazy"
             >
-            <span class="comparison-label label-before">Estado Original (1974)</span>
+            <div class="bento-pill-overlay" style="right: 1.25rem; left: auto;">
+              <span class="badge-pill">Estado Original (1974)</span>
+            </div>
 
-            <!-- Imagen DESPUÉS (Intervención Norte) con clip-path dinámico -->
+            <!-- Imagen DESPUÉS con clip-path dinámico -->
             <div class="comparison-img-after-container" id="afterContainer">
               <img
                 src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85"
-                alt="Resultado final tras la intervención de Norte: salón abierto con luz natural, madera y piedra"
+                alt="Resultado final de la reforma por Norte Interiorismo"
                 class="comparison-img comparison-img-after"
                 loading="lazy"
               >
             </div>
-            <span class="comparison-label label-after">Intervención Norte (2024)</span>
+            <div class="bento-pill-overlay">
+              <span class="badge-pill" style="border-color: var(--accent); color: #F28E72;">
+                Intervención Norte (2024)
+              </span>
+            </div>
 
-            <!-- Línea divisoria y manilla interactiva -->
+            <!-- Laser Divider & Frosted Handle -->
             <div class="comparison-divider" id="comparisonDivider" aria-hidden="true">
               <div class="comparison-handle" id="comparisonHandle">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -2450,7 +2387,7 @@
               </div>
             </div>
 
-            <!-- Input range nativo como capa accesible y 100% funcional sin JS -->
+            <!-- Input range accesible y funcional sin JS -->
             <input
               type="range"
               min="0"
@@ -2458,123 +2395,121 @@
               value="50"
               class="comparison-range-slider"
               id="comparisonSlider"
-              aria-label="Deslizador comparativo de estado original y resultado reformado"
+              aria-label="Deslizador comparativo de antes y después"
               oninput="this.parentElement.style.setProperty('--pos', this.value + '%')"
             >
           </div>
-        </div>
 
-        <!-- Renovation metrics bar -->
-        <div class="comparison-stats-bar">
-          <div class="comp-stat-item">
-            <span class="comp-stat-val">+68%</span>
-            <span class="comp-stat-desc">Incremento en penetración de luz natural directa</span>
-          </div>
-          <div class="comp-stat-item">
-            <span class="comp-stat-val">0 m</span>
-            <span class="comp-stat-desc">Pasillos oscuros residuales eliminados</span>
-          </div>
-          <div class="comp-stat-item">
-            <span class="comp-stat-val">Calificación A</span>
-            <span class="comp-stat-desc">Eficiencia energética y aislamiento térmico passivhaus</span>
-          </div>
-          <div class="comp-stat-item">
-            <span class="comp-stat-val">100% FSC</span>
-            <span class="comp-stat-desc">Roble de bosques sostenibles y morteros sin COVs</span>
+          <!-- Dribbble Hardware Stats Grid -->
+          <div class="comparison-stats-grid">
+            <div class="comp-stat-card">
+              <span class="comp-stat-num">+68%</span>
+              <span class="comp-stat-desc">Incremento en penetración de luz natural directa</span>
+            </div>
+            <div class="comp-stat-card">
+              <span class="comp-stat-num">0 m</span>
+              <span class="comp-stat-desc">Pasillos oscuros residuales eliminados</span>
+            </div>
+            <div class="comp-stat-card">
+              <span class="comp-stat-num">Calificación A</span>
+              <span class="comp-stat-desc">Eficiencia energética y aislamiento térmico passivhaus</span>
+            </div>
+            <div class="comp-stat-card">
+              <span class="comp-stat-num">100% FSC</span>
+              <span class="comp-stat-desc">Roble de bosques sostenibles y morteros sin COVs</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ==========================================================================
-         PROCESS IN 4 STEPS — Connecting Line Drawn on Scroll
+         PROCESS IN 4 STEPS — Connecting Illuminated Timeline
          ========================================================================== -->
     <section class="section process-section" id="proceso" aria-labelledby="proceso-heading">
       <div class="container">
         <div style="text-align: center; max-width: 760px; margin: 0 auto;">
           <span class="section-eyebrow" style="justify-content: center;">El Método Norte</span>
-          <h2 class="section-title" id="proceso-heading">El proceso en cuatro compases</h2>
+          <h2 class="section-title" id="proceso-heading">
+            El proceso en <span class="gradient-text">cuatro compases</span>
+          </h2>
           <p class="section-subtitle" style="margin: 0 auto;">
-            Del primer café en nuestro estudio hasta el encendido de la última lámpara. Un viaje riguroso, sereno y con total control de plazos y presupuesto.
+            Del primer café en nuestro estudio hasta la entrega de llaves. Rigor técnico, presupuesto cerrado y acompañamiento integral.
           </p>
         </div>
 
-        <div class="process-container" id="processTimelineContainer">
-          <div class="process-timeline">
-            <!-- Guía arquitectónica fija -->
-            <div class="process-line-track"></div>
-            <!-- Línea viva que se dibuja con el scroll -->
-            <div class="process-line-progress" id="processScrollLine"></div>
+        <div class="process-timeline" id="processTimelineContainer">
+          <div class="process-line-track"></div>
+          <div class="process-line-progress" id="processScrollLine"></div>
 
-            <!-- Paso 1 -->
-            <div class="process-step" data-step="1">
-              <div class="process-card">
-                <span class="process-step-num">Fase 01</span>
-                <h3 class="process-step-title">Escucha & Diagnosis Sensorial</h3>
-                <p class="process-step-text">
-                  Visitamos tu espacio y realizamos un escaneo tridimensional completo. Analizamos la incidencia del sol valenciano según las cuatro estaciones y definimos juntos el programa de necesidades y estilo de vida.
-                </p>
-                <div class="process-deliverables">
-                  <span class="deliv-tag">Escaneo 3D</span>
-                  <span class="deliv-tag">Estudio Solar</span>
-                  <span class="deliv-tag">Presupuesto Estimativo</span>
-                </div>
-              </div>
-              <div class="process-node">01</div>
-              <div class="process-empty-col"></div>
-            </div>
-
-            <!-- Paso 2 -->
-            <div class="process-step" data-step="2">
-              <div class="process-empty-col"></div>
-              <div class="process-node">02</div>
-              <div class="process-card">
-                <span class="process-step-num">Fase 02</span>
-                <h3 class="process-step-title">Anteproyecto & Materioteca</h3>
-                <p class="process-step-text">
-                  Traducimos los conceptos en renders hiperrealistas donde puedes palpar la luz, texturas y sombras. En nuestro taller seleccionamos juntos las piezas de mármol, maderas macizas, linos y griferías.
-                </p>
-                <div class="process-deliverables">
-                  <span class="deliv-tag">Renders Diurnos & Nocturnos</span>
-                  <span class="deliv-tag">Caja de Muestras Táctiles</span>
-                  <span class="deliv-tag">Distribución 1:50</span>
-                </div>
+          <!-- Paso 1 -->
+          <div class="process-step" data-step="1">
+            <div class="process-card">
+              <span class="process-step-num">Fase 01</span>
+              <h3 class="process-step-title">Escucha & Diagnosis Sensorial</h3>
+              <p class="process-step-text">
+                Visitamos tu espacio y realizamos un escaneo tridimensional completo. Analizamos la incidencia del sol valenciano según las cuatro estaciones y definimos juntos el programa de necesidades y estilo de vida.
+              </p>
+              <div class="process-deliverables">
+                <span class="deliv-tag">Escaneo 3D</span>
+                <span class="deliv-tag">Estudio Solar</span>
+                <span class="deliv-tag">Presupuesto Estimativo</span>
               </div>
             </div>
+            <div class="process-node">01</div>
+            <div class="process-empty-col"></div>
+          </div>
 
-            <!-- Paso 3 -->
-            <div class="process-step" data-step="3">
-              <div class="process-card">
-                <span class="process-step-num">Fase 03</span>
-                <h3 class="process-step-title">Proyecto Ejecutivo & Dirección Diaria</h3>
-                <p class="process-step-text">
-                  Planimetría constructiva al milímetro para carpinteros, herreros e instaladores. Gestionamos todas las licencias en el Ayuntamiento de Valencia y nuestros arquitectos supervisan la obra cada mañana.
-                </p>
-                <div class="process-deliverables">
-                  <span class="deliv-tag">Licencias Urbanísticas</span>
-                  <span class="deliv-tag">Supervisión In Situ</span>
-                  <span class="deliv-tag">Presupuesto Cerrado</span>
-                </div>
+          <!-- Paso 2 -->
+          <div class="process-step" data-step="2">
+            <div class="process-empty-col"></div>
+            <div class="process-node">02</div>
+            <div class="process-card">
+              <span class="process-step-num">Fase 02</span>
+              <h3 class="process-step-title">Anteproyecto & Materioteca</h3>
+              <p class="process-step-text">
+                Traducimos los conceptos en renders hiperrealistas donde puedes palpar la luz, texturas y sombras. En nuestro taller seleccionamos juntos las piezas de mármol, maderas macizas, linos y griferías.
+              </p>
+              <div class="process-deliverables">
+                <span class="deliv-tag">Renders Diurnos & Nocturnos</span>
+                <span class="deliv-tag">Caja de Muestras Táctiles</span>
+                <span class="deliv-tag">Distribución 1:50</span>
               </div>
-              <div class="process-node">03</div>
-              <div class="process-empty-col"></div>
             </div>
+          </div>
 
-            <!-- Paso 4 -->
-            <div class="process-step" data-step="4">
-              <div class="process-empty-col"></div>
-              <div class="process-node">04</div>
-              <div class="process-card">
-                <span class="process-step-num">Fase 04</span>
-                <h3 class="process-step-title">Puesta en Escena & Llave en Mano</h3>
-                <p class="process-step-text">
-                  Montaje de mobiliario a medida, calibración de luminarias a 2700K cálidos, selección textil y comisariado de obras de arte. Te entregamos la casa limpia, perfumada y lista para empezar tu nueva vida.
-                </p>
-                <div class="process-deliverables">
-                  <span class="deliv-tag">Estilismo Completo</span>
-                  <span class="deliv-tag">Manual de Mantenimiento</span>
-                  <span class="deliv-tag">Garantía 5 Años</span>
-                </div>
+          <!-- Paso 3 -->
+          <div class="process-step" data-step="3">
+            <div class="process-card">
+              <span class="process-step-num">Fase 03</span>
+              <h3 class="process-step-title">Proyecto Ejecutivo & Dirección Diaria</h3>
+              <p class="process-step-text">
+                Planimetría constructiva al milímetro para carpinteros, herreros e instaladores. Gestionamos todas las licencias en el Ayuntamiento de Valencia y nuestros arquitectos supervisan la obra cada mañana.
+              </p>
+              <div class="process-deliverables">
+                <span class="deliv-tag">Licencias Urbanísticas</span>
+                <span class="deliv-tag">Supervisión In Situ</span>
+                <span class="deliv-tag">Presupuesto Cerrado</span>
+              </div>
+            </div>
+            <div class="process-node">03</div>
+            <div class="process-empty-col"></div>
+          </div>
+
+          <!-- Paso 4 -->
+          <div class="process-step" data-step="4">
+            <div class="process-empty-col"></div>
+            <div class="process-node">04</div>
+            <div class="process-card">
+              <span class="process-step-num">Fase 04</span>
+              <h3 class="process-step-title">Puesta en Escena & Llave en Mano</h3>
+              <p class="process-step-text">
+                Montaje de mobiliario a medida, calibración de luminarias a 2700K cálidos, selección textil y comisariado de obras de arte. Te entregamos la casa limpia, perfumada y lista para empezar tu nueva vida.
+              </p>
+              <div class="process-deliverables">
+                <span class="deliv-tag">Estilismo Completo</span>
+                <span class="deliv-tag">Manual de Mantenimiento</span>
+                <span class="deliv-tag">Garantía 5 Años</span>
               </div>
             </div>
           </div>
@@ -2584,13 +2519,14 @@
 
     <!-- ==========================================================================
          METRICS / COUNTERS SECTION
-         Cifras que cuentan solas al aparecer en pantalla
          ========================================================================== -->
     <section class="section metrics-section" id="cifras" aria-labelledby="cifras-heading">
       <div class="container">
         <div style="margin-bottom: 3.5rem;">
           <span class="section-eyebrow">Trayectoria</span>
-          <h2 class="section-title" id="cifras-heading">Arquitectura avalada por hechos</h2>
+          <h2 class="section-title" id="cifras-heading">
+            Arquitectura avalada por <span class="gradient-text">hechos</span>
+          </h2>
           <p class="section-subtitle">
             Catorce años transformando el paisaje interior de Valencia con un estándar innegociable de excelencia.
           </p>
@@ -2643,11 +2579,13 @@
     <!-- ==========================================================================
          TESTIMONIALS / OPINIONES
          ========================================================================== -->
-    <section class="section testimonials-section" id="opiniones" aria-labelledby="opiniones-heading">
+    <section class="section" id="opiniones" aria-labelledby="opiniones-heading">
       <div class="container">
         <div>
           <span class="section-eyebrow">Testimonios Reales</span>
-          <h2 class="section-title" id="opiniones-heading">Lo que dicen quienes ya habitan su Norte</h2>
+          <h2 class="section-title" id="opiniones-heading">
+            Lo que dicen quienes <span class="gradient-text">habitan su Norte</span>
+          </h2>
           <p class="section-subtitle">
             La mayor satisfacción de nuestro estudio es la gratitud serena de quienes viven cada día en nuestros espacios.
           </p>
@@ -2670,9 +2608,9 @@
             </div>
             <div class="testimonial-author">
               <div class="author-avatar">ES</div>
-              <div class="author-info">
-                <span class="author-name">Elena & Marc Soler</span>
-                <span class="author-location">Ático en Ensanche, Valencia</span>
+              <div>
+                <div class="author-name">Elena & Marc Soler</div>
+                <div class="author-location">Ático en Ensanche, Valencia</div>
               </div>
             </div>
           </div>
@@ -2693,9 +2631,9 @@
             </div>
             <div class="testimonial-author">
               <div class="author-avatar">IB</div>
-              <div class="author-info">
-                <span class="author-name">Ignacio Benlloch</span>
-                <span class="author-location">Piso Señorial en Gran Vía</span>
+              <div>
+                <div class="author-name">Ignacio Benlloch</div>
+                <div class="author-location">Piso Señorial en Gran Vía</div>
               </div>
             </div>
           </div>
@@ -2716,9 +2654,9 @@
             </div>
             <div class="testimonial-author">
               <div class="author-avatar">CA</div>
-              <div class="author-info">
-                <span class="author-name">Dra. Carmen Albiñana</span>
-                <span class="author-location">Villa en El Saler</span>
+              <div>
+                <div class="author-name">Dra. Carmen Albiñana</div>
+                <div class="author-location">Villa en El Saler</div>
               </div>
             </div>
           </div>
@@ -2727,18 +2665,20 @@
     </section>
 
     <!-- ==========================================================================
-         FAQ ACCORDION (<details> native & accessible)
+         FAQ ACCORDION (<details> native & modern glassmorphic)
          ========================================================================== -->
-    <section class="section faq-section" id="faq" aria-labelledby="faq-heading">
+    <section class="section" id="faq" aria-labelledby="faq-heading">
       <div class="container faq-layout">
-        <div class="faq-sticky-col">
+        <div>
           <span class="section-eyebrow">Dudas Habituales</span>
-          <h2 class="section-title" id="faq-heading">Claridad y confianza desde el primer día</h2>
+          <h2 class="section-title" id="faq-heading">
+            Claridad y confianza <span class="gradient-text">desde el primer día</span>
+          </h2>
           <p class="section-subtitle">
             Resolvemos las preguntas más frecuentes sobre honorarios, plazos, licencias y metodología de trabajo.
           </p>
           <div style="margin-top: 2rem;">
-            <a href="#contacto" class="btn btn-secondary">
+            <a href="#contacto" class="btn btn-glass">
               ¿Tienes otra duda? Escríbenos
             </a>
           </div>
@@ -2817,31 +2757,33 @@
     <!-- ==========================================================================
          CONTACT FORM & STUDIO DETAILS
          ========================================================================== -->
-    <section class="section contact-section" id="contacto" aria-labelledby="contacto-heading">
+    <section class="section" id="contacto" aria-labelledby="contacto-heading">
       <div class="container">
         <div>
           <span class="section-eyebrow">Contacto & Cita Previa</span>
-          <h2 class="section-title" id="contacto-heading">Comencemos a proyectar tu próximo hogar</h2>
+          <h2 class="section-title" id="contacto-heading">
+            Comencemos a proyectar <span class="gradient-text">tu próximo hogar</span>
+          </h2>
           <p class="section-subtitle">
-            Visítanos en nuestro estudio en el centro histórico de Valencia o cuéntanos los detalles de tu vivienda para coordinar un primer encuentro.
+            Visítanos en nuestro taller en el centro histórico de Valencia o cuéntanos los detalles de tu vivienda para coordinar un primer encuentro.
           </p>
         </div>
 
         <div class="contact-grid">
-          <!-- Información directa del estudio -->
+          <!-- Información del estudio -->
           <div class="contact-info-panel">
             <div>
-              <h3 style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 400; margin-bottom: 1rem;">
+              <h3 style="font-family: var(--font-serif); font-size: 1.85rem; font-weight: 400; margin-bottom: 1rem; color: #FFFFFF;">
                 Taller & Materioteca
               </h3>
-              <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7;">
-                Un espacio concebido para tocar la materia: muestras de piedra a escala real, iluminación de prueba y catálogo de texturas.
+              <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
+                Un espacio concebido para tocar la materia: muestras de piedra natural a escala real, iluminación de prueba y catálogo de texturas.
               </p>
 
               <div class="contact-direct-items">
                 <div class="contact-item">
                   <div class="contact-icon-box">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                       <circle cx="12" cy="10" r="3"/>
                     </svg>
@@ -2854,7 +2796,7 @@
 
                 <div class="contact-item">
                   <div class="contact-icon-box">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
                     </svg>
                   </div>
@@ -2868,7 +2810,7 @@
 
                 <div class="contact-item">
                   <div class="contact-icon-box">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                       <polyline points="22,6 12,13 2,6"/>
                     </svg>
@@ -2883,12 +2825,14 @@
               </div>
             </div>
 
-            <div class="contact-badge-box">
-              <strong>Atención exclusiva con cita previa:</strong> Para dedicar a cada proyecto la calma que merece, coordinamos las visitas con antelación en horario de Lunes a Viernes de 09:30 a 19:30.
+            <div class="badge-pill" style="padding: 0.8rem 1.25rem; border-radius: var(--radius-md); font-size: 0.82rem; line-height: 1.6; color: var(--text-secondary);">
+              <div>
+                <strong style="color: #FFFFFF;">Atención exclusiva con cita previa:</strong> Lunes a Viernes de 09:30 a 19:30 h.
+              </div>
             </div>
           </div>
 
-          <!-- Formulario de contacto -->
+          <!-- Formulario Dribbble Glass -->
           <div class="contact-form-wrapper">
             <form class="contact-form" id="contactForm" action="#contacto" method="POST" novalidate>
               <div class="form-status" id="formStatus"></div>
@@ -2962,13 +2906,15 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-top-grid">
-        <div class="footer-brand-bio">
-          <span class="footer-brand-title">NORTE</span>
-          <p class="footer-bio-text">
+        <div>
+          <span style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 500; letter-spacing: 0.1em; color: #FFFFFF;">
+            NORTE
+          </span>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; margin-top: 1rem; max-width: 360px;">
             Estudio de arquitectura interior y diseño residencial de alta gama en Valencia. Proyectamos espacios donde la calma y la nobleza matérica perduran en el tiempo.
           </p>
-          <div class="valencia-time-badge">
-            <span class="time-pulse"></span>
+          <div class="valencia-time-pill">
+            <span class="badge-dot" style="width: 6px; height: 6px; background: #81C784; box-shadow: 0 0 8px #81C784;"></span>
             <span id="valenciaTime">Valencia, 11:42</span>
           </div>
         </div>
@@ -3002,9 +2948,9 @@
             <li class="footer-nav-link">Calle de la Paz 18, 2ª</li>
             <li class="footer-nav-link">46003 Valencia</li>
             <li class="footer-nav-link">+34 963 81 24 50</li>
-            <li class="footer-nav-link"><a href="mailto:hola@norteinteriorismo.es" style="text-decoration: underline;">hola@norteinteriorismo.es</a></li>
-            <li style="margin-top: 1rem;">
-              <a href="#contacto" class="btn btn-outline-white" style="padding: 0.5rem 1.1rem; font-size: 0.75rem;">
+            <li class="footer-nav-link"><a href="mailto:hola@norteinteriorismo.es" style="text-decoration: underline; color: #FFFFFF;">hola@norteinteriorismo.es</a></li>
+            <li style="margin-top: 1.25rem;">
+              <a href="#contacto" class="btn btn-glass" style="padding: 0.55rem 1.25rem; font-size: 0.78rem;">
                 Reservar Cita
               </a>
             </li>
@@ -3018,21 +2964,20 @@
         </div>
         <div class="footer-legal-links">
           <a href="#" class="footer-nav-link">Aviso Legal</a>
-          <a href="#" class="footer-nav-link">Política de Privacidad</a>
+          <a href="#" class="footer-nav-link">Privacidad</a>
           <a href="#" class="footer-nav-link">Cookies</a>
-          <a href="#" class="footer-nav-link">Créditos de Diseño</a>
         </div>
       </div>
     </div>
   </footer>
 
   <!-- ==========================================================================
-       MODAL LIGHTBOX COMPONENT FOR PROJECTS
+       MODAL LIGHTBOX
        ========================================================================== -->
   <div class="modal-overlay" id="projectModal" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="modal-card" id="modalCard">
       <button class="modal-close-btn" id="modalCloseBtn" aria-label="Cerrar modal">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
@@ -3041,8 +2986,8 @@
       <div class="modal-body">
         <span class="section-eyebrow" id="modalEyebrow">Proyecto</span>
         <h3 class="section-title" id="modalTitle" style="font-size: 2.2rem; margin-bottom: 0.75rem;"></h3>
-        <p id="modalDescription" style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.5rem;"></p>
-        <div id="modalDetailsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.25rem; padding-top: 1.5rem; border-top: 1px solid var(--border-light);">
+        <p id="modalDescription" style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.5rem;"></p>
+        <div id="modalDetailsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.25rem; padding-top: 1.5rem; border-top: 1px solid var(--border-glass);">
         </div>
         <div style="margin-top: 2rem;">
           <a href="#contacto" class="btn btn-primary" onclick="closeProjectModal()">
@@ -3058,7 +3003,6 @@
 
   <!-- ==========================================================================
        CLIENT-SIDE JAVASCRIPT
-       Crafted with Emil Kowalski Micro-Interactions, Zero-Dependency, Pure Vanilla
        ========================================================================== -->
   <script>
     (function() {
@@ -3085,20 +3029,7 @@
       updateValenciaClock();
       setInterval(updateValenciaClock, 60000);
 
-      /* --- 2. Header Scroll Blur Effect --- */
-      const header = document.getElementById('siteHeader');
-      function onScrollHeader() {
-        if (!header) return;
-        if (window.scrollY > 40) {
-          header.classList.add('is-scrolled');
-        } else {
-          header.classList.remove('is-scrolled');
-        }
-      }
-      window.addEventListener('scroll', onScrollHeader, { passive: true });
-      onScrollHeader();
-
-      /* --- 3. Mobile Navigation Drawer --- */
+      /* --- 2. Mobile Navigation Drawer --- */
       const mobileBtn = document.getElementById('mobileMenuBtn');
       const mobileDrawer = document.getElementById('mobileDrawer');
       const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -3122,7 +3053,7 @@
         });
       }
 
-      /* --- 4. Before / After Comparison Slider (Touch + Drag + Arrow Keys) --- */
+      /* --- 3. Before / After Comparison Slider --- */
       const comparisonBox = document.getElementById('comparisonBox');
       const comparisonWrapper = document.getElementById('comparisonWrapper');
       const comparisonSlider = document.getElementById('comparisonSlider');
@@ -3142,8 +3073,7 @@
         function getPosFromEvent(e) {
           const rect = comparisonWrapper.getBoundingClientRect();
           const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-          const pos = ((clientX - rect.left) / rect.width) * 100;
-          return pos;
+          return ((clientX - rect.left) / rect.width) * 100;
         }
 
         comparisonWrapper.addEventListener('mousedown', (e) => {
@@ -3164,7 +3094,6 @@
           }
         });
 
-        // Touch support
         comparisonWrapper.addEventListener('touchstart', (e) => {
           isDragging = true;
           comparisonBox.classList.add('is-dragging');
@@ -3183,7 +3112,6 @@
           }
         });
 
-        // Range input fallback listener
         if (comparisonSlider) {
           comparisonSlider.addEventListener('input', (e) => {
             updateComparison(e.target.value);
@@ -3191,7 +3119,7 @@
         }
       }
 
-      /* --- 5. Process 4 Steps: Connecting Line Drawn on Scroll --- */
+      /* --- 4. Process Line on Scroll --- */
       const processContainer = document.getElementById('processTimelineContainer');
       const processScrollLine = document.getElementById('processScrollLine');
       const processSteps = document.querySelectorAll('.process-step');
@@ -3201,7 +3129,6 @@
         const rect = processContainer.getBoundingClientRect();
         const windowHeight = window.innerHeight;
 
-        // Calculate progress as user scrolls through the section
         const startOffset = windowHeight * 0.75;
         const totalDistance = rect.height;
         const currentDistance = startOffset - rect.top;
@@ -3211,7 +3138,6 @@
 
         processScrollLine.style.setProperty('--line-height', progress + '%');
 
-        // Activate step nodes as line reaches them
         processSteps.forEach((step) => {
           const stepRect = step.getBoundingClientRect();
           if (stepRect.top < windowHeight * 0.65) {
@@ -3226,7 +3152,7 @@
       window.addEventListener('resize', updateProcessLine, { passive: true });
       updateProcessLine();
 
-      /* --- 6. Number Counters Animation upon Scrolling into View --- */
+      /* --- 5. Number Counters Animation --- */
       const counters = document.querySelectorAll('.counter');
       let countersAnimated = false;
 
@@ -3235,10 +3161,9 @@
 
         counters.forEach(counter => {
           const target = parseInt(counter.getAttribute('data-target'), 10) || 0;
-          const duration = 1800; // ms
+          const duration = 1800;
           const startTime = performance.now();
 
-          // Ease Out Expo
           function easeOutExpo(x) {
             return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
           }
@@ -3264,7 +3189,6 @@
         countersAnimated = true;
       }
 
-      // Intersection Observer for metrics
       if ('IntersectionObserver' in window) {
         const metricsSection = document.getElementById('cifras');
         if (metricsSection) {
@@ -3279,30 +3203,28 @@
           observer.observe(metricsSection);
         }
       } else {
-        // Fallback: animate immediately
         animateCounters();
       }
 
-      /* --- 7. Project Gallery Filtering --- */
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      const projectCards = document.querySelectorAll('.project-card');
+      /* --- 6. Bento Grid Filtering --- */
+      const filterPills = document.querySelectorAll('.filter-pill');
+      const bentoCards = document.querySelectorAll('.bento-card');
 
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          filterBtns.forEach(b => {
-            b.classList.remove('is-active');
-            b.setAttribute('aria-selected', 'false');
+      filterPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          filterPills.forEach(p => {
+            p.classList.remove('is-active');
+            p.setAttribute('aria-selected', 'false');
           });
-          btn.classList.add('is-active');
-          btn.setAttribute('aria-selected', 'true');
+          pill.classList.add('is-active');
+          pill.setAttribute('aria-selected', 'true');
 
-          const filter = btn.getAttribute('data-filter');
+          const filter = pill.getAttribute('data-filter');
 
-          projectCards.forEach(card => {
+          bentoCards.forEach(card => {
             const categories = card.getAttribute('data-category') || '';
             if (filter === 'all' || categories.includes(filter)) {
               card.style.display = 'flex';
-              // Trigger quick micro-reveal
               card.style.opacity = '0';
               card.style.transform = 'translateY(12px)';
               setTimeout(() => {
@@ -3317,7 +3239,7 @@
         });
       });
 
-      /* --- 8. Project Detail Modal / Lightbox --- */
+      /* --- 7. Project Modal / Lightbox --- */
       const projectData = {
         1: {
           title: "Ático Cirilo Amorós",
@@ -3413,8 +3335,8 @@
 
         modalDetailsGrid.innerHTML = data.specs.map(spec => `
           <div>
-            <div style="font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); font-weight: 600;">${spec.label}</div>
-            <div style="font-size: 0.95rem; color: var(--text-main); font-weight: 500; margin-top: 0.2rem;">${spec.val}</div>
+            <div style="font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 700;">${spec.label}</div>
+            <div style="font-size: 0.95rem; color: #FFFFFF; font-weight: 600; margin-top: 0.2rem;">${spec.val}</div>
           </div>
         `).join('');
 
@@ -3430,34 +3352,26 @@
         document.body.style.overflow = '';
       };
 
-      if (modalCloseBtn) {
-        modalCloseBtn.addEventListener('click', closeProjectModal);
-      }
-
+      if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeProjectModal);
       if (projectModal) {
         projectModal.addEventListener('click', (e) => {
-          if (e.target === projectModal) {
-            closeProjectModal();
-          }
+          if (e.target === projectModal) closeProjectModal();
         });
       }
 
       window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          closeProjectModal();
-        }
+        if (e.key === 'Escape') closeProjectModal();
       });
 
-      // Bind cards to modal
-      projectCards.forEach(card => {
+      bentoCards.forEach(card => {
         card.addEventListener('click', () => {
           const id = card.getAttribute('data-project-id');
           if (id) openProjectModal(id);
         });
       });
 
-      /* --- 9. Sonner-style Toast Notification Helper --- */
-      function showToast(message, type = 'success') {
+      /* --- 8. Sonner-style Toast Helper --- */
+      function showToast(message) {
         const container = document.getElementById('toastContainer');
         if (!container) return;
 
@@ -3471,13 +3385,8 @@
         `;
 
         container.appendChild(toast);
+        requestAnimationFrame(() => toast.classList.add('is-visible'));
 
-        // Animate in
-        requestAnimationFrame(() => {
-          toast.classList.add('is-visible');
-        });
-
-        // Remove after 4.5 seconds
         setTimeout(() => {
           toast.classList.remove('is-visible');
           setTimeout(() => {
@@ -3486,7 +3395,7 @@
         }, 4500);
       }
 
-      /* --- 10. Contact Form Submission & Feedback --- */
+      /* --- 9. Form Submission --- */
       const contactForm = document.getElementById('contactForm');
       const submitBtn = document.getElementById('submitBtn');
       const formStatus = document.getElementById('formStatus');
@@ -3501,26 +3410,18 @@
           const privacidad = document.getElementById('privacidad');
 
           if (!nombre.value.trim() || !email.value.trim() || !telefono.value.trim() || !privacidad.checked) {
-            alert('Por favor, completa los campos requeridos y acepta la política de privacidad.');
+            alert('Por favor, completa los campos obligatorios y acepta la política de privacidad.');
             return;
           }
 
-          // Button loading animation
           const originalBtnContent = submitBtn.innerHTML;
           submitBtn.disabled = true;
-          submitBtn.innerHTML = `
-            <span>Enviando solicitud...</span>
-            <svg class="btn-icon" style="animation: spin 1s linear infinite;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 12a9 9 0 1 1-6.219-8.56"></path>
-            </svg>
-          `;
+          submitBtn.innerHTML = `<span>Enviando solicitud...</span>`;
 
-          // Simulate refined network response
           setTimeout(() => {
             submitBtn.disabled = false;
             submitBtn.innerHTML = originalBtnContent;
 
-            // Show status
             if (formStatus) {
               formStatus.className = 'form-status is-success';
               formStatus.innerHTML = `
@@ -3528,16 +3429,13 @@
               `;
             }
 
-            // Show Sonner-style toast
             showToast('Solicitud enviada con éxito. Te contactaremos en menos de 24h.');
-
-            // Reset form
             contactForm.reset();
           }, 900);
         });
       }
 
-      /* --- 11. Subtle Mouse Parallax & Magnetic Touch for Desktop --- */
+      /* --- 10. Subtle Mouse Parallax on Desktop --- */
       if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
         const hero = document.getElementById('inicio');
         const heroImg = document.querySelector('.hero-media');
@@ -3545,25 +3443,18 @@
         if (hero && heroImg) {
           hero.addEventListener('mousemove', (e) => {
             const { clientX, clientY } = e;
-            const xOffset = (clientX / window.innerWidth - 0.5) * 12;
-            const yOffset = (clientY / window.innerHeight - 0.5) * 12;
+            const xOffset = (clientX / window.innerWidth - 0.5) * 14;
+            const yOffset = (clientY / window.innerHeight - 0.5) * 14;
             heroImg.style.transform = `scale(1.05) translate(${xOffset}px, ${yOffset}px)`;
           });
 
           hero.addEventListener('mouseleave', () => {
-            heroImg.style.transform = `scale(1.04)`;
+            heroImg.style.transform = `scale(1.03)`;
           });
         }
       }
 
     })();
   </script>
-
-  <style>
-    @keyframes spin {
-      100% { transform: rotate(360deg); }
-    }
-  </style>
-
 </body>
 </html>
