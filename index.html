@@ -26,8 +26,8 @@
 
   <style>
     /* ==========================================================================
-       NORTE INTERIORISMO — DRIBBLE "INSPIRED" EDITION (BY SHAKURO STYLE)
-       Dark Obsidian, Glassmorphism Bento Grids, Ambient Glows, Tactile Micro-UI
+       NORTE INTERIORISMO — DRIBBLE EDITION
+       Inspired by Shakuro & Giulio Cuscito ("Timed Cards Opening")
        ========================================================================== */
     :root {
       /* Dark Obsidian Canvas */
@@ -108,7 +108,7 @@
       position: relative;
     }
 
-    /* Ambient Lighting Background Orbs (Dribbble Signature Aura) */
+    /* Ambient Lighting Background Orbs */
     .ambient-glow {
       position: fixed;
       pointer-events: none;
@@ -145,7 +145,7 @@
       opacity: 0.14;
     }
 
-    /* Subtle Paper/Tactile Noise */
+    /* Paper/Tactile Noise */
     body::after {
       content: "";
       position: fixed;
@@ -180,7 +180,6 @@
       color: #FFFFFF;
     }
 
-    /* Container Utility */
     .container {
       width: 100%;
       max-width: var(--container-max);
@@ -193,8 +192,8 @@
     }
 
     .section {
-      padding-top: clamp(5rem, 10vw, 10rem);
-      padding-bottom: clamp(5rem, 10vw, 10rem);
+      padding-top: clamp(4.5rem, 9vw, 9rem);
+      padding-bottom: clamp(4.5rem, 9vw, 9rem);
       position: relative;
     }
 
@@ -231,7 +230,7 @@
       50% { transform: scale(1.35); opacity: 1; }
     }
 
-    /* Section Headers (Dribbble Editorial) */
+    /* Section Headers */
     .section-eyebrow {
       display: inline-flex;
       align-items: center;
@@ -333,7 +332,7 @@
     }
 
     /* ==========================================================================
-       FLOATING DOCK HEADER (DRIBBLE SIGNATURE)
+       FLOATING DOCK HEADER
        ========================================================================== */
     .floating-header-wrapper {
       position: fixed;
@@ -361,7 +360,7 @@
       border-radius: var(--radius-full);
       box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.12);
       width: 100%;
-      max-width: 960px;
+      max-width: 980px;
       transition: all var(--duration-normal) var(--ease-spring);
     }
 
@@ -491,7 +490,7 @@
     }
 
     /* ==========================================================================
-       HERO SECTION — Dribbble "Inspired" Showcase with Floating Micro-UI
+       HERO SECTION — Fullscreen Dribbble Showcase
        ========================================================================== */
     .hero {
       position: relative;
@@ -556,7 +555,6 @@
       max-width: 780px;
     }
 
-    /* Word-by-word animation via CSS Keyframes */
     .hero-title {
       font-family: var(--font-serif);
       font-size: clamp(3rem, 7.2vw, 5.8rem);
@@ -584,14 +582,8 @@
     }
 
     @keyframes wordReveal {
-      0% {
-        opacity: 0;
-        transform: translateY(28px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      0% { opacity: 0; transform: translateY(28px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     .hero-description {
@@ -608,10 +600,7 @@
     }
 
     @keyframes fadeInSub {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .hero-cta-group {
@@ -625,7 +614,6 @@
       animation-delay: 1.1s;
     }
 
-    /* Dribbble Floating Feature Card in Hero */
     .hero-floating-card {
       background: var(--bg-glass);
       backdrop-filter: blur(28px);
@@ -719,7 +707,302 @@
     }
 
     /* ==========================================================================
-       BENTO GRID GALLERY — Shakuro "Inspired" Signature Layout
+       TIMED CARDS OPENING — GIULIO CUSCITO DRIBBLE INTERACTION
+       ========================================================================== */
+    .timed-cards-section {
+      background-color: var(--bg-base);
+      padding-bottom: 3.5rem;
+      position: relative;
+    }
+
+    .timed-header-row {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 2.75rem;
+    }
+
+    @media (min-width: 768px) {
+      .timed-header-row {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+    }
+
+    .timed-controls-bar {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .timed-pause-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-glass-hover);
+      border-radius: var(--radius-full);
+      padding: 0.5rem 1.15rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all var(--duration-fast);
+      user-select: none;
+    }
+
+    .timed-pause-btn:hover {
+      color: #FFFFFF;
+      border-color: var(--accent);
+      background: var(--bg-surface-elevated);
+    }
+
+    .timed-dots-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .timed-dot {
+      width: 24px;
+      height: 5px;
+      border-radius: var(--radius-full);
+      background: var(--border-glass-hover);
+      cursor: pointer;
+      transition: all var(--duration-normal) var(--ease-spring);
+    }
+
+    .timed-dot.is-active {
+      width: 48px;
+      background: var(--accent-gradient);
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+
+    /* Timed Cards Flex Track */
+    .timed-cards-track {
+      display: flex;
+      gap: 1.25rem;
+      height: 580px;
+      width: 100%;
+      position: relative;
+    }
+
+    @media (max-width: 860px) {
+      .timed-cards-track {
+        flex-direction: column;
+        height: auto;
+        gap: 1rem;
+      }
+    }
+
+    .timed-card {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--border-glass);
+      box-shadow: var(--shadow-glass);
+      cursor: pointer;
+      transition: flex 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  height 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.4s ease,
+                  box-shadow 0.4s ease;
+      flex: 0 0 115px;
+      background-color: var(--bg-surface);
+    }
+
+    @media (max-width: 860px) {
+      .timed-card {
+        flex: none;
+        height: 74px;
+        width: 100%;
+      }
+    }
+
+    /* Active Expanded State (Giulio Cuscito signature) */
+    .timed-card.is-active {
+      flex: 1 1 0;
+      border-color: var(--border-accent);
+      box-shadow: var(--shadow-elevated);
+      cursor: default;
+    }
+
+    @media (max-width: 860px) {
+      .timed-card.is-active {
+        height: 480px;
+      }
+    }
+
+    .timed-card-media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+      filter: brightness(0.38) saturate(0.85);
+    }
+
+    .timed-card.is-active .timed-card-media {
+      filter: brightness(0.7) saturate(1.08);
+      transform: scale(1.04);
+    }
+
+    .timed-card-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(11, 11, 15, 0.2) 0%, rgba(11, 11, 15, 0.88) 95%);
+      pointer-events: none;
+    }
+
+    /* Collapsed Label for folded cards */
+    .timed-card-collapsed {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1.75rem 1.25rem;
+      z-index: 3;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .timed-card.is-active .timed-card-collapsed {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @media (max-width: 860px) {
+      .timed-card-collapsed {
+        flex-direction: row;
+        align-items: center;
+        padding: 1rem 1.5rem;
+      }
+    }
+
+    .timed-card-collapsed .card-num {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--accent);
+      font-family: var(--font-sans);
+    }
+
+    .timed-card-collapsed .card-vertical-title {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      color: #FFFFFF;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      white-space: nowrap;
+      letter-spacing: 0.08em;
+      margin-top: auto;
+    }
+
+    @media (max-width: 860px) {
+      .timed-card-collapsed .card-vertical-title {
+        writing-mode: horizontal-tb;
+        transform: none;
+        margin-top: 0;
+        margin-left: 1rem;
+        font-size: 1.15rem;
+      }
+    }
+
+    /* Expanded Content in Active Card */
+    .timed-card-expanded {
+      position: relative;
+      z-index: 4;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(1.75rem, 4vw, 3rem);
+      opacity: 0;
+      transform: translateY(18px);
+      pointer-events: none;
+      transition: opacity 0.45s 0.2s ease, transform 0.45s 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .timed-card.is-active .timed-card-expanded {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .timed-top-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .timed-bottom-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      max-width: 680px;
+    }
+
+    .timed-project-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 4.2vw, 3.4rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: #FFFFFF;
+      letter-spacing: -0.015em;
+    }
+
+    .timed-project-desc {
+      font-size: clamp(0.95rem, 1.25vw, 1.1rem);
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    .timed-specs-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.65rem;
+      margin-top: 0.35rem;
+    }
+
+    /* Active Progress Bar Timer */
+    .timed-progress-track {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.16);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin-top: 1.5rem;
+      position: relative;
+    }
+
+    .timed-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--accent-gradient);
+      border-radius: var(--radius-full);
+      box-shadow: 0 0 12px var(--accent);
+      transition: width 0.08s linear;
+    }
+
+    /* Fallback if JS disabled */
+    .no-js .timed-card:first-child {
+      flex: 1 1 0 !important;
+    }
+    .no-js .timed-card:first-child .timed-card-expanded {
+      opacity: 1 !important;
+      transform: none !important;
+      pointer-events: auto !important;
+    }
+    .no-js .timed-progress-fill {
+      width: 100% !important;
+    }
+
+    /* ==========================================================================
+       BENTO GRID GALLERY
        ========================================================================== */
     .bento-section {
       background-color: var(--bg-base);
@@ -773,7 +1056,6 @@
       box-shadow: 0 4px 15px var(--accent-glow);
     }
 
-    /* Asymmetric Dribbble Bento Grid */
     .bento-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -788,9 +1070,9 @@
       .bento-span-5 { grid-column: span 5; }
       .bento-span-4 { grid-column: span 4; }
       .bento-span-8 { grid-column: span 8; }
+      .bento-span-6 { grid-column: span 6; }
     }
 
-    /* Bento Card (Dribbble Glass / Card Anatomy) */
     .bento-card {
       background: var(--bg-surface);
       border-radius: var(--radius-xl);
@@ -828,7 +1110,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform var(--duration-slow) var(--ease-spring), filter var(--duration-normal);
+      transition: transform var(--duration-slow) var(--ease-spring);
       will-change: transform;
     }
 
@@ -917,7 +1199,7 @@
     }
 
     /* ==========================================================================
-       BEFORE / AFTER COMPARISON SLIDER — Dribbble Tech Hardware Edition
+       BEFORE / AFTER COMPARISON SLIDER — Tech Hardware Edition
        ========================================================================== */
     .comparison-section {
       background-color: #08080B;
@@ -979,7 +1261,6 @@
       will-change: clip-path;
     }
 
-    /* Laser Divider & Frosted Glass Dial */
     .comparison-divider {
       position: absolute;
       top: 0;
@@ -1039,7 +1320,6 @@
       z-index: 20;
     }
 
-    /* Dribbble Hardware Stats Grid */
     .comparison-stats-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -1071,7 +1351,7 @@
     }
 
     /* ==========================================================================
-       PROCESS IN 4 STEPS — Connecting Illuminated Timeline
+       PROCESS IN 4 STEPS — Connecting Timeline
        ========================================================================== */
     .process-timeline {
       position: relative;
@@ -1263,7 +1543,7 @@
     }
 
     /* ==========================================================================
-       METRICS / COUNTERS (DRIBBLE DASHBOARD STATS)
+       METRICS / COUNTERS
        ========================================================================== */
     .metrics-section {
       background-color: var(--bg-surface);
@@ -1335,7 +1615,7 @@
     }
 
     /* ==========================================================================
-       TESTIMONIALS (DRIBBLE SOCIAL FEED CARDS)
+       TESTIMONIALS
        ========================================================================== */
     .testimonials-grid {
       display: grid;
@@ -1425,7 +1705,7 @@
     }
 
     /* ==========================================================================
-       FAQ ACCORDION (<details> native & modern glassmorphic)
+       FAQ ACCORDION
        ========================================================================== */
     .faq-layout {
       display: grid;
@@ -1514,7 +1794,7 @@
     }
 
     /* ==========================================================================
-       CONTACT FORM & STUDIO DETAILS
+       CONTACT FORM
        ========================================================================== */
     .contact-grid {
       display: grid;
@@ -1755,7 +2035,7 @@
     }
 
     /* ==========================================================================
-       TOAST NOTIFICATIONS (SONNER STYLE)
+       TOAST NOTIFICATIONS
        ========================================================================== */
     .toast-container {
       position: fixed;
@@ -1886,7 +2166,6 @@
       gap: 1.5rem;
     }
 
-    /* Mobile Drawer */
     .mobile-nav-drawer {
       position: fixed;
       inset: 0;
@@ -1935,14 +2214,14 @@
 </head>
 <body>
 
-  <!-- Ambient Light Orbs (Dribbble Signature Lighting) -->
+  <!-- Ambient Light Orbs -->
   <div class="ambient-glow ambient-glow-1"></div>
   <div class="ambient-glow ambient-glow-2"></div>
   <div class="ambient-glow ambient-glow-3"></div>
 
   <!-- ==========================================================================
-       FLOATING DOCK HEADER (DRIBBLE SIGNATURE)
-       ========================================================================== -->
+       FLOATING DOCK HEADER
+       ========================================================================== */ -->
   <div class="floating-header-wrapper">
     <header class="floating-dock" id="floatingDock">
       <a href="#inicio" class="brand-dock" aria-label="Norte Interiorismo - Inicio">
@@ -1998,7 +2277,7 @@
 
   <main>
     <!-- ==========================================================================
-         HERO SECTION — Fullscreen Dribbble Showcase with Floating Micro-UI
+         HERO SECTION — Fullscreen Dribbble Showcase
          ========================================================================== -->
     <section class="hero" id="inicio" aria-label="Introducción a Norte Interiorismo">
       <div class="hero-media-wrapper">
@@ -2014,14 +2293,12 @@
 
       <div class="container">
         <div class="hero-grid-layout">
-          <!-- Text column -->
           <div class="hero-content">
             <div class="badge-pill">
               <span class="badge-dot"></span>
               <span>Estudio de Arquitectura Interior · Valencia</span>
             </div>
 
-            <!-- Huge editorial headline animated word-by-word with shimmer -->
             <h1 class="hero-title" aria-label="Espacios que respiran luz, materia y calma.">
               <span class="word" style="--i: 0;">Espacios</span>
               <span class="word" style="--i: 1;">que</span>
@@ -2094,18 +2371,262 @@
     </section>
 
     <!-- ==========================================================================
-         BENTO GRID GALLERY — Shakuro "Inspired" Style
+         TIMED CARDS OPENING (GIULIO CUSCITO INTERACTION)
+         Colección de Obras Estrella con Expansión Elástica y Temporizador
          ========================================================================== -->
-    <section class="section bento-section" id="proyectos" aria-labelledby="proyectos-heading">
+    <section class="section timed-cards-section" id="proyectos" aria-labelledby="timed-cards-heading">
+      <div class="container">
+        <div class="timed-header-row">
+          <div>
+            <span class="section-eyebrow">Interacción Exclusiva</span>
+            <h2 class="section-title" id="timed-cards-heading" style="margin-bottom: 0.5rem;">
+              Colección en <span class="gradient-text">movimiento</span>
+            </h2>
+            <p class="section-subtitle">
+              Cuatro intervenciones icónicas sincronizadas en apertura temporal continua. Pasa el cursor o haz clic para explorar los detalles.
+            </p>
+          </div>
+
+          <div class="timed-controls-bar">
+            <!-- Indicadores de barra (dots) -->
+            <div class="timed-dots-nav" id="timedDotsNav" aria-label="Selector de tarjeta">
+              <button class="timed-dot is-active" data-index="0" aria-label="Ir a Obra 01"></button>
+              <button class="timed-dot" data-index="1" aria-label="Ir a Obra 02"></button>
+              <button class="timed-dot" data-index="2" aria-label="Ir a Obra 03"></button>
+              <button class="timed-dot" data-index="3" aria-label="Ir a Obra 04"></button>
+            </div>
+
+            <!-- Botón de Pausa / Reanudar -->
+            <button class="timed-pause-btn" id="timedPauseBtn" aria-label="Pausar o reanudar rotación automática">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" id="timedPauseIcon">
+                <rect x="6" y="4" width="4" height="16"></rect>
+                <rect x="14" y="4" width="4" height="16"></rect>
+              </svg>
+              <span>Pausar (5s)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- The Timed Cards Track -->
+        <div class="timed-cards-track" id="timedCardsTrack">
+          <!-- Card 01 (Active by default) -->
+          <article class="timed-card is-active" data-index="0" data-project-id="1">
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85"
+              alt="Ático Cirilo Amorós en Valencia"
+              class="timed-card-media"
+            >
+            <div class="timed-card-scrim"></div>
+
+            <!-- Folded state label -->
+            <div class="timed-card-collapsed">
+              <span class="card-num">01</span>
+              <span class="card-vertical-title">Ático Cirilo Amorós</span>
+            </div>
+
+            <!-- Expanded Active State -->
+            <div class="timed-card-expanded">
+              <div class="timed-top-meta">
+                <span class="badge-pill">
+                  <span class="badge-dot"></span>
+                  <span>Obra 01 / 04 · Valencia Ensanche</span>
+                </span>
+                <span style="font-size: 0.8rem; font-weight: 700; color: #FFFFFF; letter-spacing: 0.1em;">
+                  AÑO 2024
+                </span>
+              </div>
+
+              <div class="timed-bottom-info">
+                <h3 class="timed-project-title">Ático Cirilo Amorós</h3>
+                <p class="timed-project-desc">
+                  Reforma integral de un ático dúplex señorial. Fluidez visual de este a oeste mediante travertino navona, cocina en isla monolítica de cuarcita y terraza ajardinada con vistas al cielo valenciano.
+                </p>
+                <div class="timed-specs-row">
+                  <span class="badge-pill" style="font-size: 0.72rem; padding: 0.35rem 0.8rem;">280 m²</span>
+                  <span class="badge-pill" style="font-size: 0.72rem; padding: 0.35rem 0.8rem;">Travertino & Roble</span>
+                  <span class="badge-pill" style="font-size: 0.72rem; padding: 0.35rem 0.8rem;">Aerotermia</span>
+                  <button class="btn btn-primary timed-modal-btn" style="padding: 0.55rem 1.4rem; font-size: 0.78rem; margin-left: auto;" onclick="openProjectModal('1'); event.stopPropagation();">
+                    Ver ficha técnica
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </button>
+                </div>
+
+                <!-- Timed Progress Bar (Giulio Cuscito signature) -->
+                <div class="timed-progress-track">
+                  <div class="timed-progress-fill"></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 02 -->
+          <article class="timed-card" data-index="1" data-project-id="2">
+            <img
+              src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=85"
+              alt="Villa El Saler rodeada de pinos"
+              class="timed-card-media"
+              loading="lazy"
+            >
+            <div class="timed-card-scrim"></div>
+
+            <div class="timed-card-collapsed">
+              <span class="card-num">02</span>
+              <span class="card-vertical-title">Villa El Saler</span>
+            </div>
+
+            <div class="timed-card-expanded">
+              <div class="timed-top-meta">
+                <span class="badge-pill">
+                  <span class="badge-dot"></span>
+                  <span>Obra 02 / 04 · Dehesa de El Saler</span>
+                </span>
+                <span style="font-size: 0.8rem; font-weight: 700; color: #FFFFFF; letter-spacing: 0.1em;">
+                  AÑO 2024
+                </span>
+              </div>
+
+              <div class="timed-bottom-info">
+                <h3 class="timed-project-title">Villa El Saler</h3>
+                <p class="timed-project-desc">
+                  Arquitectura interior en diálogo con el parque natural. Pavimento continuo de microcemento color arena, carpinterías invisibles enrasadas a suelo y celosías de madera termotratada.
+                </p>
+                <div class="timed-specs-row">
+                  <span class="badge-pill" style="font-size: 0.72rem; padding: 0.35rem 0.8rem;">410 m²</span>
+                  <span class="badge-pill" style="font-size: 0.72rem; padding: 0.35rem 0.8rem;">Microcemento Duna</span>
+                  <span class="badge-pill" style="font-size: 0.72rem; padding: 0.35rem 0.8rem;">Passivhaus</span>
+                  <button class="btn btn-primary timed-modal-btn" style="padding: 0.55rem 1.4rem; font-size: 0.78rem; margin-left: auto;" onclick="openProjectModal('2'); event.stopPropagation();">
+                    Ver ficha técnica
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </button>
+                </div>
+
+                <div class="timed-progress-track">
+                  <div class="timed-progress-fill"></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 03 -->
+          <article class="timed-card" data-index="2" data-project-id="3">
+            <img
+              src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=1600&q=85"
+              alt="Palacete Ruzafa con techos históricos"
+              class="timed-card-media"
+              loading="lazy"
+            >
+            <div class="timed-card-scrim"></div>
+
+            <div class="timed-card-collapsed">
+              <span class="card-num">03</span>
+              <span class="card-vertical-title">Palacete Ruzafa</span>
+            </div>
+
+            <div class="timed-card-expanded">
+              <div class="timed-top-meta">
+                <span class="badge-pill">
+                  <span class="badge-dot"></span>
+                  <span>Obra 03 / 04 · Ruzafa Histórico</span>
+                </span>
+                <span style="font-size: 0.8rem; font-weight: 700; color: #FFFFFF; letter-spacing: 0.1em;">
+                  AÑO 2023
+                </span>
+              </div>
+
+              <div class="timed-bottom-info">
+                <h3 class="timed-project-title">Palacete Ruzafa 1906</h3>
+                <p class="timed-project-desc">
+                  Restauración arqueológica de mosaicos Nolla centenarios y molduras de escayola de 4,20 metros, complementada con volúmenes funcionales exentos de nogal oscuro y latón envejecido.
+                </p>
+                <div class="timed-specs-row">
+                  <span class="badge-pill" style="font-size: 0.72rem; padding: 0.35rem 0.8rem;">195 m²</span>
+                  <span class="badge-pill" style="font-size: 0.72rem; padding: 0.35rem 0.8rem;">Mosaico Nolla</span>
+                  <span class="badge-pill" style="font-size: 0.72rem; padding: 0.35rem 0.8rem;">Premio FAD</span>
+                  <button class="btn btn-primary timed-modal-btn" style="padding: 0.55rem 1.4rem; font-size: 0.78rem; margin-left: auto;" onclick="openProjectModal('3'); event.stopPropagation();">
+                    Ver ficha técnica
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </button>
+                </div>
+
+                <div class="timed-progress-track">
+                  <div class="timed-progress-fill"></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 04 -->
+          <article class="timed-card" data-index="3" data-project-id="4">
+            <img
+              src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=85"
+              alt="Casa Gran Vía Marqués del Turia"
+              class="timed-card-media"
+              loading="lazy"
+            >
+            <div class="timed-card-scrim"></div>
+
+            <div class="timed-card-collapsed">
+              <span class="card-num">04</span>
+              <span class="card-vertical-title">Casa Gran Vía</span>
+            </div>
+
+            <div class="timed-card-expanded">
+              <div class="timed-top-meta">
+                <span class="badge-pill">
+                  <span class="badge-dot"></span>
+                  <span>Obra 04 / 04 · Gran Vía Marqués del Turia</span>
+                </span>
+                <span style="font-size: 0.8rem; font-weight: 700; color: #FFFFFF; letter-spacing: 0.1em;">
+                  AÑO 2023
+                </span>
+              </div>
+
+              <div class="timed-bottom-info">
+                <h3 class="timed-project-title">Casa Gran Vía</h3>
+                <p class="timed-project-desc">
+                  Un santuario acústico urbano. Salón pasante con chimenea de bioetanol, carpinterías ocultas enrasadas en pared y cocina de concepto abierto oculta en paneles escamoteables de roble.
+                </p>
+                <div class="timed-specs-row">
+                  <span class="badge-pill" style="font-size: 0.72rem; padding: 0.35rem 0.8rem;">240 m²</span>
+                  <span class="badge-pill" style="font-size: 0.72rem; padding: 0.35rem 0.8rem;">Piedra Campaspero</span>
+                  <span class="badge-pill" style="font-size: 0.72rem; padding: 0.35rem 0.8rem;">KNX Inteligente</span>
+                  <button class="btn btn-primary timed-modal-btn" style="padding: 0.55rem 1.4rem; font-size: 0.78rem; margin-left: auto;" onclick="openProjectModal('4'); event.stopPropagation();">
+                    Ver ficha técnica
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </button>
+                </div>
+
+                <div class="timed-progress-track">
+                  <div class="timed-progress-fill"></div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         BENTO GRID GALLERY (CATÁLOGO COMPLETO)
+         ========================================================================== -->
+    <section class="section bento-section" aria-labelledby="bento-heading" style="padding-top: 2rem;">
       <div class="container">
         <div class="bento-header-wrapper">
           <div>
-            <span class="section-eyebrow">Colección de Obras</span>
-            <h2 class="section-title" id="proyectos-heading">
+            <span class="section-eyebrow">Catálogo Completo</span>
+            <h2 class="section-title" id="bento-heading">
               Arquitectura con <span class="gradient-text">identidad propia</span>
             </h2>
             <p class="section-subtitle">
-              Intervenciones residenciales donde cada milímetro responde a un concepto de vida reflexivo y honesto.
+              Explora nuestra selección según la tipología de espacio o enclave geográfico.
             </p>
           </div>
 
@@ -2333,7 +2854,7 @@
     </section>
 
     <!-- ==========================================================================
-         BEFORE / AFTER COMPARISON SLIDER — Dribbble Tech Hardware Edition
+         BEFORE / AFTER COMPARISON SLIDER — Tech Hardware Edition
          ========================================================================== -->
     <section class="section comparison-section" id="antes-despues" aria-labelledby="comparison-heading">
       <div class="container">
@@ -2349,7 +2870,6 @@
 
         <div class="comparison-frame" id="comparisonBox">
           <div class="comparison-wrapper" id="comparisonWrapper" style="--pos: 50%;">
-            <!-- Imagen ANTES -->
             <img
               src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1600&q=80"
               alt="Estado original previo a la reforma"
@@ -2360,7 +2880,6 @@
               <span class="badge-pill">Estado Original (1974)</span>
             </div>
 
-            <!-- Imagen DESPUÉS con clip-path dinámico -->
             <div class="comparison-img-after-container" id="afterContainer">
               <img
                 src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85"
@@ -2375,7 +2894,6 @@
               </span>
             </div>
 
-            <!-- Laser Divider & Frosted Handle -->
             <div class="comparison-divider" id="comparisonDivider" aria-hidden="true">
               <div class="comparison-handle" id="comparisonHandle">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -2387,7 +2905,6 @@
               </div>
             </div>
 
-            <!-- Input range accesible y funcional sin JS -->
             <input
               type="range"
               min="0"
@@ -2400,7 +2917,6 @@
             >
           </div>
 
-          <!-- Dribbble Hardware Stats Grid -->
           <div class="comparison-stats-grid">
             <div class="comp-stat-card">
               <span class="comp-stat-num">+68%</span>
@@ -2424,7 +2940,7 @@
     </section>
 
     <!-- ==========================================================================
-         PROCESS IN 4 STEPS — Connecting Illuminated Timeline
+         PROCESS IN 4 STEPS — Connecting Timeline
          ========================================================================== -->
     <section class="section process-section" id="proceso" aria-labelledby="proceso-heading">
       <div class="container">
@@ -2665,7 +3181,7 @@
     </section>
 
     <!-- ==========================================================================
-         FAQ ACCORDION (<details> native & modern glassmorphic)
+         FAQ ACCORDION
          ========================================================================== -->
     <section class="section" id="faq" aria-labelledby="faq-heading">
       <div class="container faq-layout">
@@ -2685,7 +3201,6 @@
         </div>
 
         <div class="faq-list">
-          <!-- Item 1 -->
           <details class="faq-item" open>
             <summary class="faq-summary">
               <span>¿Cómo se estructura el presupuesto y cómo evitáis sobrecostes?</span>
@@ -2696,7 +3211,6 @@
             </div>
           </details>
 
-          <!-- Item 2 -->
           <details class="faq-item">
             <summary class="faq-summary">
               <span>¿Gestionáis las licencias en el Ayuntamiento de Valencia?</span>
@@ -2707,7 +3221,6 @@
             </div>
           </details>
 
-          <!-- Item 3 -->
           <details class="faq-item">
             <summary class="faq-summary">
               <span>¿Cuánto tiempo requiere una reforma integral de alta gama?</span>
@@ -2718,7 +3231,6 @@
             </div>
           </details>
 
-          <!-- Item 4 -->
           <details class="faq-item">
             <summary class="faq-summary">
               <span>¿Podemos conservar mobiliario o piezas de arte propias?</span>
@@ -2729,7 +3241,6 @@
             </div>
           </details>
 
-          <!-- Item 5 -->
           <details class="faq-item">
             <summary class="faq-summary">
               <span>¿Aceptáis proyectos fuera de la ciudad de Valencia?</span>
@@ -2740,7 +3251,6 @@
             </div>
           </details>
 
-          <!-- Item 6 -->
           <details class="faq-item">
             <summary class="faq-summary">
               <span>¿Qué diferencia a Norte de una empresa de reformas común?</span>
@@ -2770,7 +3280,6 @@
         </div>
 
         <div class="contact-grid">
-          <!-- Información del estudio -->
           <div class="contact-info-panel">
             <div>
               <h3 style="font-family: var(--font-serif); font-size: 1.85rem; font-weight: 400; margin-bottom: 1rem; color: #FFFFFF;">
@@ -2998,7 +3507,6 @@
     </div>
   </div>
 
-  <!-- Sonner-style Toast Notification Container -->
   <div class="toast-container" id="toastContainer" aria-live="polite"></div>
 
   <!-- ==========================================================================
@@ -3053,7 +3561,126 @@
         });
       }
 
-      /* --- 3. Before / After Comparison Slider --- */
+      /* --- 3. TIMED CARDS OPENING (GIULIO CUSCITO INTERACTION) --- */
+      const timedCards = document.querySelectorAll('.timed-card');
+      const timedDots = document.querySelectorAll('.timed-dot');
+      const timedPauseBtn = document.getElementById('timedPauseBtn');
+      const timedCardsTrack = document.getElementById('timedCardsTrack');
+
+      let currentTimedIndex = 0;
+      let isPaused = false;
+      const timedDuration = 5000; // 5 seconds per project
+      let progressStartTime = performance.now();
+      let currentProgress = 0;
+
+      function setActiveTimedCard(index, manualReset = true) {
+        currentTimedIndex = index;
+
+        timedCards.forEach((card, idx) => {
+          const isActive = idx === index;
+          card.classList.toggle('is-active', isActive);
+          card.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+          const fill = card.querySelector('.timed-progress-fill');
+          if (fill && !isActive) {
+            fill.style.width = '0%';
+          }
+        });
+
+        timedDots.forEach((dot, idx) => {
+          dot.classList.toggle('is-active', idx === index);
+        });
+
+        if (manualReset) {
+          currentProgress = 0;
+          progressStartTime = performance.now();
+        }
+      }
+
+      function runTimedLoop(timestamp) {
+        if (!isPaused) {
+          const elapsed = timestamp - progressStartTime;
+          currentProgress = Math.min((elapsed / timedDuration) * 100, 100);
+
+          const activeCard = timedCards[currentTimedIndex];
+          if (activeCard) {
+            const fill = activeCard.querySelector('.timed-progress-fill');
+            if (fill) fill.style.width = currentProgress + '%';
+          }
+
+          if (currentProgress >= 100) {
+            const nextIndex = (currentTimedIndex + 1) % timedCards.length;
+            setActiveTimedCard(nextIndex, true);
+          }
+        } else {
+          // Keep progress anchored when paused
+          progressStartTime = timestamp - (currentProgress / 100) * timedDuration;
+        }
+
+        requestAnimationFrame(runTimedLoop);
+      }
+
+      // Start animation loop
+      requestAnimationFrame(runTimedLoop);
+
+      // Card Click: immediate expansion
+      timedCards.forEach((card, idx) => {
+        card.addEventListener('click', (e) => {
+          if (e.target.closest('.timed-modal-btn')) return;
+          if (currentTimedIndex !== idx) {
+            setActiveTimedCard(idx, true);
+          }
+        });
+      });
+
+      // Dots Click
+      timedDots.forEach((dot, idx) => {
+        dot.addEventListener('click', () => {
+          setActiveTimedCard(idx, true);
+        });
+      });
+
+      // Pause on Hover
+      if (timedCardsTrack) {
+        timedCardsTrack.addEventListener('mouseenter', () => {
+          isPaused = true;
+          updatePauseBtnUI(true);
+        });
+
+        timedCardsTrack.addEventListener('mouseleave', () => {
+          isPaused = false;
+          updatePauseBtnUI(false);
+        });
+      }
+
+      function updatePauseBtnUI(paused) {
+        if (!timedPauseBtn) return;
+        if (paused) {
+          timedPauseBtn.innerHTML = `
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            <span>Reanudar (5s)</span>
+          `;
+        } else {
+          timedPauseBtn.innerHTML = `
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <rect x="6" y="4" width="4" height="16"></rect>
+              <rect x="14" y="4" width="4" height="16"></rect>
+            </svg>
+            <span>Pausar (5s)</span>
+          `;
+        }
+      }
+
+      if (timedPauseBtn) {
+        timedPauseBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          isPaused = !isPaused;
+          updatePauseBtnUI(isPaused);
+        });
+      }
+
+      /* --- 4. Before / After Comparison Slider --- */
       const comparisonBox = document.getElementById('comparisonBox');
       const comparisonWrapper = document.getElementById('comparisonWrapper');
       const comparisonSlider = document.getElementById('comparisonSlider');
@@ -3119,7 +3746,7 @@
         }
       }
 
-      /* --- 4. Process Line on Scroll --- */
+      /* --- 5. Process Line on Scroll --- */
       const processContainer = document.getElementById('processTimelineContainer');
       const processScrollLine = document.getElementById('processScrollLine');
       const processSteps = document.querySelectorAll('.process-step');
@@ -3152,7 +3779,7 @@
       window.addEventListener('resize', updateProcessLine, { passive: true });
       updateProcessLine();
 
-      /* --- 5. Number Counters Animation --- */
+      /* --- 6. Number Counters Animation --- */
       const counters = document.querySelectorAll('.counter');
       let countersAnimated = false;
 
@@ -3206,7 +3833,7 @@
         animateCounters();
       }
 
-      /* --- 6. Bento Grid Filtering --- */
+      /* --- 7. Bento Grid Filtering --- */
       const filterPills = document.querySelectorAll('.filter-pill');
       const bentoCards = document.querySelectorAll('.bento-card');
 
@@ -3239,7 +3866,7 @@
         });
       });
 
-      /* --- 7. Project Modal / Lightbox --- */
+      /* --- 8. Project Modal / Lightbox --- */
       const projectData = {
         1: {
           title: "Ático Cirilo Amorós",
@@ -3370,7 +3997,7 @@
         });
       });
 
-      /* --- 8. Sonner-style Toast Helper --- */
+      /* --- 9. Sonner-style Toast Helper --- */
       function showToast(message) {
         const container = document.getElementById('toastContainer');
         if (!container) return;
@@ -3395,7 +4022,7 @@
         }, 4500);
       }
 
-      /* --- 9. Form Submission --- */
+      /* --- 10. Form Submission --- */
       const contactForm = document.getElementById('contactForm');
       const submitBtn = document.getElementById('submitBtn');
       const formStatus = document.getElementById('formStatus');
@@ -3435,7 +4062,7 @@
         });
       }
 
-      /* --- 10. Subtle Mouse Parallax on Desktop --- */
+      /* --- 11. Subtle Mouse Parallax on Desktop --- */
       if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
         const hero = document.getElementById('inicio');
         const heroImg = document.querySelector('.hero-media');
