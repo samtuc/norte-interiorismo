@@ -1,0 +1,3569 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Norte Interiorismo | Estudio de Arquitectura Interior en Valencia</title>
+  <meta name="description" content="Estudio de arquitectura interior y diseño residencial de alta gama en Valencia. Proyectamos espacios donde conviven la nobleza matérica, la luz mediterránea y la calma atemporal.">
+  <meta name="theme-color" content="#151412">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="Norte Interiorismo | Arquitectura Interior en Valencia">
+  <meta property="og:description" content="Proyectos residenciales de alta gama en Valencia. La nobleza del material, la luz y la serenidad.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80">
+
+  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    // Progressive enhancement class check
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js-enabled');
+  </script>
+
+  <style>
+    /* ==========================================================================
+       NORTE INTERIORISMO — DESIGN SYSTEM & TOKENS
+       Crafted with Emil Kowalski Design Engineering principles
+       ========================================================================== */
+    :root {
+      /* Palette */
+      --bg-base: #F7F5F0;        /* Cálido tono caliza / alabastro */
+      --bg-surface: #FFFFFF;     /* Blanco puro para tarjetas elevadas */
+      --bg-subtle: #EFECE4;      /* Arena suave para secciones alternas */
+      --bg-dark: #141311;        /* Espresso carbón profundo */
+      --bg-dark-surface: #1E1C19;
+      --bg-dark-card: #252320;
+
+      --text-main: #181715;      /* Grafito profundo */
+      --text-muted: #6E685F;     /* Muted cálido */
+      --text-dim: #9C9589;       /* Muted claro */
+      --text-inverse: #F7F5F0;
+      --text-inverse-muted: #A8A196;
+
+      --accent: #A36443;         /* Terracota mediterráneo refinado */
+      --accent-hover: #8B5032;
+      --accent-light: #F4ECE7;
+      --accent-glow: rgba(163, 100, 67, 0.25);
+
+      --border-light: rgba(24, 23, 21, 0.08);
+      --border-medium: rgba(24, 23, 21, 0.16);
+      --border-dark: rgba(247, 245, 240, 0.12);
+
+      /* Typography */
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+      /* Radii */
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+
+      /* Shadows (refined, physical light) */
+      --shadow-sm: 0 2px 8px rgba(20, 19, 17, 0.04);
+      --shadow-md: 0 8px 24px -4px rgba(20, 19, 17, 0.07);
+      --shadow-lg: 0 20px 48px -8px rgba(20, 19, 17, 0.12);
+      --shadow-dark: 0 20px 48px -8px rgba(0, 0, 0, 0.5);
+
+      /* Animation physics curves */
+      --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-smooth: cubic-bezier(0.25, 0.8, 0.25, 1);
+      --duration-fast: 200ms;
+      --duration-normal: 400ms;
+      --duration-slow: 750ms;
+
+      /* Layout */
+      --container-max: 1320px;
+      --container-pad: clamp(1.25rem, 4vw, 3.5rem);
+    }
+
+    /* CSS Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    body {
+      overflow-x: hidden;
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      position: relative;
+    }
+
+    /* Subtle paper noise overlay for tactile physical craft */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color var(--duration-fast) var(--ease-smooth);
+    }
+
+    button, input, select, textarea {
+      font: inherit;
+      color: inherit;
+    }
+
+    /* Selection */
+    ::selection {
+      background-color: var(--accent);
+      color: #FFFFFF;
+    }
+
+    /* Container Utility */
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: var(--container-pad);
+      padding-right: var(--container-pad);
+    }
+
+    /* Section Spacing */
+    .section {
+      padding-top: clamp(4.5rem, 9vw, 9rem);
+      padding-bottom: clamp(4.5rem, 9vw, 9rem);
+      position: relative;
+    }
+
+    /* Typography Utilities */
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .section-eyebrow::before {
+      content: "";
+      display: inline-block;
+      width: 1.5rem;
+      height: 1px;
+      background-color: var(--accent);
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--text-main);
+      margin-bottom: 1.25rem;
+    }
+
+    .section-subtitle {
+      font-size: clamp(1rem, 1.3vw, 1.2rem);
+      font-weight: 300;
+      color: var(--text-muted);
+      max-width: 640px;
+      line-height: 1.7;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 0.95rem 1.9rem;
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all var(--duration-normal) var(--ease-spring);
+      position: relative;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background-color: var(--text-main);
+      color: var(--bg-base);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent);
+      color: #FFFFFF;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px var(--accent-glow);
+    }
+
+    .btn-light {
+      background-color: var(--bg-surface);
+      color: var(--text-main);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-light:hover {
+      background-color: var(--accent);
+      color: #FFFFFF;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(163, 100, 67, 0.4);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--text-main);
+      border-color: var(--border-medium);
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(24, 23, 21, 0.04);
+      border-color: var(--text-main);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-white {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #FFFFFF;
+      border-color: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-outline-white:hover {
+      background-color: #FFFFFF;
+      color: var(--text-main);
+      border-color: #FFFFFF;
+      transform: translateY(-2px);
+    }
+
+    .btn-icon {
+      width: 1.1em;
+      height: 1.1em;
+      transition: transform var(--duration-fast) var(--ease-spring);
+    }
+
+    .btn:hover .btn-icon {
+      transform: translateX(4px);
+    }
+
+    /* ==========================================================================
+       HEADER & NAVIGATION
+       ========================================================================== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 1.25rem 0;
+      transition: background-color var(--duration-normal) var(--ease-smooth),
+                  padding var(--duration-normal) var(--ease-smooth),
+                  box-shadow var(--duration-normal) var(--ease-smooth),
+                  backdrop-filter var(--duration-normal) var(--ease-smooth);
+    }
+
+    .site-header.is-scrolled {
+      background-color: rgba(247, 245, 240, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      z-index: 1010;
+    }
+
+    .brand-name {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      line-height: 1;
+      color: #FFFFFF;
+      transition: color var(--duration-normal) var(--ease-smooth);
+    }
+
+    .brand-sub {
+      font-family: var(--font-sans);
+      font-size: 0.6rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.75);
+      margin-top: 0.2rem;
+      transition: color var(--duration-normal) var(--ease-smooth);
+    }
+
+    .site-header.is-scrolled .brand-name {
+      color: var(--text-main);
+    }
+
+    .site-header.is-scrolled .brand-sub {
+      color: var(--text-muted);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: rgba(255, 255, 255, 0.9);
+      position: relative;
+      padding: 0.3rem 0;
+    }
+
+    .site-header.is-scrolled .nav-link {
+      color: var(--text-main);
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 1px;
+      background-color: var(--accent);
+      transition: width var(--duration-fast) var(--ease-smooth);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.is-active::after {
+      width: 100%;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    /* Mobile Menu Button */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-full);
+      padding: 8px;
+      color: #FFFFFF;
+      z-index: 1010;
+      transition: background-color var(--duration-fast) var(--ease-smooth),
+                  color var(--duration-fast) var(--ease-smooth);
+    }
+
+    .site-header.is-scrolled .mobile-menu-toggle {
+      color: var(--text-main);
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 22px;
+      height: 16px;
+      margin: auto;
+    }
+
+    .hamburger-icon span {
+      display: block;
+      width: 100%;
+      height: 1.5px;
+      background-color: currentColor;
+      transition: transform var(--duration-normal) var(--ease-spring),
+                  opacity var(--duration-fast) ease;
+    }
+
+    .mobile-menu-toggle.is-active span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+    .mobile-menu-toggle.is-active span:nth-child(2) {
+      opacity: 0;
+    }
+    .mobile-menu-toggle.is-active span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    /* ==========================================================================
+       HERO SECTION — Fullscreen, editorial title word-by-word
+       ========================================================================== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: clamp(3.5rem, 8vw, 6.5rem);
+      padding-top: 8rem;
+      background-color: var(--bg-dark);
+      overflow: hidden;
+    }
+
+    .hero-media-wrapper {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .hero-media {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 38%;
+      transform: scale(1.04);
+      animation: heroZoom 16s cubic-bezier(0.2, 0.9, 0.4, 1) infinite alternate;
+      will-change: transform;
+    }
+
+    @keyframes heroZoom {
+      0% { transform: scale(1.02); }
+      100% { transform: scale(1.09); }
+    }
+
+    .hero-scrim {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: linear-gradient(
+        180deg,
+        rgba(15, 14, 12, 0.45) 0%,
+        rgba(15, 14, 12, 0.25) 40%,
+        rgba(15, 14, 12, 0.88) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 1080px;
+      color: #FFFFFF;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      background-color: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: #F7F5F0;
+      animation: pulseDot 2.2s infinite ease-in-out;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 0.4; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* Word-by-word animation via CSS Keyframes (works perfectly even if JS fails) */
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.8rem, 7.8vw, 6.2rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.75rem;
+      text-wrap: balance;
+    }
+
+    .hero-title .word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(28px);
+      animation: wordReveal 0.9s var(--ease-spring) forwards;
+      animation-delay: calc(var(--i, 0) * 0.07s + 0.15s);
+      will-change: transform, opacity;
+    }
+
+    .hero-title .word.italic {
+      font-style: italic;
+      font-weight: 300;
+      color: #E7DACD;
+    }
+
+    @keyframes wordReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-description {
+      font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+      font-weight: 300;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.88);
+      max-width: 720px;
+      margin-bottom: 2.25rem;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeInSub 0.9s var(--ease-spring) forwards;
+      animation-delay: 0.95s;
+    }
+
+    @keyframes fadeInSub {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.25rem;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeInSub 0.9s var(--ease-spring) forwards;
+      animation-delay: 1.1s;
+    }
+
+    .hero-scroll-indicator {
+      position: absolute;
+      right: var(--container-pad);
+      bottom: clamp(2rem, 5vw, 4rem);
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transform: rotate(90deg);
+      transform-origin: right bottom;
+    }
+
+    .hero-scroll-line {
+      width: 40px;
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-scroll-line::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #FFFFFF;
+      animation: scrollLine 2s infinite ease;
+    }
+
+    @keyframes scrollLine {
+      0% { transform: translateX(-100%); }
+      50%, 100% { transform: translateX(100%); }
+    }
+
+    /* ==========================================================================
+       PHILOSOPHY STRIP (STUDIO BRIEF)
+       ========================================================================== */
+    .philosophy-strip {
+      background-color: var(--bg-surface);
+      border-bottom: 1px solid var(--border-light);
+      padding: clamp(3rem, 6vw, 5.5rem) 0;
+    }
+
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (min-width: 900px) {
+      .philosophy-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 5rem;
+      }
+    }
+
+    .philosophy-quote {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3.2vw, 2.7rem);
+      font-weight: 300;
+      line-height: 1.3;
+      color: var(--text-main);
+    }
+
+    .philosophy-quote em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .philosophy-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .materials-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .material-pill {
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      padding: 0.3rem 0.8rem;
+      background-color: var(--bg-subtle);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-full);
+      color: var(--text-main);
+    }
+
+    /* ==========================================================================
+       PROJECTS GALLERY — Hover Effects & Filter
+       ========================================================================== */
+    .projects-header {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .projects-header {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+    }
+
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .filter-btn {
+      background: none;
+      border: 1px solid var(--border-medium);
+      padding: 0.5rem 1.2rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: all var(--duration-fast) var(--ease-smooth);
+    }
+
+    .filter-btn:hover {
+      border-color: var(--text-main);
+      color: var(--text-main);
+    }
+
+    .filter-btn.is-active {
+      background-color: var(--text-main);
+      border-color: var(--text-main);
+      color: var(--bg-base);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+      }
+    }
+
+    @media (min-width: 1100px) {
+      .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+      }
+    }
+
+    /* Project Card with Emil Kowalski-inspired hover physics */
+    .project-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      group: "";
+      background-color: var(--bg-surface);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--duration-normal) var(--ease-spring),
+                  box-shadow var(--duration-normal) var(--ease-spring),
+                  border-color var(--duration-normal) var(--ease-spring);
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(24, 23, 21, 0.16);
+    }
+
+    .project-thumbnail-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background-color: var(--bg-subtle);
+    }
+
+    .project-thumbnail {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--duration-slow) var(--ease-spring),
+                  filter var(--duration-slow) var(--ease-spring);
+      will-change: transform;
+    }
+
+    .project-card:hover .project-thumbnail {
+      transform: scale(1.06);
+    }
+
+    .project-badge-tag {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 2;
+      background-color: rgba(20, 19, 17, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #FFFFFF;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .project-info {
+      padding: 1.6rem 1.6rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .project-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+
+    .project-title {
+      font-family: var(--font-serif);
+      font-size: 1.55rem;
+      font-weight: 400;
+      line-height: 1.25;
+      color: var(--text-main);
+      transition: color var(--duration-fast) var(--ease-smooth);
+    }
+
+    .project-card:hover .project-title {
+      color: var(--accent);
+    }
+
+    .project-description {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-top: 0.25rem;
+    }
+
+    .project-footer-specs {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      margin-top: 0.75rem;
+      border-top: 1px solid var(--border-light);
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+
+    .project-cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
+
+    .project-cta-link svg {
+      width: 14px;
+      height: 14px;
+      transition: transform var(--duration-fast) var(--ease-spring);
+    }
+
+    .project-card:hover .project-cta-link svg {
+      transform: translateX(4px);
+    }
+
+    /* ==========================================================================
+       BEFORE / AFTER COMPARISON SLIDER (Draggable & Accessible)
+       ========================================================================== */
+    .comparison-section {
+      background-color: var(--bg-dark);
+      color: #FFFFFF;
+      overflow: hidden;
+    }
+
+    .comparison-section .section-title {
+      color: #FFFFFF;
+    }
+
+    .comparison-section .section-subtitle {
+      color: var(--text-inverse-muted);
+    }
+
+    .comparison-box {
+      margin-top: 3.5rem;
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-dark);
+      border: 1px solid var(--border-dark);
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: pan-y;
+    }
+
+    .comparison-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      min-height: 380px;
+      background-color: #0F0E0C;
+    }
+
+    @media (max-width: 640px) {
+      .comparison-wrapper {
+        aspect-ratio: 4 / 3;
+        min-height: 340px;
+      }
+    }
+
+    .comparison-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    .comparison-img-before {
+      z-index: 1;
+    }
+
+    .comparison-img-after-container {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      overflow: hidden;
+      clip-path: polygon(0 0, var(--pos, 50%) 0, var(--pos, 50%) 100%, 0 100%);
+      will-change: clip-path;
+    }
+
+    .comparison-label {
+      position: absolute;
+      top: 1.5rem;
+      z-index: 5;
+      padding: 0.45rem 1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      pointer-events: none;
+    }
+
+    .label-before {
+      right: 1.5rem;
+      background-color: rgba(20, 19, 17, 0.75);
+      color: #E2DFD8;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .label-after {
+      left: 1.5rem;
+      background-color: rgba(163, 100, 67, 0.88);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Draggable Divider Handle */
+    .comparison-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--pos, 50%);
+      width: 2px;
+      background-color: #FFFFFF;
+      z-index: 10;
+      transform: translateX(-50%);
+      pointer-events: none;
+      box-shadow: 0 0 16px rgba(0, 0, 0, 0.6);
+    }
+
+    .comparison-handle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: #FFFFFF;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 0 4px rgba(255, 255, 255, 0.3);
+      pointer-events: auto;
+      cursor: ew-resize;
+      transition: transform var(--duration-fast) var(--ease-spring);
+    }
+
+    .comparison-handle:hover,
+    .comparison-box.is-dragging .comparison-handle {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    .comparison-handle svg {
+      width: 12px;
+      height: 12px;
+      stroke-width: 2.5;
+    }
+
+    /* Native range input overlay for 100% JS-independent operation */
+    .comparison-range-slider {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      opacity: 0;
+      cursor: ew-resize;
+      z-index: 20;
+    }
+
+    .comparison-stats-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+      padding: 1.75rem 2rem;
+      background-color: var(--bg-dark-surface);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-dark);
+    }
+
+    .comp-stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .comp-stat-val {
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
+      font-weight: 400;
+      color: #FFFFFF;
+    }
+
+    .comp-stat-desc {
+      font-size: 0.85rem;
+      color: var(--text-inverse-muted);
+    }
+
+    /* ==========================================================================
+       PROCESS IN 4 STEPS — Connecting Line Drawn on Scroll
+       ========================================================================== */
+    .process-container {
+      position: relative;
+      margin-top: 4.5rem;
+    }
+
+    /* Vertical Spine Line */
+    .process-timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1rem 0;
+    }
+
+    /* Base architectural guide line */
+    .process-line-track {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 28px;
+      width: 2px;
+      background-color: var(--border-medium);
+      transform: translateX(-50%);
+    }
+
+    @media (min-width: 768px) {
+      .process-line-track {
+        left: 50%;
+      }
+    }
+
+    /* Dynamic drawn progress line on scroll */
+    .process-line-progress {
+      position: absolute;
+      top: 0;
+      left: 28px;
+      width: 2px;
+      height: var(--line-height, 0%);
+      background: linear-gradient(180deg, var(--accent) 0%, #D48B64 100%);
+      transform: translateX(-50%);
+      transition: height 0.15s ease-out;
+      will-change: height;
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+
+    @media (min-width: 768px) {
+      .process-line-progress {
+        left: 50%;
+      }
+    }
+
+    /* Fallback if JS is off: full line visible */
+    .no-js .process-line-progress {
+      height: 100% !important;
+    }
+
+    .process-step {
+      position: relative;
+      margin-bottom: 4rem;
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .process-step:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (min-width: 768px) {
+      .process-step {
+        grid-template-columns: 1fr 64px 1fr;
+        gap: 2.5rem;
+        align-items: center;
+        margin-bottom: 5.5rem;
+      }
+
+      .process-step:nth-child(even) .process-card {
+        grid-column: 3 / 4;
+        text-align: left;
+      }
+
+      .process-step:nth-child(even) .process-node {
+        grid-column: 2 / 3;
+      }
+
+      .process-step:nth-child(even) .process-empty-col {
+        grid-column: 1 / 2;
+        display: block;
+      }
+
+      .process-step:nth-child(odd) .process-card {
+        grid-column: 1 / 2;
+        text-align: right;
+      }
+
+      .process-step:nth-child(odd) .process-node {
+        grid-column: 2 / 3;
+      }
+
+      .process-step:nth-child(odd) .process-empty-col {
+        grid-column: 3 / 4;
+        display: block;
+      }
+    }
+
+    .process-empty-col {
+      display: none;
+    }
+
+    /* Node Marker */
+    .process-node {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background-color: var(--bg-base);
+      border: 2px solid var(--border-medium);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      z-index: 5;
+      transition: all var(--duration-normal) var(--ease-spring);
+      margin: 0 auto;
+      box-shadow: 0 0 0 6px var(--bg-base);
+    }
+
+    .process-step.is-active .process-node {
+      background-color: var(--accent);
+      border-color: var(--accent);
+      color: #FFFFFF;
+      transform: scale(1.12);
+      box-shadow: 0 0 0 6px var(--bg-base), 0 8px 24px var(--accent-glow);
+    }
+
+    .process-card {
+      background-color: var(--bg-surface);
+      border-radius: var(--radius-md);
+      padding: clamp(1.5rem, 3vw, 2.2rem);
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--duration-normal) var(--ease-spring),
+                  box-shadow var(--duration-normal) var(--ease-spring);
+    }
+
+    .process-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .process-step-num {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .process-step-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+      font-weight: 400;
+      color: var(--text-main);
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .process-step-text {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .process-deliverables {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .process-step:nth-child(odd) .process-deliverables {
+        justify-content: flex-end;
+      }
+    }
+
+    .deliv-tag {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      background-color: var(--bg-subtle);
+      border-radius: var(--radius-full);
+      color: var(--text-main);
+      border: 1px solid var(--border-light);
+    }
+
+    /* ==========================================================================
+       METRICS / COUNTERS SECTION
+       ========================================================================== */
+    .metrics-section {
+      background-color: var(--bg-surface);
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem 1.5rem;
+    }
+
+    @media (min-width: 900px) {
+      .metrics-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 3rem;
+      }
+    }
+
+    .metric-card {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .metric-number-wrapper {
+      display: flex;
+      align-items: baseline;
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 6vw, 4.8rem);
+      font-weight: 300;
+      line-height: 1;
+      color: var(--text-main);
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+    }
+
+    .metric-suffix {
+      font-size: 0.6em;
+      color: var(--accent);
+      font-family: var(--font-sans);
+      font-weight: 500;
+      margin-left: 0.15em;
+    }
+
+    .metric-label {
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 0.25rem;
+    }
+
+    .metric-detail {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       TESTIMONIALS / OPINIONES
+       ========================================================================== */
+    .testimonials-section {
+      background-color: var(--bg-base);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+
+    @media (min-width: 850px) {
+      .testimonials-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .testimonial-card {
+      background-color: var(--bg-surface);
+      border-radius: var(--radius-md);
+      padding: clamp(1.8rem, 3vw, 2.5rem);
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform var(--duration-normal) var(--ease-spring),
+                  box-shadow var(--duration-normal) var(--ease-spring);
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 0.25rem;
+      color: #C98A4B;
+      margin-bottom: 1.25rem;
+    }
+
+    .testimonial-stars svg {
+      width: 15px;
+      height: 15px;
+      fill: currentColor;
+    }
+
+    .testimonial-quote {
+      font-family: var(--font-serif);
+      font-size: clamp(1.1rem, 1.4vw, 1.25rem);
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--text-main);
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background-color: var(--bg-subtle);
+      border: 1px solid var(--border-medium);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--accent);
+    }
+
+    .author-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .author-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .author-location {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       FAQ ACCORDION (<details> native & accessible)
+       ========================================================================== */
+    .faq-section {
+      background-color: var(--bg-subtle);
+    }
+
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      margin-top: 3.5rem;
+    }
+
+    @media (min-width: 900px) {
+      .faq-layout {
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 5rem;
+      }
+    }
+
+    .faq-sticky-col {
+      position: relative;
+    }
+
+    @media (min-width: 900px) {
+      .faq-sticky-col {
+        position: sticky;
+        top: 6rem;
+      }
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .faq-item {
+      background-color: var(--bg-surface);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+      transition: border-color var(--duration-fast) var(--ease-smooth),
+                  box-shadow var(--duration-fast) var(--ease-smooth);
+      overflow: hidden;
+    }
+
+    .faq-item[open] {
+      border-color: rgba(163, 100, 67, 0.4);
+      box-shadow: var(--shadow-md);
+    }
+
+    .faq-summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      padding: 1.4rem 1.6rem;
+      font-family: var(--font-serif);
+      font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+      font-weight: 500;
+      color: var(--text-main);
+      cursor: pointer;
+      user-select: none;
+      transition: color var(--duration-fast) var(--ease-smooth);
+    }
+
+    .faq-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-summary:hover {
+      color: var(--accent);
+    }
+
+    .faq-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background-color: var(--bg-subtle);
+      color: var(--text-main);
+      flex-shrink: 0;
+      transition: transform var(--duration-normal) var(--ease-spring),
+                  background-color var(--duration-fast) ease,
+                  color var(--duration-fast) ease;
+    }
+
+    .faq-item[open] .faq-indicator {
+      transform: rotate(45deg);
+      background-color: var(--accent);
+      color: #FFFFFF;
+    }
+
+    .faq-content {
+      padding: 0 1.6rem 1.6rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      border-top: 1px solid transparent;
+      animation: faqSlideDown 0.3s var(--ease-smooth);
+    }
+
+    @keyframes faqSlideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ==========================================================================
+       CONTACT FORM & STUDIO DETAILS
+       ========================================================================== */
+    .contact-section {
+      background-color: var(--bg-surface);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+      margin-top: 3.5rem;
+    }
+
+    @media (min-width: 900px) {
+      .contact-grid {
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 5rem;
+      }
+    }
+
+    .contact-info-panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .contact-direct-items {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 1.25rem;
+    }
+
+    .contact-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background-color: var(--bg-subtle);
+      border: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .contact-item-title {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-item-value {
+      font-size: 1.05rem;
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .contact-item-value a:hover {
+      color: var(--accent);
+    }
+
+    .contact-badge-box {
+      padding: 1.5rem;
+      background-color: var(--bg-base);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .contact-badge-box strong {
+      color: var(--text-main);
+    }
+
+    /* Form Design */
+    .contact-form {
+      background-color: var(--bg-base);
+      padding: clamp(2rem, 4vw, 3rem);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .form-group-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    @media (min-width: 600px) {
+      .form-group-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .form-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text-main);
+    }
+
+    .form-label span {
+      color: var(--accent);
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      padding: 0.85rem 1.1rem;
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      font-size: 0.92rem;
+      color: var(--text-main);
+      transition: border-color var(--duration-fast) var(--ease-smooth),
+                  box-shadow var(--duration-fast) var(--ease-smooth);
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .checkbox-field {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .checkbox-field input[type="checkbox"] {
+      margin-top: 0.2rem;
+      accent-color: var(--accent);
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    .form-status {
+      display: none;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-md);
+      font-size: 0.88rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .form-status.is-success {
+      display: block;
+      background-color: #EBF7EE;
+      color: #1E6B35;
+      border: 1px solid #A8E0B7;
+    }
+
+    /* ==========================================================================
+       MODAL / LIGHTBOX FOR PROJECTS
+       ========================================================================== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(15, 14, 12, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--duration-normal) var(--ease-smooth);
+    }
+
+    .modal-overlay.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background-color: var(--bg-surface);
+      width: 100%;
+      max-width: 960px;
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: var(--radius-lg);
+      position: relative;
+      transform: translateY(24px) scale(0.98);
+      transition: transform var(--duration-normal) var(--ease-spring);
+      box-shadow: var(--shadow-dark);
+    }
+
+    .modal-overlay.is-open .modal-card {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      z-index: 10;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--border-medium);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform var(--duration-fast) var(--ease-spring),
+                  background-color var(--duration-fast) ease;
+    }
+
+    .modal-close-btn:hover {
+      transform: rotate(90deg);
+      background-color: #FFFFFF;
+    }
+
+    .modal-image {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+    }
+
+    .modal-body {
+      padding: clamp(1.75rem, 4vw, 3rem);
+    }
+
+    /* ==========================================================================
+       TOAST NOTIFICATION (Sonner style)
+       ========================================================================== */
+    .toast-container {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 3000;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      pointer-events: none;
+    }
+
+    .toast {
+      pointer-events: auto;
+      background-color: var(--text-main);
+      color: #FFFFFF;
+      padding: 0.95rem 1.4rem;
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.88rem;
+      transform: translateY(20px) scale(0.95);
+      opacity: 0;
+      transition: transform var(--duration-normal) var(--ease-spring),
+                  opacity var(--duration-normal) var(--ease-smooth);
+    }
+
+    .toast.is-visible {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+
+    .toast-icon {
+      width: 18px;
+      height: 18px;
+      color: #55C478;
+    }
+
+    /* ==========================================================================
+       FOOTER
+       ========================================================================== */
+    .site-footer {
+      background-color: var(--bg-dark);
+      color: #FFFFFF;
+      padding-top: clamp(4.5rem, 8vw, 7rem);
+      padding-bottom: 2.5rem;
+      border-top: 1px solid var(--border-dark);
+    }
+
+    .footer-top-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid var(--border-dark);
+    }
+
+    @media (min-width: 900px) {
+      .footer-top-grid {
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 3rem;
+      }
+    }
+
+    .footer-brand-bio {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .footer-brand-title {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .footer-bio-text {
+      font-size: 0.9rem;
+      color: var(--text-inverse-muted);
+      line-height: 1.7;
+      max-width: 360px;
+    }
+
+    .footer-heading {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .footer-nav-link {
+      font-size: 0.88rem;
+      color: var(--text-inverse-muted);
+      transition: color var(--duration-fast) var(--ease-smooth);
+    }
+
+    .footer-nav-link:hover {
+      color: #FFFFFF;
+    }
+
+    .footer-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 2.5rem;
+      font-size: 0.78rem;
+      color: var(--text-inverse-muted);
+    }
+
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+      }
+    }
+
+    .footer-legal-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .valencia-time-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.25rem 0.75rem;
+      background-color: var(--bg-dark-surface);
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-dark);
+    }
+
+    .time-pulse {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: #55C478;
+    }
+
+    /* ==========================================================================
+       MOBILE NAVIGATION OVERLAY
+       ========================================================================== */
+    .mobile-nav-drawer {
+      position: fixed;
+      inset: 0;
+      background-color: var(--bg-dark);
+      z-index: 1005;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--duration-normal) var(--ease-smooth);
+    }
+
+    .mobile-nav-drawer.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .mobile-nav-item {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      color: #FFFFFF;
+      transition: color var(--duration-fast) ease;
+    }
+
+    .mobile-nav-item:hover {
+      color: var(--accent);
+    }
+
+    /* Accessibility / Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .hero-media {
+        animation: none !important;
+      }
+      .hero-title .word {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .hero-description, .hero-cta-group {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .nav-menu {
+        display: none;
+      }
+      .mobile-menu-toggle {
+        display: block;
+      }
+      .header-actions .btn {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       HEADER & NAVIGATION
+       ========================================================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#inicio" class="brand" aria-label="Norte Interiorismo - Inicio">
+        <span class="brand-name">NORTE</span>
+        <span class="brand-sub">Estudio Valencia</span>
+      </a>
+
+      <nav aria-label="Navegación principal">
+        <ul class="nav-menu">
+          <li><a href="#proyectos" class="nav-link">Obras</a></li>
+          <li><a href="#antes-despues" class="nav-link">Antes / Después</a></li>
+          <li><a href="#proceso" class="nav-link">Método</a></li>
+          <li><a href="#cifras" class="nav-link">Estudio</a></li>
+          <li><a href="#opiniones" class="nav-link">Clientes</a></li>
+          <li><a href="#faq" class="nav-link">Dudas</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="#contacto" class="btn btn-light" id="headerCtaBtn">
+          Reserva tu visita
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+
+        <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Abrir menú" aria-expanded="false">
+          <div class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-nav-drawer" id="mobileDrawer" aria-hidden="true">
+    <ul class="mobile-nav-links">
+      <li><a href="#proyectos" class="mobile-nav-item mobile-link">Obras Selectas</a></li>
+      <li><a href="#antes-despues" class="mobile-nav-item mobile-link">Antes & Después</a></li>
+      <li><a href="#proceso" class="mobile-nav-item mobile-link">El Proceso</a></li>
+      <li><a href="#cifras" class="mobile-nav-item mobile-link">En Cifras</a></li>
+      <li><a href="#opiniones" class="mobile-nav-item mobile-link">Testimonios</a></li>
+      <li><a href="#faq" class="mobile-nav-item mobile-link">Preguntas Frecuentes</a></li>
+      <li><a href="#contacto" class="mobile-nav-item mobile-link">Contacto</a></li>
+    </ul>
+    <div style="margin-top: 1rem;">
+      <a href="#contacto" class="btn btn-primary mobile-link" style="width: 100%;">
+        Reserva tu visita personalizada
+      </a>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==========================================================================
+         HERO SECTION
+         Fullscreen image, big editorial title word-by-word, primary button
+         ========================================================================== -->
+    <section class="hero" id="inicio" aria-label="Introducción a Norte Interiorismo">
+      <div class="hero-media-wrapper">
+        <img
+          src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2000&q=85"
+          alt="Interior residencial minimalista con luz natural cálida y piedra caliza en Valencia"
+          class="hero-media"
+          loading="eager"
+          fetchpriority="high"
+        >
+        <div class="hero-scrim"></div>
+      </div>
+
+      <div class="container hero-content">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          <span>Estudio de Arquitectura Interior · Valencia</span>
+        </div>
+
+        <!-- Editorial headline word by word (CSS Staggered Animation) -->
+        <h1 class="hero-title" aria-label="Espacios que respiran luz, materia y calma.">
+          <span class="word" style="--i: 0;">Espacios</span>
+          <span class="word" style="--i: 1;">que</span>
+          <span class="word" style="--i: 2;">respiran</span>
+          <span class="word italic" style="--i: 3;">luz,</span>
+          <span class="word" style="--i: 4;">materia</span>
+          <span class="word" style="--i: 5;">y</span>
+          <span class="word italic" style="--i: 6;">calma.</span>
+        </h1>
+
+        <p class="hero-description">
+          Concebimos hogares singulares en Valencia donde la arquitectura interior abraza la luz mediterránea, los materiales nobles sin artificio y el bienestar cotidiano.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#contacto" class="btn btn-primary" id="heroReserveBtn">
+            Reserva tu visita
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+
+          <a href="#proyectos" class="btn btn-outline-white">
+            Explorar proyectos
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-scroll-indicator" aria-hidden="true">
+        <span>Deslizar</span>
+        <div class="hero-scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         PHILOSOPHY STRIP (STUDIO BRIEF)
+         ========================================================================== -->
+    <section class="philosophy-strip" id="estudio" aria-label="Filosofía del estudio">
+      <div class="container philosophy-grid">
+        <div>
+          <span class="section-eyebrow">Manifiesto Norte</span>
+          <h2 class="philosophy-quote">
+            "No diseñamos para impresionar en una foto. Proyectamos para quien <em>habita el silencio</em>, descalzo, sobre piedra templada por el sol de Valencia."
+          </h2>
+        </div>
+        <div class="philosophy-details">
+          <p>
+            Desde nuestro taller en el Ensanche valenciano, concebimos cada vivienda como un traje a medida. Rechazamos las modas efímeras para buscar una belleza serena, táctil y profundamente mediterránea.
+          </p>
+          <div class="materials-pills">
+            <span class="material-pill">Piedra Campaspero</span>
+            <span class="material-pill">Roble Europeo Al Aceite</span>
+            <span class="material-pill">Mortero de Cal Artesanal</span>
+            <span class="material-pill">Linos Lavados</span>
+            <span class="material-pill">Latón Envejecido</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         PROJECTS GALLERY — Hover Effects & Filter
+         ========================================================================== -->
+    <section class="section projects-section" id="proyectos" aria-labelledby="proyectos-heading">
+      <div class="container">
+        <div class="projects-header">
+          <div>
+            <span class="section-eyebrow">Colección de Obras</span>
+            <h2 class="section-title" id="proyectos-heading">Proyectos con alma mediterránea</h2>
+            <p class="section-subtitle">
+              Una selección de viviendas donde la pureza de líneas y el diálogo con la luz crean atmósferas envolventes.
+            </p>
+          </div>
+
+          <div class="filter-bar" role="tablist" aria-label="Filtro de obras">
+            <button class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true">Todos (6)</button>
+            <button class="filter-btn" data-filter="ensanche" role="tab" aria-selected="false">Ensanche & Ruzafa</button>
+            <button class="filter-btn" data-filter="atico" role="tab" aria-selected="false">Áticos & Villas</button>
+            <button class="filter-btn" data-filter="patrimonio" role="tab" aria-selected="false">Patrimonio</button>
+          </div>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid">
+          <!-- Proyecto 1 -->
+          <article class="project-card" data-category="ensanche atico" data-project-id="1">
+            <div class="project-thumbnail-wrapper">
+              <span class="project-badge-tag">Ático · 280 m²</span>
+              <img
+                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+                alt="Ático Cirilo Amorós en el Ensanche de Valencia con terraza ajardinada y madera noble"
+                class="project-thumbnail"
+                loading="lazy"
+              >
+            </div>
+            <div class="project-info">
+              <div class="project-meta">
+                <span>VALENCIA · ENSANCHE</span>
+                <span>2024</span>
+              </div>
+              <h3 class="project-title">Ático Cirilo Amorós</h3>
+              <p class="project-description">
+                Fluidez visual de este a oeste. Travertino navona, cocina monolítica en cuarcita y pérgola vegetal.
+              </p>
+              <div class="project-footer-specs">
+                <span>Reforma Integral + Mobiliario</span>
+                <span class="project-cta-link">
+                  Ver detalle
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Proyecto 2 -->
+          <article class="project-card" data-category="atico" data-project-id="2">
+            <div class="project-thumbnail-wrapper">
+              <span class="project-badge-tag">Villa · 410 m²</span>
+              <img
+                src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80"
+                alt="Villa El Saler rodeada de pinos con comedor en roble y microcemento"
+                class="project-thumbnail"
+                loading="lazy"
+              >
+            </div>
+            <div class="project-info">
+              <div class="project-meta">
+                <span>DEHESA DE EL SALER</span>
+                <span>2024</span>
+              </div>
+              <h3 class="project-title">Villa El Saler</h3>
+              <p class="project-description">
+                Diálogo silencioso con el parque natural. Pavimento continuo de microcemento color arena y ventanales enrasados.
+              </p>
+              <div class="project-footer-specs">
+                <span>Obra Nueva + Paisajismo</span>
+                <span class="project-cta-link">
+                  Ver detalle
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Proyecto 3 -->
+          <article class="project-card" data-category="patrimonio ensanche" data-project-id="3">
+            <div class="project-thumbnail-wrapper">
+              <span class="project-badge-tag">Señorial · 195 m²</span>
+              <img
+                src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=1200&q=80"
+                alt="Palacete Ruzafa con molduras clásicas restauradas e iluminación cenital contemporánea"
+                class="project-thumbnail"
+                loading="lazy"
+              >
+            </div>
+            <div class="project-info">
+              <div class="project-meta">
+                <span>VALENCIA · RUZAFA</span>
+                <span>2023</span>
+              </div>
+              <h3 class="project-title">Palacete Ruzafa 1906</h3>
+              <p class="project-description">
+                Conservación milimétrica de mosaico Nolla original contrastado con cajas funcionales de nogal ahumado.
+              </p>
+              <div class="project-footer-specs">
+                <span>Restauración Patrimonial</span>
+                <span class="project-cta-link">
+                  Ver detalle
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Proyecto 4 -->
+          <article class="project-card" data-category="ensanche" data-project-id="4">
+            <div class="project-thumbnail-wrapper">
+              <span class="project-badge-tag">Residencial · 240 m²</span>
+              <img
+                src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80"
+                alt="Casa Gran Vía con suite principal luminosa y textiles orgánicos"
+                class="project-thumbnail"
+                loading="lazy"
+              >
+            </div>
+            <div class="project-info">
+              <div class="project-meta">
+                <span>GRAN VÍA MARQUÉS DEL TURIA</span>
+                <span>2023</span>
+              </div>
+              <h3 class="project-title">Casa Gran Vía</h3>
+              <p class="project-description">
+                Un oasis acústico en una de las avenidas más icónicas. Carpintería oculta en rasomuro y luz rasante.
+              </p>
+              <div class="project-footer-specs">
+                <span>Reforma Integral</span>
+                <span class="project-cta-link">
+                  Ver detalle
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Proyecto 5 -->
+          <article class="project-card" data-category="atico" data-project-id="5">
+            <div class="project-thumbnail-wrapper">
+              <span class="project-badge-tag">Refugio Costero · 320 m²</span>
+              <img
+                src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80"
+                alt="Refugio Costa Blanca con piedra tosca y piscina integrada en el salón"
+                class="project-thumbnail"
+                loading="lazy"
+              >
+            </div>
+            <div class="project-info">
+              <div class="project-meta">
+                <span>COSTA BLANCA</span>
+                <span>2023</span>
+              </div>
+              <h3 class="project-title">Refugio Los Acantilados</h3>
+              <p class="project-description">
+                Paredes encaladas, piedra tosca de cantera local y una pérgola de cañizo que tamiza el sol del mediodía.
+              </p>
+              <div class="project-footer-specs">
+                <span>Arquitectura + Interiorismo</span>
+                <span class="project-cta-link">
+                  Ver detalle
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Proyecto 6 -->
+          <article class="project-card" data-category="patrimonio ensanche" data-project-id="6">
+            <div class="project-thumbnail-wrapper">
+              <span class="project-badge-tag">Pla del Remei · 165 m²</span>
+              <img
+                src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80"
+                alt="Residencia Hernán Cortés con librería a medida de nogal y chimenea de bioetanol"
+                class="project-thumbnail"
+                loading="lazy"
+              >
+            </div>
+            <div class="project-info">
+              <div class="project-meta">
+                <span>VALENCIA · HERNÁN CORTÉS</span>
+                <span>2022</span>
+              </div>
+              <h3 class="project-title">Residencia Hernán Cortés</h3>
+              <p class="project-description">
+                Elegancia discreta para una coleccionista de arte. Iluminación museográfica con índice de reproducción cromática CRI 98.
+              </p>
+              <div class="project-footer-specs">
+                <span>Reforma + Comisariado de Arte</span>
+                <span class="project-cta-link">
+                  Ver detalle
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         BEFORE / AFTER COMPARISON SLIDER (Draggable & Accessible)
+         ========================================================================== -->
+    <section class="section comparison-section" id="antes-despues" aria-labelledby="comparison-heading">
+      <div class="container">
+        <div>
+          <span class="section-eyebrow" style="color: #D48B64;">Metamorfosis Espacial</span>
+          <h2 class="section-title" id="comparison-heading">La transformación: Antes & Después</h2>
+          <p class="section-subtitle">
+            Arrastra el selector interactivo para comprobar cómo convertimos una vivienda oscura y compartimentada de los años 70 en un templo de luz fluida en Conde de Salvatierra.
+          </p>
+        </div>
+
+        <div class="comparison-box" id="comparisonBox">
+          <div class="comparison-wrapper" id="comparisonWrapper" style="--pos: 50%;">
+            <!-- Imagen ANTES (Estado Original) -->
+            <img
+              src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1600&q=80"
+              alt="Estado original de la vivienda: habitación oscura y desactualizada previa a la reforma"
+              class="comparison-img comparison-img-before"
+              loading="lazy"
+            >
+            <span class="comparison-label label-before">Estado Original (1974)</span>
+
+            <!-- Imagen DESPUÉS (Intervención Norte) con clip-path dinámico -->
+            <div class="comparison-img-after-container" id="afterContainer">
+              <img
+                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85"
+                alt="Resultado final tras la intervención de Norte: salón abierto con luz natural, madera y piedra"
+                class="comparison-img comparison-img-after"
+                loading="lazy"
+              >
+            </div>
+            <span class="comparison-label label-after">Intervención Norte (2024)</span>
+
+            <!-- Línea divisoria y manilla interactiva -->
+            <div class="comparison-divider" id="comparisonDivider" aria-hidden="true">
+              <div class="comparison-handle" id="comparisonHandle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M15 18l-6-6 6-6"/>
+                </svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M9 18l6-6-6-6"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Input range nativo como capa accesible y 100% funcional sin JS -->
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value="50"
+              class="comparison-range-slider"
+              id="comparisonSlider"
+              aria-label="Deslizador comparativo de estado original y resultado reformado"
+              oninput="this.parentElement.style.setProperty('--pos', this.value + '%')"
+            >
+          </div>
+        </div>
+
+        <!-- Renovation metrics bar -->
+        <div class="comparison-stats-bar">
+          <div class="comp-stat-item">
+            <span class="comp-stat-val">+68%</span>
+            <span class="comp-stat-desc">Incremento en penetración de luz natural directa</span>
+          </div>
+          <div class="comp-stat-item">
+            <span class="comp-stat-val">0 m</span>
+            <span class="comp-stat-desc">Pasillos oscuros residuales eliminados</span>
+          </div>
+          <div class="comp-stat-item">
+            <span class="comp-stat-val">Calificación A</span>
+            <span class="comp-stat-desc">Eficiencia energética y aislamiento térmico passivhaus</span>
+          </div>
+          <div class="comp-stat-item">
+            <span class="comp-stat-val">100% FSC</span>
+            <span class="comp-stat-desc">Roble de bosques sostenibles y morteros sin COVs</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         PROCESS IN 4 STEPS — Connecting Line Drawn on Scroll
+         ========================================================================== -->
+    <section class="section process-section" id="proceso" aria-labelledby="proceso-heading">
+      <div class="container">
+        <div style="text-align: center; max-width: 760px; margin: 0 auto;">
+          <span class="section-eyebrow" style="justify-content: center;">El Método Norte</span>
+          <h2 class="section-title" id="proceso-heading">El proceso en cuatro compases</h2>
+          <p class="section-subtitle" style="margin: 0 auto;">
+            Del primer café en nuestro estudio hasta el encendido de la última lámpara. Un viaje riguroso, sereno y con total control de plazos y presupuesto.
+          </p>
+        </div>
+
+        <div class="process-container" id="processTimelineContainer">
+          <div class="process-timeline">
+            <!-- Guía arquitectónica fija -->
+            <div class="process-line-track"></div>
+            <!-- Línea viva que se dibuja con el scroll -->
+            <div class="process-line-progress" id="processScrollLine"></div>
+
+            <!-- Paso 1 -->
+            <div class="process-step" data-step="1">
+              <div class="process-card">
+                <span class="process-step-num">Fase 01</span>
+                <h3 class="process-step-title">Escucha & Diagnosis Sensorial</h3>
+                <p class="process-step-text">
+                  Visitamos tu espacio y realizamos un escaneo tridimensional completo. Analizamos la incidencia del sol valenciano según las cuatro estaciones y definimos juntos el programa de necesidades y estilo de vida.
+                </p>
+                <div class="process-deliverables">
+                  <span class="deliv-tag">Escaneo 3D</span>
+                  <span class="deliv-tag">Estudio Solar</span>
+                  <span class="deliv-tag">Presupuesto Estimativo</span>
+                </div>
+              </div>
+              <div class="process-node">01</div>
+              <div class="process-empty-col"></div>
+            </div>
+
+            <!-- Paso 2 -->
+            <div class="process-step" data-step="2">
+              <div class="process-empty-col"></div>
+              <div class="process-node">02</div>
+              <div class="process-card">
+                <span class="process-step-num">Fase 02</span>
+                <h3 class="process-step-title">Anteproyecto & Materioteca</h3>
+                <p class="process-step-text">
+                  Traducimos los conceptos en renders hiperrealistas donde puedes palpar la luz, texturas y sombras. En nuestro taller seleccionamos juntos las piezas de mármol, maderas macizas, linos y griferías.
+                </p>
+                <div class="process-deliverables">
+                  <span class="deliv-tag">Renders Diurnos & Nocturnos</span>
+                  <span class="deliv-tag">Caja de Muestras Táctiles</span>
+                  <span class="deliv-tag">Distribución 1:50</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Paso 3 -->
+            <div class="process-step" data-step="3">
+              <div class="process-card">
+                <span class="process-step-num">Fase 03</span>
+                <h3 class="process-step-title">Proyecto Ejecutivo & Dirección Diaria</h3>
+                <p class="process-step-text">
+                  Planimetría constructiva al milímetro para carpinteros, herreros e instaladores. Gestionamos todas las licencias en el Ayuntamiento de Valencia y nuestros arquitectos supervisan la obra cada mañana.
+                </p>
+                <div class="process-deliverables">
+                  <span class="deliv-tag">Licencias Urbanísticas</span>
+                  <span class="deliv-tag">Supervisión In Situ</span>
+                  <span class="deliv-tag">Presupuesto Cerrado</span>
+                </div>
+              </div>
+              <div class="process-node">03</div>
+              <div class="process-empty-col"></div>
+            </div>
+
+            <!-- Paso 4 -->
+            <div class="process-step" data-step="4">
+              <div class="process-empty-col"></div>
+              <div class="process-node">04</div>
+              <div class="process-card">
+                <span class="process-step-num">Fase 04</span>
+                <h3 class="process-step-title">Puesta en Escena & Llave en Mano</h3>
+                <p class="process-step-text">
+                  Montaje de mobiliario a medida, calibración de luminarias a 2700K cálidos, selección textil y comisariado de obras de arte. Te entregamos la casa limpia, perfumada y lista para empezar tu nueva vida.
+                </p>
+                <div class="process-deliverables">
+                  <span class="deliv-tag">Estilismo Completo</span>
+                  <span class="deliv-tag">Manual de Mantenimiento</span>
+                  <span class="deliv-tag">Garantía 5 Años</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         METRICS / COUNTERS SECTION
+         Cifras que cuentan solas al aparecer en pantalla
+         ========================================================================== -->
+    <section class="section metrics-section" id="cifras" aria-labelledby="cifras-heading">
+      <div class="container">
+        <div style="margin-bottom: 3.5rem;">
+          <span class="section-eyebrow">Trayectoria</span>
+          <h2 class="section-title" id="cifras-heading">Arquitectura avalada por hechos</h2>
+          <p class="section-subtitle">
+            Catorce años transformando el paisaje interior de Valencia con un estándar innegociable de excelencia.
+          </p>
+        </div>
+
+        <div class="metrics-grid">
+          <!-- Counter 1 -->
+          <div class="metric-card">
+            <div class="metric-number-wrapper">
+              <span class="counter" data-target="14">14</span>
+              <span class="metric-suffix">+</span>
+            </div>
+            <div class="metric-label">Años de trayectoria</div>
+            <div class="metric-detail">Dedicados exclusivamente a la arquitectura residencial y reformas de alta gama en Valencia.</div>
+          </div>
+
+          <!-- Counter 2 -->
+          <div class="metric-card">
+            <div class="metric-number-wrapper">
+              <span class="counter" data-target="180">180</span>
+              <span class="metric-suffix">+</span>
+            </div>
+            <div class="metric-label">Proyectos ejecutados</div>
+            <div class="metric-detail">Áticos, viviendas señoriales y casas de campo entregadas en plazo y presupuesto garantizado.</div>
+          </div>
+
+          <!-- Counter 3 -->
+          <div class="metric-card">
+            <div class="metric-number-wrapper">
+              <span class="counter" data-target="98">98</span>
+              <span class="metric-suffix">%</span>
+            </div>
+            <div class="metric-label">Clientes recurrentes</div>
+            <div class="metric-detail">O familias que nos recomiendan de forma activa a su círculo más cercano.</div>
+          </div>
+
+          <!-- Counter 4 -->
+          <div class="metric-card">
+            <div class="metric-number-wrapper">
+              <span class="counter" data-target="6">6</span>
+              <span class="metric-suffix">premios</span>
+            </div>
+            <div class="metric-label">Reconocimientos de diseño</div>
+            <div class="metric-detail">Menciones en certámenes nacionales y publicaciones en Architectural Digest España y Dezeen.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         TESTIMONIALS / OPINIONES
+         ========================================================================== -->
+    <section class="section testimonials-section" id="opiniones" aria-labelledby="opiniones-heading">
+      <div class="container">
+        <div>
+          <span class="section-eyebrow">Testimonios Reales</span>
+          <h2 class="section-title" id="opiniones-heading">Lo que dicen quienes ya habitan su Norte</h2>
+          <p class="section-subtitle">
+            La mayor satisfacción de nuestro estudio es la gratitud serena de quienes viven cada día en nuestros espacios.
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          <!-- Opinión 1 -->
+          <div class="testimonial-card">
+            <div>
+              <div class="testimonial-stars" aria-label="5 estrellas de 5">
+                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+              </div>
+              <p class="testimonial-quote">
+                "Norte no solo reformó nuestro ático en Cirilo Amorós; transformó por completo nuestra rutina familiar. La entrada de luz en invierno es un regalo diario y el rigor con el presupuesto fue intachable."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-avatar">ES</div>
+              <div class="author-info">
+                <span class="author-name">Elena & Marc Soler</span>
+                <span class="author-location">Ático en Ensanche, Valencia</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Opinión 2 -->
+          <div class="testimonial-card">
+            <div>
+              <div class="testimonial-stars" aria-label="5 estrellas de 5">
+                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+              </div>
+              <p class="testimonial-quote">
+                "Tenía pavor a iniciar una obra de esta magnitud residiendo fuera de Valencia. El equipo de Norte me enviaba informes semanales en vídeo con un nivel de detalle milimétrico. Cero estrés y resultado de revista."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-avatar">IB</div>
+              <div class="author-info">
+                <span class="author-name">Ignacio Benlloch</span>
+                <span class="author-location">Piso Señorial en Gran Vía</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Opinión 3 -->
+          <div class="testimonial-card">
+            <div>
+              <div class="testimonial-stars" aria-label="5 estrellas de 5">
+                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                <svg viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+              </div>
+              <p class="testimonial-quote">
+                "La sensibilidad táctil de los materiales que proponen es otro mundo. Los morteros de cal, las maderas sin barnices brillantes... es una casa que huele bien, respira bien y te calma en cuanto entras."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-avatar">CA</div>
+              <div class="author-info">
+                <span class="author-name">Dra. Carmen Albiñana</span>
+                <span class="author-location">Villa en El Saler</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         FAQ ACCORDION (<details> native & accessible)
+         ========================================================================== -->
+    <section class="section faq-section" id="faq" aria-labelledby="faq-heading">
+      <div class="container faq-layout">
+        <div class="faq-sticky-col">
+          <span class="section-eyebrow">Dudas Habituales</span>
+          <h2 class="section-title" id="faq-heading">Claridad y confianza desde el primer día</h2>
+          <p class="section-subtitle">
+            Resolvemos las preguntas más frecuentes sobre honorarios, plazos, licencias y metodología de trabajo.
+          </p>
+          <div style="margin-top: 2rem;">
+            <a href="#contacto" class="btn btn-secondary">
+              ¿Tienes otra duda? Escríbenos
+            </a>
+          </div>
+        </div>
+
+        <div class="faq-list">
+          <!-- Item 1 -->
+          <details class="faq-item" open>
+            <summary class="faq-summary">
+              <span>¿Cómo se estructura el presupuesto y cómo evitáis sobrecostes?</span>
+              <span class="faq-indicator" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-content">
+              Elaboramos un presupuesto técnico a libro abierto con mediciones desglosadas por partidas antes de iniciar la obra. Trabajamos con precio cerrado garantizado en contrato. Cualquier modificación que desees incorporar durante el proceso se presupuesta y aprueba formalmente por escrito de manera previa a su ejecución.
+            </div>
+          </details>
+
+          <!-- Item 2 -->
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span>¿Gestionáis las licencias en el Ayuntamiento de Valencia?</span>
+              <span class="faq-indicator" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-content">
+              Sí, de manera integral. Nuestro equipo de arquitectos colegiados en el COACV se encarga de redactar el proyecto técnico visado, solicitar los informes patrimoniales (especialmente en distritos protegidos como Ciutat Vella o Ensanche), tramitar la licencia de obras y atender todas las inspecciones municipales hasta la obtención de la primera ocupación.
+            </div>
+          </details>
+
+          <!-- Item 3 -->
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span>¿Cuánto tiempo requiere una reforma integral de alta gama?</span>
+              <span class="faq-indicator" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-content">
+              El proceso se divide en dos etapas: la fase de proyecto y selección de materiales (suele oscilar entre 6 y 10 semanas) y la fase constructiva en sí. Para una vivienda de 160-250 m², la ejecución suele situarse entre 5 y 7 meses. Definimos un cronograma Gantt estricto y penalizaciones voluntarias por retraso.
+            </div>
+          </details>
+
+          <!-- Item 4 -->
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span>¿Podemos conservar mobiliario o piezas de arte propias?</span>
+              <span class="faq-indicator" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-content">
+              Por supuesto. Consideramos que la arquitectura cobra sentido cuando dialoga con la memoria de sus habitantes. Escaneamos o medimos tus piezas queridas para ubicarlas estratégicamente, diseñando iluminaciones específicas o nichos a medida que ensalcen su protagonismo.
+            </div>
+          </details>
+
+          <!-- Item 5 -->
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span>¿Aceptáis proyectos fuera de la ciudad de Valencia?</span>
+              <span class="faq-indicator" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-content">
+              Sí. Desarrollamos habitualmente residencias y villas vacacionales en la Costa Blanca (Jávea, Moraira, Altea, Dénia) y enclaves residenciales del interior (Godella, Rocafort, Chiva), así como proyectos selectos en Madrid y las Islas Baleares.
+            </div>
+          </details>
+
+          <!-- Item 6 -->
+          <details class="faq-item">
+            <summary class="faq-summary">
+              <span>¿Qué diferencia a Norte de una empresa de reformas común?</span>
+              <span class="faq-indicator" aria-hidden="true">+</span>
+            </summary>
+            <div class="faq-content">
+              Norte es un estudio de autor integrado por arquitectos, diseñadores de interiores y ebanistas. No subcontratamos el diseño ni delegamos la supervisión en capataces externos: nuestros directores de proyecto están cada mañana a pie de obra revisando escuadras, aplomos, uniones y calidades matéricas.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CONTACT FORM & STUDIO DETAILS
+         ========================================================================== -->
+    <section class="section contact-section" id="contacto" aria-labelledby="contacto-heading">
+      <div class="container">
+        <div>
+          <span class="section-eyebrow">Contacto & Cita Previa</span>
+          <h2 class="section-title" id="contacto-heading">Comencemos a proyectar tu próximo hogar</h2>
+          <p class="section-subtitle">
+            Visítanos en nuestro estudio en el centro histórico de Valencia o cuéntanos los detalles de tu vivienda para coordinar un primer encuentro.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Información directa del estudio -->
+          <div class="contact-info-panel">
+            <div>
+              <h3 style="font-family: var(--font-serif); font-size: 1.8rem; font-weight: 400; margin-bottom: 1rem;">
+                Taller & Materioteca
+              </h3>
+              <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7;">
+                Un espacio concebido para tocar la materia: muestras de piedra a escala real, iluminación de prueba y catálogo de texturas.
+              </p>
+
+              <div class="contact-direct-items">
+                <div class="contact-item">
+                  <div class="contact-icon-box">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                      <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="contact-item-title">Ubicación</div>
+                    <div class="contact-item-value">Calle de la Paz, 18, 2ª Planta<br>46003 Valencia, España</div>
+                  </div>
+                </div>
+
+                <div class="contact-item">
+                  <div class="contact-icon-box">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="contact-item-title">Teléfono & WhatsApp</div>
+                    <div class="contact-item-value">
+                      <a href="tel:+34963812450">+34 963 81 24 50</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="contact-item">
+                  <div class="contact-icon-box">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                      <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="contact-item-title">Correspondencia</div>
+                    <div class="contact-item-value">
+                      <a href="mailto:hola@norteinteriorismo.es">hola@norteinteriorismo.es</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-badge-box">
+              <strong>Atención exclusiva con cita previa:</strong> Para dedicar a cada proyecto la calma que merece, coordinamos las visitas con antelación en horario de Lunes a Viernes de 09:30 a 19:30.
+            </div>
+          </div>
+
+          <!-- Formulario de contacto -->
+          <div class="contact-form-wrapper">
+            <form class="contact-form" id="contactForm" action="#contacto" method="POST" novalidate>
+              <div class="form-status" id="formStatus"></div>
+
+              <div class="form-group-row">
+                <div class="form-field">
+                  <label class="form-label" for="nombre">Nombre y Apellidos <span>*</span></label>
+                  <input type="text" id="nombre" name="nombre" class="form-input" placeholder="Ej. Javier Navarro" required>
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="telefono">Teléfono de contacto <span>*</span></label>
+                  <input type="tel" id="telefono" name="telefono" class="form-input" placeholder="+34 600 000 000" required>
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="email">Correo electrónico <span>*</span></label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="javier@ejemplo.com" required>
+              </div>
+
+              <div class="form-group-row">
+                <div class="form-field">
+                  <label class="form-label" for="tipoProyecto">Tipo de intervención</label>
+                  <select id="tipoProyecto" name="tipoProyecto" class="form-select">
+                    <option value="reforma-integral">Reforma Integral de Vivienda</option>
+                    <option value="obra-nueva">Arquitectura Interior en Obra Nueva</option>
+                    <option value="atico-villa">Ático o Villa Exclusiva</option>
+                    <option value="restauracion">Restauración Patrimonial</option>
+                    <option value="otro">Mobiliario & Estilismo Global</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="superficie">Superficie aprox. (m²)</label>
+                  <input type="number" id="superficie" name="superficie" class="form-input" placeholder="Ej. 180" min="40">
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="ubicacionInmueble">Ubicación del inmueble</label>
+                <input type="text" id="ubicacionInmueble" name="ubicacion" class="form-input" placeholder="Ej. Ensanche, Ruzafa, Camp de Túria...">
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="mensaje">Cuéntanos tu visión o necesidades</label>
+                <textarea id="mensaje" name="mensaje" class="form-textarea" placeholder="¿Qué buscas en tu nuevo espacio? ¿Qué sensaciones deseas sentir al llegar a casa?"></textarea>
+              </div>
+
+              <div class="checkbox-field">
+                <input type="checkbox" id="privacidad" name="privacidad" required>
+                <label for="privacidad">
+                  He leído y acepto la política de privacidad y autorizo el tratamiento de mis datos para concertar la reunión.
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;" id="submitBtn">
+                <span>Solicitar cita de proyecto</span>
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand-bio">
+          <span class="footer-brand-title">NORTE</span>
+          <p class="footer-bio-text">
+            Estudio de arquitectura interior y diseño residencial de alta gama en Valencia. Proyectamos espacios donde la calma y la nobleza matérica perduran en el tiempo.
+          </p>
+          <div class="valencia-time-badge">
+            <span class="time-pulse"></span>
+            <span id="valenciaTime">Valencia, 11:42</span>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Navegación</h4>
+          <ul class="footer-nav-list">
+            <li><a href="#proyectos" class="footer-nav-link">Obras Selectas</a></li>
+            <li><a href="#antes-despues" class="footer-nav-link">Antes & Después</a></li>
+            <li><a href="#proceso" class="footer-nav-link">Metodología</a></li>
+            <li><a href="#cifras" class="footer-nav-link">El Estudio</a></li>
+            <li><a href="#opiniones" class="footer-nav-link">Clientes</a></li>
+            <li><a href="#faq" class="footer-nav-link">Preguntas Frecuentes</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Especialidades</h4>
+          <ul class="footer-nav-list">
+            <li><a href="#proyectos" class="footer-nav-link">Áticos de Lujo en Valencia</a></li>
+            <li><a href="#proyectos" class="footer-nav-link">Reformas Integrales Ensanche</a></li>
+            <li><a href="#proyectos" class="footer-nav-link">Restauración de Mosaico Nolla</a></li>
+            <li><a href="#proyectos" class="footer-nav-link">Villas en la Costa Blanca</a></li>
+            <li><a href="#proyectos" class="footer-nav-link">Mobiliario a Medida</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Estudio Valencia</h4>
+          <ul class="footer-nav-list">
+            <li class="footer-nav-link">Calle de la Paz 18, 2ª</li>
+            <li class="footer-nav-link">46003 Valencia</li>
+            <li class="footer-nav-link">+34 963 81 24 50</li>
+            <li class="footer-nav-link"><a href="mailto:hola@norteinteriorismo.es" style="text-decoration: underline;">hola@norteinteriorismo.es</a></li>
+            <li style="margin-top: 1rem;">
+              <a href="#contacto" class="btn btn-outline-white" style="padding: 0.5rem 1.1rem; font-size: 0.75rem;">
+                Reservar Cita
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © <span id="currentYear">2026</span> Norte Interiorismo S.L. Todos los derechos reservados.
+        </div>
+        <div class="footer-legal-links">
+          <a href="#" class="footer-nav-link">Aviso Legal</a>
+          <a href="#" class="footer-nav-link">Política de Privacidad</a>
+          <a href="#" class="footer-nav-link">Cookies</a>
+          <a href="#" class="footer-nav-link">Créditos de Diseño</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MODAL LIGHTBOX COMPONENT FOR PROJECTS
+       ========================================================================== -->
+  <div class="modal-overlay" id="projectModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card" id="modalCard">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Cerrar modal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <img src="" alt="" class="modal-image" id="modalImage">
+      <div class="modal-body">
+        <span class="section-eyebrow" id="modalEyebrow">Proyecto</span>
+        <h3 class="section-title" id="modalTitle" style="font-size: 2.2rem; margin-bottom: 0.75rem;"></h3>
+        <p id="modalDescription" style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.5rem;"></p>
+        <div id="modalDetailsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.25rem; padding-top: 1.5rem; border-top: 1px solid var(--border-light);">
+        </div>
+        <div style="margin-top: 2rem;">
+          <a href="#contacto" class="btn btn-primary" onclick="closeProjectModal()">
+            Solicitar una intervención similar
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sonner-style Toast Notification Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- ==========================================================================
+       CLIENT-SIDE JAVASCRIPT
+       Crafted with Emil Kowalski Micro-Interactions, Zero-Dependency, Pure Vanilla
+       ========================================================================== -->
+  <script>
+    (function() {
+      'use strict';
+
+      /* --- 1. Dynamic Year & Local Valencia Time --- */
+      const yearSpan = document.getElementById('currentYear');
+      if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+      function updateValenciaClock() {
+        const clockEl = document.getElementById('valenciaTime');
+        if (!clockEl) return;
+        try {
+          const valenciaDate = new Intl.DateTimeFormat('es-ES', {
+            timeZone: 'Europe/Madrid',
+            hour: '2-digit',
+            minute: '2-digit'
+          }).format(new Date());
+          clockEl.textContent = `Valencia, ${valenciaDate}`;
+        } catch (e) {
+          clockEl.textContent = 'Valencia, España';
+        }
+      }
+      updateValenciaClock();
+      setInterval(updateValenciaClock, 60000);
+
+      /* --- 2. Header Scroll Blur Effect --- */
+      const header = document.getElementById('siteHeader');
+      function onScrollHeader() {
+        if (!header) return;
+        if (window.scrollY > 40) {
+          header.classList.add('is-scrolled');
+        } else {
+          header.classList.remove('is-scrolled');
+        }
+      }
+      window.addEventListener('scroll', onScrollHeader, { passive: true });
+      onScrollHeader();
+
+      /* --- 3. Mobile Navigation Drawer --- */
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const mobileDrawer = document.getElementById('mobileDrawer');
+      const mobileLinks = document.querySelectorAll('.mobile-link');
+
+      function toggleMobileMenu() {
+        const isOpen = mobileDrawer.classList.toggle('is-open');
+        mobileBtn.classList.toggle('is-active', isOpen);
+        mobileBtn.setAttribute('aria-expanded', isOpen);
+        mobileDrawer.setAttribute('aria-hidden', !isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      }
+
+      if (mobileBtn && mobileDrawer) {
+        mobileBtn.addEventListener('click', toggleMobileMenu);
+        mobileLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            if (mobileDrawer.classList.contains('is-open')) {
+              toggleMobileMenu();
+            }
+          });
+        });
+      }
+
+      /* --- 4. Before / After Comparison Slider (Touch + Drag + Arrow Keys) --- */
+      const comparisonBox = document.getElementById('comparisonBox');
+      const comparisonWrapper = document.getElementById('comparisonWrapper');
+      const comparisonSlider = document.getElementById('comparisonSlider');
+      let isDragging = false;
+
+      function updateComparison(percentage) {
+        const clamped = Math.max(0, Math.min(100, percentage));
+        if (comparisonWrapper) {
+          comparisonWrapper.style.setProperty('--pos', clamped + '%');
+        }
+        if (comparisonSlider) {
+          comparisonSlider.value = clamped;
+        }
+      }
+
+      if (comparisonWrapper) {
+        function getPosFromEvent(e) {
+          const rect = comparisonWrapper.getBoundingClientRect();
+          const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+          const pos = ((clientX - rect.left) / rect.width) * 100;
+          return pos;
+        }
+
+        comparisonWrapper.addEventListener('mousedown', (e) => {
+          isDragging = true;
+          comparisonBox.classList.add('is-dragging');
+          updateComparison(getPosFromEvent(e));
+        });
+
+        window.addEventListener('mousemove', (e) => {
+          if (!isDragging) return;
+          updateComparison(getPosFromEvent(e));
+        });
+
+        window.addEventListener('mouseup', () => {
+          if (isDragging) {
+            isDragging = false;
+            comparisonBox.classList.remove('is-dragging');
+          }
+        });
+
+        // Touch support
+        comparisonWrapper.addEventListener('touchstart', (e) => {
+          isDragging = true;
+          comparisonBox.classList.add('is-dragging');
+          updateComparison(getPosFromEvent(e));
+        }, { passive: true });
+
+        window.addEventListener('touchmove', (e) => {
+          if (!isDragging) return;
+          updateComparison(getPosFromEvent(e));
+        }, { passive: true });
+
+        window.addEventListener('touchend', () => {
+          if (isDragging) {
+            isDragging = false;
+            comparisonBox.classList.remove('is-dragging');
+          }
+        });
+
+        // Range input fallback listener
+        if (comparisonSlider) {
+          comparisonSlider.addEventListener('input', (e) => {
+            updateComparison(e.target.value);
+          });
+        }
+      }
+
+      /* --- 5. Process 4 Steps: Connecting Line Drawn on Scroll --- */
+      const processContainer = document.getElementById('processTimelineContainer');
+      const processScrollLine = document.getElementById('processScrollLine');
+      const processSteps = document.querySelectorAll('.process-step');
+
+      function updateProcessLine() {
+        if (!processContainer || !processScrollLine) return;
+        const rect = processContainer.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        // Calculate progress as user scrolls through the section
+        const startOffset = windowHeight * 0.75;
+        const totalDistance = rect.height;
+        const currentDistance = startOffset - rect.top;
+
+        let progress = (currentDistance / totalDistance) * 100;
+        progress = Math.max(0, Math.min(100, progress));
+
+        processScrollLine.style.setProperty('--line-height', progress + '%');
+
+        // Activate step nodes as line reaches them
+        processSteps.forEach((step) => {
+          const stepRect = step.getBoundingClientRect();
+          if (stepRect.top < windowHeight * 0.65) {
+            step.classList.add('is-active');
+          } else {
+            step.classList.remove('is-active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', updateProcessLine, { passive: true });
+      window.addEventListener('resize', updateProcessLine, { passive: true });
+      updateProcessLine();
+
+      /* --- 6. Number Counters Animation upon Scrolling into View --- */
+      const counters = document.querySelectorAll('.counter');
+      let countersAnimated = false;
+
+      function animateCounters() {
+        if (countersAnimated) return;
+
+        counters.forEach(counter => {
+          const target = parseInt(counter.getAttribute('data-target'), 10) || 0;
+          const duration = 1800; // ms
+          const startTime = performance.now();
+
+          // Ease Out Expo
+          function easeOutExpo(x) {
+            return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
+          }
+
+          function step(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = easeOutExpo(progress);
+            const current = Math.floor(eased * target);
+
+            counter.textContent = current;
+
+            if (progress < 1) {
+              requestAnimationFrame(step);
+            } else {
+              counter.textContent = target;
+            }
+          }
+
+          requestAnimationFrame(step);
+        });
+
+        countersAnimated = true;
+      }
+
+      // Intersection Observer for metrics
+      if ('IntersectionObserver' in window) {
+        const metricsSection = document.getElementById('cifras');
+        if (metricsSection) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                animateCounters();
+                observer.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.25 });
+          observer.observe(metricsSection);
+        }
+      } else {
+        // Fallback: animate immediately
+        animateCounters();
+      }
+
+      /* --- 7. Project Gallery Filtering --- */
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const projectCards = document.querySelectorAll('.project-card');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => {
+            b.classList.remove('is-active');
+            b.setAttribute('aria-selected', 'false');
+          });
+          btn.classList.add('is-active');
+          btn.setAttribute('aria-selected', 'true');
+
+          const filter = btn.getAttribute('data-filter');
+
+          projectCards.forEach(card => {
+            const categories = card.getAttribute('data-category') || '';
+            if (filter === 'all' || categories.includes(filter)) {
+              card.style.display = 'flex';
+              // Trigger quick micro-reveal
+              card.style.opacity = '0';
+              card.style.transform = 'translateY(12px)';
+              setTimeout(() => {
+                card.style.transition = 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+              }, 30);
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      /* --- 8. Project Detail Modal / Lightbox --- */
+      const projectData = {
+        1: {
+          title: "Ático Cirilo Amorós",
+          eyebrow: "Valencia · Ensanche (2024)",
+          image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=85",
+          description: "Reforma integral de un ático dúplex de 280 m² en una finca señorial de 1932. El objetivo principal fue devolver la luz natural a través de un eje longitudinal abierto que conecta la terraza privada con los salones principales.",
+          specs: [
+            { label: "Superficie", val: "280 m² + 65 m² terraza" },
+            { label: "Materiales", val: "Travertino Navona y Roble ahumado" },
+            { label: "Climatización", val: "Aerotermia por suelo radiante" },
+            { label: "Duración", val: "6 meses de obra" }
+          ]
+        },
+        2: {
+          title: "Villa El Saler",
+          eyebrow: "Dehesa de El Saler · Valencia (2024)",
+          image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1400&q=85",
+          description: "Un refugio contemporáneo encajado entre pinos y dunas mediterráneas. La continuidad entre interior y exterior se logró mediante ventanales de suelo a techo sin marco y microcemento de tono duna.",
+          specs: [
+            { label: "Superficie", val: "410 m² construidos" },
+            { label: "Materiales", val: "Morteros de cal y pino local" },
+            { label: "Iluminación", val: "Leds enrasados 2700K cálidos" },
+            { label: "Duración", val: "9 meses de proyecto" }
+          ]
+        },
+        3: {
+          title: "Palacete Ruzafa 1906",
+          eyebrow: "Ruzafa · Valencia (2023)",
+          image: "https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=1400&q=85",
+          description: "Recuperación artesanal de mosaico Nolla de principios de siglo y techos artesonados de 4,20 metros de altura. Se introdujeron volúmenes de madera y latón para albergar baños y vestidores como esculturas autónomas.",
+          specs: [
+            { label: "Superficie", val: "195 m²" },
+            { label: "Patrimonio", val: "Restauración de 14.000 teselas Nolla" },
+            { label: "Carpintería", val: "Ebanistería propia a medida" },
+            { label: "Reconocimiento", val: "Seleccionado Premios FAD 2024" }
+          ]
+        },
+        4: {
+          title: "Casa Gran Vía",
+          eyebrow: "Gran Vía Marqués del Turia (2023)",
+          image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=85",
+          description: "Aislamiento termoacústico absoluto con carpinterías de triple vidrio para una vivienda urbana de alta gama. Salón pasante con chimenea de bioetanol y cocina integrada oculta en paneles escamoteables.",
+          specs: [
+            { label: "Superficie", val: "240 m²" },
+            { label: "Materiales", val: "Piedra Campaspero y Nogal" },
+            { label: "Domótica", val: "Control KNX de luz y clima" },
+            { label: "Duración", val: "5 meses y medio" }
+          ]
+        },
+        5: {
+          title: "Refugio Los Acantilados",
+          eyebrow: "Costa Blanca (2023)",
+          image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1400&q=85",
+          description: "La tradición constructiva mediterránea llevada al siglo XXI: muros gruesos de piedra de tosca que conservan el fresco en verano, celosías de cerámica cruda y terrazas escalonadas hacia el mar.",
+          specs: [
+            { label: "Superficie", val: "320 m²" },
+            { label: "Materiales", val: "Tosca de Jávea y Barro cocido" },
+            { label: "Sostenibilidad", val: "Pozo canadiense y aerotermia" },
+            { label: "Duración", val: "8 meses" }
+          ]
+        },
+        6: {
+          title: "Residencia Hernán Cortés",
+          eyebrow: "Pla del Remei · Valencia (2022)",
+          image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1400&q=85",
+          description: "Diseñada a medida para una prestigiosa coleccionista de arte contemporáneo. Rieles de iluminación empotrados invisibles, estanterías estructurales de 6 metros sin fijaciones visibles y suite de hotel.",
+          specs: [
+            { label: "Superficie", val: "165 m²" },
+            { label: "Iluminación", val: "Ópticas museográficas DALI" },
+            { label: "Mobiliario", val: "Piezas comisariadas de autor" },
+            { label: "Duración", val: "4 meses de obra" }
+          ]
+        }
+      };
+
+      const projectModal = document.getElementById('projectModal');
+      const modalCloseBtn = document.getElementById('modalCloseBtn');
+      const modalImage = document.getElementById('modalImage');
+      const modalEyebrow = document.getElementById('modalEyebrow');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDescription = document.getElementById('modalDescription');
+      const modalDetailsGrid = document.getElementById('modalDetailsGrid');
+
+      window.openProjectModal = function(id) {
+        const data = projectData[id];
+        if (!data || !projectModal) return;
+
+        modalImage.src = data.image;
+        modalImage.alt = data.title;
+        modalEyebrow.textContent = data.eyebrow;
+        modalTitle.textContent = data.title;
+        modalDescription.textContent = data.description;
+
+        modalDetailsGrid.innerHTML = data.specs.map(spec => `
+          <div>
+            <div style="font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); font-weight: 600;">${spec.label}</div>
+            <div style="font-size: 0.95rem; color: var(--text-main); font-weight: 500; margin-top: 0.2rem;">${spec.val}</div>
+          </div>
+        `).join('');
+
+        projectModal.classList.add('is-open');
+        projectModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      };
+
+      window.closeProjectModal = function() {
+        if (!projectModal) return;
+        projectModal.classList.remove('is-open');
+        projectModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      };
+
+      if (modalCloseBtn) {
+        modalCloseBtn.addEventListener('click', closeProjectModal);
+      }
+
+      if (projectModal) {
+        projectModal.addEventListener('click', (e) => {
+          if (e.target === projectModal) {
+            closeProjectModal();
+          }
+        });
+      }
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeProjectModal();
+        }
+      });
+
+      // Bind cards to modal
+      projectCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const id = card.getAttribute('data-project-id');
+          if (id) openProjectModal(id);
+        });
+      });
+
+      /* --- 9. Sonner-style Toast Notification Helper --- */
+      function showToast(message, type = 'success') {
+        const container = document.getElementById('toastContainer');
+        if (!container) return;
+
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerHTML = `
+          <svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span>${message}</span>
+        `;
+
+        container.appendChild(toast);
+
+        // Animate in
+        requestAnimationFrame(() => {
+          toast.classList.add('is-visible');
+        });
+
+        // Remove after 4.5 seconds
+        setTimeout(() => {
+          toast.classList.remove('is-visible');
+          setTimeout(() => {
+            if (toast.parentElement) toast.parentElement.removeChild(toast);
+          }, 400);
+        }, 4500);
+      }
+
+      /* --- 10. Contact Form Submission & Feedback --- */
+      const contactForm = document.getElementById('contactForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const formStatus = document.getElementById('formStatus');
+
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+
+          const nombre = document.getElementById('nombre');
+          const email = document.getElementById('email');
+          const telefono = document.getElementById('telefono');
+          const privacidad = document.getElementById('privacidad');
+
+          if (!nombre.value.trim() || !email.value.trim() || !telefono.value.trim() || !privacidad.checked) {
+            alert('Por favor, completa los campos requeridos y acepta la política de privacidad.');
+            return;
+          }
+
+          // Button loading animation
+          const originalBtnContent = submitBtn.innerHTML;
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = `
+            <span>Enviando solicitud...</span>
+            <svg class="btn-icon" style="animation: spin 1s linear infinite;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12a9 9 0 1 1-6.219-8.56"></path>
+            </svg>
+          `;
+
+          // Simulate refined network response
+          setTimeout(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnContent;
+
+            // Show status
+            if (formStatus) {
+              formStatus.className = 'form-status is-success';
+              formStatus.innerHTML = `
+                <strong>¡Gracias, ${nombre.value.split(' ')[0]}!</strong> Tu solicitud ha sido registrada correctamente. Nuestro equipo de arquitectura interior se pondrá en contacto contigo en menos de 24 horas para coordinar la visita a nuestro taller en Valencia.
+              `;
+            }
+
+            // Show Sonner-style toast
+            showToast('Solicitud enviada con éxito. Te contactaremos en menos de 24h.');
+
+            // Reset form
+            contactForm.reset();
+          }, 900);
+        });
+      }
+
+      /* --- 11. Subtle Mouse Parallax & Magnetic Touch for Desktop --- */
+      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        const hero = document.getElementById('inicio');
+        const heroImg = document.querySelector('.hero-media');
+
+        if (hero && heroImg) {
+          hero.addEventListener('mousemove', (e) => {
+            const { clientX, clientY } = e;
+            const xOffset = (clientX / window.innerWidth - 0.5) * 12;
+            const yOffset = (clientY / window.innerHeight - 0.5) * 12;
+            heroImg.style.transform = `scale(1.05) translate(${xOffset}px, ${yOffset}px)`;
+          });
+
+          hero.addEventListener('mouseleave', () => {
+            heroImg.style.transform = `scale(1.04)`;
+          });
+        }
+      }
+
+    })();
+  </script>
+
+  <style>
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+
+</body>
+</html>
