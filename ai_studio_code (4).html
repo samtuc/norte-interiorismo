@@ -699,98 +699,105 @@
   <!-- ========================================================================
        6. CEREBRO 3D BIO-DIGITAL HIPERREALISTA (360° + ZOOM ANATÓMICO PROFUNDO)
        ======================================================================== -->
-  <section id="cerebro-section" class="relative z-10 py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-    <div class="text-center max-w-3xl mx-auto mb-10 stagger-group">
-      <div class="reveal-item floating-badge inline-flex items-center gap-2 px-3.5 py-1 rounded-full pelantium-glass text-sky-300 text-xs font-mono mb-3">
-        <span>🧠 ARQUITECTURA NEURAL 45,000 PUNTOS • ZOOM ANATÓMICO PROFUNDO</span>
+  <!-- ========================================================================
+       6. CEREBRO 3D ANATÓMICO 4K CON RED INTERCONECTADA INTERNA Y CERO INTERFERENCIA
+       ======================================================================== -->
+  <section id="cerebro-section" class="relative z-10 py-14 sm:py-20 px-3 sm:px-6 max-w-[1440px] mx-auto">
+    <div class="text-center max-w-3xl mx-auto mb-8">
+      <div class="floating-badge inline-flex items-center gap-2 px-3.5 py-1 rounded-full pelantium-glass text-sky-300 text-xs font-mono mb-3">
+        <span>🧠 RED SINÁPTICA 4K • 50,000 NEURONAS + 16,000 AXONES INTERCONECTADOS</span>
       </div>
-      <h2 class="reveal-item font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-titanium tracking-tight">
-        Inspecciona en 360° los 6 Centros Neurales de Sincro Gastro AI™
+      <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-titanium tracking-tight">
+        Arquitectura Cerebral Interactiva 360°
       </h2>
-      <p class="reveal-item text-sm sm:text-base text-slate-300 mt-3 leading-relaxed">
-        Rota el modelo en cualquier ángulo o <strong class="text-white">haz zoom hacia el interior</strong> para adentrarte en el cuerpo calloso y observar cómo las sinapsis conectan el salón (<span class="text-sky-300">SincroFront™</span>) con la cocina y caja (<span class="text-amber-300">SincroCore™</span>).
+      <p class="text-xs sm:text-base text-slate-300 mt-2.5">
+        Arrastra para girar en <strong class="text-white">360°</strong> o usa la rueda del ratón para <strong class="text-sky-300">ampliar y viajar dentro del cerebro en 4K</strong> viendo cada línea sináptica interconectada.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-      <div class="lg:col-span-4 flex flex-col justify-between order-2 lg:order-1">
-        <div class="text-xs font-mono uppercase tracking-wider text-slate-400 mb-2 flex items-center justify-between px-1">
-          <span>6 Centros Anatómicos Activos</span>
-          <span class="text-sky-400">Pulso: 1.2s Lub-Dub</span>
+    <!-- ESCENARIO PANORÁMICO 4K DEL CEREBRO (ESTILO REFERENCIA) -->
+    <div id="brain-viewport" class="relative w-full h-[620px] sm:h-[700px] lg:h-[760px] rounded-[2rem] bg-[#020305] border border-white/10 overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.95)]">
+      
+      <!-- Controles Superiores Izquierdos de Cámara y Zoom 4K -->
+      <div class="absolute top-5 left-5 z-30 flex flex-wrap items-center gap-2">
+        <div class="flex items-center gap-2 bg-black/80 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10 text-[11px] font-mono text-slate-300">
+          <span id="heartbeat-indicator" class="w-2 h-2 rounded-full bg-sky-400"></span>
+          <span id="zoom-depth-label">VISTA 360° • ZOOM 4K ACTIVO</span>
         </div>
-        <div id="lobe-list-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2.5"></div>
+        <button type="button" onclick="zoomBrainCamera(-0.65); playTactileClick();"
+                class="px-3 py-1.5 rounded-full bg-black/80 hover:bg-white/15 border border-white/15 text-xs font-mono text-white transition">
+          + Zoom In (Interior)
+        </button>
+        <button type="button" onclick="zoomBrainCamera(0.65); playTactileClick();"
+                class="px-3 py-1.5 rounded-full bg-black/80 hover:bg-white/15 border border-white/15 text-xs font-mono text-white transition">
+          − Zoom Out
+        </button>
+        <button type="button" onclick="resetBrainView(); playTactileClick();"
+                class="px-3 py-1.5 rounded-full bg-black/80 hover:bg-white/15 border border-white/15 text-xs font-mono text-sky-300 transition">
+          Centrar
+        </button>
       </div>
 
-      <div class="lg:col-span-5 order-1 lg:order-2 flex flex-col">
-        <div id="brain-viewport" class="relative w-full h-[400px] sm:h-[480px] lg:h-[540px] rounded-3xl pelantium-glass overflow-hidden flex items-center justify-center">
-          <div class="absolute top-3.5 left-4 right-4 flex items-center justify-between pointer-events-none z-20">
-            <div class="flex items-center gap-2 bg-black/65 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 text-[11px] font-mono text-sky-300">
-              <span id="heartbeat-indicator" class="w-2 h-2 rounded-full bg-sky-400 transition-transform duration-150"></span>
-              <span>LATIDO TALÁMICO 1.2s</span>
-            </div>
-            <div class="flex items-center gap-1.5 pointer-events-auto">
-              <button type="button" onclick="zoomBrainCamera(-0.8); playTactileClick();"
-                      title="Acercar al interior del cerebro"
-                      class="w-7 h-7 rounded-full bg-black/70 hover:bg-white/15 border border-white/15 text-white font-mono text-xs flex items-center justify-center transition">+</button>
-              <button type="button" onclick="zoomBrainCamera(0.8); playTactileClick();"
-                      title="Alejar cámara"
-                      class="w-7 h-7 rounded-full bg-black/70 hover:bg-white/15 border border-white/15 text-white font-mono text-xs flex items-center justify-center transition">−</button>
-              <button type="button" onclick="resetBrainView(); playTactileClick();"
-                      class="px-2.5 h-7 rounded-full bg-black/70 hover:bg-white/15 border border-white/15 text-[10px] font-mono text-slate-200 transition">Reset 360°</button>
-            </div>
-          </div>
+      <!-- LIENZO WEBGL 4K DEL CEREBRO -->
+      <canvas id="brain-canvas" class="w-full h-full cursor-grab active:cursor-grabbing"></canvas>
 
-          <canvas id="brain-canvas" class="w-full h-full cursor-grab active:cursor-grabbing"></canvas>
-          <div id="brain-markers-overlay" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
+      <!-- CAPA DE PÍLDORAS ANATÓMICAS 01 A 06 (IDÉNTICAS A LA REFERENCIA) -->
+      <div id="brain-markers-overlay" class="absolute inset-0 pointer-events-none overflow-hidden z-20"></div>
 
-          <div class="absolute bottom-3.5 left-4 right-4 flex items-center justify-between pointer-events-none z-20">
-            <span class="text-[10px] sm:text-[11px] font-mono text-slate-300 bg-black/65 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
-              🔍 Usa rueda o pellizco para Zoom Anatómico Interno
-            </span>
-            <span id="zoom-depth-label" class="text-[10px] font-mono text-sky-300 bg-black/65 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10">
-              VISTA CORTICAL
-            </span>
-          </div>
+      <!-- TARJETA FLOTANTE DERECHA (IDÉNTICA A LA CAPTURA DE REFERENCIA) -->
+      <div class="absolute bottom-4 right-4 left-4 sm:left-auto sm:top-6 sm:bottom-auto sm:right-6 sm:w-[410px] z-30 rounded-2xl bg-[#07090e]/90 backdrop-blur-2xl border border-white/15 p-5 sm:p-6 shadow-[0_25px_70px_rgba(0,0,0,0.95)]">
+        
+        <div class="flex items-center justify-between mb-1.5">
+          <span id="detail-region-name" class="font-mono text-xs sm:text-sm font-semibold text-amber-400">
+            Corteza Occipital
+          </span>
+          <span id="detail-module-tag" class="font-mono text-[11px] px-2 py-0.5 rounded bg-white/5 text-slate-300 border border-white/10">
+            05 / 06 • SincroCore™
+          </span>
         </div>
+
+        <h3 id="detail-title" class="font-display font-extrabold text-xl sm:text-2xl text-white mb-2.5 leading-tight">
+          Validador Yape/Plin & OCR de Facturas
+        </h3>
+
+        <p id="detail-description" class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
+          Visión computacional que verifica capturas de pago contra estafas extrayendo el código de operación, y digitaliza facturas de compras en Makro o mercado con una sola foto en WhatsApp.
+        </p>
+
+        <!-- Barra de Métrica Monospace con Punto Luminoso -->
+        <div id="detail-metric-box" class="px-3.5 py-2.5 rounded-xl bg-black/60 border border-lime-400/35 mb-4 flex items-center gap-2.5">
+          <span id="detail-metric-dot" class="w-2 h-2 rounded-full bg-lime-400 flex-shrink-0"></span>
+          <span id="detail-metric" class="font-mono text-[11px] sm:text-xs text-lime-200 tracking-wide uppercase">
+            PRECISIÓN OCR: 99.8% - TIEMPO DE VALIDACIÓN: 0.8s
+          </span>
+        </div>
+
+        <!-- Botones Anterior / Siguiente -->
+        <div class="flex items-center justify-between gap-3 mb-3.5">
+          <button type="button" onclick="stepBrainCenter(-1); playTactileClick();"
+                  class="px-4 py-2 rounded-full bg-white/[0.06] hover:bg-white/[0.14] border border-white/15 text-xs font-mono text-slate-200 transition">
+            ← Anterior
+          </button>
+          <button type="button" onclick="stepBrainCenter(1); playTactileClick();"
+                  class="px-5 py-2 rounded-full bg-[#c8ff00] hover:bg-[#d8ff33] text-slate-950 font-mono font-bold text-xs shadow-[0_0_20px_rgba(200,255,0,0.35)] transition">
+            Siguiente →
+          </button>
+        </div>
+
+        <!-- Botón Inferior Agendar Demostración -->
+        <a id="detail-wa-cta"
+           href="https://wa.me/51954120739?text=Hola%20Sincro%20Gastro%20AI,%20quiero%20coordinar%20una%20demostracion%20para%20mi%20restaurante"
+           target="_blank"
+           rel="noopener noreferrer"
+           onclick="playTactileClick()"
+           class="w-full py-2.5 px-4 rounded-full bg-white/[0.04] hover:bg-white/[0.1] border border-white/15 text-xs font-mono text-slate-200 flex items-center justify-center gap-2 transition">
+          <span class="text-amber-400">⚡</span>
+          <span>Agendar Demostración al 954 120 739 →</span>
+        </a>
       </div>
 
-      <div class="lg:col-span-3 order-3 flex">
-        <div class="bento-card rounded-3xl p-6 flex flex-col justify-between w-full">
-          <div>
-            <div class="flex items-center justify-between gap-2 mb-3">
-              <span id="detail-module-tag" class="px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-sky-500/15 text-sky-300 border border-sky-400/30">
-                [SincroFront™]
-              </span>
-              <span id="detail-region-name" class="text-[11px] font-mono text-slate-400">LÓBULO FRONTAL</span>
-            </div>
-
-            <h3 id="detail-title" class="font-display font-bold text-xl sm:text-2xl text-white mb-3 leading-snug">
-              Chips NFC en Mesa & Tarjeta Digital VIP en 3s
-            </h3>
-
-            <p id="detail-description" class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-5">
-              El comensal acerca su teléfono al acrílico NFC de la mesa. Sin descargar apps ni escanear códigos QR deteriorados, abre tu WhatsApp oficial en 3 segundos y activa su tarjeta digital de recompensas.
-            </p>
-
-            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 mb-5">
-              <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400">Telemetría de Impacto</div>
-              <div id="detail-metric" class="font-display font-bold text-base sm:text-lg text-sky-300 mt-1">
-                +68% de comensales registrados en base propia
-              </div>
-            </div>
-          </div>
-
-          <a id="detail-wa-cta"
-             href="https://wa.me/51954120739?text=Hola%20Sincro%20Gastro%20AI,%20quiero%20coordinar%20una%20demostracion%20para%20mi%20restaurante"
-             target="_blank"
-             rel="noopener noreferrer"
-             onclick="playTactileClick()"
-             class="w-full py-3.5 px-4 rounded-2xl bg-white/[0.08] hover:bg-white/[0.15] border border-white/15 text-xs sm:text-sm font-semibold text-white flex items-center justify-center gap-2 transition">
-            <span>Activar este centro en mi local</span>
-            <span>→</span>
-          </a>
-        </div>
-      </div>
+      <!-- Contenedor oculto de compatibilidad -->
+      <div id="lobe-list-container" class="hidden"></div>
     </div>
   </section>
 
