@@ -3,15 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <title>SINCRO GASTRO AI™ • Sistema Operativo Neural para Restaurantes</title>
-  <meta name="description" content="El Sistema Neural que Dirige tu Restaurante 24/7. Fidelización automática en mesa mediante chips NFC y control autónomo de recetas, mermas y caja por IA." />
+  <title>Sincro Gastro — Sistema Autónomo para Restaurantes</title>
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -19,25 +16,22 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-            display: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
+            sans: ['-apple-system', 'BlinkMacSystemFont', 'Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', '-apple-system', 'Inter', 'sans-serif'],
           },
           colors: {
-            pelantium: '#030305',
-            obsidian: '#07080c',
-            glacial: '#38bdf8',
-            electric: '#00d4ff',
-            synapse: '#7928ca',
-            neuralMagenta: '#d946ef',
-            amberSpark: '#ffb700'
+            appleBlack: '#000000',
+            appleSurface: '#0b0b0f',
+            appleGray: '#86868b',
+            appleBlue: '#0071e3',
+            appleCyan: '#2997ff',
+            appleIce: '#f5f5f7'
           }
         }
       }
     }
   </script>
 
-  <!-- Three.js r128 & OrbitControls -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 
@@ -45,401 +39,209 @@
     :root {
       --angle: 0deg;
       --spotlight-x: 50vw;
-      --spotlight-y: 35vh;
+      --spotlight-y: 30vh;
     }
-
     @property --angle {
       syntax: '<angle>';
       initial-value: 0deg;
       inherits: false;
     }
-
-    * {
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
-
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
     html, body {
-      margin: 0;
-      padding: 0;
-      background-color: #030305;
-      color: #f8fafc;
+      margin: 0; padding: 0;
+      background-color: #000000;
+      color: #f5f5f7;
       overflow-x: hidden;
-      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+      -webkit-font-smoothing: antialiased;
     }
-
-    /* Haces de luz ambiental Pelantium Odyssey */
-    .pelantium-beam {
+    .apple-ambient-glow {
       background:
-        radial-gradient(ellipse 55% 40% at 50% 0%, rgba(56, 189, 248, 0.14) 0%, rgba(12, 14, 20, 0) 75%),
-        radial-gradient(ellipse 20% 50% at 50% 8%, rgba(248, 250, 252, 0.08) 0%, transparent 80%);
+        radial-gradient(ellipse 55% 35% at 50% -5%, rgba(41, 151, 255, 0.14) 0%, transparent 75%),
+        radial-gradient(ellipse 25% 35% at 50% 4%, rgba(245, 245, 247, 0.05) 0%, transparent 75%);
     }
-
-    /* Cursor Spotlight Global (Efecto Linterna de Zafiro) */
     #cursor-spotlight {
-      background: radial-gradient(
-        650px circle at var(--spotlight-x) var(--spotlight-y),
-        rgba(56, 189, 248, 0.055) 0%,
-        transparent 60%
-      );
+      background: radial-gradient(600px circle at var(--spotlight-x) var(--spotlight-y), rgba(41, 151, 255, 0.05) 0%, transparent 60%);
     }
-
-    /* Superficie Cristal Ahumado Oscuro Tipo Hardware Apple */
-    .pelantium-glass {
-      position: relative;
-      background: rgba(12, 14, 20, 0.65);
-      backdrop-filter: blur(28px);
-      -webkit-backdrop-filter: blur(28px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow:
-        0 24px 60px -15px rgba(0, 0, 0, 0.85),
-        inset 0 1px 0 rgba(255, 255, 255, 0.09);
+    .apple-glass {
+      background: rgba(18, 18, 22, 0.72);
+      backdrop-filter: saturate(180%) blur(32px);
+      -webkit-backdrop-filter: saturate(180%) blur(32px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
-
-    /* Tarjetas Bento con 3D Tilt Parallax + Border-Beam Especular */
     .bento-card {
       position: relative;
-      background: rgba(12, 14, 20, 0.65);
-      backdrop-filter: blur(28px);
-      -webkit-backdrop-filter: blur(28px);
+      background: rgba(16, 16, 20, 0.75);
+      backdrop-filter: saturate(180%) blur(32px);
+      -webkit-backdrop-filter: saturate(180%) blur(32px);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow:
-        0 24px 60px -15px rgba(0, 0, 0, 0.85),
-        inset 0 1px 0 rgba(255, 255, 255, 0.09);
-      transition: border-color 0.35s ease, box-shadow 0.35s ease;
+      box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
       transform-style: preserve-3d;
       will-change: transform;
       overflow: hidden;
     }
-
     .bento-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(
-        460px circle at var(--card-mouse-x, -500px) var(--card-mouse-y, -500px),
-        rgba(56, 189, 248, 0.11),
-        transparent 45%
-      );
-      opacity: 0;
-      transition: opacity 0.35s ease;
-      pointer-events: none;
-      z-index: 0;
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(450px circle at var(--card-mouse-x, -500px) var(--card-mouse-y, -500px), rgba(41, 151, 255, 0.1), transparent 45%);
+      opacity: 0; transition: opacity 0.3s ease; pointer-events: none; z-index: 0;
     }
+    .bento-card:hover::before { opacity: 1; }
+    .bento-card:hover { border-color: rgba(255, 255, 255, 0.16); }
+    .bento-card > * { position: relative; z-index: 2; }
 
-    .bento-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      padding: 1px;
-      background: radial-gradient(
-        300px circle at var(--card-mouse-x, -500px) var(--card-mouse-y, -500px),
-        rgba(248, 250, 252, 0.4),
-        rgba(56, 189, 248, 0.22) 40%,
-        transparent 70%
-      );
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      opacity: 0;
-      transition: opacity 0.35s ease;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .bento-card:hover::before,
-    .bento-card:hover::after {
-      opacity: 1;
-    }
-
-    .bento-card:hover {
-      border-color: rgba(255, 255, 255, 0.15);
-      box-shadow:
-        0 30px 70px -12px rgba(0, 0, 0, 0.92),
-        0 0 35px -10px rgba(56, 189, 248, 0.12),
-        inset 0 1px 0 rgba(255, 255, 255, 0.15);
-    }
-
-    .bento-card > * {
-      position: relative;
-      z-index: 2;
-    }
-
-    /* Anillo Prismático Giratorio (Exclusivo para Botones Primarios y SincroBot) */
-    @keyframes chromatic-spin {
-      from { --angle: 0deg; }
-      to { --angle: 360deg; }
-    }
-
-    @keyframes chromatic-spin-transform {
-      0% { transform: translate(-50%, -50%) rotate(0deg); }
-      100% { transform: translate(-50%, -50%) rotate(360deg); }
-    }
+    @keyframes chromatic-spin { from { --angle: 0deg; } to { --angle: 360deg; } }
+    @keyframes chromatic-spin-transform { 0% { transform: translate(-50%, -50%) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg); } }
 
     .apple-prism-cta {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.85rem;
-      padding: 0.45rem 1.45rem 0.45rem 0.5rem;
-      border-radius: 9999px;
-      background: rgba(10, 12, 18, 0.86);
-      backdrop-filter: blur(28px);
-      -webkit-backdrop-filter: blur(28px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow:
-        0 18px 45px -10px rgba(0, 0, 0, 0.9),
-        inset 0 1px 1px rgba(255, 255, 255, 0.18),
-        inset 0 -1px 2px rgba(0, 0, 0, 0.85);
-      cursor: pointer;
-      user-select: none;
-      overflow: hidden;
-      will-change: transform;
-      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+      position: relative; display: inline-flex; align-items: center; gap: 0.75rem;
+      padding: 0.42rem 1.35rem 0.42rem 0.45rem; border-radius: 9999px;
+      background: rgba(14, 14, 18, 0.88); backdrop-filter: saturate(180%) blur(28px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.9), inset 0 1px 1px rgba(255, 255, 255, 0.18);
+      cursor: pointer; user-select: none; overflow: hidden; transition: all 0.25s ease;
     }
-
     .apple-prism-cta::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 9999px;
-      padding: 1.5px;
-      background: conic-gradient(
-        from var(--angle),
-        transparent 0%,
-        #00d4ff 16%,
-        #ffffff 28%,
-        #ffb700 44%,
-        #ff2a85 60%,
-        #7928ca 76%,
-        transparent 90%
-      );
+      content: ""; position: absolute; inset: 0; border-radius: 9999px; padding: 1.5px;
+      background: conic-gradient(from var(--angle), transparent 0%, #2997ff 18%, #ffffff 30%, #ffb700 46%, #ff2a85 62%, #5e5ce6 78%, transparent 92%);
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      animation: chromatic-spin 3.2s linear infinite;
-      opacity: 0.92;
-      pointer-events: none;
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      animation: chromatic-spin 3.2s linear infinite; pointer-events: none;
     }
-
-    .apple-prism-cta:hover {
-      border-color: rgba(255, 255, 255, 0.25);
-      box-shadow:
-        0 22px 55px -8px rgba(0, 212, 255, 0.25),
-        inset 0 1px 2px rgba(255, 255, 255, 0.28);
-    }
-
-    .apple-prism-cta:active {
-      transform: scale(0.96) !important;
-    }
+    .apple-prism-cta:hover { border-color: rgba(255, 255, 255, 0.28); box-shadow: 0 20px 50px -8px rgba(41, 151, 255, 0.28); }
+    .apple-prism-cta:active { transform: scale(0.96) !important; }
 
     .prism-orb {
-      position: relative;
-      width: 44px;
-      height: 44px;
-      border-radius: 9999px;
-      background: radial-gradient(circle at 35% 30%, #252836 0%, #10121a 70%, #07080c 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      box-shadow:
-        inset 0 2px 4px rgba(255, 255, 255, 0.2),
-        inset 0 -3px 6px rgba(0, 0, 0, 0.95),
-        0 0 16px rgba(0, 212, 255, 0.22);
-      overflow: hidden;
+      position: relative; width: 38px; height: 38px; border-radius: 9999px;
+      background: radial-gradient(circle at 35% 30%, #2c2c34 0%, #121217 70%, #050507 100%);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden;
     }
-
     .prism-orb::before {
-      content: "";
-      position: absolute;
-      width: 155%;
-      height: 155%;
-      top: 50%;
-      left: 50%;
-      background: conic-gradient(
-        from 0deg,
-        transparent 0%,
-        #00d4ff 14%,
-        #ffffff 26%,
-        #ffb700 40%,
-        #ff2a85 55%,
-        transparent 72%,
-        #00d4ff 88%,
-        #ffffff 96%,
-        transparent 100%
-      );
-      animation: chromatic-spin-transform 2.8s linear infinite;
-      pointer-events: none;
+      content: ""; position: absolute; width: 155%; height: 155%; top: 50%; left: 50%;
+      background: conic-gradient(from 0deg, transparent 0%, #2997ff 15%, #ffffff 28%, #ffb700 42%, #ff2a85 58%, transparent 75%, #2997ff 90%, transparent 100%);
+      animation: chromatic-spin-transform 2.8s linear infinite; pointer-events: none;
     }
-
     .prism-orb::after {
-      content: "";
-      position: absolute;
-      inset: 2px;
-      border-radius: 9999px;
-      background: radial-gradient(circle at 30% 25%, #262938 0%, #12141d 68%, #08090f 100%);
-      box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.22);
-      z-index: 1;
+      content: ""; position: absolute; inset: 2px; border-radius: 9999px;
+      background: radial-gradient(circle at 30% 25%, #24242c 0%, #101015 70%, #060609 100%); z-index: 1;
     }
+    .prism-orb > * { position: relative; z-index: 2; }
 
-    .prism-orb > * {
-      position: relative;
-      z-index: 2;
+    .text-apple-titanium {
+      background: linear-gradient(180deg, #FFFFFF 0%, #F5F5F7 50%, #86868B 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
-
-    /* Revelado Cinemático por Scroll (Stagger Reveal) */
-    .reveal-item {
-      opacity: 0;
-      transform: translateY(32px);
-      transition:
-        opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-      transition-delay: var(--stagger-delay, 0ms);
-      will-change: opacity, transform;
+    .text-apple-blue-grad {
+      background: linear-gradient(95deg, #f5f5f7 0%, #64d2ff 48%, #2997ff 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
-
-    .reveal-item.is-visible {
-      opacity: 1;
-      transform: translateY(0);
+    input[type="range"].apple-slider {
+      -webkit-appearance: none; appearance: none; width: 100%; height: 5px;
+      background: rgba(255, 255, 255, 0.14); border-radius: 999px; outline: none; cursor: pointer;
     }
-
-    .text-titanium {
-      background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 50%, #94A3B8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    input[type="range"].apple-slider::-webkit-slider-thumb {
+      -webkit-appearance: none; appearance: none; width: 20px; height: 20px; border-radius: 50%;
+      background: #ffffff; border: 2px solid #0071e3; box-shadow: 0 2px 10px rgba(41, 151, 255, 0.6); transition: transform 0.15s ease;
     }
+    input[type="range"].apple-slider::-webkit-slider-thumb:hover { transform: scale(1.12); }
 
-    .text-glacial-platinum {
-      background: linear-gradient(95deg, #f8fafc 0%, #38bdf8 52%, #e2e8f0 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    input[type="range"].pelantium-slider {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 100%;
-      height: 6px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 999px;
-      outline: none;
-      cursor: pointer;
-    }
-
-    input[type="range"].pelantium-slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: #f8fafc;
-      border: 2px solid #00d4ff;
-      box-shadow: 0 0 15px rgba(0, 212, 255, 0.65);
-      transition: transform 0.15s ease;
-    }
-
-    input[type="range"].pelantium-slider::-webkit-slider-thumb:hover {
-      transform: scale(1.15);
-    }
-
-    #brain-viewport {
-      touch-action: pan-y;
-    }
-
+    #brain-viewport { touch-action: pan-y; }
     .brain-marker-pin {
-      position: absolute;
-      transform: translate(-50%, -50%);
-      pointer-events: auto;
-      cursor: pointer;
-      transition: opacity 0.25s ease, transform 0.25s ease;
-      z-index: 20;
+      position: absolute; transform: translate(-50%, -50%);
+      pointer-events: auto; cursor: pointer;
+      transition: opacity 0.25s ease, transform 0.25s ease; z-index: 20;
     }
-
-    .brain-marker-pin:hover {
-      transform: translate(-50%, -50%) scale(1.12);
-      z-index: 30;
+    .brain-marker-pin:hover { transform: translate(-50%, -50%) scale(1.08); z-index: 30; }
+    /* ===== Movimiento estilo Apple ===== */
+    :root {
+      --ease-apple: cubic-bezier(0.25, 0.1, 0.25, 1);
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     }
+    a, button { transition-timing-function: var(--ease-apple); }
+    .reveal {
+      opacity: 0;
+      transform: translate3d(0, 42px, 0);
+      filter: blur(8px);
+      transition: opacity 1.1s var(--ease-out-expo), transform 1.2s var(--ease-out-expo), filter 1s var(--ease-out-expo);
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+    .reveal.is-visible { opacity: 1; transform: translate3d(0, 0, 0); filter: blur(0); }
 
+    #main-nav { transition: max-width 0.7s var(--ease-out-expo), padding 0.7s var(--ease-out-expo), background-color 0.7s var(--ease-apple), box-shadow 0.7s var(--ease-apple); }
+    #main-nav.nav-scrolled { max-width: 60rem; padding-top: 0.4rem; padding-bottom: 0.4rem; background: rgba(8, 8, 12, 0.82); }
+    #main-nav a.nav-link { position: relative; }
+    #main-nav a.nav-link::after {
+      content: ""; position: absolute; left: 50%; bottom: -7px; width: 4px; height: 4px; border-radius: 9999px;
+      background: #2997ff; transform: translateX(-50%) scale(0); transition: transform 0.4s var(--ease-out-expo);
+    }
+    #main-nav a.nav-link.is-active { color: #f5f5f7; }
+    #main-nav a.nav-link.is-active::after { transform: translateX(-50%) scale(1); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; filter: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
     ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #030305; }
-    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
+    ::-webkit-scrollbar-track { background: #000000; }
+    ::-webkit-scrollbar-thumb { background: #2c2c2e; border-radius: 3px; }
   </style>
 </head>
 
-<body class="relative min-h-screen selection:bg-sky-500/30 selection:text-sky-200">
+<body class="relative min-h-screen selection:bg-appleBlue/40 selection:text-white">
 
-  <!-- DEFINICIÓN SVG GLOBAL DEL ISOTIPO OFICIAL: NÚCLEO CUÁNTICO TOROIDAL (Sin display:none para preservar gradientes) -->
+  <!-- ISOTIPO VECTORIAL LIMPIO -->
   <svg style="position:fixed; width:0; height:0; overflow:hidden; pointer-events:none;" aria-hidden="true">
     <defs>
       <linearGradient id="quantum-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stop-color="#ffffff" />
-        <stop offset="45%" stop-color="#00d4ff" />
-        <stop offset="100%" stop-color="#0284c7" />
+        <stop offset="50%" stop-color="#2997ff" />
+        <stop offset="100%" stop-color="#0071e3" />
       </linearGradient>
       <linearGradient id="quantum-platinum" x1="100%" y1="0%" x2="0%" y2="100%">
         <stop offset="0%" stop-color="#ffffff" />
-        <stop offset="50%" stop-color="#cbd5e1" />
-        <stop offset="100%" stop-color="#38bdf8" />
+        <stop offset="55%" stop-color="#a1a1a6" />
+        <stop offset="100%" stop-color="#2997ff" />
       </linearGradient>
       <symbol id="isotipo-nucleo-cuantico" viewBox="0 0 64 64">
-        <ellipse cx="32" cy="32" rx="28" ry="11" transform="rotate(-28 32 32)"
-                 fill="none" stroke="url(#quantum-platinum)" stroke-width="2.5" stroke-opacity="0.85" />
-        <path d="M16 32C16 22 24 16 32 25C40 34 48 26 48 32C48 38 40 44 32 35C24 26 16 34 16 32Z"
-              fill="none" stroke="url(#quantum-cyan)" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round" />
-        <path d="M32 16C42 16 48 24 39 32C30 40 38 48 32 48C26 48 16 40 25 32C34 24 26 16 32 16Z"
-              fill="none" stroke="url(#quantum-platinum)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
-        <circle cx="32" cy="32" r="3.8" fill="#ffffff" />
-        <circle cx="32" cy="32" r="7" fill="none" stroke="#00d4ff" stroke-width="1.5" stroke-opacity="0.7" />
+        <ellipse cx="32" cy="32" rx="28" ry="11" transform="rotate(-28 32 32)" fill="none" stroke="url(#quantum-platinum)" stroke-width="2.4" stroke-opacity="0.88" />
+        <path d="M16 32C16 22 24 16 32 25C40 34 48 26 48 32C48 38 40 44 32 35C24 26 16 34 16 32Z" fill="none" stroke="url(#quantum-cyan)" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M32 16C42 16 48 24 39 32C30 40 38 48 32 48C26 48 16 40 25 32C34 24 26 16 32 16Z" fill="none" stroke="url(#quantum-platinum)" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round" />
+        <circle cx="32" cy="32" r="3.6" fill="#ffffff" />
       </symbol>
     </defs>
   </svg>
 
-  <!-- FONDO CÓSMICO DEEP-SPACE + HACES DE LUZ PELANTIUM + CURSOR SPOTLIGHT -->
   <canvas id="universe-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
-  <div class="fixed inset-0 pointer-events-none z-0 pelantium-beam"></div>
+  <div class="fixed inset-0 pointer-events-none z-0 apple-ambient-glow"></div>
   <div id="cursor-spotlight" class="fixed inset-0 pointer-events-none z-30"></div>
 
   <!-- ========================================================================
-       NAVBAR CORPORATIVA CON ISOTIPO "NÚCLEO CUÁNTICO"
+       NAVBAR MINIMALISTA APPLE (SIN CUADROS IA NI ETIQUETAS ROBÓTICAS)
        ======================================================================== -->
-  <header class="fixed top-0 left-0 right-0 z-40 px-3 sm:px-6 pt-4 pointer-events-none">
-    <nav class="pointer-events-auto pelantium-glass rounded-full px-4 sm:px-6 py-2.5 mx-auto max-w-6xl flex items-center justify-between">
-      <a href="#hero" class="flex items-center gap-3 group" onclick="playTactileClick()">
-        <div class="w-10 h-10 rounded-full bg-white/[0.04] border border-white/15 flex items-center justify-center shadow-inner group-hover:border-sky-400/50 transition-colors">
-          <svg class="w-6 h-6 transition-transform duration-500 group-hover:rotate-45">
-            <use href="#isotipo-nucleo-cuantico"></use>
-          </svg>
+  <header class="fixed top-0 left-0 right-0 z-40 px-4 sm:px-6 pt-4 pointer-events-none">
+    <nav id="main-nav" class="pointer-events-auto apple-glass rounded-full px-5 sm:px-7 py-2.5 mx-auto max-w-6xl flex items-center justify-between">
+      <a href="#hero" class="flex items-center gap-3 group" onclick="window.playTactileClick()">
+        <div class="w-9 h-9 rounded-full bg-white/[0.05] border border-white/15 flex items-center justify-center group-hover:border-appleCyan/60 transition-colors">
+          <svg class="w-5 h-5 transition-transform duration-500 group-hover:rotate-45"><use href="#isotipo-nucleo-cuantico"></use></svg>
         </div>
-        <div class="flex flex-col">
-          <span class="font-display font-bold text-sm sm:text-base tracking-tight text-white flex items-center gap-1.5">
-            SINCRO GASTRO <span class="text-[11px] px-1.5 py-0.5 rounded bg-sky-500/15 text-sky-300 border border-sky-400/25 font-mono">AI™</span>
-          </span>
-          <span class="text-[10px] font-mono text-slate-400 hidden sm:inline tracking-wider">
-            SISTEMA OPERATIVO NEURAL PARA RESTAURANTES
-          </span>
-        </div>
+        <span class="font-display font-bold text-base sm:text-lg tracking-tight text-white">
+          Sincro Gastro
+        </span>
       </a>
 
-      <div class="hidden lg:flex items-center gap-7 text-xs font-medium text-slate-300">
-        <a href="#simulador-section" onclick="playTactileClick()" class="hover:text-white transition-colors">Simulador ROI (S/)</a>
-        <a href="#cerebro-section" onclick="playTactileClick()" class="hover:text-white transition-colors">Cerebro 3D (6 Centros)</a>
-        <a href="#planes-section" onclick="playTactileClick()" class="hover:text-white transition-colors">Planes en Soles</a>
-        <a href="#fundadores-section" onclick="playTactileClick()" class="hover:text-white transition-colors">Fundadores</a>
+      <div class="hidden lg:flex items-center gap-8 text-xs font-medium text-appleGray">
+        <a href="#simulador-section" onclick="window.playTactileClick()" class="hover:text-white transition-colors">Simulador Financiero</a>
+        <a href="#cerebro-section" onclick="window.playTactileClick()" class="hover:text-white transition-colors">Arquitectura 3D</a>
+        <a href="#planes-section" onclick="window.playTactileClick()" class="hover:text-white transition-colors">Planes</a>
+        <a href="#fundadores-section" onclick="window.playTactileClick()" class="hover:text-white transition-colors">Fundadores</a>
       </div>
 
       <div class="magnetic-wrap">
-        <a href="https://wa.me/51954120739?text=Hola%20Sincro%20Gastro%20AI,%20quiero%20coordinar%20una%20demostracion%20para%20mi%20restaurante"
-           target="_blank"
-           rel="noopener noreferrer"
-           onclick="playTactileClick()"
+        <a href="https://wa.me/51954120739?text=Hola%20Sincro%20Gastro,%20quiero%20coordinar%20una%20demostracion%20para%20mi%20restaurante"
+           target="_blank" rel="noopener noreferrer" onclick="window.playTactileClick()"
            class="apple-prism-cta !py-1.5 !pl-1.5 !pr-4 text-xs sm:text-sm font-semibold text-white">
           <div class="prism-orb !w-7 !h-7">
-            <svg class="w-4 h-4">
-              <use href="#isotipo-nucleo-cuantico"></use>
-            </svg>
+            <svg class="w-4 h-4"><use href="#isotipo-nucleo-cuantico"></use></svg>
           </div>
           <span>Agendar Demostración</span>
         </a>
@@ -448,248 +250,174 @@
   </header>
 
   <!-- ========================================================================
-       4. PORTADA HERO CINEMÁTICA CON ESCULTURA CUÁNTICA INTERACTIVA
+       PORTADA HERO APPLE KEYNOTE (LIMPIA, SIN PÍLDORAS DE IA)
        ======================================================================== -->
-  <section id="hero" class="relative z-10 min-h-screen w-full flex flex-col justify-between items-center pt-24 pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
+  <section id="hero" class="relative z-10 min-h-screen w-full flex flex-col justify-between items-center pt-28 pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
     
-    <div class="floating-badge mt-3 inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full pelantium-glass text-[11px] font-mono text-slate-200">
-      <span class="w-2 h-2 rounded-full bg-sky-400 animate-ping"></span>
-      <span class="w-2 h-2 rounded-full bg-sky-400 -ml-4"></span>
-      <span>SINCRO GASTRO AI™ • TELEMETRÍA EN VIVO LIMA, PERÚ</span>
-    </div>
-
-    <!-- ESCULTURA WEBGL CENTRAL: NÚCLEO CUÁNTICO TOROIDAL 3D -->
-    <div class="relative w-full max-w-lg h-[235px] sm:h-[275px] md:h-[300px] my-1 flex items-center justify-center">
-      <div class="absolute w-64 h-64 sm:w-72 sm:h-72 rounded-full bg-sky-400/15 blur-3xl pointer-events-none"></div>
+    <!-- Escultura 3D limpia sin cartel flotante -->
+    <div class="relative w-full max-w-lg h-[230px] sm:h-[265px] flex items-center justify-center">
+      <div class="absolute w-64 h-64 rounded-full bg-appleBlue/15 blur-3xl pointer-events-none"></div>
       <canvas id="hero-quantum-canvas" class="w-full h-full cursor-grab active:cursor-grabbing"></canvas>
-      <div class="floating-badge absolute bottom-1 px-3.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/10 text-[10px] font-mono text-slate-300 pointer-events-none flex items-center gap-2" data-phase="1.4">
-        <span class="text-sky-400">◈</span> NÚCLEO CUÁNTICO TOROIDAL • SINCROFRONT™ + SINCROCORE™
-      </div>
     </div>
 
-    <!-- Titulares Hero -->
-    <div class="max-w-4xl mx-auto text-center flex flex-col items-center stagger-group">
-      <h1 class="reveal-item is-visible font-display font-extrabold text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.06] text-titanium mb-5">
-        El Sistema Neural que Dirige tu Restaurante <span class="text-glacial-platinum">24/7.</span>
+    <div id="hero-content" class="max-w-5xl mx-auto text-center flex flex-col items-center will-change-transform">
+      <p class="text-sm sm:text-lg font-semibold tracking-tight text-appleCyan mb-4">
+        SincroFront + SincroCore
+      </p>
+      <h1 class="font-display font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-[5.25rem] tracking-tight leading-[1.02] text-apple-titanium mb-6">
+        El Sistema Autónomo que Dirige tu Restaurante <span class="text-apple-blue-grad">24/7.</span>
       </h1>
 
-      <p class="reveal-item is-visible max-w-2xl text-sm sm:text-base md:text-lg text-slate-300/90 font-normal leading-relaxed mb-8 px-2">
-        Fidelización automática en mesa mediante <strong class="text-white font-semibold">chips NFC</strong> y control autónomo de <strong class="text-white font-semibold">recetas, mermas y caja por IA</strong>. Cero comisiones a apps y rentabilidad blindada.
+      <p class="max-w-2xl text-sm sm:text-base md:text-lg text-appleGray font-normal leading-relaxed mb-8 px-2">
+        Fidelización inmediata en mesa mediante <strong class="text-white font-medium">chips NFC</strong> y control exacto de <strong class="text-white font-medium">recetas, mermas y caja</strong>. Sin comisiones a aplicaciones y con rentabilidad blindada.
       </p>
 
-      <div class="reveal-item is-visible flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 w-full sm:w-auto">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 w-full sm:w-auto">
         <div class="magnetic-wrap w-full sm:w-auto">
-          <a href="https://wa.me/51954120739?text=Hola%20Sincro%20Gastro%20AI,%20quiero%20coordinar%20una%20demostracion%20para%20mi%20restaurante"
-             target="_blank"
-             rel="noopener noreferrer"
-             onclick="playTactileClick()"
+          <a href="https://wa.me/51954120739?text=Hola%20Sincro%20Gastro,%20quiero%20coordinar%20una%20demostracion%20para%20mi%20restaurante"
+             target="_blank" rel="noopener noreferrer" onclick="window.playTactileClick()"
              class="apple-prism-cta w-full sm:w-auto justify-center sm:justify-start group">
             <div class="prism-orb">
-              <svg class="w-6 h-6 transition-transform duration-300 group-hover:scale-110">
-                <use href="#isotipo-nucleo-cuantico"></use>
-              </svg>
+              <svg class="w-5 h-5 transition-transform duration-300 group-hover:scale-110"><use href="#isotipo-nucleo-cuantico"></use></svg>
             </div>
             <div class="flex flex-col text-left pr-2">
-              <span class="text-[10px] font-mono uppercase tracking-wider text-sky-300">WhatsApp Directo • +51 954 120 739</span>
-              <span class="text-sm sm:text-base font-bold text-white tracking-tight">Agendar Demostración en Vivo</span>
+              <span class="text-[11px] text-appleGray">Atención directa en Lima</span>
+              <span class="text-sm sm:text-base font-semibold text-white tracking-tight">Agendar Demostración en Vivo</span>
             </div>
           </a>
         </div>
 
         <div class="magnetic-wrap w-full sm:w-auto">
-          <button type="button"
-                  onclick="openVideoModal(); playTactileClick();"
-                  class="w-full sm:w-auto inline-flex items-center justify-center gap-3.5 px-6 py-3.5 rounded-full pelantium-glass hover:border-white/25 text-white font-semibold text-sm sm:text-base transition active:scale-95">
-            <span class="w-9 h-9 rounded-full bg-white/[0.07] border border-white/15 flex items-center justify-center text-sky-300">
-              ▶
-            </span>
-            <div class="text-left">
-              <span class="block text-[10px] font-mono uppercase tracking-wider text-slate-400">Arquitectura en Acción</span>
-              <span>Ver Simulacro Operativo</span>
-            </div>
+          <button type="button" onclick="window.openVideoModal()"
+                  class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-full apple-glass hover:border-white/25 text-white font-medium text-sm sm:text-base transition active:scale-95 cursor-pointer">
+            <span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-appleCyan text-xs">▶</span>
+            <span>Ver Simulacro Operativo</span>
           </button>
         </div>
       </div>
     </div>
 
-    <!-- Métricas Operativas -->
-    <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-5xl w-full stagger-group">
-      <div class="reveal-item is-visible bento-card rounded-2xl p-4 text-center">
-        <div class="font-display font-bold text-xl sm:text-2xl text-white">
-          <span class="odometer" data-target="3" data-suffix=" seg">3 seg</span>
-        </div>
-        <div class="text-[11px] sm:text-xs text-slate-400 mt-0.5">Registro VIP con Chip NFC en mesa</div>
+    <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-5xl w-full">
+      <div class="bento-card rounded-2xl p-4 text-center">
+        <div class="font-display font-bold text-xl sm:text-2xl text-white"><span data-count="3.0" data-from="12" data-decimals="1">3.0</span> s</div>
+        <div class="text-xs text-appleGray mt-0.5">Registro VIP con Chip NFC en mesa</div>
       </div>
-      <div class="reveal-item is-visible bento-card rounded-2xl p-4 text-center">
-        <div class="font-display font-bold text-xl sm:text-2xl text-sky-300">
-          <span class="odometer" data-target="0" data-suffix="% Comisiones">0% Comisiones</span>
-        </div>
-        <div class="text-[11px] sm:text-xs text-slate-400 mt-0.5">Pedidos y reservas directas en WhatsApp</div>
+      <div class="bento-card rounded-2xl p-4 text-center">
+        <div class="font-display font-bold text-xl sm:text-2xl text-appleCyan"><span data-count="0" data-from="30">0</span>% Comisiones</div>
+        <div class="text-xs text-appleGray mt-0.5">Pedidos y reservas directas en WhatsApp</div>
       </div>
-      <div class="reveal-item is-visible bento-card rounded-2xl p-4 text-center">
-        <div class="font-display font-bold text-xl sm:text-2xl text-white">
-          <span class="odometer" data-target="100" data-suffix="% Blindado">100% Blindado</span>
-        </div>
-        <div class="text-[11px] sm:text-xs text-slate-400 mt-0.5">Auditoría IA contra Yape/Plin falso</div>
+      <div class="bento-card rounded-2xl p-4 text-center">
+        <div class="font-display font-bold text-xl sm:text-2xl text-white"><span data-count="99.8" data-from="60" data-decimals="1">99.8</span>% Precisión</div>
+        <div class="text-xs text-appleGray mt-0.5">Verificación contra Yape y Plin falso</div>
       </div>
-      <div class="reveal-item is-visible bento-card rounded-2xl p-4 text-center">
-        <div class="font-display font-bold text-xl sm:text-2xl text-amber-300">11:45 PM</div>
-        <div class="text-[11px] sm:text-xs text-slate-400 mt-0.5">Cuadre automático de caja y mermas</div>
+      <div class="bento-card rounded-2xl p-4 text-center">
+        <div class="font-display font-bold text-xl sm:text-2xl text-appleCyan">11:45 PM</div>
+        <div class="text-xs text-appleGray mt-0.5">Cuadre automático de caja y mermas</div>
       </div>
     </div>
   </section>
 
   <!-- ========================================================================
-       5. SIMULADOR FINANCIERO LIMA (AHORRO REAL EN SOLES - PEN)
+       5. SIMULADOR FINANCIERO LIMA (DISEÑO APPLE PRO LIMPIO)
        ======================================================================== -->
-  <section id="simulador-section" class="relative z-10 py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-    <div class="text-center max-w-3xl mx-auto mb-12 stagger-group">
-      <div class="reveal-item floating-badge inline-flex items-center gap-2 px-3.5 py-1 rounded-full pelantium-glass text-sky-300 text-xs font-mono mb-3" data-phase="0.7">
-        <span>◈ TELEMETRÍA FINANCIERA LIMA • CÁLCULO EN TIEMPO REAL</span>
-      </div>
-      <h2 class="reveal-item font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-titanium tracking-tight">
-        Calcula tu Ahorro Real en Soles (PEN) • Simulador Financiero Lima
+  <section id="simulador-section" class="relative z-10 py-24 sm:py-40 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="text-center max-w-3xl mx-auto mb-10">
+      <p class="text-sm sm:text-lg font-semibold text-appleCyan mb-3 tracking-tight">Simulador Financiero Lima</p>
+      <h2 class="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl text-apple-titanium tracking-tight leading-[1.04]">
+        Calcula tu ahorro mensual en Soles.
       </h2>
-      <p class="reveal-item text-sm sm:text-base text-slate-300 mt-3 leading-relaxed">
-        Selecciona el giro de tu local y desliza las barras para medir cuánto dinero recuperas cada mes al eliminar comisiones de apps, mermas ocultas e inactividad de clientes.
+      <p class="text-base sm:text-xl text-appleGray mt-5 leading-relaxed">
+        Selecciona la especialidad de tu restaurante y ajusta el volumen operativo para estimar el capital recuperado cada mes.
       </p>
     </div>
 
-    <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-8 stagger-group">
-      <button type="button" onclick="selectGiro('pizzeria')" data-giro="pizzeria"
-              class="giro-btn reveal-item px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold bg-white text-slate-950 shadow-lg transition flex items-center gap-2">
-        <span>🍕</span> <span>Pizzería / Restobar</span>
+    <div class="flex flex-wrap items-center justify-center gap-2 mb-8">
+      <button type="button" onclick="window.selectGiro('pizzeria')" data-giro="pizzeria"
+              class="giro-btn px-5 py-2 rounded-full text-xs sm:text-sm font-medium bg-white text-black transition cursor-pointer">
+        Pizzería / Restobar
       </button>
-      <button type="button" onclick="selectGiro('cafeteria')" data-giro="cafeteria"
-              class="giro-btn reveal-item px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold pelantium-glass text-slate-300 hover:text-white transition flex items-center gap-2">
-        <span>☕</span> <span>Cafetería / Pastelería</span>
+      <button type="button" onclick="window.selectGiro('cafeteria')" data-giro="cafeteria"
+              class="giro-btn px-5 py-2 rounded-full text-xs sm:text-sm font-medium apple-glass text-appleGray hover:text-white transition cursor-pointer">
+        Cafetería / Pastelería
       </button>
-      <button type="button" onclick="selectGiro('sushi')" data-giro="sushi"
-              class="giro-btn reveal-item px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold pelantium-glass text-slate-300 hover:text-white transition flex items-center gap-2">
-        <span>🍣</span> <span>Sushi / Makis</span>
+      <button type="button" onclick="window.selectGiro('sushi')" data-giro="sushi"
+              class="giro-btn px-5 py-2 rounded-full text-xs sm:text-sm font-medium apple-glass text-appleGray hover:text-white transition cursor-pointer">
+        Sushi / Barra de Makis
       </button>
-      <button type="button" onclick="selectGiro('polleria')" data-giro="polleria"
-              class="giro-btn reveal-item px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold pelantium-glass text-slate-300 hover:text-white transition flex items-center gap-2">
-        <span>🔥</span> <span>Pollería / Parrilla</span>
+      <button type="button" onclick="window.selectGiro('polleria')" data-giro="polleria"
+              class="giro-btn px-5 py-2 rounded-full text-xs sm:text-sm font-medium apple-glass text-appleGray hover:text-white transition cursor-pointer">
+        Pollería / Parrilla
       </button>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch stagger-group">
-      <div class="reveal-item lg:col-span-7 bento-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+      <div class="lg:col-span-7 bento-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
-            <div>
-              <span class="text-xs font-mono uppercase tracking-wider text-slate-400">PARÁMETROS OPERATIVOS</span>
-              <h3 id="sim-giro-title" class="font-display font-bold text-xl text-white mt-0.5">Pizzería / Restobar en Lima</h3>
-            </div>
-            <span id="sim-ticket-badge" class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-sky-300">
-              Ticket Promedio: S/ 65
-            </span>
+            <h3 id="sim-giro-title" class="font-display font-bold text-xl text-white">Pizzería / Restobar en Lima</h3>
+            <span id="sim-ticket-badge" class="text-xs font-medium text-appleCyan">Ticket promedio: S/ 65</span>
           </div>
 
           <div class="mb-7">
             <div class="flex items-center justify-between mb-2.5">
-              <label for="slider-mesas" class="text-xs sm:text-sm font-medium text-slate-200">
-                1. Mesas en Salón (Capacidad instalada)
-              </label>
-              <span class="px-3 py-1 rounded-lg bg-sky-500/15 border border-sky-400/30 font-mono font-bold text-sm text-sky-300">
-                <span id="label-mesas">20</span> mesas
-              </span>
+              <label for="slider-mesas" class="text-xs sm:text-sm font-medium text-appleIce">Mesas en Salón</label>
+              <span class="font-semibold text-sm text-appleCyan"><span id="label-mesas">20</span> mesas</span>
             </div>
-            <input id="slider-mesas" type="range" min="6" max="60" value="20" step="1"
-                   class="pelantium-slider" oninput="updateFinancialSimulator(true)" />
-            <div class="flex justify-between text-[11px] font-mono text-slate-500 mt-1.5">
-              <span>6 mesas</span>
-              <span>30 mesas</span>
-              <span>60 mesas</span>
-            </div>
+            <input id="slider-mesas" type="range" min="6" max="60" value="20" step="1" class="apple-slider" oninput="window.updateFinancialSimulator(true)" />
           </div>
 
           <div class="mb-8">
             <div class="flex items-center justify-between mb-2.5">
-              <label for="slider-pedidos" class="text-xs sm:text-sm font-medium text-slate-200">
-                2. Pedidos Delivery al Mes (Apps / WhatsApp)
-              </label>
-              <span class="px-3 py-1 rounded-lg bg-sky-500/15 border border-sky-400/30 font-mono font-bold text-sm text-sky-300">
-                <span id="label-pedidos">300</span> pedidos/mes
-              </span>
+              <label for="slider-pedidos" class="text-xs sm:text-sm font-medium text-appleIce">Pedidos Delivery al Mes</label>
+              <span class="font-semibold text-sm text-appleCyan"><span id="label-pedidos">300</span> pedidos</span>
             </div>
-            <input id="slider-pedidos" type="range" min="50" max="2000" value="300" step="10"
-                   class="pelantium-slider" oninput="updateFinancialSimulator(true)" />
-            <div class="flex justify-between text-[11px] font-mono text-slate-500 mt-1.5">
-              <span>50 pedidos</span>
-              <span>1,000 pedidos</span>
-              <span>2,000 pedidos</span>
-            </div>
+            <input id="slider-pedidos" type="range" min="50" max="2000" value="300" step="10" class="apple-slider" oninput="window.updateFinancialSimulator(true)" />
           </div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-white/10">
-          <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10">
-            <div class="text-[11px] font-mono text-slate-400">Ahorro Comisiones (30%)</div>
+          <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10">
+            <div class="text-xs text-appleGray">Ahorro en Comisiones</div>
             <div id="breakdown-comisiones" class="font-display font-bold text-lg text-white mt-1">S/ 5,850</div>
-            <div class="text-[10px] text-slate-400 mt-0.5">Desvío de apps a canal propio</div>
           </div>
-          <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10">
-            <div class="text-[11px] font-mono text-slate-400">Control Mermas y Caja</div>
-            <div id="breakdown-mermas" class="font-display font-bold text-lg text-sky-300 mt-1">S/ 2,240</div>
-            <div class="text-[10px] text-slate-400 mt-0.5">Escandallo al gramo + antifraude</div>
+          <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10">
+            <div class="text-xs text-appleGray">Control de Mermas</div>
+            <div id="breakdown-mermas" class="font-display font-bold text-lg text-appleCyan mt-1">S/ 2,240</div>
           </div>
-          <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10">
-            <div class="text-[11px] font-mono text-slate-400">Fidelización y Retorno</div>
-            <div id="breakdown-retorno" class="font-display font-bold text-lg text-amber-300 mt-1">S/ 1,600</div>
-            <div class="text-[10px] text-slate-400 mt-0.5">Reactivación &gt;21 días + NFC</div>
+          <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10">
+            <div class="text-xs text-appleGray">Retorno de Clientes</div>
+            <div id="breakdown-retorno" class="font-display font-bold text-lg text-white mt-1">S/ 1,600</div>
           </div>
         </div>
       </div>
 
-      <div class="reveal-item lg:col-span-5 bento-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between bg-gradient-to-b from-white/[0.04] to-transparent">
+      <div class="lg:col-span-5 bento-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
         <div>
-          <div class="flex items-center justify-between mb-4">
-            <span class="px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 text-xs font-mono">
-              ● CAPITAL RECUPERADO / MES
-            </span>
-            <span class="text-xs font-mono text-slate-400">ANUAL: <strong id="sim-anual" class="text-white">S/ 116,280</strong></span>
+          <div class="flex items-center justify-between text-xs text-appleGray mb-3">
+            <span>Capital recuperado por mes</span>
+            <span>Anual: <strong id="sim-anual" class="text-white">S/ 116,280</strong></span>
           </div>
 
-          <p class="text-xs sm:text-sm text-slate-300">
-            Dinero neto que hoy pierdes en comisiones, mermas de cocina e inactividad y que pasa directo a tu utilidad:
-          </p>
-
-          <div class="my-6 py-5 px-4 rounded-2xl bg-black/50 border border-white/10 text-center">
-            <div class="text-xs font-mono uppercase tracking-widest text-sky-300 mb-1">Ahorro & Retorno Mensual Estimado</div>
-            <div class="font-display font-extrabold text-5xl sm:text-6xl text-titanium tracking-tight">
+          <div class="my-4 py-6 px-4 rounded-2xl bg-black/60 border border-white/10 text-center">
+            <div class="font-display font-extrabold text-5xl sm:text-6xl text-apple-titanium tracking-tight">
               S/ <span id="sim-total-odometer">9,690</span>
             </div>
-          </div>
-
-          <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/10 mb-6">
-            <div class="flex items-center justify-between text-xs mb-1.5">
-              <span class="text-slate-300">Frente al costo mensual del Plan Ecosistema Total:</span>
-              <span class="font-mono font-bold text-sky-300">S/ 490/mes</span>
-            </div>
-            <div class="w-full h-2 rounded-full bg-white/10 overflow-hidden">
-              <div class="h-full bg-gradient-to-r from-sky-400 to-emerald-400 w-[95%]"></div>
-            </div>
-            <div class="text-[11px] font-mono text-emerald-300 mt-2">
-              ✦ Multiplicador ROI: <strong id="sim-roi-mult">19.8x</strong> veces tu inversión mensual
+            <div class="text-xs text-appleGray mt-2">
+              Frente al Plan Ecosistema Total (S/ 490/mes) • Retorno <strong id="sim-roi-mult" class="text-appleCyan">19.8x</strong>
             </div>
           </div>
         </div>
 
         <div class="flex flex-col gap-3">
-          <a href="#planes-section"
-             onclick="playTactileClick()"
-             class="w-full py-3.5 px-6 rounded-full bg-white text-slate-950 hover:bg-slate-200 font-display font-bold text-sm text-center transition">
-            Ver Planes en Soles →
+          <a href="#planes-section" onclick="window.playTactileClick()"
+             class="w-full py-3.5 px-6 rounded-full bg-appleBlue hover:bg-appleCyan text-white font-semibold text-sm text-center transition">
+            Ver Planes en Soles
           </a>
           <a id="sim-wa-btn"
-             href="https://wa.me/51954120739?text=Hola%20Sincro%20Gastro%20AI,%20hice%20el%20calculo%20en%20el%20Simulador%20Financiero%20(S/%209,690/mes)%20y%20quiero%20coordinar%20una%20demostracion"
-             target="_blank"
-             rel="noopener noreferrer"
-             onclick="playTactileClick()"
-             class="text-center text-xs font-mono text-sky-300 hover:text-sky-200 underline py-1">
-            Recibir este desglose financiero en mi WhatsApp
+             href="https://wa.me/51954120739?text=Hola%20Sincro%20Gastro,%20hice%20el%20calculo%20en%20el%20Simulador%20Financiero%20(S/%209,690/mes)%20y%20quiero%20coordinar%20una%20demostracion"
+             target="_blank" rel="noopener noreferrer"
+             class="text-center text-xs text-appleCyan hover:underline py-1">
+            Enviar proyección a mi WhatsApp
           </a>
         </div>
       </div>
@@ -697,725 +425,488 @@
   </section>
 
   <!-- ========================================================================
-       6. CEREBRO 3D BIO-DIGITAL HIPERREALISTA (360° + ZOOM ANATÓMICO PROFUNDO)
+       6. CEREBRO 3D CON RED DE NEURONAS MULTIPOLARES Y CONEXIONES SINÁPTICAS
        ======================================================================== -->
-  <!-- ========================================================================
-       6. CEREBRO 3D ANATÓMICO 4K CON RED INTERCONECTADA INTERNA Y CERO INTERFERENCIA
-       ======================================================================== -->
-  <section id="cerebro-section" class="relative z-10 py-14 sm:py-20 px-3 sm:px-6 max-w-[1440px] mx-auto">
+  <section id="cerebro-section" class="relative z-10 py-20 sm:py-32 px-3 sm:px-6 max-w-[1440px] mx-auto">
     <div class="text-center max-w-3xl mx-auto mb-8">
-      <div class="floating-badge inline-flex items-center gap-2 px-3.5 py-1 rounded-full pelantium-glass text-sky-300 text-xs font-mono mb-3">
-        <span>🧠 RED SINÁPTICA 4K • 50,000 NEURONAS + 16,000 AXONES INTERCONECTADOS</span>
-      </div>
-      <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-titanium tracking-tight">
-        Arquitectura Cerebral Interactiva 360°
+      <p class="text-sm sm:text-lg font-semibold text-appleCyan mb-3 tracking-tight">Arquitectura Neural Interactiva</p>
+      <h2 class="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl text-apple-titanium tracking-tight leading-[1.04]">
+        Explora cada conexión desde la corteza hasta la sinapsis.
       </h2>
-      <p class="text-xs sm:text-base text-slate-300 mt-2.5">
-        Arrastra para girar en <strong class="text-white">360°</strong> o usa la rueda del ratón para <strong class="text-sky-300">ampliar y viajar dentro del cerebro en 4K</strong> viendo cada línea sináptica interconectada.
+      <p class="text-xs sm:text-base text-appleGray mt-2.5">
+        Gira en <strong class="text-white">360°</strong> para apreciar la red global o haz <strong class="text-white">zoom hacia el interior</strong> para observar los somas neuronales, sus núcleos cálidos y las dendritas interconectadas en alta definición.
       </p>
     </div>
 
-    <!-- ESCENARIO PANORÁMICO 4K DEL CEREBRO (ESTILO REFERENCIA) -->
-    <div id="brain-viewport" class="relative w-full h-[620px] sm:h-[700px] lg:h-[760px] rounded-[2rem] bg-[#020305] border border-white/10 overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.95)]">
+    <div id="brain-viewport" class="relative w-full h-[640px] sm:h-[720px] lg:h-[760px] rounded-[2rem] bg-[#02040a] border border-white/10 overflow-hidden shadow-[0_30px_100px_rgba(0,0,0,0.98)]">
       
-      <!-- Controles Superiores Izquierdos de Cámara y Zoom 4K -->
-      <div class="absolute top-5 left-5 z-30 flex flex-wrap items-center gap-2">
-        <div class="flex items-center gap-2 bg-black/80 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10 text-[11px] font-mono text-slate-300">
-          <span id="heartbeat-indicator" class="w-2 h-2 rounded-full bg-sky-400"></span>
-          <span id="zoom-depth-label">VISTA 360° • ZOOM 4K ACTIVO</span>
-        </div>
-        <button type="button" onclick="zoomBrainCamera(-0.65); playTactileClick();"
-                class="px-3 py-1.5 rounded-full bg-black/80 hover:bg-white/15 border border-white/15 text-xs font-mono text-white transition">
-          + Zoom In (Interior)
+      <!-- Controles Limpios Estilo Apple VisionOS -->
+      <div class="absolute top-5 left-5 z-30 flex flex-wrap items-center gap-2 pointer-events-auto">
+        <button type="button" onclick="window.zoomBrainCamera(-0.7); window.playTactileClick(210);"
+                class="px-4 py-1.5 rounded-full apple-glass hover:border-appleCyan/50 text-xs font-medium text-white transition cursor-pointer">
+          + Acercar a las Neuronas
         </button>
-        <button type="button" onclick="zoomBrainCamera(0.65); playTactileClick();"
-                class="px-3 py-1.5 rounded-full bg-black/80 hover:bg-white/15 border border-white/15 text-xs font-mono text-white transition">
-          − Zoom Out
+        <button type="button" onclick="window.zoomBrainCamera(0.7); window.playTactileClick(190);"
+                class="px-4 py-1.5 rounded-full apple-glass hover:border-appleCyan/50 text-xs font-medium text-white transition cursor-pointer">
+          − Alejar
         </button>
-        <button type="button" onclick="resetBrainView(); playTactileClick();"
-                class="px-3 py-1.5 rounded-full bg-black/80 hover:bg-white/15 border border-white/15 text-xs font-mono text-sky-300 transition">
-          Centrar
+        <button type="button" onclick="window.resetBrainView(); window.playTactileClick(230);"
+                class="px-4 py-1.5 rounded-full apple-glass hover:border-appleCyan/50 text-xs font-medium text-appleCyan transition cursor-pointer">
+          Restablecer Vista
         </button>
       </div>
 
-      <!-- LIENZO WEBGL 4K DEL CEREBRO -->
       <canvas id="brain-canvas" class="w-full h-full cursor-grab active:cursor-grabbing"></canvas>
-
-      <!-- CAPA DE PÍLDORAS ANATÓMICAS 01 A 06 (IDÉNTICAS A LA REFERENCIA) -->
       <div id="brain-markers-overlay" class="absolute inset-0 pointer-events-none overflow-hidden z-20"></div>
 
-      <!-- TARJETA FLOTANTE DERECHA (IDÉNTICA A LA CAPTURA DE REFERENCIA) -->
-      <div class="absolute bottom-4 right-4 left-4 sm:left-auto sm:top-6 sm:bottom-auto sm:right-6 sm:w-[410px] z-30 rounded-2xl bg-[#07090e]/90 backdrop-blur-2xl border border-white/15 p-5 sm:p-6 shadow-[0_25px_70px_rgba(0,0,0,0.95)]">
-        
-        <div class="flex items-center justify-between mb-1.5">
-          <span id="detail-region-name" class="font-mono text-xs sm:text-sm font-semibold text-amber-400">
-            Corteza Occipital
-          </span>
-          <span id="detail-module-tag" class="font-mono text-[11px] px-2 py-0.5 rounded bg-white/5 text-slate-300 border border-white/10">
-            05 / 06 • SincroCore™
-          </span>
+      <!-- Tarjeta Lateral Limpia Estilo Apple -->
+      <div class="absolute bottom-4 right-4 left-4 sm:left-auto sm:top-6 sm:bottom-auto sm:right-6 sm:w-[410px] z-30 rounded-3xl apple-glass p-6 pointer-events-auto">
+        <div class="flex items-center justify-between mb-2">
+          <span id="detail-region-name" class="text-xs font-semibold text-appleCyan">05 Corteza Occipital</span>
+          <span id="detail-module-tag" class="text-xs text-appleGray">SincroCore</span>
         </div>
 
-        <h3 id="detail-title" class="font-display font-extrabold text-xl sm:text-2xl text-white mb-2.5 leading-tight">
-          Validador Yape/Plin & OCR de Facturas
+        <h3 id="detail-title" class="font-display font-bold text-xl sm:text-2xl text-white mb-2.5 leading-tight">
+          Validador Yape/Plin y OCR de Facturas
         </h3>
 
-        <p id="detail-description" class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
-          Visión computacional que verifica capturas de pago contra estafas extrayendo el código de operación, y digitaliza facturas de compras en Makro o mercado con una sola foto en WhatsApp.
+        <p id="detail-description" class="text-xs sm:text-sm text-appleGray leading-relaxed mb-4">
+          Visión computacional que verifica capturas de pago contra estafas extrayendo el código de operación, y digitaliza facturas de compras con una sola foto en WhatsApp.
         </p>
 
-        <!-- Barra de Métrica Monospace con Punto Luminoso -->
-        <div id="detail-metric-box" class="px-3.5 py-2.5 rounded-xl bg-black/60 border border-lime-400/35 mb-4 flex items-center gap-2.5">
-          <span id="detail-metric-dot" class="w-2 h-2 rounded-full bg-lime-400 flex-shrink-0"></span>
-          <span id="detail-metric" class="font-mono text-[11px] sm:text-xs text-lime-200 tracking-wide uppercase">
-            PRECISIÓN OCR: 99.8% - TIEMPO DE VALIDACIÓN: 0.8s
-          </span>
+        <div class="px-4 py-2.5 rounded-xl bg-black/60 border border-white/10 mb-5 text-xs text-appleIce font-medium">
+          <span id="detail-metric">Precisión OCR: 99.8% • Validación en 0.8 segundos</span>
         </div>
 
-        <!-- Botones Anterior / Siguiente -->
-        <div class="flex items-center justify-between gap-3 mb-3.5">
-          <button type="button" onclick="stepBrainCenter(-1); playTactileClick();"
-                  class="px-4 py-2 rounded-full bg-white/[0.06] hover:bg-white/[0.14] border border-white/15 text-xs font-mono text-slate-200 transition">
-            ← Anterior
+        <div class="flex items-center justify-between gap-2 mb-4">
+          <button type="button" onclick="window.stepBrainCenter(-1); window.playTactileClick(210);"
+                  class="px-4 py-2 rounded-full bg-white/[0.08] hover:bg-white/[0.15] text-xs font-medium text-white transition cursor-pointer">
+            Anterior
           </button>
-          <button type="button" onclick="stepBrainCenter(1); playTactileClick();"
-                  class="px-5 py-2 rounded-full bg-[#c8ff00] hover:bg-[#d8ff33] text-slate-950 font-mono font-bold text-xs shadow-[0_0_20px_rgba(200,255,0,0.35)] transition">
-            Siguiente →
+          <div class="flex items-center gap-1.5" id="mini-lobe-dots"></div>
+          <button type="button" onclick="window.stepBrainCenter(1); window.playTactileClick(240);"
+                  class="px-5 py-2 rounded-full bg-appleBlue hover:bg-appleCyan text-white font-semibold text-xs transition cursor-pointer">
+            Siguiente
           </button>
         </div>
 
-        <!-- Botón Inferior Agendar Demostración -->
-        <a id="detail-wa-cta"
-           href="https://wa.me/51954120739?text=Hola%20Sincro%20Gastro%20AI,%20quiero%20coordinar%20una%20demostracion%20para%20mi%20restaurante"
-           target="_blank"
-           rel="noopener noreferrer"
-           onclick="playTactileClick()"
-           class="w-full py-2.5 px-4 rounded-full bg-white/[0.04] hover:bg-white/[0.1] border border-white/15 text-xs font-mono text-slate-200 flex items-center justify-center gap-2 transition">
-          <span class="text-amber-400">⚡</span>
-          <span>Agendar Demostración al 954 120 739 →</span>
+        <a href="https://wa.me/51954120739?text=Hola%20Sincro%20Gastro,%20quiero%20coordinar%20una%20demostracion%20para%20mi%20restaurante"
+           target="_blank" rel="noopener noreferrer"
+           class="w-full py-2.5 px-4 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/10 text-xs font-medium text-white flex items-center justify-center transition">
+          Agendar demostración al 954 120 739 →
         </a>
       </div>
-
-      <!-- Contenedor oculto de compatibilidad -->
-      <div id="lobe-list-container" class="hidden"></div>
     </div>
   </section>
 
   <!-- ========================================================================
        PLANES COMERCIALES EN SOLES (PEN)
        ======================================================================== -->
-  <section id="planes-section" class="relative z-10 py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-    <div class="text-center max-w-3xl mx-auto mb-12 stagger-group">
-      <div class="reveal-item floating-badge inline-flex items-center gap-2 px-3.5 py-1 rounded-full pelantium-glass text-slate-300 text-xs font-mono mb-3">
-        <span>◈ INVERSIÓN MENSUAL TRANSPARENTE EN SOLES (PEN)</span>
-      </div>
-      <h2 class="reveal-item font-display font-extrabold text-3xl sm:text-5xl text-titanium tracking-tight">
-        Arquitectura Lista para Operar en tu Restaurante
+  <section id="planes-section" class="relative z-10 py-24 sm:py-40 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <p class="text-sm sm:text-lg font-semibold text-appleCyan mb-3 tracking-tight">Planes Mensuales en Soles</p>
+      <h2 class="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl text-apple-titanium tracking-tight leading-[1.04]">
+        Diseñado para escalar tu rentabilidad.
       </h2>
-      <p class="reveal-item text-sm sm:text-base text-slate-300 mt-3">
-        Sin comisiones por venta ni contratos de permanencia forzosa. Incluye configuración a medida, tótems NFC programados y soporte directo con los ingenieros fundadores.
+      <p class="text-base sm:text-xl text-appleGray mt-5 leading-relaxed">
+        Sin comisiones por venta ni contratos forzosos. Incluye configuración completa, acrílicos NFC para tus mesas y acompañamiento directo.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch stagger-group">
-      <!-- Plan 1 -->
-      <div class="reveal-item bento-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+      <div class="bento-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
         <div>
-          <div class="flex items-center justify-between mb-4">
-            <span class="px-3 py-1 rounded-full text-xs font-mono bg-white/5 text-sky-300 border border-white/10">SINCROFRONT™</span>
-            <span class="text-xs font-mono text-slate-400">SALÓN & CAPTACIÓN</span>
-          </div>
-          <h3 class="font-display font-bold text-2xl text-white">Fidelización NFC & IA</h3>
-          <p class="text-xs sm:text-sm text-slate-400 mt-2">
-            Diseñado para locales que buscan llenar mesas en días bajos, automatizar reservas y blindar su calificación en Google Maps.
-          </p>
-
+          <span class="text-xs font-semibold text-appleCyan">SincroFront</span>
+          <h3 class="font-display font-bold text-2xl text-white mt-1">Fidelización NFC e IA</h3>
+          <p class="text-xs sm:text-sm text-appleGray mt-2">Para restaurantes que buscan llenar mesas, automatizar reservas y blindar su reputación en Google Maps.</p>
           <div class="my-6 pb-6 border-b border-white/10">
-            <div class="flex items-baseline gap-1">
-              <span class="text-sm font-mono text-slate-400">S/</span>
-              <span class="font-display font-extrabold text-4xl sm:text-5xl text-white">290</span>
-              <span class="text-xs font-mono text-slate-400">/mes</span>
-            </div>
-            <div class="text-[11px] font-mono text-sky-300 mt-1">Incluye Kit de Chips NFC programados para tus mesas</div>
+            <span class="font-display font-extrabold text-4xl sm:text-5xl text-white">S/ 290</span>
+            <span class="text-xs text-appleGray">/mes</span>
           </div>
-
-          <ul class="space-y-3 text-xs sm:text-sm text-slate-300 mb-8">
-            <li class="flex items-start gap-2.5"><span class="text-sky-400">✓</span> <span><strong>Chips NFC en Mesa:</strong> Registro de cliente y tarjeta VIP digital en WhatsApp en 3 segundos.</span></li>
-            <li class="flex items-start gap-2.5"><span class="text-sky-400">✓</span> <span><strong>Recepcionista IA 24/7:</strong> Responde carta, precios y confirma reservas automáticamente.</span></li>
-            <li class="flex items-start gap-2.5"><span class="text-sky-400">✓</span> <span><strong>Escudo Google Maps:</strong> Filtra reseñas 5★ a público y alertas de 1-3★ en privado al dueño.</span></li>
-            <li class="flex items-start gap-2.5"><span class="text-sky-400">✓</span> <span><strong>Motor de Reactivación:</strong> Detecta clientes inactivos (+21 días) y cumpleañeros de la semana.</span></li>
+          <ul class="space-y-3 text-xs sm:text-sm text-appleIce/90 mb-8">
+            <li>• Chips NFC en Mesa y tarjeta VIP digital en 3 segundos</li>
+            <li>• Recepcionista IA 24/7 para reservas en WhatsApp</li>
+            <li>• Escudo Google Maps (Filtro 5★ público vs 1-3★ privado)</li>
+            <li>• Reactivación automática de clientes inactivos (+21 días)</li>
           </ul>
         </div>
-
-        <a href="https://wa.me/51954120739?text=Hola%20Sincro%20Gastro%20AI,%20quiero%20coordinar%20una%20demostracion%20para%20mi%20restaurante%20(Plan%20SincroFront%20S/290)"
-           target="_blank" rel="noopener noreferrer" onclick="playTactileClick()"
-           class="w-full py-3.5 px-5 rounded-full bg-white/[0.07] hover:bg-white/[0.14] border border-white/15 text-center text-sm font-semibold text-white transition">
-          Solicitar Plan SincroFront™
+        <a href="https://wa.me/51954120739?text=Hola%20Sincro%20Gastro,%20quiero%20el%20Plan%20SincroFront%20de%20S/290"
+           target="_blank" rel="noopener noreferrer"
+           class="w-full py-3.5 px-5 rounded-full bg-white/[0.08] hover:bg-white/[0.15] text-center text-sm font-semibold text-white transition">
+          Elegir SincroFront
         </a>
       </div>
 
-      <!-- Plan 2 -->
-      <div class="reveal-item bento-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between border-sky-400/30 bg-gradient-to-b from-sky-950/25 via-obsidian/90 to-obsidian transform lg:-translate-y-2">
+      <div class="bento-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between border-appleCyan/40 bg-gradient-to-b from-appleBlue/15 via-appleSurface to-appleSurface transform lg:-translate-y-2">
         <div>
-          <div class="flex items-center justify-between mb-4">
-            <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-sky-500/20 text-sky-200 border border-sky-400/30">✦ RECOMENDADO • CONTROL 360°</span>
-            <span class="text-xs font-mono text-amber-300">SALÓN + COCINA</span>
-          </div>
-          <h3 class="font-display font-bold text-2xl sm:text-3xl text-white">Plan Ecosistema Total</h3>
-          <p class="text-xs sm:text-sm text-slate-300 mt-2">
-            Unifica <strong>SincroFront™ + SincroCore™ Micro-ERP</strong>. Sincroniza cada plato vendido en mesa con tus gramos de insumo y cuadre de caja.
-          </p>
-
+          <span class="text-xs font-semibold text-appleCyan">Recomendado • Control Total</span>
+          <h3 class="font-display font-bold text-2xl sm:text-3xl text-white mt-1">Ecosistema Total</h3>
+          <p class="text-xs sm:text-sm text-appleGray mt-2">Unifica salón y cocina: conecta cada plato vendido con tus gramos de receta, compras y cuadre nocturno.</p>
           <div class="my-6 pb-6 border-b border-white/10">
-            <div class="flex items-baseline gap-1">
-              <span class="text-sm font-mono text-slate-300">S/</span>
-              <span class="font-display font-extrabold text-5xl sm:text-6xl text-titanium">490</span>
-              <span class="text-xs font-mono text-slate-300">/mes</span>
-            </div>
-            <div class="text-[11px] font-mono text-emerald-300 mt-1">Piloto Operativo de 7 Días • Retorno promedio &gt;15x mensual</div>
+            <span class="font-display font-extrabold text-5xl sm:text-6xl text-apple-titanium">S/ 490</span>
+            <span class="text-xs text-appleGray">/mes</span>
           </div>
-
-          <ul class="space-y-3 text-xs sm:text-sm text-slate-200 mb-8">
-            <li class="flex items-start gap-2.5"><span class="text-amber-300">✦</span> <span><strong>Todo SincroFront™ Incluido:</strong> Chips NFC + Recepcionista 24/7 + Escudo Google Maps.</span></li>
-            <li class="flex items-start gap-2.5"><span class="text-sky-300">✓</span> <span><strong>Validador Yape/Plin Antifraude:</strong> Verificación instantánea de vouchers por visión IA.</span></li>
-            <li class="flex items-start gap-2.5"><span class="text-sky-300">✓</span> <span><strong>OCR de Facturas por Foto:</strong> Ingresa compras e insumos con solo fotografiar la factura.</span></li>
-            <li class="flex items-start gap-2.5"><span class="text-sky-300">✓</span> <span><strong>Escandallo al Gramo:</strong> Descuento automático de recetas y detección de robo hormiga.</span></li>
-            <li class="flex items-start gap-2.5"><span class="text-sky-300">✓</span> <span><strong>Cierre Nocturno 11:45 PM:</strong> Auditoría diaria enviada directo al WhatsApp del propietario.</span></li>
+          <ul class="space-y-3 text-xs sm:text-sm text-appleIce mb-8">
+            <li>• Todo el módulo SincroFront incluido</li>
+            <li>• Validador antifraude de capturas Yape y Plin</li>
+            <li>• Ingreso de facturas de compra por foto OCR</li>
+            <li>• Escandallo al gramo y control de robo hormiga</li>
+            <li>• Reporte y cuadre nocturno diario a las 11:45 PM</li>
           </ul>
         </div>
-
         <div class="magnetic-wrap w-full">
-          <a href="https://wa.me/51954120739?text=Hola%20Sincro%20Gastro%20AI,%20quiero%20coordinar%20una%20demostracion%20para%20mi%20restaurante%20(Plan%20Ecosistema%20Total%20S/490)"
-             target="_blank" rel="noopener noreferrer" onclick="playTactileClick()"
+          <a href="https://wa.me/51954120739?text=Hola%20Sincro%20Gastro,%20quiero%20activar%20el%20Plan%20Ecosistema%20Total%20de%20S/490"
+             target="_blank" rel="noopener noreferrer"
              class="apple-prism-cta w-full justify-center">
-            <div class="prism-orb !w-9 !h-9">
-              <svg class="w-5 h-5"><use href="#isotipo-nucleo-cuantico"></use></svg>
-            </div>
-            <span class="font-bold text-sm sm:text-base text-white">Agendar Demostración Ecosistema</span>
+            <div class="prism-orb !w-8 !h-8"><svg class="w-4 h-4"><use href="#isotipo-nucleo-cuantico"></use></svg></div>
+            <span class="font-semibold text-sm text-white">Activar Ecosistema Total</span>
           </a>
         </div>
       </div>
 
-      <!-- Plan 3 -->
-      <div class="reveal-item bento-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
+      <div class="bento-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
         <div>
-          <div class="flex items-center justify-between mb-4">
-            <span class="px-3 py-1 rounded-full text-xs font-mono bg-white/5 text-slate-300 border border-white/10">CORPORATIVO / MULTISEDE</span>
-            <span class="text-xs font-mono text-slate-400">ARQUITECTURA DEDICADA</span>
-          </div>
-          <h3 class="font-display font-bold text-2xl text-white">Automatizaciones a Medida</h3>
-          <p class="text-xs sm:text-sm text-slate-400 mt-2">
-            Para cadenas gastronómicas, franquicias, cocinas ocultas o centros de acopio que requieren integraciones personalizadas.
-          </p>
-
+          <span class="text-xs font-semibold text-appleGray">Corporativo y Multisede</span>
+          <h3 class="font-display font-bold text-2xl text-white mt-1">Arquitectura a Medida</h3>
+          <p class="text-xs sm:text-sm text-appleGray mt-2">Para grupos gastronómicos, franquicias o centros de producción con múltiples locales.</p>
           <div class="my-6 pb-6 border-b border-white/10">
-            <div class="font-display font-extrabold text-3xl sm:text-4xl text-white">A Medida</div>
-            <div class="text-[11px] font-mono text-slate-400 mt-1">Despliegue dedicado en Python, SQL, n8n & Entornos 3D</div>
+            <span class="font-display font-extrabold text-3xl sm:text-4xl text-white">Personalizado</span>
           </div>
-
-          <ul class="space-y-3 text-xs sm:text-sm text-slate-300 mb-8">
-            <li class="flex items-start gap-2.5"><span class="text-sky-400">✓</span> <span><strong>Tablero Multisede Centralizado:</strong> Comparativa de costos y mermas entre sucursales en vivo.</span></li>
-            <li class="flex items-start gap-2.5"><span class="text-sky-400">✓</span> <span><strong>Integración vía API / Webhooks:</strong> Conexión bidireccional con tu ERP o POS actual.</span></li>
-            <li class="flex items-start gap-2.5"><span class="text-sky-400">✓</span> <span><strong>Simuladores 3D de Capacitación:</strong> Entrenamiento operativo para equipos de cocina y salón.</span></li>
-            <li class="flex items-start gap-2.5"><span class="text-sky-400">✓</span> <span><strong>Soporte Directo de Ingeniería:</strong> Atención prioritaria con los socios fundadores.</span></li>
+          <ul class="space-y-3 text-xs sm:text-sm text-appleIce/90 mb-8">
+            <li>• Consolidado financiero y de mermas multisede en vivo</li>
+            <li>• Integración mediante API con sistemas ERP o POS actuales</li>
+            <li>• Entornos interactivos 3D de capacitación operativa</li>
+            <li>• Soporte directo con dirección de ingeniería</li>
           </ul>
         </div>
-
-        <a href="https://wa.me/51954120739?text=Hola%20Sincro%20Gastro%20AI,%20quiero%20coordinar%20una%20demostracion%20para%20mi%20restaurante%20(Arquitectura%20Multisede)"
-           target="_blank" rel="noopener noreferrer" onclick="playTactileClick()"
-           class="w-full py-3.5 px-5 rounded-full bg-white/[0.07] hover:bg-white/[0.14] border border-white/15 text-center text-sm font-semibold text-white transition">
-          Contactar Dirección de Ingeniería
+        <a href="https://wa.me/51954120739?text=Hola%20Sincro%20Gastro,%20busco%20una%20arquitectura%20multisede%20a%20medida"
+           target="_blank" rel="noopener noreferrer"
+           class="w-full py-3.5 px-5 rounded-full bg-white/[0.08] hover:bg-white/[0.15] text-center text-sm font-semibold text-white transition">
+          Contactar Ingeniería
         </a>
       </div>
     </div>
   </section>
 
   <!-- ========================================================================
-       8. SECCIÓN FUNDADORES & HISTORIA DE ORIGEN
+       8. SECCIÓN FUNDADORES & HISTORIA
        ======================================================================== -->
-  <section id="fundadores-section" class="relative z-10 py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-    <div class="text-center max-w-3xl mx-auto mb-12 stagger-group">
-      <div class="reveal-item floating-badge inline-flex items-center gap-2 px-3.5 py-1 rounded-full pelantium-glass text-slate-300 text-xs font-mono mb-3">
-        <span>◈ LIDERAZGO FUNDADOR • OPERACIONES REALES & ARQUITECTURA DE IA</span>
-      </div>
-      <h2 class="reveal-item font-display font-extrabold text-3xl sm:text-5xl text-titanium tracking-tight">
-        Donde la Cocina Real se Une con la Ingeniería de Sistemas
+  <section id="fundadores-section" class="relative z-10 py-24 sm:py-40 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <p class="text-sm sm:text-lg font-semibold text-appleCyan mb-3 tracking-tight">Equipo Fundador</p>
+      <h2 class="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl text-apple-titanium tracking-tight leading-[1.04]">
+        Donde la cocina real se une con la ingeniería.
       </h2>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-10 stagger-group">
-      <div class="reveal-item bento-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
-        <div>
-          <div class="flex items-center gap-4 mb-5">
-            <div class="w-14 h-14 rounded-2xl bg-white/[0.05] border border-white/15 flex items-center justify-center font-display font-extrabold text-lg text-white shadow-inner">LS</div>
-            <div>
-              <h3 class="font-display font-bold text-xl sm:text-2xl text-white">Leonardo Samanez Tucto</h3>
-              <p class="text-xs sm:text-sm text-sky-300 font-medium">Co-Fundador • Negocios Internacionales, Operaciones y Comercial</p>
-            </div>
-          </div>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
-            Formado en Negocios Internacionales en la <strong>Universidad de Lima (Ulima)</strong>. Con experiencia directa en la operación diaria de <strong>panadería y pizzería artesanal</strong>, domina el control de costos de recetas, fermentaciones, mermas de insumos críticos en cocina y el desarrollo comercial B2B para restaurantes independientes.
-          </p>
-        </div>
-        <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10">
-          <span class="px-3 py-1 rounded-full text-[11px] font-mono bg-white/[0.04] border border-white/10 text-slate-300">Universidad de Lima (Ulima)</span>
-          <span class="px-3 py-1 rounded-full text-[11px] font-mono bg-white/[0.04] border border-white/10 text-sky-300">Operaciones Gastronómicas</span>
-          <span class="px-3 py-1 rounded-full text-[11px] font-mono bg-white/[0.04] border border-white/10 text-slate-300">Dirección Comercial B2B</span>
-        </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-10">
+      <div class="bento-card rounded-3xl p-6 sm:p-8">
+        <h3 class="font-display font-bold text-xl sm:text-2xl text-white">Leonardo Samanez Tucto</h3>
+        <p class="text-xs sm:text-sm text-appleCyan font-medium mt-0.5 mb-4">Co-Fundador • Operaciones Gastronómicas y Dirección Comercial</p>
+        <p class="text-xs sm:text-sm text-appleGray leading-relaxed">
+          Negocios Internacionales por la <strong class="text-white">Universidad de Lima (Ulima)</strong>. Con experiencia directa en la operación de <strong class="text-white">panadería y pizzería artesanal</strong>, domina el control de recetas, fermentaciones, mermas de insumos críticos y estrategia comercial B2B.
+        </p>
       </div>
 
-      <div class="reveal-item bento-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
-        <div>
-          <div class="flex items-center gap-4 mb-5">
-            <div class="w-14 h-14 rounded-2xl bg-white/[0.05] border border-white/15 flex items-center justify-center font-display font-extrabold text-lg text-white shadow-inner">JS</div>
-            <div>
-              <h3 class="font-display font-bold text-xl sm:text-2xl text-white">Joaquín Antonio Sudario Maldonado</h3>
-              <p class="text-xs sm:text-sm text-sky-300 font-medium">Co-Fundador • Ingeniería de Sistemas, Arquitectura de IA y Software</p>
-            </div>
-          </div>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
-            Ingeniero de Sistemas por la <strong>UPC</strong> y certificado <strong>Scrum Fundamentals (SFC)</strong>. Especialista en arquitectura de agentes autónomos de IA, automatización de flujos transaccionales con <strong>Python, SQL y n8n</strong>, y desarrollo de experiencias interactivas tridimensionales en tiempo real.
-          </p>
-        </div>
-        <div class="flex flex-wrap gap-2 pt-4 border-t border-white/10">
-          <span class="px-3 py-1 rounded-full text-[11px] font-mono bg-white/[0.04] border border-white/10 text-slate-300">Ingeniería de Sistemas (UPC)</span>
-          <span class="px-3 py-1 rounded-full text-[11px] font-mono bg-white/[0.04] border border-white/10 text-sky-300">Python • SQL • n8n AI</span>
-          <span class="px-3 py-1 rounded-full text-[11px] font-mono bg-white/[0.04] border border-white/10 text-slate-300">Scrum SFC & Entornos 3D</span>
-        </div>
+      <div class="bento-card rounded-3xl p-6 sm:p-8">
+        <h3 class="font-display font-bold text-xl sm:text-2xl text-white">Joaquín Antonio Sudario Maldonado</h3>
+        <p class="text-xs sm:text-sm text-appleCyan font-medium mt-0.5 mb-4">Co-Fundador • Ingeniería de Sistemas y Arquitectura de Software</p>
+        <p class="text-xs sm:text-sm text-appleGray leading-relaxed">
+          Ingeniero de Sistemas por la <strong class="text-white">UPC</strong> y certificado <strong class="text-white">Scrum Fundamentals (SFC)</strong>. Arquitecto de automatizaciones transaccionales con <strong class="text-white">Python, SQL y n8n</strong>, visión computacional y entornos tridimensionales interactivos.
+        </p>
       </div>
     </div>
 
-    <div class="reveal-item bento-card rounded-3xl p-6 sm:p-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <div class="lg:col-span-8">
-          <span class="text-xs font-mono uppercase tracking-widest text-sky-300">NUESTRA HISTORIA DE ORIGEN</span>
-          <h3 class="font-display font-bold text-2xl sm:text-3xl text-white mt-1 mb-3">
-            Desde la enseñanza en Activa Club hasta blindar los márgenes de los restaurantes en Lima
-          </h3>
-          <p class="text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed mb-4">
-            Nuestra alianza comenzó forjando disciplina, método y liderazgo durante nuestra etapa formativa como instructores en <strong>Activa Club</strong>. Con el paso de los años, cada uno profundizó en una trinchera distinta: Leonardo vivió en carne propia el rigor del horno y la cocina real —donde el descontrol en gramos de insumo o las mesas vacías de martes a jueves erosionan todo el esfuerzo del mes—, mientras Joaquín construía sistemas de software, bases de datos y arquitecturas de inteligencia artificial.
-          </p>
-          <p class="text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed">
-            Al unir nuestras trayectorias, diseñamos <strong>SINCRO GASTRO AI™</strong> con una misión clara: entregarle al dueño de restaurante independiente en Lima la misma tecnología autónoma de las grandes cadenas mundiales, en un sistema que se instala en días y se paga solo desde el primer mes.
-          </p>
-        </div>
-
-        <div class="lg:col-span-4 flex flex-col items-center justify-center p-6 rounded-2xl bg-black/40 border border-white/10 text-center">
-          <svg class="w-12 h-12 mb-3"><use href="#isotipo-nucleo-cuantico"></use></svg>
-          <p class="font-display font-semibold text-sm sm:text-base text-white mb-5 leading-snug">
-            "Implementamos personalmente el sistema neural en tu restaurante para garantizar resultados medibles desde la primera semana."
-          </p>
-          <div class="magnetic-wrap">
-            <a href="https://wa.me/51954120739?text=Hola%20Sincro%20Gastro%20AI,%20quiero%20coordinar%20una%20demostracion%20para%20mi%20restaurante"
-               target="_blank" rel="noopener noreferrer" onclick="playTactileClick()"
-               class="apple-prism-cta justify-center">
-              <div class="prism-orb !w-8 !h-8">
-                <svg class="w-4 h-4"><use href="#isotipo-nucleo-cuantico"></use></svg>
-              </div>
-              <span class="text-xs sm:text-sm font-bold text-white">Coordinar Reunión con Fundadores</span>
-            </a>
-          </div>
-        </div>
+    <div class="bento-card rounded-3xl p-6 sm:p-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+      <div class="lg:max-w-2xl">
+        <h3 class="font-display font-bold text-2xl sm:text-3xl text-white mb-3">
+          De enseñar disciplina en Activa Club a proteger la rentabilidad de los restaurantes en Lima
+        </h3>
+        <p class="text-xs sm:text-sm md:text-base text-appleGray leading-relaxed">
+          Nuestra trayectoria compartida comenzó como instructores en <strong class="text-white">Activa Club</strong>. Con los años, Leonardo vivió desde adentro el sacrificio de la cocina artesanal —donde unos gramos de descontrol borran el margen del mes—, mientras Joaquín desarrollaba ingeniería de software e inteligencia artificial. Juntos creamos <strong class="text-white">Sincro Gastro</strong> para darle al restaurante independiente control absoluto de su negocio.
+        </p>
+      </div>
+      <div class="magnetic-wrap flex-shrink-0">
+        <a href="https://wa.me/51954120739?text=Hola%20Leonardo%20y%20Joaquin,%20quiero%20conversar%20sobre%20Sincro%20Gastro"
+           target="_blank" rel="noopener noreferrer"
+           class="apple-prism-cta justify-center">
+          <div class="prism-orb !w-8 !h-8"><svg class="w-4 h-4"><use href="#isotipo-nucleo-cuantico"></use></svg></div>
+          <span class="text-xs sm:text-sm font-semibold text-white">Hablar con los Fundadores</span>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- PIE DE PÁGINA CORPORATIVO -->
-  <footer class="relative z-10 border-t border-white/10 py-10 px-4 sm:px-6 lg:px-8 text-xs text-slate-400">
+  <footer class="relative z-10 border-t border-white/10 py-10 px-4 sm:px-6 lg:px-8 text-xs text-appleGray">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-3">
-        <svg class="w-6 h-6"><use href="#isotipo-nucleo-cuantico"></use></svg>
-        <span class="font-display font-bold text-white tracking-tight">SINCRO GASTRO AI™</span>
-        <span class="hidden md:inline text-slate-500">•</span>
-        <span class="hidden md:inline font-mono text-[11px] text-slate-400">SISTEMA OPERATIVO NEURAL PARA RESTAURANTES</span>
+        <svg class="w-5 h-5"><use href="#isotipo-nucleo-cuantico"></use></svg>
+        <span class="font-display font-semibold text-white">Sincro Gastro</span>
       </div>
-      <div class="font-mono text-[11px] text-slate-400 flex items-center gap-4">
+      <div class="flex items-center gap-4">
         <span>Lima, Perú</span>
         <span>•</span>
-        <a href="https://wa.me/51954120739?text=Hola%20Sincro%20Gastro%20AI,%20quiero%20coordinar%20una%20demostracion%20para%20mi%20restaurante"
-           target="_blank" rel="noopener noreferrer" class="text-sky-300 hover:underline">
-          WhatsApp: +51 954 120 739
-        </a>
+        <a href="https://wa.me/51954120739" target="_blank" rel="noopener noreferrer" class="text-appleCyan hover:underline">WhatsApp: +51 954 120 739</a>
       </div>
     </div>
   </footer>
 
   <!-- MODAL DE VIDEO -->
   <div id="video-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/85 backdrop-blur-2xl">
-    <div class="relative w-full max-w-4xl rounded-3xl pelantium-glass p-4 sm:p-6 border border-white/15">
+    <div class="relative w-full max-w-4xl rounded-3xl apple-glass p-5 border border-white/15">
       <div class="flex items-center justify-between mb-3">
-        <div class="flex items-center gap-2.5">
-          <svg class="w-5 h-5"><use href="#isotipo-nucleo-cuantico"></use></svg>
-          <span class="font-mono text-xs text-sky-300">SINCRO GASTRO AI™ • SIMULACRO OPERATIVO EN VIVO</span>
-        </div>
-        <button type="button" onclick="closeVideoModal(); playTactileClick();" class="px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 text-xs font-mono text-white">
-          ✕ Cerrar
-        </button>
+        <span class="text-xs font-medium text-white">Simulacro Operativo</span>
+        <button type="button" onclick="window.closeVideoModal()" class="px-3 py-1 rounded-full bg-white/10 hover:bg-white/20 text-xs text-white cursor-pointer">Cerrar</button>
       </div>
-      <div class="relative aspect-video w-full rounded-2xl overflow-hidden bg-obsidian border border-white/10 flex items-center justify-center">
+      <div class="relative aspect-video w-full rounded-2xl overflow-hidden bg-appleSurface border border-white/10 flex items-center justify-center">
         <video id="demo-video-player" class="w-full h-full object-cover" controls playsinline>
           <source src="/assets/demo-simulacro.mp4" type="video/mp4" />
         </video>
-        <div id="video-fallback-overlay" class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-obsidian/95 pointer-events-none opacity-0 transition-opacity duration-300">
-          <svg class="w-14 h-14 mb-4"><use href="#isotipo-nucleo-cuantico"></use></svg>
-          <h4 class="font-display font-bold text-lg sm:text-xl text-white mb-2">Simulacro Operativo 4K (`/assets/demo-simulacro.mp4`)</h4>
-          <p class="text-xs sm:text-sm text-slate-300 max-w-md">
-            Puedes alojar tu video demostrativo en <code class="text-sky-300 font-mono">/assets/demo-simulacro.mp4</code> o solicitar ahora mismo una sesión interactiva en vivo por WhatsApp con los fundadores.
-          </p>
+        <div id="video-fallback-overlay" class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-appleSurface/95 pointer-events-none opacity-0 transition-opacity duration-300">
+          <svg class="w-12 h-12 mb-3"><use href="#isotipo-nucleo-cuantico"></use></svg>
+          <h4 class="font-display font-bold text-lg text-white mb-1">Demostración en Vivo</h4>
+          <p class="text-xs sm:text-sm text-appleGray max-w-md">Solicita una sesión personalizada por WhatsApp o coloca tu archivo en `/assets/demo-simulacro.mp4`.</p>
         </div>
-      </div>
-      <div class="mt-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-        <span class="text-xs text-slate-300">¿Deseas ver la demostración adaptada al menú y flujo de caja de tu restaurante?</span>
-        <a href="https://wa.me/51954120739?text=Hola%20Sincro%20Gastro%20AI,%20quiero%20coordinar%20una%20demostracion%20para%20mi%20restaurante"
-           target="_blank" rel="noopener noreferrer" onclick="playTactileClick()"
-           class="px-4 py-2 rounded-full bg-white text-slate-950 font-bold text-xs hover:bg-slate-200 transition">
-          Coordinar Demostración por WhatsApp →
-        </a>
       </div>
     </div>
   </div>
 
-  <!-- 7. ASISTENTE FLOTANTE SINCROBOT™ -->
+  <!-- ASISTENTE CONVERSACIONAL PROFUNDO SINCROBOT -->
   <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
-    <div id="sincrobot-panel" class="hidden mb-4 w-[calc(100vw-3rem)] sm:w-96 rounded-3xl pelantium-glass border border-white/15 overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.95)]">
-      <div class="p-4 bg-white/[0.03] border-b border-white/10 flex items-center justify-between">
+    <div id="sincrobot-panel" class="hidden mb-4 w-[calc(100vw-2rem)] sm:w-[420px] rounded-3xl apple-glass border border-white/15 overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.98)]">
+      <div class="p-4 bg-white/[0.04] border-b border-white/10 flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <div class="prism-orb !w-10 !h-10">
-            <svg class="w-5 h-5"><use href="#isotipo-nucleo-cuantico"></use></svg>
-          </div>
+          <div class="prism-orb !w-9 !h-9"><svg class="w-5 h-5"><use href="#isotipo-nucleo-cuantico"></use></svg></div>
           <div>
-            <div class="font-display font-bold text-sm text-white flex items-center gap-2">
-              <span>SincroBot™</span>
-              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            </div>
-            <div class="text-[10px] font-mono text-sky-300">SINCRO GASTRO AI™ • EN LÍNEA</div>
+            <div class="font-display font-semibold text-sm text-white">Asistente Sincro Gastro</div>
+            <div class="text-[11px] text-appleCyan">Consultoría Operativa en Línea</div>
           </div>
         </div>
-        <button type="button" onclick="toggleSincroBot(); playTactileClick();" class="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-xs text-slate-300">✕</button>
+        <button type="button" onclick="window.toggleSincroBot()" class="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-xs text-white cursor-pointer">✕</button>
       </div>
 
-      <div id="chat-messages" class="p-4 h-72 overflow-y-auto space-y-3 text-xs sm:text-sm">
-        <div class="p-3.5 rounded-2xl rounded-tl-none bg-white/[0.05] border border-white/10 text-slate-200 leading-relaxed">
-          Bienvenido a <strong>SINCRO GASTRO AI™</strong>. Selecciona un tema o escribe tu consulta sobre <strong>Chips NFC</strong>, <strong>control de mermas y Yape antifraude</strong>, o <strong>planes en Soles</strong>:
+      <div id="chat-messages" class="p-4 h-[360px] overflow-y-auto space-y-3 text-xs sm:text-sm">
+        <div class="p-3.5 rounded-2xl rounded-tl-none bg-white/[0.06] border border-white/10 text-appleIce leading-relaxed">
+          Hola. Conozco al detalle el funcionamiento de nuestros módulos para salón y cocina, costos en Soles, proceso de instalación e historia de la empresa. Selecciona un tema o escribe tu consulta:
         </div>
         <div class="flex flex-wrap gap-1.5 pt-1">
-          <button onclick="sendQuickChat('¿Cómo funcionan los Chips NFC en mesa?')" class="px-2.5 py-1.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/10 text-[11px] text-sky-200 transition">📲 Chips NFC en Mesa</button>
-          <button onclick="sendQuickChat('¿Cómo controlan las mermas y Yapes falsos?')" class="px-2.5 py-1.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/10 text-[11px] text-slate-200 transition">🛡️ Mermas & Yape Antifraude</button>
-          <button onclick="sendQuickChat('¿Cuáles son los planes en Soles?')" class="px-2.5 py-1.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] border border-white/10 text-[11px] text-amber-200 transition">💰 Planes en Soles (PEN)</button>
-          <button onclick="sendQuickChat('Quiero coordinar una demostración')" class="px-2.5 py-1.5 rounded-full bg-sky-500/20 hover:bg-sky-500/30 border border-sky-400/30 text-[11px] text-white font-medium transition">📅 Coordinar Demostración</button>
+          <button type="button" onclick="window.sendQuickChat('¿Qué es Sincro Gastro y cómo transforma mi restaurante?')" class="px-3 py-1.5 rounded-full bg-appleBlue/25 hover:bg-appleBlue/40 border border-appleCyan/30 text-[11px] text-white transition cursor-pointer">¿Qué es Sincro Gastro?</button>
+          <button type="button" onclick="window.sendQuickChat('Explícame cómo funcionan los Chips NFC en mesa')" class="px-3 py-1.5 rounded-full bg-white/[0.06] hover:bg-white/[0.14] border border-white/10 text-[11px] text-appleIce transition cursor-pointer">Chips NFC en 3s</button>
+          <button type="button" onclick="window.sendQuickChat('¿Cómo funciona el Validador de Yape y Plin Antifraude?')" class="px-3 py-1.5 rounded-full bg-white/[0.06] hover:bg-white/[0.14] border border-white/10 text-[11px] text-appleIce transition cursor-pointer">Yape/Plin Antifraude</button>
+          <button type="button" onclick="window.sendQuickChat('¿Cómo digitalizan las facturas por foto OCR?')" class="px-3 py-1.5 rounded-full bg-white/[0.06] hover:bg-white/[0.14] border border-white/10 text-[11px] text-appleIce transition cursor-pointer">Facturas OCR por Foto</button>
+          <button type="button" onclick="window.sendQuickChat('¿Cómo controlan el escandallo al gramo y el robo hormiga?')" class="px-3 py-1.5 rounded-full bg-white/[0.06] hover:bg-white/[0.14] border border-white/10 text-[11px] text-appleIce transition cursor-pointer">Escandallo y Mermas</button>
+          <button type="button" onclick="window.sendQuickChat('¿Qué incluye el reporte nocturno de las 11:45 PM?')" class="px-3 py-1.5 rounded-full bg-white/[0.06] hover:bg-white/[0.14] border border-white/10 text-[11px] text-appleIce transition cursor-pointer">Cuadre 11:45 PM</button>
+          <button type="button" onclick="window.sendQuickChat('¿Cómo filtra reseñas el Escudo de Google Maps?')" class="px-3 py-1.5 rounded-full bg-white/[0.06] hover:bg-white/[0.14] border border-white/10 text-[11px] text-appleIce transition cursor-pointer">Escudo Google Maps</button>
+          <button type="button" onclick="window.sendQuickChat('¿Cómo reactivan clientes inactivos (>21 días)?')" class="px-3 py-1.5 rounded-full bg-white/[0.06] hover:bg-white/[0.14] border border-white/10 text-[11px] text-appleIce transition cursor-pointer">Reactivación &gt;21 Días</button>
+          <button type="button" onclick="window.sendQuickChat('¿Quiénes son los fundadores Leonardo y Joaquín?')" class="px-3 py-1.5 rounded-full bg-white/[0.06] hover:bg-white/[0.14] border border-white/10 text-[11px] text-appleIce transition cursor-pointer">Fundadores e Historia</button>
+          <button type="button" onclick="window.sendQuickChat('¿Cómo es la instalación y el Piloto de 7 días?')" class="px-3 py-1.5 rounded-full bg-white/[0.06] hover:bg-white/[0.14] border border-white/10 text-[11px] text-appleIce transition cursor-pointer">Instalación y Piloto</button>
+          <button type="button" onclick="window.sendQuickChat('Detállame los Planes S/ 290 vs S/ 490 y el ROI')" class="px-3 py-1.5 rounded-full bg-appleBlue/25 hover:bg-appleBlue/40 border border-appleCyan/30 text-[11px] text-appleCyan font-semibold transition cursor-pointer">Planes S/ 290 y S/ 490</button>
         </div>
       </div>
 
-      <form onsubmit="handleChatSubmit(event)" class="p-3 bg-black/60 border-t border-white/10 flex items-center gap-2">
-        <input id="chat-input" type="text" placeholder="Pregunta sobre NFC, recetas, precios..."
-               class="flex-1 bg-white/[0.05] border border-white/15 rounded-full px-4 py-2 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-sky-400" />
-        <button type="submit" class="px-3.5 py-2 rounded-full bg-white text-slate-950 font-bold text-xs hover:bg-slate-200 transition">Enviar</button>
+      <form id="chat-form" class="p-3 bg-black/80 border-t border-white/10 flex items-center gap-2">
+        <input id="chat-input" type="text" placeholder="Escribe tu consulta aquí..."
+               class="flex-1 bg-white/[0.06] border border-white/15 rounded-full px-4 py-2 text-xs text-white placeholder-appleGray focus:outline-none focus:border-appleCyan" />
+        <button type="submit" class="px-4 py-2 rounded-full bg-appleBlue hover:bg-appleCyan text-white font-semibold text-xs transition cursor-pointer">Enviar</button>
       </form>
     </div>
 
     <div class="magnetic-wrap">
-      <button type="button" onclick="toggleSincroBot(); playTactileClick();" aria-label="Abrir asistente SincroBot"
-              class="relative group focus:outline-none active:scale-95 transition-transform">
-        <div class="prism-orb !w-16 !h-16 shadow-[0_14px_40px_rgba(0,212,255,0.32)]">
-          <svg class="w-8 h-8 transition-transform duration-500 group-hover:rotate-45 group-hover:scale-110">
-            <use href="#isotipo-nucleo-cuantico"></use>
-          </svg>
+      <button type="button" onclick="window.toggleSincroBot()" aria-label="Abrir asistente"
+              class="relative group focus:outline-none active:scale-95 transition-transform cursor-pointer">
+        <div class="prism-orb !w-15 !h-15 p-3.5 shadow-[0_14px_40px_rgba(41,151,255,0.4)]">
+          <svg class="w-8 h-8 transition-transform duration-500 group-hover:rotate-45"><use href="#isotipo-nucleo-cuantico"></use></svg>
         </div>
-        <span class="absolute top-0.5 right-0.5 w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-pelantium animate-pulse z-20"></span>
       </button>
     </div>
   </div>
 
   <!-- ========================================================================
-       MOTOR COMPLETO JAVASCRIPT (100% CERRADO Y FUNCIONAL)
+       MOTOR JAVASCRIPT COMPLETO (NEURONAS MULTIPOLARES 3D + INTERACCIONES)
        ======================================================================== -->
   <script>
-    const WHATSAPP_URL = 'https://wa.me/51954120739?text=Hola%20Sincro%20Gastro%20AI,%20quiero%20coordinar%20una%20demostracion%20para%20mi%20restaurante';
+    const WHATSAPP_URL = 'https://wa.me/51954120739?text=Hola%20Sincro%20Gastro,%20quiero%20coordinar%20una%20demostracion%20para%20mi%20restaurante';
 
-    // 1. Web Audio API Tactile Click
     let audioCtx = null;
-    function playTactileClick(freq = 185) {
+    window.playTactileClick = function(freq = 185) {
       try {
-        if (!audioCtx) {
-          const AudioContext = window.AudioContext || window.webkitAudioContext;
-          audioCtx = new AudioContext();
-        }
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         if (audioCtx.state === 'suspended') audioCtx.resume();
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        const now = audioCtx.currentTime;
+        const osc = audioCtx.createOscillator(), gain = audioCtx.createGain(), now = audioCtx.currentTime;
         osc.type = 'sine';
         osc.frequency.setValueAtTime(freq, now);
         osc.frequency.exponentialRampToValueAtTime(45, now + 0.04);
-        gain.gain.setValueAtTime(0.12, now);
+        gain.gain.setValueAtTime(0.1, now);
         gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start(now);
-        osc.stop(now + 0.045);
+        osc.connect(gain); gain.connect(audioCtx.destination);
+        osc.start(now); osc.stop(now + 0.045);
       } catch (e) {}
-    }
+    };
 
-    // 2. Cursor Spotlight, Stagger Reveal, Magnetic Hover & Bento 3D Tilt
-    let targetSpotX = window.innerWidth * 0.5;
-    let targetSpotY = window.innerHeight * 0.35;
-    let currentSpotX = targetSpotX;
-    let currentSpotY = targetSpotY;
-    let normMouseX = 0;
-    let normMouseY = 0;
+    let targetSpotX = window.innerWidth * 0.5, targetSpotY = window.innerHeight * 0.35;
+    let currentSpotX = targetSpotX, currentSpotY = targetSpotY, normMouseX = 0, normMouseY = 0;
 
     window.addEventListener('pointermove', (e) => {
-      targetSpotX = e.clientX;
-      targetSpotY = e.clientY;
+      targetSpotX = e.clientX; targetSpotY = e.clientY;
       normMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
       normMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
     }, { passive: true });
 
-    document.querySelectorAll('.stagger-group').forEach((group) => {
-      group.querySelectorAll('.reveal-item').forEach((child, idx) => {
-        child.style.setProperty('--stagger-delay', `${idx * 80}ms`);
-      });
-    });
-
-    function animateValue(element, start, end, duration, suffix = '') {
-      const startTime = performance.now();
-      function step(now) {
-        const progress = Math.min((now - startTime) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 4);
-        const current = Math.round(start + (end - start) * eased);
-        element.textContent = current.toLocaleString('es-PE') + suffix;
-        if (progress < 1) requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
-    }
-
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          entry.target.querySelectorAll('.odometer').forEach((odo) => {
-            if (!odo.dataset.animated) {
-              odo.dataset.animated = 'true';
-              animateValue(odo, 0, parseFloat(odo.dataset.target), 1200, odo.dataset.suffix || '');
-            }
-          });
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.reveal-item').forEach((el) => revealObserver.observe(el));
-
     document.querySelectorAll('.bento-card').forEach((card) => {
       card.addEventListener('pointermove', (e) => {
         const rect = card.getBoundingClientRect();
-        const lx = e.clientX - rect.left;
-        const ly = e.clientY - rect.top;
+        const lx = e.clientX - rect.left, ly = e.clientY - rect.top;
         card.style.setProperty('--card-mouse-x', `${lx}px`);
         card.style.setProperty('--card-mouse-y', `${ly}px`);
-        const rx = -((ly / rect.height) - 0.5) * 5.5;
-        const ry = ((lx / rect.width) - 0.5) * 5.5;
-        card.style.transform = `perspective(1000px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) scale3d(1.018, 1.018, 1.018)`;
+        const rx = -((ly / rect.height) - 0.5) * 4.0, ry = ((lx / rect.width) - 0.5) * 4.0;
+        card.style.transform = `perspective(1000px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) scale3d(1.01, 1.01, 1.01)`;
       });
       card.addEventListener('pointerleave', () => {
         card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
       });
     });
 
-    const magneticNodes = Array.from(document.querySelectorAll('.magnetic-wrap')).map((el) => ({
-      el, cx: 0, cy: 0, tx: 0, ty: 0
-    }));
-
+    const magneticNodes = Array.from(document.querySelectorAll('.magnetic-wrap')).map((el) => ({ el, cx: 0, cy: 0, tx: 0, ty: 0 }));
     window.addEventListener('pointermove', (e) => {
       magneticNodes.forEach((item) => {
         const rect = item.el.getBoundingClientRect();
-        const dx = e.clientX - (rect.left + rect.width * 0.5);
-        const dy = e.clientY - (rect.top + rect.height * 0.5);
-        const dist = Math.hypot(dx, dy);
-        const maxR = Math.max(rect.width, rect.height) * 0.5 + 45;
+        const dx = e.clientX - (rect.left + rect.width * 0.5), dy = e.clientY - (rect.top + rect.height * 0.5);
+        const dist = Math.hypot(dx, dy), maxR = Math.max(rect.width, rect.height) * 0.5 + 40;
         if (dist < maxR) {
-          const pull = (1 - dist / maxR) * 0.32;
-          item.tx = dx * pull;
-          item.ty = dy * pull;
-        } else {
-          item.tx = 0;
-          item.ty = 0;
-        }
+          const pull = (1 - dist / maxR) * 0.26;
+          item.tx = dx * pull; item.ty = dy * pull;
+        } else { item.tx = 0; item.ty = 0; }
       });
     }, { passive: true });
 
-    // 3. Simulador Financiero Lima
+    // Simulador Financiero Lima
     const GIROS_CONFIG = {
       pizzeria:  { title: 'Pizzería / Restobar en Lima', ticketPromedio: 65, factorMerma: 112, factorRetorno: 80 },
       cafeteria: { title: 'Cafetería / Pastelería en Lima', ticketPromedio: 42, factorMerma: 85, factorRetorno: 72 },
       sushi:     { title: 'Sushi / Barra de Makis en Lima', ticketPromedio: 78, factorMerma: 135, factorRetorno: 95 },
       polleria:  { title: 'Pollería / Parrilla en Lima', ticketPromedio: 85, factorMerma: 145, factorRetorno: 98 }
     };
+    let currentGiro = 'pizzeria', displayedSimTotal = 9690, targetSimTotal = 9690;
 
-    let currentGiro = 'pizzeria';
-    let displayedSimTotal = 9690;
-    let targetSimTotal = 9690;
-
-    function selectGiro(giroKey) {
+    window.selectGiro = function(giroKey) {
       currentGiro = giroKey;
-      playTactileClick(220);
+      window.playTactileClick(220);
       document.querySelectorAll('.giro-btn').forEach((btn) => {
         btn.className = btn.dataset.giro === giroKey
-          ? 'giro-btn px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold bg-white text-slate-950 shadow-lg transition flex items-center gap-2'
-          : 'giro-btn px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold pelantium-glass text-slate-300 hover:text-white transition flex items-center gap-2';
+          ? 'giro-btn px-5 py-2 rounded-full text-xs sm:text-sm font-medium bg-white text-black transition cursor-pointer'
+          : 'giro-btn px-5 py-2 rounded-full text-xs sm:text-sm font-medium apple-glass text-appleGray hover:text-white transition cursor-pointer';
       });
       const cfg = GIROS_CONFIG[giroKey];
       document.getElementById('sim-giro-title').textContent = cfg.title;
-      document.getElementById('sim-ticket-badge').textContent = `Ticket Promedio: S/ ${cfg.ticketPromedio}`;
-      updateFinancialSimulator(true);
-    }
+      document.getElementById('sim-ticket-badge').textContent = `Ticket promedio: S/ ${cfg.ticketPromedio}`;
+      window.updateFinancialSimulator(false);
+    };
 
-    function updateFinancialSimulator(withSound = false) {
-      if (withSound) playTactileClick(150);
+    window.updateFinancialSimulator = function(withSound = false) {
+      if (withSound) window.playTactileClick(150);
       const mesas = parseInt(document.getElementById('slider-mesas').value, 10);
       const pedidos = parseInt(document.getElementById('slider-pedidos').value, 10);
       const cfg = GIROS_CONFIG[currentGiro];
-
       document.getElementById('label-mesas').textContent = mesas;
       document.getElementById('label-pedidos').textContent = pedidos.toLocaleString('es-PE');
 
       const ahorroComisiones = Math.round(pedidos * cfg.ticketPromedio * 0.30);
       const ahorroMermas = Math.round(mesas * cfg.factorMerma);
       const ahorroRetorno = Math.round(mesas * cfg.factorRetorno);
-
       const totalMensual = ahorroComisiones + ahorroMermas + ahorroRetorno;
-      const totalAnual = totalMensual * 12;
-      const roiMult = (totalMensual / 490).toFixed(1);
 
       document.getElementById('breakdown-comisiones').textContent = `S/ ${ahorroComisiones.toLocaleString('es-PE')}`;
       document.getElementById('breakdown-mermas').textContent = `S/ ${ahorroMermas.toLocaleString('es-PE')}`;
       document.getElementById('breakdown-retorno').textContent = `S/ ${ahorroRetorno.toLocaleString('es-PE')}`;
-      document.getElementById('sim-anual').textContent = `S/ ${totalAnual.toLocaleString('es-PE')}`;
-      document.getElementById('sim-roi-mult').textContent = `${roiMult}x`;
-
+      document.getElementById('sim-anual').textContent = `S/ ${(totalMensual * 12).toLocaleString('es-PE')}`;
+      document.getElementById('sim-roi-mult').textContent = `${(totalMensual / 490).toFixed(1)}x`;
       targetSimTotal = totalMensual;
-      const waMsg = `Hola Sincro Gastro AI, calculé mi ahorro en el Simulador Financiero (S/ ${totalMensual.toLocaleString('es-PE')}/mes para ${cfg.title}) y quiero coordinar una demostracion para mi restaurante`;
-      document.getElementById('sim-wa-btn').href = `https://wa.me/51954120739?text=${encodeURIComponent(waMsg)}`;
-    }
+    };
 
-    // 4. WebGL Universe Deep-Space
+    // Fondo Estelar Sutil Apple
     const universeCanvas = document.getElementById('universe-canvas');
     const uniRenderer = new THREE.WebGLRenderer({ canvas: universeCanvas, antialias: true });
     uniRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     uniRenderer.setSize(window.innerWidth, window.innerHeight);
-
     const uniScene = new THREE.Scene();
     const uniCamera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1500);
     uniCamera.position.z = 5;
 
-    const STAR_COUNT = 4500;
+    const STAR_COUNT = 2800;
     const starGeo = new THREE.BufferGeometry();
-    const starPos = new Float32Array(STAR_COUNT * 3);
-    const starCol = new Float32Array(STAR_COUNT * 3);
-    const starSz = new Float32Array(STAR_COUNT);
-    const sPalette = [new THREE.Color('#f8fafc'), new THREE.Color('#38bdf8'), new THREE.Color('#94a3b8'), new THREE.Color('#fbbf24')];
-
+    const starPos = new Float32Array(STAR_COUNT * 3), starCol = new Float32Array(STAR_COUNT * 3), starSz = new Float32Array(STAR_COUNT);
+    const sPalette = [new THREE.Color('#ffffff'), new THREE.Color('#2997ff'), new THREE.Color('#86868b')];
     for (let i = 0; i < STAR_COUNT; i++) {
       const i3 = i * 3;
-      starPos[i3] = (Math.random() - 0.5) * 900;
-      starPos[i3 + 1] = (Math.random() - 0.5) * 600;
-      starPos[i3 + 2] = -Math.random() * 1000;
+      starPos[i3] = (Math.random() - 0.5) * 900; starPos[i3 + 1] = (Math.random() - 0.5) * 600; starPos[i3 + 2] = -Math.random() * 1000;
       const c = sPalette[i % sPalette.length];
       starCol[i3] = c.r; starCol[i3 + 1] = c.g; starCol[i3 + 2] = c.b;
-      starSz[i] = 1.1 + Math.pow(Math.random(), 2.2) * 3.0;
+      starSz[i] = 0.9 + Math.pow(Math.random(), 2.4) * 2.2;
     }
     starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
     starGeo.setAttribute('color', new THREE.BufferAttribute(starCol, 3));
     starGeo.setAttribute('size', new THREE.BufferAttribute(starSz, 1));
-
     const starMat = new THREE.ShaderMaterial({
       uniforms: { uTravelZ: { value: 0 }, uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) } },
       vertexShader: `
-        attribute float size;
-        attribute vec3 color;
-        varying vec3 vColor;
-        varying float vAlpha;
-        uniform float uTravelZ;
-        uniform float uPixelRatio;
+        attribute float size; attribute vec3 color; varying vec3 vColor; varying float vAlpha;
+        uniform float uTravelZ; uniform float uPixelRatio;
         void main() {
-          vColor = color;
-          vec3 pos = position;
-          pos.z = mod(pos.z + uTravelZ, 1000.0) - 1000.0;
-          vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
-          float dist = -mvPosition.z;
+          vColor = color; vec3 pos = position; pos.z = mod(pos.z + uTravelZ, 1000.0) - 1000.0;
+          vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0); float dist = -mvPosition.z;
           vAlpha = smoothstep(1000.0, 720.0, dist) * smoothstep(2.0, 22.0, dist);
-          gl_PointSize = size * uPixelRatio * (240.0 / max(dist, 10.0));
+          gl_PointSize = size * uPixelRatio * (220.0 / max(dist, 10.0));
           gl_Position = projectionMatrix * mvPosition;
         }
       `,
       fragmentShader: `
-        varying vec3 vColor;
-        varying float vAlpha;
+        varying vec3 vColor; varying float vAlpha;
         void main() {
-          vec2 uv = gl_PointCoord - vec2(0.5);
-          float d = length(uv);
-          if (d > 0.5) discard;
-          gl_FragColor = vec4(vColor, smoothstep(0.5, 0.05, d) * vAlpha * 0.8);
+          float d = length(gl_PointCoord - vec2(0.5)); if (d > 0.5) discard;
+          gl_FragColor = vec4(vColor, smoothstep(0.5, 0.05, d) * vAlpha * 0.65);
         }
       `,
       transparent: true, blending: THREE.AdditiveBlending, depthWrite: false
     });
     uniScene.add(new THREE.Points(starGeo, starMat));
-
-    let starSpeed = 0.25, scrollBoost = 0, totalTravelZ = 0, prevScrollY = window.scrollY;
+    let starSpeed = 0.2, scrollBoost = 0, totalTravelZ = 0, prevScrollY = window.scrollY;
     window.addEventListener('scroll', () => {
-      scrollBoost = Math.min(scrollBoost + Math.abs(window.scrollY - prevScrollY) * 0.032, 5.5);
+      scrollBoost = Math.min(scrollBoost + Math.abs(window.scrollY - prevScrollY) * 0.025, 4.5);
       prevScrollY = window.scrollY;
     }, { passive: true });
 
-    // 5. Escultura WebGL Central del Hero (Núcleo Cuántico Toroidal)
+    // Escultura Cuántica Hero
     const heroCanvas = document.getElementById('hero-quantum-canvas');
     const heroRenderer = new THREE.WebGLRenderer({ canvas: heroCanvas, alpha: true, antialias: true });
     heroRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    const heroScene = new THREE.Scene();
-    const heroCamera = new THREE.PerspectiveCamera(44, 1, 0.1, 100);
+    const heroScene = new THREE.Scene(), heroCamera = new THREE.PerspectiveCamera(44, 1, 0.1, 100);
     heroCamera.position.z = 5.0;
-
-    const quantumGroup = new THREE.Group();
-    heroScene.add(quantumGroup);
-
+    const quantumGroup = new THREE.Group(); heroScene.add(quantumGroup);
     const torusKnotMat = new THREE.ShaderMaterial({
       uniforms: { uTime: { value: 0 } },
       vertexShader: `
-        varying vec3 vNormal;
-        varying vec3 vPos;
-        uniform float uTime;
+        varying vec3 vNormal; varying vec3 vPos; uniform float uTime;
         void main() {
           vNormal = normalize(normalMatrix * normal);
-          vec3 p = position + normal * sin(position.x * 4.0 + uTime * 2.4) * 0.025;
-          vPos = p;
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
+          vec3 p = position + normal * sin(position.x * 4.0 + uTime * 2.2) * 0.02;
+          vPos = p; gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
         }
       `,
       fragmentShader: `
-        varying vec3 vNormal;
-        varying vec3 vPos;
-        uniform float uTime;
+        varying vec3 vNormal; varying vec3 vPos; uniform float uTime;
         void main() {
           float fresnel = pow(1.0 - abs(dot(vNormal, vec3(0.0, 0.0, 1.0))), 2.0);
-          vec3 cyan = vec3(0.0, 0.83, 1.0);
-          vec3 platinum = vec3(0.96, 0.98, 1.0);
-          vec3 amber = vec3(1.0, 0.72, 0.0);
-          float flow = sin(vPos.x * 3.2 + vPos.y * 2.5 + uTime * 2.2) * 0.5 + 0.5;
-          vec3 col = mix(cyan, platinum, flow * 0.65);
-          col = mix(col, amber, pow(fresnel, 2.0) * 0.8);
-          gl_FragColor = vec4(col, 0.45 + fresnel * 0.55);
+          float flow = sin(vPos.x * 3.0 + vPos.y * 2.5 + uTime * 2.0) * 0.5 + 0.5;
+          vec3 col = mix(vec3(0.0, 0.44, 0.89), vec3(0.39, 0.82, 1.0), flow);
+          col = mix(col, vec3(0.96, 0.96, 0.98), pow(fresnel, 1.8) * 0.85);
+          gl_FragColor = vec4(col, 0.42 + fresnel * 0.55);
         }
       `,
       transparent: true, wireframe: true, blending: THREE.AdditiveBlending
     });
-    quantumGroup.add(new THREE.Mesh(new THREE.TorusKnotGeometry(1.12, 0.31, 160, 28, 2, 3), torusKnotMat));
-
-    const orbitalRingMesh = new THREE.Mesh(
-      new THREE.TorusGeometry(1.75, 0.024, 16, 128),
-      new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.75 })
-    );
-    orbitalRingMesh.rotation.x = Math.PI / 2.5;
-    orbitalRingMesh.rotation.y = -0.35;
+    quantumGroup.add(new THREE.Mesh(new THREE.TorusKnotGeometry(1.12, 0.31, 150, 26, 2, 3), torusKnotMat));
+    const orbitalRingMesh = new THREE.Mesh(new THREE.TorusGeometry(1.75, 0.02, 16, 128), new THREE.MeshBasicMaterial({ color: 0x2997ff, transparent: true, opacity: 0.75 }));
+    orbitalRingMesh.rotation.x = Math.PI / 2.5; orbitalRingMesh.rotation.y = -0.35;
     quantumGroup.add(orbitalRingMesh);
 
     function resizeHeroQuantum() {
@@ -1426,284 +917,604 @@
     }
     resizeHeroQuantum();
 
-    // 6. Cerebro 3D Bio-Digital (45,000 Puntos + Zoom Anatómico 1.1x a 6.5x + 6 Marcadores)
+    // =========================================================================
+    // 6. CEREBRO 3D ANATÓMICO: CORTEZA CON CIRCUNVOLUCIONES + RED NEURONAL INTERIOR
+    //    De lejos se lee la silueta (volumen y sombras); al acercarte aparecen las neuronas.
+    // =========================================================================
     const BRAIN_CENTERS = [
-      {
-        id: 0, tag: '[SincroFront™]', shortLabel: 'Chips NFC', region: 'LÓBULO FRONTAL',
-        title: 'Chips NFC en Mesa & Tarjeta Digital VIP en 3s',
-        desc: 'El comensal acerca su teléfono al acrílico NFC en la mesa. En 3 segundos abre tu WhatsApp oficial, registra su visita y recibe su tarjeta de sellos digital sin instalar aplicaciones.',
-        metric: '+68% de comensales registrados en base propia', color: '#00d4ff', pos: new THREE.Vector3(0.0, 0.42, 1.32)
-      },
-      {
-        id: 1, tag: '[SincroFront™]', shortLabel: 'Recepción IA 24/7', region: 'CORTEZA TEMPORAL',
-        title: 'Recepcionista IA 24/7 & Reservas Automáticas',
-        desc: 'Responde consultas sobre carta, alérgenos, estacionamiento y confirma reservas de mesas en WhatsApp las 24 horas con lenguaje natural cálido y preciso.',
-        metric: '0 reservas perdidas fuera de horario', color: '#38bdf8', pos: new THREE.Vector3(1.18, -0.15, 0.28)
-      },
-      {
-        id: 2, tag: '[SincroFront™]', shortLabel: 'Escudo 5★ Maps', region: 'SISTEMA LÍMBICO',
-        title: 'Escudo Google Maps (Filtro 5★ Público vs 1-3★ Privado)',
-        desc: 'Dirige automáticamente las calificaciones de 4-5★ hacia tu perfil público de Google Maps y canaliza cualquier queja de 1-3★ hacia un canal interno directo con el propietario.',
-        metric: 'Calificación blindada en 4.8★ promedio', color: '#d946ef', pos: new THREE.Vector3(0.0, 0.25, 0.05)
-      },
-      {
-        id: 3, tag: '[SincroFront™]', shortLabel: 'Reactivación >21d', region: 'HIPOCAMPO',
-        title: 'Motor de Reactivación (+21 Días) & Cumpleaños',
-        desc: 'La memoria episódica detecta automáticamente qué cliente frecuente lleva más de 21 días sin visitar el local o quién cumple años, enviándole una invitación VIP personalizada.',
-        metric: '+32% en retorno de clientes inactivos', color: '#a855f7', pos: new THREE.Vector3(-1.15, -0.1, -0.18)
-      },
-      {
-        id: 4, tag: '[SincroCore™]', shortLabel: 'OCR & Antifraude', region: 'CORTEZA OCCIPITAL',
-        title: 'Validador Yape/Plin Antifraude & OCR de Facturas',
-        desc: 'Visión artificial que audita capturas de pago Yape/Plin en segundos contra falsificaciones e ingresa facturas de proveedores al inventario con solo tomarles una fotografía.',
-        metric: '100% blindaje contra capturas falsas', color: '#ffb700', pos: new THREE.Vector3(0.0, 0.28, -1.38)
-      },
-      {
-        id: 5, tag: '[SincroCore™]', shortLabel: 'Micro-ERP 11:45 PM', region: 'NÚCLEO / CEREBELO',
-        title: 'Micro-ERP de Recetas al Gramo & Cierre Nocturno 11:45 PM',
-        desc: 'Cruza cada comanda vendida con el escandallo al gramo en cocina, detecta robo hormiga o mermas inusuales y envía el estado de resultados diario a las 11:45 PM.',
-        metric: 'Reducción del 15% en merma operativa', color: '#10b981', pos: new THREE.Vector3(0.0, -0.88, -0.98)
-      }
+      { id: 0, tag: 'SincroFront', region: '01 Lóbulo Frontal', title: 'Chips NFC en Mesa y Tarjeta VIP en 3s', desc: 'El comensal acerca su smartphone al acrílico NFC de la mesa. Sin descargar apps ni escanear códigos QR, abre tu WhatsApp oficial en 3 segundos y activa su tarjeta VIP.', metric: 'Captura en mesa: 3.0s • Conversión VIP: +68%', color: '#2997ff', pos: new THREE.Vector3(-1.12, 0.35, 0.35) },
+      { id: 1, tag: 'SincroFront', region: '02 Corteza Temporal', title: 'Recepcionista IA 24/7 y Reservas de Mesas', desc: 'Atiende consultas de carta, alérgenos, horarios y confirma reservas de mesas en WhatsApp las 24 horas del día con lenguaje natural cálido.', metric: 'Atención continua: 24/7 • Reservas perdidas: 0%', color: '#64d2ff', pos: new THREE.Vector3(-0.35, -0.35, 0.62) },
+      { id: 2, tag: 'SincroFront', region: '03 Sistema Límbico', title: 'Escudo Google Maps (Filtro 5★ vs 1-3★)', desc: 'Dirige automáticamente a los comensales felices (4-5★) a publicar su reseña en Google Maps, y desvía cualquier queja (1-3★) a un canal privado con el dueño.', metric: 'Reputación blindada: 4.8★ promedio en Google Maps', color: '#5e5ce6', pos: new THREE.Vector3(0.0, 0.58, 0.0) },
+      { id: 3, tag: 'SincroFront', region: '04 Hipocampo', title: 'Reactivación de Inactivos (+21d) y Cumpleaños', desc: 'Detecta qué cliente VIP no ha vuelto en más de 21 días o quién cumple años esta semana, enviándole una invitación automática por WhatsApp.', metric: 'Tasa de retorno VIP: +32% en días de baja demanda', color: '#2997ff', pos: new THREE.Vector3(0.32, -0.15, 0.48) },
+      { id: 4, tag: 'SincroCore', region: '05 Corteza Occipital', title: 'Validador Yape/Plin y OCR de Facturas', desc: 'Visión computacional que verifica capturas de pago contra estafas extrayendo el código de operación, y digitaliza facturas de compras con una sola foto.', metric: 'Precisión OCR: 99.8% • Validación en 0.8 segundos', color: '#64d2ff', pos: new THREE.Vector3(1.18, 0.15, -0.12) },
+      { id: 5, tag: 'SincroCore', region: '06 Núcleo y Cerebelo', title: 'Micro-ERP, Escandallo al Gramo y Cierre 11:45 PM', desc: 'Descuenta gramos exactos de cada ingrediente por plato vendido, detecta robo hormiga o mermas en cocina y envía el cuadre diario a las 11:45 PM.', metric: 'Reducción de mermas: -15% • Auditoría: 11:45 PM', color: '#0071e3', pos: new THREE.Vector3(0.68, -0.68, -0.2) }
     ];
 
-    let activeCenterIdx = 0;
-    const lobeListContainer = document.getElementById('lobe-list-container');
+    let activeCenterIdx = 4;
     const markersOverlay = document.getElementById('brain-markers-overlay');
-    const markerElements = [];
+    const miniLobeDots = document.getElementById('mini-lobe-dots');
+    const markerElements = [], nodeSpheres = [];
+
+    // Celulares y tablets: menos geometría y partículas para mantener 60 FPS
+    const BRAIN_LITE = window.matchMedia('(max-width: 768px), (pointer: coarse)').matches;
+    const BRAIN_DPR = Math.min(window.devicePixelRatio, 2);
 
     const brainCanvas = document.getElementById('brain-canvas');
     const brainViewport = document.getElementById('brain-viewport');
-    const brainRenderer = new THREE.WebGLRenderer({ canvas: brainCanvas, alpha: true, antialias: true });
-    brainRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    const brainRenderer = new THREE.WebGLRenderer({ canvas: brainCanvas, alpha: true, antialias: true, powerPreference: 'high-performance' });
+    brainRenderer.setPixelRatio(BRAIN_DPR);
 
     const brainScene = new THREE.Scene();
-    const brainCamera = new THREE.PerspectiveCamera(42, 1, 0.05, 100);
-    brainCamera.position.set(2.85, 1.25, 3.65);
+    const brainCamera = new THREE.PerspectiveCamera(38, 1, 0.02, 100);
+    // Vista lateral 3/4: la silueta más reconocible de un cerebro
+    const BRAIN_HOME_POS = new THREE.Vector3(0.35, 0.55, 4.35);
+    const BRAIN_HOME_TARGET = new THREE.Vector3(0.05, -0.12, 0);
+    brainCamera.position.copy(BRAIN_HOME_POS);
 
     const brainControls = new THREE.OrbitControls(brainCamera, brainCanvas);
+    brainControls.target.copy(BRAIN_HOME_TARGET);
     brainControls.enableDamping = true;
-    brainControls.dampingFactor = 0.05;
-    brainControls.enablePan = false;
-    brainControls.minDistance = 1.1;
-    brainControls.maxDistance = 6.5;
+    brainControls.dampingFactor = 0.06;
+    brainControls.enablePan = true;
+    brainControls.minDistance = 0.35; // Permite entrar entre los somas neuronales
+    brainControls.maxDistance = 7.5;
     brainControls.autoRotate = true;
-    brainControls.autoRotateSpeed = 0.55;
+    brainControls.autoRotateSpeed = 0.28;
+    brainControls.update();
 
-    function zoomBrainCamera(delta) {
+    // Vuelo de cámara orbital (no atraviesa el cerebro) con easing suave
+    const brainFly = { active: false, t: 0, dirFrom: new THREE.Vector3(), lenFrom: 0, lenTo: 0, rot: new THREE.Quaternion(), fromTarget: new THREE.Vector3(), toTarget: new THREE.Vector3() };
+    const brainFlyQ = new THREE.Quaternion(), brainFlyIdentity = new THREE.Quaternion(), brainFlyDir = new THREE.Vector3();
+    function flyBrainCamera(toPos, toTarget) {
+      const offFrom = new THREE.Vector3().subVectors(brainCamera.position, brainControls.target);
+      const offTo = new THREE.Vector3().subVectors(toPos, toTarget);
+      brainFly.lenFrom = offFrom.length();
+      brainFly.lenTo = offTo.length();
+      brainFly.dirFrom.copy(offFrom).normalize();
+      brainFly.rot.setFromUnitVectors(brainFly.dirFrom, offTo.normalize());
+      brainFly.fromTarget.copy(brainControls.target);
+      brainFly.toTarget.copy(toTarget);
+      brainFly.t = 0;
+      brainFly.active = true;
+      brainControls.autoRotate = false;
+    }
+    brainControls.addEventListener('start', () => {
+      brainFly.active = false;
+      brainControls.autoRotate = true;
+    });
+
+    window.zoomBrainCamera = function(delta) {
+      brainFly.active = false;
       const dir = new THREE.Vector3().subVectors(brainCamera.position, brainControls.target);
-      const nextDist = THREE.MathUtils.clamp(dir.length() + delta, brainControls.minDistance, brainControls.maxDistance);
-      dir.setLength(nextDist);
+      dir.setLength(THREE.MathUtils.clamp(dir.length() + delta, brainControls.minDistance, brainControls.maxDistance));
       brainCamera.position.copy(brainControls.target).add(dir);
       brainControls.update();
-    }
+    };
 
-    function resetBrainView() {
-      brainCamera.position.set(2.85, 1.25, 3.65);
-      brainControls.target.set(0, 0, 0);
-      brainControls.update();
-    }
+    window.resetBrainView = function() {
+      flyBrainCamera(BRAIN_HOME_POS, BRAIN_HOME_TARGET);
+    };
 
-    const BRAIN_PARTICLES = 45000;
-    const brainGeo = new THREE.BufferGeometry();
-    const bPositions = new Float32Array(BRAIN_PARTICLES * 3);
-    const bColors = new Float32Array(BRAIN_PARTICLES * 3);
-    const bSizes = new Float32Array(BRAIN_PARTICLES);
-    const bTypes = new Float32Array(BRAIN_PARTICLES);
+    // Ruido Perlin 3D determinista: genera los surcos y circunvoluciones de la corteza
+    const brainNoise = (() => {
+      const perm = Array.from({ length: 256 }, (_, i) => i);
+      let seed = 1337;
+      const rand = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+      for (let i = 255; i > 0; i--) {
+        const j = Math.floor(rand() * (i + 1));
+        [perm[i], perm[j]] = [perm[j], perm[i]];
+      }
+      const p = new Uint8Array(512);
+      for (let i = 0; i < 512; i++) p[i] = perm[i & 255];
+      const fade = (t) => t * t * t * (t * (t * 6 - 15) + 10);
+      const lerp = (a, b, t) => a + t * (b - a);
+      const grad = (h, x, y, z) => {
+        const u = h < 8 ? x : y, v = h < 4 ? y : (h === 12 || h === 14 ? x : z);
+        return ((h & 1) ? -u : u) + ((h & 2) ? -v : v);
+      };
+      return function(x, y, z) {
+        const X = Math.floor(x) & 255, Y = Math.floor(y) & 255, Z = Math.floor(z) & 255;
+        x -= Math.floor(x); y -= Math.floor(y); z -= Math.floor(z);
+        const u = fade(x), v = fade(y), w = fade(z);
+        const A = p[X] + Y, AA = p[A] + Z, AB = p[A + 1] + Z, B = p[X + 1] + Y, BA = p[B] + Z, BB = p[B + 1] + Z;
+        return lerp(
+          lerp(lerp(grad(p[AA] & 15, x, y, z), grad(p[BA] & 15, x - 1, y, z), u),
+               lerp(grad(p[AB] & 15, x, y - 1, z), grad(p[BB] & 15, x - 1, y - 1, z), u), v),
+          lerp(lerp(grad(p[AA + 1] & 15, x, y, z - 1), grad(p[BA + 1] & 15, x - 1, y, z - 1), u),
+               lerp(grad(p[AB + 1] & 15, x, y - 1, z - 1), grad(p[BB + 1] & 15, x - 1, y - 1, z - 1), u), v), w);
+      };
+    })();
+    const smooth01 = (a, b, x) => {
+      const t = Math.min(1, Math.max(0, (x - a) / (b - a)));
+      return t * t * (3 - 2 * t);
+    };
 
-    const colElectric = new THREE.Color('#00d4ff');
-    const colSynapse  = new THREE.Color('#7928ca');
-    const colMagenta  = new THREE.Color('#d946ef');
-    const colAmber    = new THREE.Color('#ffb700');
-
-    function corticalFolds(x, y, z) {
-      return Math.sin(x * 11.8 + Math.cos(z * 9.2)) *
-             Math.cos(y * 11.2 + Math.sin(x * 8.6)) *
-             Math.sin(z * 10.6);
-    }
-
-    for (let i = 0; i < BRAIN_PARTICLES; i++) {
-      const i3 = i * 3;
-      let x, y, z, pType = 0;
-
-      if (i < 34500) {
-        const hemi = i % 2 === 0 ? 1 : -1;
-        const theta = Math.random() * Math.PI * 2.0;
-        const phi = Math.acos(2.0 * Math.random() - 1.0);
-        const isShell = Math.random() < 0.82;
-        const r = isShell ? (0.93 + Math.random() * 0.08) : (0.25 + Math.random() * 0.62);
-
-        const nx = Math.abs(Math.sin(phi) * Math.cos(theta)) * hemi;
-        const ny = Math.cos(phi);
-        const nz = Math.sin(phi) * Math.sin(theta);
-
-        x = nx * 1.14 * r + hemi * (0.072 + (ny > 0 ? ny * 0.038 : 0.018));
-        y = ny * 0.95 * r;
-        z = nz * 1.46 * r;
-
-        if (y < 0.14 && y > -0.62 && z > -0.45 && z < 0.62) x *= 1.18;
-        if (y < -0.45) y = -0.45 + (y + 0.45) * 0.36;
-
-        const fold = corticalFolds(x, y, z) * (isShell ? 0.075 : 0.022);
-        x += nx * fold; y += ny * fold; z += nz * fold;
-      } else if (i < 40500) {
-        const hemi = i % 2 === 0 ? 1 : -1;
-        const theta = Math.random() * Math.PI * 2.0;
-        const phi = Math.acos(2.0 * Math.random() - 1.0);
-        const r = 0.78 + Math.random() * 0.22;
-        x = Math.abs(Math.sin(phi) * Math.cos(theta)) * hemi * 0.62 * r + hemi * 0.04;
-        y = Math.cos(phi) * 0.42 * r - 0.82;
-        z = Math.sin(phi) * Math.sin(theta) * 0.52 * r - 0.92 + Math.sin(y * 38.0) * 0.025;
+    // Ejes: x = frontal (−) → occipital (+), y = arriba, z = lateral (el signo indica el hemisferio)
+    const CEREBRUM_Y = 0.12;
+    function cerebrumShape(d, hemi) {
+      const x = d.x, y = d.y;
+      let zl = d.z * hemi;
+      if (zl < 0) zl *= 0.14; // Cara medial plana junto a la cisura interhemisférica
+      const X = x * 1.32 * (1 + 0.05 * Math.max(x, 0));
+      let Y = y * (y > 0 ? 0.98 : 0.62);
+      if (y > 0) {
+        Y *= 1 - 0.14 * Math.pow(Math.max(-x, 0), 2); // Frente más baja
       } else {
-        pType = 1;
-        const pathway = i % 14;
-        const t = Math.random();
-        x = Math.sin(t * Math.PI * 3.0 + pathway) * 0.44 + (Math.random() - 0.5) * 0.035;
-        y = -0.14 + Math.sin(t * Math.PI) * 0.54 + Math.cos(pathway) * 0.07;
-        z = 1.25 - t * 2.55;
+        const temporal = Math.exp(-Math.pow((x + 0.15) / 0.45, 2)) * smooth01(0.2, 0.75, zl);
+        Y += y * 0.38 * temporal;                       // Lóbulo temporal cae hacia abajo
+        Y *= 1 - 0.3 * smooth01(0.35, 0.85, x);          // Base occipital elevada sobre el cerebelo
       }
-
-      bPositions[i3] = x; bPositions[i3 + 1] = y; bPositions[i3 + 2] = z;
-
-      const mixF = THREE.MathUtils.clamp((z + 1.5) / 3.0, 0, 1);
-      const c = colSynapse.clone().lerp(colElectric, mixF);
-      if (Math.abs(y) < 0.25 && Math.abs(x) < 0.5) c.lerp(colMagenta, 0.45);
-      if (pType === 1 || Math.random() < 0.085) {
-        c.lerp(colAmber, 0.82);
-        pType = 2;
-      }
-
-      bColors[i3] = c.r; bColors[i3 + 1] = c.g; bColors[i3 + 2] = c.b;
-      bSizes[i] = pType === 2 ? (2.1 + Math.random() * 1.9) : (1.2 + Math.random() * 1.4);
-      bTypes[i] = pType;
+      let W = (zl + 0.14) * 0.86;
+      W *= 1 - 0.22 * Math.pow(Math.max(y, 0), 2);
+      W *= 1 - 0.12 * Math.pow(Math.max(-x, 0), 2);
+      return new THREE.Vector3(X, CEREBRUM_Y + Y, hemi * (0.06 + W));
     }
 
-    brainGeo.setAttribute('position', new THREE.BufferAttribute(bPositions, 3));
-    brainGeo.setAttribute('color', new THREE.BufferAttribute(bColors, 3));
-    brainGeo.setAttribute('size', new THREE.BufferAttribute(bSizes, 1));
-    brainGeo.setAttribute('aType', new THREE.BufferAttribute(bTypes, 1));
+    function cortexFold(p, hemi) {
+      const s = 2.7;
+      const w = brainNoise(p.x * 1.6 + 7.1, p.y * 1.6 - 3.3, p.z * 1.6 + 1.7) * 0.85;
+      const n1 = brainNoise(p.x * s + w, p.y * s - w, p.z * s + w * 0.6);
+      const n2 = brainNoise(p.x * s * 2.1 + 13.0, p.y * s * 2.1 + w, p.z * s * 2.1 - 4.0);
+      // Surcos estrechos y profundos, circunvoluciones anchas y redondeadas
+      let groove = Math.pow(Math.max(0, 1 - Math.abs(n1) * 5.2), 2.2)
+                 + Math.pow(Math.max(0, 1 - Math.abs(n2) * 6.5), 2.4) * 0.45;
+      const zl = p.z * hemi;
+      // Cisura lateral (de Silvio): separa el lóbulo temporal
+      if (zl > 0.3) {
+        const yf = -0.05 + 0.3 * (p.x + 0.55);
+        const win = smooth01(-0.85, -0.6, p.x) * (1 - smooth01(0.35, 0.6, p.x));
+        const g = Math.exp(-Math.pow((p.y - yf) / 0.05, 2)) * win * smooth01(0.3, 0.55, zl);
+        groove = Math.max(groove, g * 1.3);
+      }
+      // Surco central (de Rolando): separa el lóbulo frontal del parietal
+      if (zl > -0.05 && p.y > 0.2) {
+        const xc = -0.3 + 0.33 * ((p.y - 0.15) / 0.9);
+        const g = Math.exp(-Math.pow((p.x - xc) / 0.045, 2)) * smooth01(0.2, 0.35, p.y);
+        groove = Math.max(groove, g * 0.95);
+      }
+      const gClamped = Math.min(groove, 1);
+      return { groove: gClamped, disp: 0.026 * (1 - gClamped) - 0.072 * Math.min(groove, 1.4) };
+    }
 
-    const brainShaderMat = new THREE.ShaderMaterial({
-      uniforms: {
-        uTime: { value: 0 },
-        uHeartbeat: { value: 0 },
-        uWaveRadius: { value: 0 },
-        uHoverPos: { value: new THREE.Vector3(999, 999, 999) },
-        uActiveCenter: { value: BRAIN_CENTERS[0].pos.clone() },
-        uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) }
-      },
+    const CEREB_C = new THREE.Vector3(0.84, -0.6, 0);
+    function cerebellumShape(d) {
+      const mid = Math.exp(-Math.pow(d.z / 0.18, 2));
+      return new THREE.Vector3(
+        CEREB_C.x + d.x * 0.46 - 0.04 * mid * Math.max(d.x, 0),
+        CEREB_C.y + d.y * (d.y > 0 ? 0.24 : 0.3),
+        CEREB_C.z + d.z * 0.8
+      );
+    }
+
+    function cerebellumFold(p) {
+      // Folias: láminas finas y paralelas características del cerebelo
+      const w = brainNoise(p.x * 3.0, p.y * 3.0, p.z * 3.0);
+      const f = Math.sin((p.y - CEREB_C.y) * 58 + (p.x - CEREB_C.x) * 18 + w * 2.2);
+      const folia = Math.pow(1 - Math.abs(f), 5);
+      const vermis = Math.exp(-Math.pow(p.z / 0.07, 2)) * 0.6;
+      const groove = Math.min(1, Math.max(folia, vermis));
+      return { groove, disp: 0.012 * (1 - groove) - 0.024 * folia - 0.04 * vermis };
+    }
+
+    // Deforma una esfera en la forma anatómica y luego talla los pliegues a lo largo de la normal
+    function buildFoldedSurface(geo, shapeFn, foldFn) {
+      const pos = geo.attributes.position, count = pos.count;
+      const v = new THREE.Vector3(), nrm = new THREE.Vector3();
+      for (let i = 0; i < count; i++) {
+        v.fromBufferAttribute(pos, i).normalize();
+        const s = shapeFn(v);
+        pos.setXYZ(i, s.x, s.y, s.z);
+      }
+      geo.computeVertexNormals();
+      const normals = geo.attributes.normal;
+      const fold = new Float32Array(count);
+      for (let i = 0; i < count; i++) {
+        v.fromBufferAttribute(pos, i);
+        nrm.fromBufferAttribute(normals, i);
+        const f = foldFn(v);
+        fold[i] = f.groove;
+        pos.setXYZ(i, v.x + nrm.x * f.disp, v.y + nrm.y * f.disp, v.z + nrm.z * f.disp);
+      }
+      geo.computeVertexNormals();
+      geo.setAttribute('aFold', new THREE.BufferAttribute(fold, 1));
+      return geo;
+    }
+
+    const brainMasterGroup = new THREE.Group();
+    brainScene.add(brainMasterGroup);
+
+    // Uniforms compartidos por todas las capas del cerebro
+    const brainUniforms = {
+      uTime: { value: 0 },
+      uDetail: { value: 0 }, // 0 = vista lejana (silueta), 1 = zoom a las neuronas
+      uActiveCenter: { value: BRAIN_CENTERS[activeCenterIdx].pos.clone() },
+      uPixelRatio: { value: BRAIN_DPR }
+    };
+
+    // 1. CORTEZA: cristal oscuro con borde iluminado (fresnel). La forma se lee por sombras, no por brillo.
+    const cortexUniforms = Object.assign({}, brainUniforms, { uOpacity: { value: 0.93 }, uHighlight: { value: 0 } });
+    const cortexMat = new THREE.ShaderMaterial({
+      uniforms: cortexUniforms,
       vertexShader: `
-        attribute float size;
-        attribute vec3 color;
-        attribute float aType;
-        varying vec3 vColor;
-        varying float vGlow;
-        uniform float uTime;
-        uniform float uHeartbeat;
-        uniform float uWaveRadius;
-        uniform vec3 uHoverPos;
+        attribute float aFold;
+        varying vec3 vN; varying vec3 vV; varying vec3 vWorld; varying float vFold;
+        void main() {
+          vFold = aFold;
+          vWorld = (modelMatrix * vec4(position, 1.0)).xyz;
+          vec4 mv = modelViewMatrix * vec4(position, 1.0);
+          vN = normalize(normalMatrix * normal);
+          vV = normalize(-mv.xyz);
+          gl_Position = projectionMatrix * mv;
+        }
+      `,
+      fragmentShader: `
+        uniform vec3 uActiveCenter; uniform float uTime; uniform float uOpacity; uniform float uHighlight;
+        varying vec3 vN; varying vec3 vV; varying vec3 vWorld; varying float vFold;
+        void main() {
+          vec3 N = normalize(vN); vec3 V = normalize(vV);
+          float ndv = clamp(dot(N, V), 0.0, 1.0);
+          float fres = pow(1.0 - ndv, 3.0);
+          vec3 L1 = normalize(vec3(-0.35, 0.75, 0.55));
+          vec3 L2 = normalize(vec3(0.6, -0.45, 0.35));
+          float diff = clamp(dot(N, L1), 0.0, 1.0);
+          float fill = clamp(dot(N, L2), 0.0, 1.0);
+          float spec = pow(clamp(dot(N, normalize(L1 + V)), 0.0, 1.0), 36.0);
+          float ridge = 1.0 - vFold;
+
+          vec3 col = vec3(0.028, 0.040, 0.070);
+          col += vec3(0.11, 0.15, 0.24) * diff * (0.35 + 0.65 * ridge);
+          col += vec3(0.03, 0.06, 0.12) * fill;
+          col += vec3(0.30, 0.40, 0.55) * spec * 0.28 * ridge;
+          col *= mix(1.0, 0.32, vFold);                 // Surcos en sombra
+          col += vec3(0.14, 0.30, 0.56) * fres * 0.5;   // Borde suave que dibuja la silueta
+
+          float act = smoothstep(0.85, 0.0, distance(vWorld, uActiveCenter)) * uHighlight;
+          col += vec3(0.08, 0.26, 0.58) * act * (0.32 + 0.12 * sin(uTime * 1.8)) * (0.45 + 0.55 * ridge);
+
+          gl_FragColor = vec4(col, uOpacity * (0.8 + fres * 0.2));
+        }
+      `,
+      transparent: true, depthWrite: true
+    });
+
+    const CORTEX_SEG = BRAIN_LITE ? [150, 110] : [240, 170];
+    [1, -1].forEach((hemi) => {
+      const geo = buildFoldedSurface(new THREE.SphereGeometry(1, CORTEX_SEG[0], CORTEX_SEG[1]), (d) => cerebrumShape(d, hemi), (p) => cortexFold(p, hemi));
+      const mesh = new THREE.Mesh(geo, cortexMat);
+      mesh.renderOrder = 5; // Se dibuja sobre las neuronas: de lejos las vela, de cerca se vuelve translúcida
+      brainMasterGroup.add(mesh);
+    });
+
+    const cerebellumGeo = buildFoldedSurface(new THREE.SphereGeometry(1, BRAIN_LITE ? 100 : 160, BRAIN_LITE ? 70 : 110), cerebellumShape, cerebellumFold);
+    const cerebellumMesh = new THREE.Mesh(cerebellumGeo, cortexMat);
+    cerebellumMesh.renderOrder = 5;
+    brainMasterGroup.add(cerebellumMesh);
+
+    const stemGeo = new THREE.CylinderGeometry(0.12, 0.165, 0.9, 48, 20);
+    stemGeo.setAttribute('aFold', new THREE.BufferAttribute(new Float32Array(stemGeo.attributes.position.count), 1));
+    const stemMesh = new THREE.Mesh(stemGeo, cortexMat);
+    stemMesh.position.set(0.4, -0.92, 0);
+    stemMesh.rotation.z = 0.3;
+    stemMesh.renderOrder = 5;
+    brainMasterGroup.add(stemMesh);
+
+    // 2. SOMAS NEURONALES dentro del volumen anatómico (corteza, interior y cerebelo)
+    const SOMA_COUNT = BRAIN_LITE ? 900 : 2000;
+    const somaNodes = [];
+    const somaPosArray = new Float32Array(SOMA_COUNT * 3);
+    const somaScaleArray = new Float32Array(SOMA_COUNT);
+    const randDir = () => {
+      const v = new THREE.Vector3(Math.random() * 2 - 1, Math.random() * 2 - 1, Math.random() * 2 - 1);
+      return v.lengthSq() < 1e-4 ? v.set(1, 0, 0) : v.normalize();
+    };
+
+    for (let i = 0; i < SOMA_COUNT; i++) {
+      let pt;
+      if (i % 10 === 9) {
+        pt = CEREB_C.clone().lerp(cerebellumShape(randDir()), 0.35 + Math.random() * 0.55);
+      } else {
+        const hemi = i % 2 === 0 ? 1 : -1;
+        const core = new THREE.Vector3(0, CEREBRUM_Y - 0.05, hemi * 0.5);
+        // 60% en la capa cortical, 40% en la sustancia interior
+        const rad = Math.random() < 0.6 ? 0.78 + Math.random() * 0.16 : 0.15 + Math.random() * 0.62;
+        pt = core.lerp(cerebrumShape(randDir(), hemi), rad);
+      }
+      somaNodes.push(pt);
+      somaPosArray[i * 3] = pt.x;
+      somaPosArray[i * 3 + 1] = pt.y;
+      somaPosArray[i * 3 + 2] = pt.z;
+      somaScaleArray[i] = 0.8 + Math.random() * 1.2;
+    }
+
+    const somaGeo = new THREE.BufferGeometry();
+    somaGeo.setAttribute('position', new THREE.BufferAttribute(somaPosArray, 3));
+    somaGeo.setAttribute('aScale', new THREE.BufferAttribute(somaScaleArray, 1));
+
+    // Membrana azul con borde visible al acercarse + núcleo cálido apagado
+    const somaMat = new THREE.ShaderMaterial({
+      uniforms: brainUniforms,
+      vertexShader: `
+        attribute float aScale;
+        varying float vActive;
         uniform vec3 uActiveCenter;
         uniform float uPixelRatio;
-
         void main() {
-          vec3 pos = position;
-          float dCenter = length(pos);
-          float wave = exp(-pow((dCenter - uWaveRadius) * 4.5, 2.0));
-          pos *= (1.0 + uHeartbeat * 0.022 + wave * 0.015);
-
-          float hoverGlow = smoothstep(0.92, 0.0, distance(pos, uHoverPos));
-          float activeGlow = smoothstep(0.85, 0.0, distance(pos, uActiveCenter));
-          float axonPulse = aType > 0.5 ? (sin(pos.z * 6.0 + uTime * 5.5) * 0.5 + 0.5) : 0.0;
-
-          vec3 col = mix(color, vec3(0.0, 0.92, 1.0), hoverGlow * 0.65);
-          col = mix(col, vec3(1.0, 0.8, 0.2), activeGlow * 0.55 + axonPulse * 0.35);
-          vColor = col + vec3(0.2, 0.4, 0.6) * wave * 0.55;
-          vGlow = 0.65 + uHeartbeat * 0.28 + hoverGlow * 0.9 + activeGlow * 0.65 + axonPulse * 0.35;
-
-          vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
-          float ptSize = size * (1.0 + hoverGlow * 0.8 + activeGlow * 0.45 + uHeartbeat * 0.2);
-          gl_PointSize = ptSize * uPixelRatio * (14.5 / max(-mvPosition.z, 0.85));
+          vActive = smoothstep(0.8, 0.0, distance(position, uActiveCenter));
+          vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+          float dist = max(-mvPosition.z, 0.15);
+          gl_PointSize = aScale * (1.0 + vActive * 0.25) * uPixelRatio * (15.0 / dist);
           gl_Position = projectionMatrix * mvPosition;
         }
       `,
       fragmentShader: `
-        varying vec3 vColor;
-        varying float vGlow;
+        varying float vActive;
+        uniform float uDetail;
         void main() {
-          vec2 uv = gl_PointCoord - vec2(0.5);
-          float d = length(uv);
-          if (d > 0.5) discard;
-          gl_FragColor = vec4(vColor * vGlow, pow(1.0 - d * 2.0, 1.8) * 0.88);
+          float r = length(gl_PointCoord - vec2(0.5)) * 2.0;
+          if (r > 1.0) discard;
+          float membrane = smoothstep(1.0, 0.45, r);
+          float nucleus = smoothstep(0.38, 0.0, r);
+          float core = smoothstep(0.14, 0.0, r);
+          float ring = smoothstep(0.08, 0.0, abs(r - 0.82)) * 0.5;
+
+          vec3 col = mix(vec3(0.20, 0.24, 0.55), vec3(0.22, 0.40, 0.78), membrane);
+          col = mix(col, vec3(0.80, 0.48, 0.28), nucleus * 0.85);
+          col = mix(col, vec3(0.98, 0.82, 0.58), core);
+          col += vec3(0.25, 0.45, 0.85) * ring * uDetail;
+
+          float alpha = (pow(1.0 - r, 1.3) + ring * 0.4) * (0.22 + 0.5 * uDetail + vActive * 0.18);
+          gl_FragColor = vec4(col, alpha);
         }
       `,
       transparent: true, blending: THREE.AdditiveBlending, depthWrite: false
     });
+    brainMasterGroup.add(new THREE.Points(somaGeo, somaMat));
 
-    brainScene.add(new THREE.Points(brainGeo, brainShaderMat));
-
-    const raycaster = new THREE.Raycaster();
-    const pointerNDC = new THREE.Vector2(999, 999);
-    const hitSphere = new THREE.Mesh(new THREE.SphereGeometry(1.45, 20, 20), new THREE.MeshBasicMaterial({ visible: false }));
-    brainScene.add(hitSphere);
-    const targetHover3D = new THREE.Vector3(999, 999, 999);
-
-    brainCanvas.addEventListener('pointermove', (e) => {
-      const rect = brainCanvas.getBoundingClientRect();
-      pointerNDC.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-      pointerNDC.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-      raycaster.setFromCamera(pointerNDC, brainCamera);
-      const hits = raycaster.intersectObject(hitSphere);
-      if (hits.length > 0) targetHover3D.copy(hits[0].point);
-      else targetHover3D.set(999, 999, 999);
-    });
-    brainCanvas.addEventListener('pointerleave', () => targetHover3D.set(999, 999, 999));
-
-    function initBrainUI() {
-      lobeListContainer.innerHTML = '';
-      markersOverlay.innerHTML = '';
-      markerElements.length = 0;
-
-      BRAIN_CENTERS.forEach((center, idx) => {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.id = `lobe-btn-${idx}`;
-        btn.onclick = () => { selectBrainCenter(idx); playTactileClick(235); };
-        lobeListContainer.appendChild(btn);
-
-        const pin = document.createElement('div');
-        pin.className = 'brain-marker-pin flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-white/20 shadow-lg';
-        pin.innerHTML = `<span class="w-2 h-2 rounded-full" style="background:${center.color}; box-shadow:0 0 8px ${center.color}"></span><span class="text-[10px] font-mono font-semibold text-white whitespace-nowrap">${center.shortLabel}</span>`;
-        pin.onclick = () => { selectBrainCenter(idx); playTactileClick(250); };
-        markersOverlay.appendChild(pin);
-        markerElements.push(pin);
-      });
-      selectBrainCenter(0);
+    // 3. DENDRITAS RAMIFICADAS (neuronas multipolares): solo se revelan al hacer zoom
+    const dendriteVerts = [], dendriteProg = [];
+    const DENDRITIC_COUNT = BRAIN_LITE ? 320 : 850;
+    function growDendrite(origin, dir, length, segs, progStart, progSpan, canFork) {
+      let prev = origin.clone();
+      const d = dir.clone();
+      for (let s = 1; s <= segs; s++) {
+        d.x += (Math.random() - 0.5) * 0.7;
+        d.y += (Math.random() - 0.5) * 0.7;
+        d.z += (Math.random() - 0.5) * 0.7;
+        d.normalize();
+        const next = prev.clone().addScaledVector(d, length / segs);
+        dendriteVerts.push(prev.x, prev.y, prev.z, next.x, next.y, next.z);
+        dendriteProg.push(progStart + progSpan * (s - 1) / segs, progStart + progSpan * s / segs);
+        if (canFork && s === 2) {
+          growDendrite(next, d.clone().addScaledVector(randDir(), 0.9).normalize(), length * 0.55, 2, progStart + progSpan * s / segs, progSpan * 0.5, false);
+        }
+        prev = next;
+      }
+    }
+    for (let i = 0; i < DENDRITIC_COUNT; i++) {
+      const branches = 4 + Math.floor(Math.random() * 3);
+      for (let b = 0; b < branches; b++) {
+        growDendrite(somaNodes[i], randDir(), 0.03 + Math.random() * 0.045, 3, 0, 1, true);
+      }
     }
 
-    function selectBrainCenter(idx) {
-      activeCenterIdx = idx;
-      BRAIN_CENTERS.forEach((center, i) => {
-        const isSel = i === activeCenterIdx;
-        const btn = document.getElementById(`lobe-btn-${i}`);
-        if (btn) {
-          btn.className = `text-left p-3.5 rounded-2xl border transition-all duration-200 flex items-start gap-3 ${
-            isSel ? 'bg-white/[0.1] border-sky-400/60 shadow-[0_0_25px_rgba(56,189,248,0.18)]' : 'pelantium-glass hover:border-white/20'
-          }`;
-          btn.innerHTML = `<span class="w-2.5 h-2.5 rounded-full mt-1.5 flex-shrink-0" style="background:${center.color}; box-shadow:0 0 10px ${center.color}"></span><div class="min-w-0"><div class="flex items-center gap-2"><span class="text-[10px] font-mono text-slate-400">${center.region}</span><span class="text-[10px] font-mono text-sky-300">${center.tag}</span></div><div class="font-display font-bold text-xs sm:text-sm text-white truncate mt-0.5">${center.title}</div></div>`;
+    const dendriteGeo = new THREE.BufferGeometry();
+    dendriteGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(dendriteVerts), 3));
+    dendriteGeo.setAttribute('aProg', new THREE.BufferAttribute(new Float32Array(dendriteProg), 1));
+    const dendriteMat = new THREE.ShaderMaterial({
+      uniforms: brainUniforms,
+      vertexShader: `
+        attribute float aProg;
+        varying vec3 vColor;
+        varying float vAlpha;
+        uniform vec3 uActiveCenter;
+        uniform float uDetail;
+        void main() {
+          float focus = smoothstep(0.8, 0.0, distance(position, uActiveCenter));
+          vColor = mix(vec3(0.34, 0.56, 0.95), vec3(0.18, 0.32, 0.70), aProg);
+          vAlpha = (0.015 + 0.34 * uDetail) * (1.0 - aProg * 0.75) * (0.8 + focus * 0.4);
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
         }
+      `,
+      fragmentShader: `
+        varying vec3 vColor;
+        varying float vAlpha;
+        void main() { gl_FragColor = vec4(vColor, vAlpha); }
+      `,
+      transparent: true, blending: THREE.AdditiveBlending, depthWrite: false
+    });
+    brainMasterGroup.add(new THREE.LineSegments(dendriteGeo, dendriteMat));
+
+    // 4. AXONES CURVOS entre neuronas vecinas + impulsos eléctricos que viajan por ellos
+    const axonVerts = [], axonProg = [];
+    const sparkStart = [], sparkEnd = [], sparkMid = [], sparkOffset = [], sparkSpeed = [];
+    for (let i = 0; i < SOMA_COUNT; i++) {
+      const a = somaNodes[i];
+      let linked = 0;
+      for (let j = i + 1; j < SOMA_COUNT && linked < 4; j++) {
+        const b = somaNodes[j];
+        const dist = a.distanceTo(b);
+        if (dist > 0.06 && dist < 0.28) {
+          linked++;
+          const mid = new THREE.Vector3((Math.random() - 0.5) * 0.05, (Math.random() - 0.5) * 0.05, (Math.random() - 0.5) * 0.05);
+          const steps = 4;
+          let prevP = a;
+          for (let s = 1; s <= steps; s++) {
+            const t = s / steps;
+            const currP = new THREE.Vector3().lerpVectors(a, b, t).addScaledVector(mid, Math.sin(t * Math.PI));
+            axonVerts.push(prevP.x, prevP.y, prevP.z, currP.x, currP.y, currP.z);
+            axonProg.push(t - 1 / steps, t);
+            prevP = currP;
+          }
+          if (Math.random() < 0.35) {
+            sparkStart.push(a.x, a.y, a.z);
+            sparkEnd.push(b.x, b.y, b.z);
+            sparkMid.push(mid.x, mid.y, mid.z);
+            sparkOffset.push(Math.random());
+            sparkSpeed.push((0.25 + Math.random() * 0.35) * (Math.random() < 0.5 ? 1 : -1));
+          }
+        }
+      }
+    }
+
+    const axonGeo = new THREE.BufferGeometry();
+    axonGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(axonVerts), 3));
+    axonGeo.setAttribute('aProg', new THREE.BufferAttribute(new Float32Array(axonProg), 1));
+    const axonMat = new THREE.ShaderMaterial({
+      uniforms: brainUniforms,
+      vertexShader: `
+        attribute float aProg;
+        varying vec3 vColor;
+        varying float vAlpha;
+        uniform vec3 uActiveCenter;
+        uniform float uDetail;
+        void main() {
+          float focus = smoothstep(0.8, 0.0, distance(position, uActiveCenter));
+          float nearSoma = 1.0 - sin(aProg * 3.14159);
+          vColor = mix(vec3(0.12, 0.26, 0.55), vec3(0.32, 0.55, 0.90), nearSoma * 0.6 + focus * 0.4);
+          vAlpha = (0.05 + 0.16 * uDetail) * (0.6 + nearSoma * 0.4) + focus * 0.06;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+      `,
+      fragmentShader: `
+        varying vec3 vColor;
+        varying float vAlpha;
+        void main() { gl_FragColor = vec4(vColor, vAlpha); }
+      `,
+      transparent: true, blending: THREE.AdditiveBlending, depthWrite: false
+    });
+    brainMasterGroup.add(new THREE.LineSegments(axonGeo, axonMat));
+
+    const sparkGeo = new THREE.BufferGeometry();
+    sparkGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(sparkStart), 3));
+    sparkGeo.setAttribute('aEnd', new THREE.BufferAttribute(new Float32Array(sparkEnd), 3));
+    sparkGeo.setAttribute('aMid', new THREE.BufferAttribute(new Float32Array(sparkMid), 3));
+    sparkGeo.setAttribute('aOffset', new THREE.BufferAttribute(new Float32Array(sparkOffset), 1));
+    sparkGeo.setAttribute('aSpeed', new THREE.BufferAttribute(new Float32Array(sparkSpeed), 1));
+    const sparkMat = new THREE.ShaderMaterial({
+      uniforms: brainUniforms,
+      vertexShader: `
+        attribute vec3 aEnd; attribute vec3 aMid; attribute float aOffset; attribute float aSpeed;
+        varying float vFade;
+        uniform float uTime;
+        uniform float uPixelRatio;
+        void main() {
+          float f = fract(uTime * aSpeed + aOffset);
+          vec3 p = mix(position, aEnd, f) + aMid * sin(f * 3.14159);
+          vFade = sin(f * 3.14159);
+          vec4 mvPosition = modelViewMatrix * vec4(p, 1.0);
+          float dist = max(-mvPosition.z, 0.2);
+          gl_PointSize = min(1.5 * uPixelRatio * (9.0 / dist), 14.0 * uPixelRatio);
+          gl_Position = projectionMatrix * mvPosition;
+        }
+      `,
+      fragmentShader: `
+        varying float vFade;
+        uniform float uDetail;
+        void main() {
+          float d = length(gl_PointCoord - vec2(0.5)) * 2.0;
+          if (d > 1.0) discard;
+          vec3 gold = mix(vec3(1.0, 0.62, 0.30), vec3(1.0, 0.90, 0.70), 1.0 - d);
+          gl_FragColor = vec4(gold, pow(1.0 - d, 2.0) * vFade * (0.18 + 0.55 * uDetail));
+        }
+      `,
+      transparent: true, blending: THREE.AdditiveBlending, depthWrite: false
+    });
+    brainMasterGroup.add(new THREE.Points(sparkGeo, sparkMat));
+
+    // Nodos principales de los 6 centros (discretos: el brillo queda para los detalles)
+    BRAIN_CENTERS.forEach((center) => {
+      const grp = new THREE.Group();
+      grp.position.copy(center.pos);
+      const core = new THREE.Mesh(new THREE.SphereGeometry(0.026, 16, 16), new THREE.MeshBasicMaterial({ color: 0xcfe4ff, transparent: true, opacity: 0.85 }));
+      const halo = new THREE.Mesh(new THREE.SphereGeometry(0.085, 20, 20), new THREE.MeshBasicMaterial({
+        color: new THREE.Color(center.color), transparent: true, opacity: 0.12, blending: THREE.AdditiveBlending, depthWrite: false
+      }));
+      grp.add(core); grp.add(halo);
+      brainMasterGroup.add(grp);
+      nodeSpheres.push({ grp, core, halo });
+    });
+
+    let brainHighlight = 0;
+    window.selectBrainCenter = function(idx, fly = true) {
+      activeCenterIdx = idx;
+      const c = BRAIN_CENTERS[idx];
+
+      BRAIN_CENTERS.forEach((item, i) => {
+        const isSel = i === activeCenterIdx;
         const pin = markerElements[i];
         if (pin) {
-          pin.style.borderColor = isSel ? center.color : 'rgba(255,255,255,0.18)';
-          pin.style.boxShadow = isSel ? `0 0 16px ${center.color}66` : 'none';
+          pin.style.borderColor = isSel ? '#2997ff' : 'rgba(255,255,255,0.14)';
+          pin.style.boxShadow = isSel ? '0 0 22px rgba(41,151,255,0.5)' : '0 8px 20px rgba(0,0,0,0.75)';
+          pin.style.transform = isSel ? 'translate(-50%, -50%) scale(1.08)' : 'translate(-50%, -50%) scale(1.0)';
+        }
+        if (nodeSpheres[i]) {
+          nodeSpheres[i].halo.scale.setScalar(isSel ? 1.6 : 1.0);
+          nodeSpheres[i].halo.material.opacity = isSel ? 0.28 : 0.12;
         }
       });
 
-      const c = BRAIN_CENTERS[idx];
-      document.getElementById('detail-module-tag').textContent = c.tag;
+      if (miniLobeDots) {
+        Array.from(miniLobeDots.children).forEach((dot, i) => {
+          dot.className = i === activeCenterIdx
+            ? 'w-5 h-2 rounded-full bg-appleCyan transition-all cursor-pointer'
+            : 'w-2 h-2 rounded-full bg-white/25 hover:bg-white/50 transition-all cursor-pointer';
+        });
+      }
+
       document.getElementById('detail-region-name').textContent = c.region;
+      document.getElementById('detail-module-tag').textContent = c.tag;
       document.getElementById('detail-title').textContent = c.title;
       document.getElementById('detail-description').textContent = c.desc;
       document.getElementById('detail-metric').textContent = c.metric;
-      brainShaderMat.uniforms.uActiveCenter.value.copy(c.pos);
+
+      brainUniforms.uActiveCenter.value.copy(c.pos);
+      brainHighlight = 0; // La región se enciende suavemente desde cero
+
+      if (fly) {
+        const view = c.pos.clone();
+        view.z += view.z >= 0 ? 0.9 : -0.9;
+        view.y += 0.25;
+        view.normalize().multiplyScalar(2.9);
+        const target = c.pos.clone().multiplyScalar(0.35);
+        target.y -= 0.05;
+        flyBrainCamera(target.clone().add(view), target);
+      }
+    };
+
+    window.stepBrainCenter = function(dir) {
+      window.selectBrainCenter((activeCenterIdx + dir + BRAIN_CENTERS.length) % BRAIN_CENTERS.length);
+    };
+
+    function initBrainUI() {
+      markersOverlay.innerHTML = '';
+      miniLobeDots.innerHTML = '';
+      markerElements.length = 0;
+
+      BRAIN_CENTERS.forEach((center, idx) => {
+        const pin = document.createElement('button');
+        pin.type = 'button';
+        pin.className = 'brain-marker-pin flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#060810]/85 backdrop-blur-md border transition-all duration-300 cursor-pointer';
+        pin.innerHTML = `
+          <span class="w-2 h-2 rounded-full flex-shrink-0 bg-appleCyan"></span>
+          <span class="text-xs font-medium text-white whitespace-nowrap">${center.region}</span>
+        `;
+        pin.onclick = (e) => {
+          e.stopPropagation();
+          window.playTactileClick(240);
+          window.selectBrainCenter(idx);
+        };
+        markersOverlay.appendChild(pin);
+        markerElements.push(pin);
+
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.onclick = () => {
+          window.playTactileClick(220);
+          window.selectBrainCenter(idx);
+        };
+        miniLobeDots.appendChild(dot);
+      });
+      window.selectBrainCenter(activeCenterIdx, false);
     }
 
     function resizeBrainViewport() {
@@ -1715,97 +1526,96 @@
     resizeBrainViewport();
     initBrainUI();
 
-    // 7. Bucle Maestro de Animación 60 FPS
+    // Bucle Maestro 60 FPS
     const clock = new THREE.Clock();
-    const floatingBadges = Array.from(document.querySelectorAll('.floating-badge'));
     const simOdoEl = document.getElementById('sim-total-odometer');
-    const hbIndicator = document.getElementById('heartbeat-indicator');
-    const zoomDepthLabel = document.getElementById('zoom-depth-label');
     const tempProj = new THREE.Vector3();
+    let lastFrameT = 0;
 
     function animate() {
       requestAnimationFrame(animate);
       const t = clock.getElapsedTime();
+      const dt = Math.min(t - lastFrameT, 0.05);
+      lastFrameT = t;
 
-      // Cursor Spotlight LERP
       currentSpotX += (targetSpotX - currentSpotX) * 0.14;
       currentSpotY += (targetSpotY - currentSpotY) * 0.14;
       document.documentElement.style.setProperty('--spotlight-x', `${currentSpotX}px`);
       document.documentElement.style.setProperty('--spotlight-y', `${currentSpotY}px`);
 
-      // Botones Magnéticos LERP 0.12
       magneticNodes.forEach((m) => {
         m.cx += (m.tx - m.cx) * 0.12;
         m.cy += (m.ty - m.cy) * 0.12;
         m.el.style.transform = `translate3d(${m.cx.toFixed(2)}px, ${m.cy.toFixed(2)}px, 0)`;
       });
 
-      // Microgravedad Sinusoidal en Badges
-      floatingBadges.forEach((badge, idx) => {
-        const phase = parseFloat(badge.dataset.phase || idx * 0.8);
-        badge.style.transform = `translateY(${(Math.sin(t * 2.0 + phase) * 4).toFixed(2)}px)`;
-      });
-
-      // Odómetro en Tiempo Real del Simulador Financiero Lima
-      if (Math.abs(targetSimTotal - displayedSimTotal) > 0.5) {
-        displayedSimTotal += (targetSimTotal - displayedSimTotal) * 0.18;
-        simOdoEl.textContent = Math.round(displayedSimTotal).toLocaleString('es-PE');
-      } else if (displayedSimTotal !== targetSimTotal) {
-        displayedSimTotal = targetSimTotal;
-        simOdoEl.textContent = targetSimTotal.toLocaleString('es-PE');
+      if (simOdoEl) {
+        if (Math.abs(targetSimTotal - displayedSimTotal) > 0.5) {
+          displayedSimTotal += (targetSimTotal - displayedSimTotal) * 0.18;
+          simOdoEl.textContent = Math.round(displayedSimTotal).toLocaleString('es-PE');
+        } else if (displayedSimTotal !== targetSimTotal) {
+          displayedSimTotal = targetSimTotal;
+          simOdoEl.textContent = targetSimTotal.toLocaleString('es-PE');
+        }
       }
 
-      // Cosmos Deep-Space
       scrollBoost = THREE.MathUtils.lerp(scrollBoost, 0, 0.06);
-      starSpeed = THREE.MathUtils.lerp(starSpeed, 0.25 + scrollBoost, 0.06);
+      starSpeed = THREE.MathUtils.lerp(starSpeed, 0.2 + scrollBoost, 0.06);
       totalTravelZ += starSpeed;
       starMat.uniforms.uTravelZ.value = totalTravelZ;
       uniRenderer.render(uniScene, uniCamera);
 
-      // Escultura Cuántica del Hero
       torusKnotMat.uniforms.uTime.value = t;
-      quantumGroup.rotation.y = t * 0.38 + normMouseX * 0.35;
-      quantumGroup.rotation.x = Math.sin(t * 0.5) * 0.18 + normMouseY * 0.25;
-      orbitalRingMesh.rotation.z = -t * 0.55;
+      quantumGroup.rotation.y = t * 0.35 + normMouseX * 0.3;
+      quantumGroup.rotation.x = Math.sin(t * 0.5) * 0.16 + normMouseY * 0.22;
+      orbitalRingMesh.rotation.z = -t * 0.5;
       heroRenderer.render(heroScene, heroCamera);
 
-      // Cerebro 3D + Pulso Cardíaco Lub-Dub 1.2s
-      const cycle = (t % 1.2) / 1.2;
-      const lub = Math.exp(-Math.pow((cycle - 0.14) / 0.055, 2.0));
-      const dub = 0.68 * Math.exp(-Math.pow((cycle - 0.31) / 0.065, 2.0));
-      const hb = lub + dub;
+      brainUniforms.uTime.value = t;
 
-      brainShaderMat.uniforms.uTime.value = t;
-      brainShaderMat.uniforms.uHeartbeat.value = hb;
-      brainShaderMat.uniforms.uWaveRadius.value = cycle * 2.1;
-      brainShaderMat.uniforms.uHoverPos.value.lerp(targetHover3D, 0.12);
-
-      if (hbIndicator) hbIndicator.style.transform = `scale(${1 + hb * 0.65})`;
-
-      brainControls.update();
-      const camDist = brainCamera.position.distanceTo(brainControls.target);
-      if (zoomDepthLabel) {
-        zoomDepthLabel.textContent = camDist < 2.2 ? 'ZOOM INTERNO: CUERPO CALLOSO' : 'VISTA CORTICAL 360°';
+      if (brainFly.active) {
+        brainFly.t = Math.min(1, brainFly.t + dt / 1.6);
+        const k = brainFly.t;
+        const e = k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+        brainFlyQ.copy(brainFlyIdentity).slerp(brainFly.rot, e);
+        brainFlyDir.copy(brainFly.dirFrom).applyQuaternion(brainFlyQ);
+        brainControls.target.lerpVectors(brainFly.fromTarget, brainFly.toTarget, e);
+        brainCamera.position.copy(brainControls.target).addScaledVector(brainFlyDir, THREE.MathUtils.lerp(brainFly.lenFrom, brainFly.lenTo, e));
+        if (brainFly.t >= 1) {
+          brainFly.active = false;
+          brainControls.autoRotate = true;
+        }
       }
+      brainControls.update();
 
-      // Proyección de los 6 Marcadores Anatómicos 3D
-      const vw = brainCanvas.clientWidth;
-      const vh = brainCanvas.clientHeight;
+      // Nivel de detalle según la distancia al cerebro
+      const camToBrain = brainCamera.position.length();
+      brainUniforms.uDetail.value = 1 - THREE.MathUtils.smoothstep(camToBrain, 1.6, 3.6);
+      cortexUniforms.uOpacity.value = THREE.MathUtils.lerp(0.12, 0.93, THREE.MathUtils.smoothstep(camToBrain, 1.5, 3.2));
+      brainHighlight += (1 - brainHighlight) * 0.04;
+      cortexUniforms.uHighlight.value = brainHighlight;
+      // Los nodos de los centros se desvanecen al entrar entre las neuronas
+      const nodeVis = THREE.MathUtils.smoothstep(camToBrain, 1.5, 2.6);
+      nodeSpheres.forEach((n, i) => {
+        n.grp.visible = nodeVis > 0.01;
+        n.core.material.opacity = 0.85 * nodeVis;
+        n.halo.material.opacity = (i === activeCenterIdx ? 0.28 : 0.12) * nodeVis;
+      });
+
+      const vw = brainCanvas.clientWidth, vh = brainCanvas.clientHeight;
       BRAIN_CENTERS.forEach((center, idx) => {
         const pin = markerElements[idx];
         if (!pin) return;
         tempProj.copy(center.pos).project(brainCamera);
-        const px = (tempProj.x * 0.5 + 0.5) * vw;
-        const py = (-tempProj.y * 0.5 + 0.5) * vh;
-        pin.style.left = `${px}px`;
-        pin.style.top = `${py}px`;
-        pin.style.opacity = tempProj.z < 1.0 ? '1' : '0.2';
+        pin.style.left = `${(tempProj.x * 0.5 + 0.5) * vw}px`;
+        pin.style.top = `${(-tempProj.y * 0.5 + 0.5) * vh}px`;
+        pin.style.opacity = (tempProj.z < 1.0 && camToBrain > 1.9) ? '1' : '0';
       });
 
       brainRenderer.render(brainScene, brainCamera);
     }
     animate();
-// Redimensionado Responsivo Global (4K / Mobile)
+
     window.addEventListener('resize', () => {
       uniRenderer.setSize(window.innerWidth, window.innerHeight);
       uniCamera.aspect = window.innerWidth / window.innerHeight;
@@ -1814,61 +1624,172 @@
       resizeBrainViewport();
     });
 
-    // Modal de Video Simulacro 4K
+    // =========================================================================
+    // MOVIMIENTO ESTILO APPLE: revelado al hacer scroll, contadores, navbar y parallax del hero
+    // =========================================================================
+    const PREFERS_REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Revelado escalonado: cada elemento entra según su posición entre sus hermanos
+    const REVEAL_GROUPS = [
+      ['#hero-content > *', 110],
+      ['#hero .bento-card', 90],
+      ['section:not(#hero) > .text-center > *', 110],
+      ['#simulador-section .giro-btn', 60],
+      ['#simulador-section .bento-card, #planes-section .bento-card, #fundadores-section .bento-card', 130],
+      ['#brain-viewport', 0]
+    ];
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        el.classList.add('is-visible');
+        revealObserver.unobserve(el);
+        // Al terminar, se limpia la clase para no interferir con el efecto 3D de las tarjetas
+        const cleanup = (e) => {
+          if (e.target !== el || e.propertyName !== 'opacity') return;
+          el.classList.remove('reveal', 'is-visible');
+          el.style.removeProperty('--reveal-delay');
+          el.removeEventListener('transitionend', cleanup);
+        };
+        el.addEventListener('transitionend', cleanup);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+    if (!PREFERS_REDUCED_MOTION) {
+      REVEAL_GROUPS.forEach(([selector, step]) => {
+        document.querySelectorAll(selector).forEach((el) => {
+          if (el.classList.contains('reveal')) return;
+          const siblingIdx = Array.from(el.parentElement.children).indexOf(el);
+          el.style.setProperty('--reveal-delay', `${Math.min(siblingIdx, 6) * step}ms`);
+          el.classList.add('reveal');
+          revealObserver.observe(el);
+        });
+      });
+    }
+
+    // Contadores animados en las métricas del hero
+    function runCounter(el) {
+      const to = parseFloat(el.dataset.count), from = parseFloat(el.dataset.from || '0');
+      const decimals = parseInt(el.dataset.decimals || '0', 10), duration = 1800, t0 = performance.now();
+      const step = (now) => {
+        const k = Math.min((now - t0) / duration, 1);
+        const eased = k === 1 ? 1 : 1 - Math.pow(2, -10 * k);
+        el.textContent = (from + (to - from) * eased).toFixed(decimals);
+        if (k < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        counterObserver.unobserve(entry.target);
+        setTimeout(() => runCounter(entry.target), 350);
+      });
+    }, { threshold: 0.6 });
+    if (!PREFERS_REDUCED_MOTION) document.querySelectorAll('[data-count]').forEach((el) => counterObserver.observe(el));
+
+    // Navbar: se compacta al bajar y marca la sección activa
+    const mainNav = document.getElementById('main-nav');
+    const navLinks = Array.from(mainNav.querySelectorAll('a[href^="#"]')).filter((a) => a.getAttribute('href') !== '#hero');
+    navLinks.forEach((a) => a.classList.add('nav-link'));
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const id = `#${entry.target.id}`;
+        navLinks.forEach((a) => a.classList.toggle('is-active', a.getAttribute('href') === id));
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    ['hero', 'simulador-section', 'cerebro-section', 'planes-section', 'fundadores-section'].forEach((id) => {
+      const s = document.getElementById(id);
+      if (s) sectionObserver.observe(s);
+    });
+
+    // Parallax del hero: el titular se aleja y la escultura se hunde al hacer scroll
+    const heroContent = document.getElementById('hero-content');
+    const heroSculpt = heroCanvas.parentElement;
+    let heroScrollTicking = false;
+    function updateScrollEffects() {
+      heroScrollTicking = false;
+      mainNav.classList.toggle('nav-scrolled', window.scrollY > 40);
+      if (PREFERS_REDUCED_MOTION) return;
+      // En pantallas donde el hero no cabe (celulares), no se desvanece para no ocultar los botones
+      if (document.getElementById('hero').offsetHeight > window.innerHeight * 1.15) {
+        if (heroContent.dataset.parked !== 'off') {
+          heroContent.dataset.parked = 'off';
+          heroContent.style.transform = heroContent.style.opacity = heroSculpt.style.transform = heroSculpt.style.opacity = '';
+        }
+        return;
+      }
+      const p = Math.min(Math.max(window.scrollY / (window.innerHeight * 0.9), 0), 1);
+      if (p >= 1 && heroContent.dataset.parked === '1') return;
+      heroContent.dataset.parked = p >= 1 ? '1' : '0';
+      heroContent.style.transform = `translate3d(0, ${(-p * 70).toFixed(1)}px, 0) scale(${(1 - p * 0.07).toFixed(4)})`;
+      heroContent.style.opacity = (1 - p * 0.95).toFixed(3);
+      heroSculpt.style.transform = `translate3d(0, ${(p * 90).toFixed(1)}px, 0) scale(${(1 + p * 0.18).toFixed(4)})`;
+      heroSculpt.style.opacity = (1 - p).toFixed(3);
+    }
+    window.addEventListener('scroll', () => {
+      if (!heroScrollTicking) {
+        heroScrollTicking = true;
+        requestAnimationFrame(updateScrollEffects);
+      }
+    }, { passive: true });
+    updateScrollEffects();
+
+    // Modal de Video
     const videoModal = document.getElementById('video-modal');
     const demoVideo = document.getElementById('demo-video-player');
     const videoFallback = document.getElementById('video-fallback-overlay');
 
-    function openVideoModal() {
+    window.openVideoModal = function() {
+      window.playTactileClick(210);
       videoModal.classList.remove('hidden');
       videoModal.classList.add('flex');
-      demoVideo.play().catch(() => {
-        videoFallback.classList.remove('opacity-0');
-      });
-    }
+      demoVideo.play().catch(() => videoFallback.classList.remove('opacity-0'));
+    };
 
-    function closeVideoModal() {
+    window.closeVideoModal = function() {
+      window.playTactileClick(180);
       demoVideo.pause();
       videoModal.classList.add('hidden');
       videoModal.classList.remove('flex');
-    }
+    };
 
-    demoVideo.addEventListener('error', () => {
-      videoFallback.classList.remove('opacity-0');
-    }, true);
+    demoVideo.addEventListener('error', () => videoFallback.classList.remove('opacity-0'), true);
 
-    // Consola Conversacional Flotante SincroBot™
+    // Motor Conversacional Profundo SincroBot
     const sincrobotPanel = document.getElementById('sincrobot-panel');
     const chatMessages = document.getElementById('chat-messages');
     const chatInput = document.getElementById('chat-input');
 
-    function toggleSincroBot() {
+    window.toggleSincroBot = function() {
+      window.playTactileClick(210);
       sincrobotPanel.classList.toggle('hidden');
-    }
+    };
 
-    function sendQuickChat(text) {
-      playTactileClick(230);
+    window.sendQuickChat = function(text) {
+      window.playTactileClick(235);
       appendChatMessage(text, 'user');
       respondFromSincroBot(text);
-    }
+    };
 
-    function handleChatSubmit(e) {
+    document.getElementById('chat-form').addEventListener('submit', (e) => {
       e.preventDefault();
       const text = chatInput.value.trim();
       if (!text) return;
-      playTactileClick(230);
+      window.playTactileClick(235);
       chatInput.value = '';
       appendChatMessage(text, 'user');
       respondFromSincroBot(text);
-    }
+    });
 
     function appendChatMessage(html, sender) {
       const div = document.createElement('div');
       if (sender === 'user') {
-        div.className = 'p-3 rounded-2xl rounded-tr-none bg-sky-500/20 border border-sky-400/30 text-white ml-8 text-right';
+        div.className = 'p-3 rounded-2xl rounded-tr-none bg-appleBlue/30 border border-appleCyan/40 text-white ml-8 text-right font-medium';
         div.textContent = html;
       } else {
-        div.className = 'p-3.5 rounded-2xl rounded-tl-none bg-white/[0.06] border border-white/10 text-slate-200 mr-4 leading-relaxed';
+        div.className = 'p-3.5 rounded-2xl rounded-tl-none bg-white/[0.06] border border-white/10 text-appleIce mr-2 leading-relaxed space-y-2';
         div.innerHTML = html;
       }
       chatMessages.appendChild(div);
@@ -1879,21 +1800,34 @@
       const q = query.toLowerCase();
       let reply = '';
 
-      if (q.includes('nfc') || q.includes('chip') || q.includes('mesa')) {
-        reply = `Los <strong>Chips NFC en mesa</strong> permiten que el comensal acerque su celular y en <strong>3 segundos</strong> active su tarjeta VIP digital en tu WhatsApp oficial, sin descargar apps. Además filtra reseñas 5★ hacia Google Maps.<br><br><a href="${WHATSAPP_URL}" target="_blank" class="inline-block mt-1 text-sky-300 font-semibold underline">👉 Coordinar demostración por WhatsApp</a>`;
-      } else if (q.includes('merma') || q.includes('yape') || q.includes('cocina') || q.includes('falso')) {
-        reply = `Con <strong>SincroCore™</strong> verificamos capturas de Yape/Plin con visión IA contra estafas, digitalizamos facturas por foto OCR y descontamos cada receta al gramo. A las <strong>11:45 PM</strong> recibes el cuadre completo en tu celular.<br><br><a href="${WHATSAPP_URL}" target="_blank" class="inline-block mt-1 text-sky-300 font-semibold underline">👉 Ver SincroCore™ en vivo</a>`;
-      } else if (q.includes('precio') || q.includes('soles') || q.includes('plan')) {
-        reply = `Nuestros planes mensuales en Soles (PEN):<br>• <strong>Plan SincroFront™:</strong> S/ 290/mes<br>• <strong>Plan Ecosistema Total (Salón + Cocina):</strong> S/ 490/mes<br>• <strong>Multisede / Corporativo:</strong> A medida.<br><br><a href="${WHATSAPP_URL}" target="_blank" class="inline-block mt-1 text-amber-300 font-semibold underline">👉 Solicitar Piloto de 7 Días</a>`;
+      if (q.includes('qué es sincro') || q.includes('que es sincro') || q.includes('transforma') || q.includes('empresa')) {
+        reply = `<div><strong>Sincro Gastro</strong> es la plataforma integral que conecta el salón de ventas con la cocina de tu restaurante en tiempo real:</div><ul class="list-disc pl-4 space-y-1 text-appleGray"><li><strong class="text-white">SincroFront (Salón):</strong> Captura clientes en mesa en 3s con Chips NFC, entrega tarjetas VIP digitales en WhatsApp, responde reservas 24/7 y filtra reseñas 5★ hacia Google Maps.</li><li><strong class="text-white">SincroCore (Cocina y Caja):</strong> Audita pagos Yape y Plin contra estafas, ingresa facturas por foto OCR, descuenta recetas al gramo y envía el cuadre diario a las 11:45 PM.</li></ul>`;
+      } else if (q.includes('nfc') || q.includes('chip') || q.includes('3s') || q.includes('tarjeta')) {
+        reply = `<div><strong>Chips NFC en Mesa (3.0 segundos):</strong></div><p class="text-appleGray">Instalamos acrílicos con chips NFC programados para cada mesa. El comensal acerca su teléfono sin abrir cámara ni escanear QR, abre tu WhatsApp oficial y recibe su Tarjeta Digital VIP al instante, convirtiendo el 68% del tráfico de salón en base de datos propia.</p>`;
+      } else if (q.includes('yape') || q.includes('plin') || q.includes('falso') || q.includes('antifraude')) {
+        reply = `<div><strong>Validador Antifraude Yape y Plin (0.8s):</strong></div><p class="text-appleGray">Nuestra visión computacional analiza capturas de pago en segundos, verifica tipografía, monto y hora, y extrae el código de operación único en SQL para impedir vouchers falsos o duplicados.</p>`;
+      } else if (q.includes('ocr') || q.includes('factura') || q.includes('foto')) {
+        reply = `<div><strong>Digitalización OCR de Facturas por Foto:</strong></div><p class="text-appleGray">Solo tomas una foto a la factura o guía de compra y la envías por WhatsApp. El sistema lee cada insumo, actualiza el inventario físico y alerta si algún proveedor subió sus precios.</p>`;
+      } else if (q.includes('merma') || q.includes('escandallo') || q.includes('gramo') || q.includes('robo')) {
+        reply = `<div><strong>Escandallo al Gramo y Control de Mermas:</strong></div><p class="text-appleGray">Cada plato vendido descuenta automáticamente los gramos exactos de tu receta (queso, cortes, licores). Al cruzar el stock teórico con el físico, detecta sobre-porcionado o robo hormiga ahorrando entre 12% y 18% en insumos.</p>`;
+      } else if (q.includes('11:45') || q.includes('nocturno') || q.includes('cuadre')) {
+        reply = `<div><strong>Auditoría y Cuadre Nocturno (11:45 PM):</strong></div><p class="text-appleGray">Cada noche a las 11:45 PM recibes en tu WhatsApp el resumen de ventas validadas, costo de insumos consumidos, utilidad neta del día y lista de compras sugerida para el día siguiente.</p>`;
+      } else if (q.includes('maps') || q.includes('escudo') || q.includes('reseña')) {
+        reply = `<div><strong>Escudo de Reputación en Google Maps:</strong></div><p class="text-appleGray">Los clientes que califican con 4★ o 5★ son dirigidos directamente a publicar en tu Google Maps; las calificaciones de 1★ a 3★ abren un canal privado con gerencia para resolverlo internamente.</p>`;
+      } else if (q.includes('inactivo') || q.includes('21') || q.includes('reactivación')) {
+        reply = `<div><strong>Reactivación de Clientes (&gt;21 Días) y Cumpleaños:</strong></div><p class="text-appleGray">El sistema detecta automáticamente quién lleva más de 21 días sin visitarte o quién cumple años esta semana, enviándole una invitación personalizada por WhatsApp para llenar mesas en días bajos.</p>`;
+      } else if (q.includes('fundador') || q.includes('leonardo') || q.includes('joaquin') || q.includes('joaquín') || q.includes('historia')) {
+        reply = `<div><strong>Equipo Fundador e Historia:</strong></div><p class="text-appleGray">Iniciamos forjando disciplina en <strong>Activa Club</strong>. <strong>Leonardo Samanez Tucto</strong> (Ulima) aporta experiencia directa en panadería y pizzería artesanal y dirección comercial; <strong>Joaquín Sudario Maldonado</strong> (Ingeniero de Sistemas UPC, Scrum SFC) lidera la arquitectura en Python, SQL, n8n y entornos 3D.</p>`;
+      } else if (q.includes('instalación') || q.includes('piloto') || q.includes('7 días')) {
+        reply = `<div><strong>Instalación en 72 Horas y Piloto de 7 Días:</strong></div><p class="text-appleGray">Configuramos tu carta y recetas, instalamos los tótems NFC en tus mesas y acompañamos la operación en vivo durante 7 días para medir resultados reales en tu local.</p>`;
+      } else if (q.includes('plan') || q.includes('precio') || q.includes('soles') || q.includes('290') || q.includes('490')) {
+        reply = `<div><strong>Planes Mensuales en Soles:</strong></div><ul class="list-disc pl-4 space-y-1 text-appleGray"><li><strong class="text-white">SincroFront (S/ 290/mes):</strong> Chips NFC, Tarjeta VIP, Recepcionista 24/7, Escudo Maps y Reactivación.</li><li><strong class="text-white">Ecosistema Total (S/ 490/mes):</strong> Todo SincroFront + SincroCore (Antifraude Yape/Plin, Facturas OCR, Escandallo y Cierre 11:45 PM).</li></ul>`;
       } else {
-        reply = `Leonardo y Joaquín pueden mostrarte la plataforma en vivo adaptada a la carta y costos de tu restaurante en Lima. Haz clic aquí para hablar directamente por WhatsApp:<br><br><a href="${WHATSAPP_URL}" target="_blank" class="inline-block px-3.5 py-1.5 rounded-full bg-white text-slate-950 font-bold text-xs mt-1">📲 Abrir WhatsApp (+51 954 120 739)</a>`;
+        reply = `<div>Puedo detallarte cualquier aspecto técnico o agendar una demostración directa con Leonardo y Joaquín:</div><div class="pt-2"><a href="${WHATSAPP_URL}" target="_blank" class="inline-block px-4 py-2 rounded-full bg-appleBlue text-white font-semibold text-xs">Coordinar por WhatsApp (+51 954 120 739)</a></div>`;
       }
 
-      setTimeout(() => {
-        appendChatMessage(reply, 'bot');
-      }, 260);
+      setTimeout(() => appendChatMessage(reply, 'bot'), 220);
     }
   </script>
 </body>
 </html>
-
